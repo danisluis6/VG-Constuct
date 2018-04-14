@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">VGConstruct</string>
+    <!-- General info about application -->
+    <string name="app_name">VogoApp</string>
+
+    <!-- Adjust info in layout -->
+    <string name="content_description">""</string>
 </resources>
