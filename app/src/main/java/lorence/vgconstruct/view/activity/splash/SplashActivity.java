@@ -1,9 +1,13 @@
 package lorence.vgconstruct.view.activity.splash;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 
 import lorence.vgconstruct.R;
+import lorence.vgconstruct.view.activity.home.HomeActivity;
+import lorence.vgconstruct.view.activity.login.LoginActivity;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -13,9 +17,29 @@ import lorence.vgconstruct.R;
 
 public class SplashActivity extends AppCompatActivity {
 
+    private boolean mTimeOut = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_layout);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mTimeOut = true;
+                moveToNextActivity();
+            }
+        }, 1000);
+    }
+
+    /**
+     * Move to next activity
+     */
+    private void moveToNextActivity() {
+        if (mTimeOut) {
+            startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+            finish();
+        }
     }
 }

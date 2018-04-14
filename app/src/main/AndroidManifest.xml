@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".view.activity.login.LoginActivity"/>
+
+        <activity android:name=".view.activity.home.HomeActivity"/>
+
     </application>
+
 
 </manifest>
