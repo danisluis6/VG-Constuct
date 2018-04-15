@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import lorence.vgconstruct.R;
 import lorence.vgconstruct.view.activity.home.HomeActivity;
-import lorence.vgconstruct.view.activity.login.LoginActivity;
 
 /**
  * Created by vuongluis on 4/14/2018.

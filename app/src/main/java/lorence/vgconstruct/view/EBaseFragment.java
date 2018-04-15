@@ -1,6 +1,7 @@
 package lorence.vgconstruct.view;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,34 +17,21 @@ import lorence.vgconstruct.view.activity.BaseActivity;
  * @version 0.0.1
  */
 
-public abstract class EBaseFragment extends Fragment{
+public abstract class EBaseFragment extends Fragment {
 
     protected BaseActivity mActivity;
     private Unbinder mUnbinder;
-    private View mView;
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        setRetainInstance(true);
-        initAtributes(inflater,container,savedInstanceState);
-        fragmentCreated();
-        return mView;
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mActivity = (BaseActivity) this.getActivity();
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    protected void initAtributes(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mActivity = (BaseActivity)this.getActivity();
-        mView = getViewLayout(inflater, container, savedInstanceState);
-        mUnbinder = ButterKnife.bind(this, mView);
+    public void bindView(View view) {
+        mUnbinder = ButterKnife.bind(this, view);
     }
-
-    public abstract View getViewLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
-
-    public View getView() {
-        return mView;
-    }
-
-    public abstract void fragmentCreated();
 
     @Override
     public void onDestroyView() {

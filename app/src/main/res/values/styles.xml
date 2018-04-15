@@ -5,10 +5,14 @@
         <item name="android:typeface">monospace</item>
         <item name="windowActionBar">false</item>
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@android:color/white</item>
+        <item name="colorPrimaryDark">@color/colorToolbar</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:actionMenuTextColor">@android:color/white</item>
         <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+    <style name="Theme.SplashScreen" parent="AppTheme.NoActionBar">
+        <item name="colorPrimaryDark">@android:color/white</item>
     </style>
 
 </resources>

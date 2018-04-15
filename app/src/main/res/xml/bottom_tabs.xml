@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/listings"
+        icon="@drawable/ic_listings"
+        title="Bảng Kê" />
+
+    <tab
+        id="@+id/beams"
+        icon="@drawable/ic_beams"
+        title="Loại Dầm" />
+
+    <tab
+        id="@+id/settings"
+        icon="@drawable/ic_settings"
+        title="Thiết Lập" />
+
+    <tab
+        id="@+id/help"
+        icon="@drawable/ic_help"
+        title="Giới Thiệu" />
+</tabs>
