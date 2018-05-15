@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="lorence.vgconstruct">
+    package="lorence.construction">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -9,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <activity android:name=".view.activity.splash.SplashActivity"
+        <activity android:name="lorence.construction.view.activity.splash.SplashActivity"
             android:theme="@style/Theme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +21,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.activity.login.LoginActivity"/>
+        <activity android:name="lorence.construction.view.activity.login.LoginActivity"/>
 
-        <activity android:name=".view.activity.home.HomeActivity"/>
+        <activity android:name="lorence.construction.view.activity.home.HomeActivity"/>
 
     </application>
 
