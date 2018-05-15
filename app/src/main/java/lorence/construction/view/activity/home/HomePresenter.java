@@ -1,5 +1,6 @@
 package lorence.construction.view.activity.home;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -17,14 +18,21 @@ import lorence.construction.view.fragment.Listings.ListingsFragment;
 
 public class HomePresenter extends BasePresenter<HomeViewData, HomeView> {
 
-    private final String TAG = this.getClass().toString();
+    private Activity mActivity;
+
+    private ListingsFragment mListingsFragment;
+
+    HomePresenter(HomeActivity homeActivity) {
+        super();
+        this.mActivity = homeActivity;
+    }
 
     @Override
     protected void updateView() {
 
     }
 
-    public void navigationSelected(@IdRes int menuItemId) {
+    void navigationSelected(@IdRes int menuItemId) {
         if (view() == null) {
             return;
         }
@@ -43,9 +51,11 @@ public class HomePresenter extends BasePresenter<HomeViewData, HomeView> {
     }
 
     private Fragment moveToFragListings() {
-        Fragment newFragment = new ListingsFragment();
+        if (mListingsFragment == null) {
+            mListingsFragment = new ListingsFragment(mActivity);
+        }
         Bundle fragArgs = new Bundle();
-        newFragment.setArguments(fragArgs);
-        return newFragment;
+        mListingsFragment.setArguments(fragArgs);
+        return mListingsFragment;
     }
 }

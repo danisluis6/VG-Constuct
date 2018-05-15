@@ -10,6 +10,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".app.Application"
         android:theme="@style/AppTheme.NoActionBar">
 
         <activity android:name="lorence.construction.view.activity.splash.SplashActivity"
