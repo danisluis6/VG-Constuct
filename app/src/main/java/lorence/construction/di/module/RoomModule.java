@@ -40,8 +40,8 @@ public class RoomModule {
 
     @Singleton
     @Provides
-    ListingDao providesListingDao(AppDatabase database) {
-        return database.getListingDao();
+    ListingDao providesListingDao() {
+        return mAppDatabase.getListingDao();
     }
 
     @Singleton
