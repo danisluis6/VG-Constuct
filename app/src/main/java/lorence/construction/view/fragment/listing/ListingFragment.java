@@ -19,13 +19,13 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import lorence.construction.R;
 import lorence.construction.app.Application;
+import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.di.module.HomeModule;
 import lorence.construction.di.module.ListingModule;
-import lorence.construction.model.entity.Listing;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.activity.home.HomePresenter;
-import lorence.construction.view.fragment.listing.Adapter.ListingAdapter;
+import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
 
 /**
@@ -81,10 +81,8 @@ public class ListingFragment extends EBaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listing, container, false);
         bindView(view);
-
         mGroupListings = new ArrayList<>();
         mAdapter = new ListingAdapter(mActivity, mGroupListings);
-
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(mActivity, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addItemDecoration(mGridSpacingItemDecoration);

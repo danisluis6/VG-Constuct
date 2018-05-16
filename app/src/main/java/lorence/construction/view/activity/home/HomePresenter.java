@@ -18,7 +18,6 @@ import lorence.construction.view.fragment.listing.ListingFragment;
  */
 
 public class HomePresenter extends BasePresenter<HomeViewData, HomeView> {
-
     private ListingFragment mListingsFragment;
     private Validator mValidator;
     private Context mContext;

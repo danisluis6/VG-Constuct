@@ -1,4 +1,4 @@
-package lorence.construction.view.fragment.listing.Adapter;
+package lorence.construction.view.fragment.listing.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import lorence.construction.R;
-import lorence.construction.model.entity.Listing;
+import lorence.construction.data.storage.entity.Listing;
 
 /**
  * Created by vuongluis on 4/14/2018.
