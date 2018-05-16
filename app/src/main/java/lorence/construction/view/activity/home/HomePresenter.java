@@ -1,6 +1,6 @@
 package lorence.construction.view.activity.home;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import lorence.construction.R;
 import lorence.construction.helper.BasePresenter;
 import lorence.construction.helper.Constants;
+import lorence.construction.helper.Validator;
 import lorence.construction.view.fragment.listings.ListingFragment;
 
 /**
@@ -18,13 +19,16 @@ import lorence.construction.view.fragment.listings.ListingFragment;
 
 public class HomePresenter extends BasePresenter<HomeViewData, HomeView> {
 
-    private Activity mActivity;
-
     private ListingFragment mListingsFragment;
+    private Validator mValidator;
+    private Context mContext;
+    private HomeActivity mActivity;
 
-    HomePresenter(HomeActivity homeActivity) {
+    public HomePresenter(Validator validator, Context context, HomeActivity homeActivity) {
         super();
-        this.mActivity = homeActivity;
+        mValidator = validator;
+        mContext = context;
+        mActivity = homeActivity;
     }
 
     @Override
@@ -33,13 +37,9 @@ public class HomePresenter extends BasePresenter<HomeViewData, HomeView> {
     }
 
     void navigationSelected(@IdRes int menuItemId) {
-        if (view() == null) {
-            return;
-        }
-
         switch (menuItemId) {
             case R.id.listings:
-                view().displayFragment(moveToFragListings(), Constants.TAG.LISTINGS);
+                mActivity.displayFragment(moveToFragListings(), Constants.TAG.LISTINGS);
                 break;
             case R.id.beams:
                 break;

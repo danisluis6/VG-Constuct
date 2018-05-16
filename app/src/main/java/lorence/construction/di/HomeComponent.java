@@ -2,7 +2,7 @@ package lorence.construction.di;
 
 import dagger.Subcomponent;
 import lorence.construction.scope.ActivityScope;
-import lorence.construction.view.activity.login.LoginActivity;
+import lorence.construction.view.activity.home.HomeActivity;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -12,11 +12,11 @@ import lorence.construction.view.activity.login.LoginActivity;
 
 @ActivityScope
 @Subcomponent(
-        modules = LoginModule.class
+        modules = HomeModule.class
 )
-public interface LoginComponent {
+public interface HomeComponent {
 
-    LoginActivity inject(LoginActivity loginActivity);
+    HomeActivity inject(HomeActivity homeActivity);
 }
 
 

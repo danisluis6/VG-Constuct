@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import lorence.construction.R;
-import lorence.construction.view.activity.login.LoginActivity;
+import lorence.construction.view.activity.home.HomeActivity;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -14,7 +14,7 @@ import lorence.construction.view.activity.login.LoginActivity;
  * @version 0.0.1
  */
 
-public class SplashView extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     private boolean mTimeOut = false;
 
@@ -37,7 +37,7 @@ public class SplashView extends AppCompatActivity {
      */
     private void moveToNextActivity() {
         if (mTimeOut) {
-            startActivity(new Intent(SplashView.this, LoginActivity.class));
+            startActivity(new Intent(SplashActivity.this, HomeActivity.class));
             finish();
         }
     }

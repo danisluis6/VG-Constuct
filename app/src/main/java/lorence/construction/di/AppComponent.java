@@ -17,5 +17,5 @@ import dagger.Component;
         }
 )
 public interface AppComponent {
-        LoginComponent plus(LoginModule module);
+        HomeComponent plus(HomeModule module);
 }

@@ -13,7 +13,7 @@
         android:name=".app.Application"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <activity android:name="lorence.construction.view.activity.splash.SplashView"
+        <activity android:name="lorence.construction.view.activity.splash.SplashActivity"
             android:theme="@style/Theme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

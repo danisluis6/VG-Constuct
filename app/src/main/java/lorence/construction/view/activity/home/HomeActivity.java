@@ -1,5 +1,6 @@
 package lorence.construction.view.activity.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -12,9 +13,14 @@ import android.widget.TextView;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import lorence.construction.R;
+import lorence.construction.app.Application;
+import lorence.construction.di.HomeModule;
 import lorence.construction.helper.PresenterManager;
+import lorence.construction.helper.Validator;
 import lorence.construction.view.activity.BaseActivity;
 
 /**
@@ -37,26 +43,30 @@ public class HomeActivity extends BaseActivity implements HomeView {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
+    @Inject
+    Context mContext;
+    @Inject
+    Validator mValidator;
+
+    @Inject
+    HomeActivity mHomeActivity;
+    @Inject
+    HomePresenter mHomePresenter;
+
     private int mLastSelectedTab;
-
-    //  Constants
-    public static final String SELECTED_TAB_KEY = "selectedTabKey";
-    private String CLASS_TAG = "HomeActivity";
-
-    // MVP
-    private HomePresenter mHomePresenter;
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Always call the superclass so it can save the view hierarchy state
         super.onSaveInstanceState(savedInstanceState);
-        PresenterManager.getInstance().put(CLASS_TAG, mHomePresenter);
-        savedInstanceState.putInt(SELECTED_TAB_KEY, mLastSelectedTab);
     }
 
     @Override
     public void distributedDaggerComponents() {
-
+        Application.get(this)
+                .getAppComponent()
+                .plus(new HomeModule(this))
+                .inject(this);
     }
 
     @Override
@@ -76,11 +86,6 @@ public class HomeActivity extends BaseActivity implements HomeView {
     @Override
     protected void onResume() {
         super.onResume();
-        mHomePresenter= (HomePresenter) PresenterManager.getInstance().get(CLASS_TAG);
-        if (mHomePresenter == null) {
-            mHomePresenter = new HomePresenter(this);
-        }
-        mHomePresenter.bindView(this);
         mBottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
@@ -106,6 +111,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
             fragment = newFragment;
             ft.replace(R.id.frameLayout, fragment, tag);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            ft.disallowAddToBackStack();
         }
         ft.commit();
     }
