@@ -24,9 +24,13 @@ public class DialogClass extends Dialog {
 
     private void init() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.vg_progress_dialog);
-        setCancelable(false);
+        try {
+            getWindow().setBackgroundDrawableResource(R.color.transparent);
+            setContentView(R.layout.layout_dialog_class);
+            setCancelable(false);
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override

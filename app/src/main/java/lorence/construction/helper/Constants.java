@@ -12,7 +12,4 @@ public class Constants {
         public static final String LISTINGS = "Listings";
         public static final String BEAMS = "Beams";
     }
-
-    public static final String BASE_URL = "http://schoolmateservice.herokuapp.com/teacher";
-
 }

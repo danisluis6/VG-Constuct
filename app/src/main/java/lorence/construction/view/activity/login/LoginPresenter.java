@@ -1,6 +1,11 @@
 package lorence.construction.view.activity.login;
 
 import android.content.Context;
+import android.widget.Toast;
+
+import javax.inject.Inject;
+
+import lorence.construction.helper.Validator;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -16,14 +21,15 @@ public class LoginPresenter implements ILoginPresenter {
     private final Context mContext;
 
     /**
-     * ILoginView
-     */
-    private ILoginView mLoginView;
-
-    /**
      * IEditUserProfileModel
      */
     private ILoginModel mLoginModel;
+
+    @Inject
+    Validator mValidator;
+
+    @Inject
+    LoginView mLoginView;
 
     LoginPresenter(Context context) {
         this.mContext = context;
@@ -33,5 +39,14 @@ public class LoginPresenter implements ILoginPresenter {
 
     @Override
     public void attachView(ILoginView view) {
+    }
+
+    @Override
+    public void checkUserName(String username) {
+        if (mValidator.validUsername(username)) {
+            Toast.makeText(mLoginView, "User is valid", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(mLoginView, "User is invalid", Toast.LENGTH_SHORT).show();
+        }
     }
 }

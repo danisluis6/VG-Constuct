@@ -1,4 +1,4 @@
-package lorence.construction.view.fragment.Listings;
+package lorence.construction.view.fragment.listings;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -20,7 +20,7 @@ import butterknife.BindView;
 import lorence.construction.R;
 import lorence.construction.model.Listing;
 import lorence.construction.view.EBaseFragment;
-import lorence.construction.view.fragment.Listings.Adapter.ListingAdapter;
+import lorence.construction.view.fragment.listings.Adapter.ListingAdapter;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -29,7 +29,7 @@ import lorence.construction.view.fragment.Listings.Adapter.ListingAdapter;
  */
 
 @SuppressLint("ValidFragment")
-public class ListingsFragment extends EBaseFragment {
+public class ListingFragment extends EBaseFragment {
 
     @BindView(R.id.listing_card_list)
     RecyclerView mRecyclerView;
@@ -40,7 +40,7 @@ public class ListingsFragment extends EBaseFragment {
     private Activity mActivity;
 
     @SuppressLint("ValidFragment")
-    public ListingsFragment(Activity activity) {
+    public ListingFragment(Activity activity) {
         mActivity = activity;
     }
 
@@ -51,7 +51,7 @@ public class ListingsFragment extends EBaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_listings, container, false);
+        View view = inflater.inflate(R.layout.fragment_listing, container, false);
         bindView(view);
 
         mGroupListings = new ArrayList<>();
@@ -116,22 +116,22 @@ public class ListingsFragment extends EBaseFragment {
 
         @Override
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            int position = parent.getChildAdapterPosition(view); // item position
-            int column = position % spanCount; // item column
+            int position = parent.getChildAdapterPosition(view);
+            int column = position % spanCount;
 
             if (includeEdge) {
-                outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
-                outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
+                outRect.left = spacing - column * spacing / spanCount;
+                outRect.right = (column + 1) * spacing / spanCount;
 
-                if (position < spanCount) { // top edge
+                if (position < spanCount) {
                     outRect.top = spacing;
                 }
-                outRect.bottom = spacing; // item bottom
+                outRect.bottom = spacing;
             } else {
-                outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
-                outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
+                outRect.left = column * spacing / spanCount;
+                outRect.right = spacing - (column + 1) * spacing / spanCount;
                 if (position >= spanCount) {
-                    outRect.top = spacing; // item top
+                    outRect.top = spacing;
                 }
             }
         }

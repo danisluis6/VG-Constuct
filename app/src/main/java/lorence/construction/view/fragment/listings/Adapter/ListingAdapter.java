@@ -1,4 +1,4 @@
-package lorence.construction.view.fragment.Listings.Adapter;
+package lorence.construction.view.fragment.listings.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -42,7 +42,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.MyViewHo
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.listing_card_item, parent, false);
+                .inflate(R.layout.card_listing_item, parent, false);
         return new MyViewHolder(itemView);
     }
 

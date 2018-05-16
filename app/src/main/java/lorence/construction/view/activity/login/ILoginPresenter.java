@@ -9,4 +9,5 @@ import lorence.construction.view.EBasePresenter;
  */
 
 public interface ILoginPresenter extends EBasePresenter<ILoginView> {
+    void checkUserName(String s);
 }

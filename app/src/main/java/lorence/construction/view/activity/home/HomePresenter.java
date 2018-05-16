@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
 import lorence.construction.R;
 import lorence.construction.helper.BasePresenter;
 import lorence.construction.helper.Constants;
-import lorence.construction.view.fragment.Listings.ListingsFragment;
+import lorence.construction.view.fragment.listings.ListingFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -20,7 +20,7 @@ public class HomePresenter extends BasePresenter<HomeViewData, HomeView> {
 
     private Activity mActivity;
 
-    private ListingsFragment mListingsFragment;
+    private ListingFragment mListingsFragment;
 
     HomePresenter(HomeActivity homeActivity) {
         super();
@@ -52,7 +52,7 @@ public class HomePresenter extends BasePresenter<HomeViewData, HomeView> {
 
     private Fragment moveToFragListings() {
         if (mListingsFragment == null) {
-            mListingsFragment = new ListingsFragment(mActivity);
+            mListingsFragment = new ListingFragment(mActivity);
         }
         Bundle fragArgs = new Bundle();
         mListingsFragment.setArguments(fragArgs);

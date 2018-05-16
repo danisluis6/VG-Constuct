@@ -5,9 +5,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,10 +14,8 @@ import com.roughike.bottombar.OnTabSelectListener;
 
 import butterknife.BindView;
 import lorence.construction.R;
-import lorence.construction.helper.Constants;
 import lorence.construction.helper.PresenterManager;
 import lorence.construction.view.activity.BaseActivity;
-import lorence.construction.view.fragment.Listings.ListingsFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -65,7 +61,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.layout_home;
+        return R.layout.activity_home;
     }
 
     @Override

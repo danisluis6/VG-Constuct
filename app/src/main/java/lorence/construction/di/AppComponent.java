@@ -1,7 +1,5 @@
 package lorence.construction.di;
 
-import android.content.Context;
-
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -19,8 +17,5 @@ import dagger.Component;
         }
 )
 public interface AppComponent {
-
-        // LoginComponent plus(LoginModule module);
-        Context exposeContext();
-
+        LoginComponent plus(LoginModule module);
 }

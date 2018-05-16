@@ -29,9 +29,9 @@ public class Application extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        initAppComponent();
         mContext = getApplicationContext();
         eventBus  = new Bus(ThreadEnforcer.ANY);
+        initAppComponent();
     }
 
     private void initAppComponent() {
