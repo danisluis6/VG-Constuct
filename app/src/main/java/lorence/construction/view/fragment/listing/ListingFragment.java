@@ -1,7 +1,8 @@
-package lorence.construction.view.fragment.listings;
+package lorence.construction.view.fragment.listing;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -12,15 +13,22 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import lorence.construction.R;
+import lorence.construction.app.Application;
+import lorence.construction.di.HomeModule;
+import lorence.construction.di.ListingModule;
 import lorence.construction.model.Listing;
 import lorence.construction.view.EBaseFragment;
-import lorence.construction.view.fragment.listings.Adapter.ListingAdapter;
+import lorence.construction.view.activity.home.HomeActivity;
+import lorence.construction.view.fragment.listing.Adapter.ListingAdapter;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -39,9 +47,22 @@ public class ListingFragment extends EBaseFragment {
 
     private Activity mActivity;
 
+    @Inject
+    Context mContext;
+
     @SuppressLint("ValidFragment")
     public ListingFragment(Activity activity) {
         mActivity = activity;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Application.get(mActivity)
+                .getAppComponent()
+                .plus(new HomeModule((HomeActivity) mActivity))
+                .plus(new ListingModule(this))
+                .inject(this);
     }
 
     @Override
@@ -53,6 +74,12 @@ public class ListingFragment extends EBaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listing, container, false);
         bindView(view);
+
+        if (mContext != null) {
+            Toast.makeText(mContext, "We completely get context from Application", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(mContext, "We can't do it", Toast.LENGTH_SHORT).show();
+        }
 
         mGroupListings = new ArrayList<>();
         mAdapter = new ListingAdapter(mActivity, mGroupListings);

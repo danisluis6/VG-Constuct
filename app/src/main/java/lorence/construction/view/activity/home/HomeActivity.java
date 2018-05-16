@@ -19,7 +19,6 @@ import butterknife.BindView;
 import lorence.construction.R;
 import lorence.construction.app.Application;
 import lorence.construction.di.HomeModule;
-import lorence.construction.helper.PresenterManager;
 import lorence.construction.helper.Validator;
 import lorence.construction.view.activity.BaseActivity;
 
@@ -108,8 +107,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
             ft.replace(R.id.frameLayout, fragment, tag);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         } else {
-            fragment = newFragment;
-            ft.replace(R.id.frameLayout, fragment, tag);
+            ft.replace(R.id.frameLayout, newFragment, tag);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
             ft.disallowAddToBackStack();
         }
@@ -120,4 +118,19 @@ public class HomeActivity extends BaseActivity implements HomeView {
     public void onBackPressed() {
         super.onBackPressed();
     }
+
+    /**
+     * We have rules for dagger 2:
+
+        Application
+        AppComponent
+        HomeComponent
+        HomeActivity
+
+        HomeActivity
+        HomeComponent
+        ListingComponent
+        ListingFragment
+
+     */
 }

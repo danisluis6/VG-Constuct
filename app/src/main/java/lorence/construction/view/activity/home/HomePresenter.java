@@ -9,7 +9,7 @@ import lorence.construction.R;
 import lorence.construction.helper.BasePresenter;
 import lorence.construction.helper.Constants;
 import lorence.construction.helper.Validator;
-import lorence.construction.view.fragment.listings.ListingFragment;
+import lorence.construction.view.fragment.listing.ListingFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.

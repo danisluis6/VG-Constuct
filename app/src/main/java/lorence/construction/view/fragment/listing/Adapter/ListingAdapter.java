@@ -1,4 +1,4 @@
-package lorence.construction.view.fragment.listings.Adapter;
+package lorence.construction.view.fragment.listing.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
