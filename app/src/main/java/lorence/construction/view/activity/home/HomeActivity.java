@@ -118,19 +118,4 @@ public class HomeActivity extends BaseActivity implements HomeView {
     public void onBackPressed() {
         super.onBackPressed();
     }
-
-    /**
-     * We have rules for dagger 2:
-
-        Application
-        AppComponent
-        HomeComponent
-        HomeActivity
-
-        HomeActivity
-        HomeComponent
-        ListingComponent
-        ListingFragment
-
-     */
 }

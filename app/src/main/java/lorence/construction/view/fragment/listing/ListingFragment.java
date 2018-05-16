@@ -3,17 +3,13 @@ package lorence.construction.view.fragment.listing;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +24,9 @@ import lorence.construction.di.ListingModule;
 import lorence.construction.model.Listing;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
+import lorence.construction.view.activity.home.HomePresenter;
 import lorence.construction.view.fragment.listing.Adapter.ListingAdapter;
+import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -50,6 +48,15 @@ public class ListingFragment extends EBaseFragment {
     @Inject
     Context mContext;
 
+    @Inject
+    HomePresenter mHomePresenter;
+
+    @Inject
+    ListingFragment mListingFragment;
+
+    @Inject
+    GridSpacingItemDecoration mGridSpacingItemDecoration;
+
     @SuppressLint("ValidFragment")
     public ListingFragment(Activity activity) {
         mActivity = activity;
@@ -61,7 +68,7 @@ public class ListingFragment extends EBaseFragment {
         Application.get(mActivity)
                 .getAppComponent()
                 .plus(new HomeModule((HomeActivity) mActivity))
-                .plus(new ListingModule(this))
+                .plus(new ListingModule(mContext, (HomeActivity) mActivity, this))
                 .inject(this);
     }
 
@@ -75,19 +82,12 @@ public class ListingFragment extends EBaseFragment {
         View view = inflater.inflate(R.layout.fragment_listing, container, false);
         bindView(view);
 
-        if (mContext != null) {
-            Toast.makeText(mContext, "We completely get context from Application", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(mContext, "We can't do it", Toast.LENGTH_SHORT).show();
-        }
-
         mGroupListings = new ArrayList<>();
         mAdapter = new ListingAdapter(mActivity, mGroupListings);
 
-
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(mActivity, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+        mRecyclerView.addItemDecoration(mGridSpacingItemDecoration);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mAdapter);
         return view;
@@ -127,48 +127,5 @@ public class ListingFragment extends EBaseFragment {
         mGroupListings.add(new Listing(10,"Bảng Kê 11", covers[10]));
 
         mAdapter.notifyDataSetChanged();
-    }
-
-    public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
-
-        private int spanCount;
-        private int spacing;
-        private boolean includeEdge;
-
-        public GridSpacingItemDecoration(int spanCount, int spacing, boolean includeEdge) {
-            this.spanCount = spanCount;
-            this.spacing = spacing;
-            this.includeEdge = includeEdge;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            int position = parent.getChildAdapterPosition(view);
-            int column = position % spanCount;
-
-            if (includeEdge) {
-                outRect.left = spacing - column * spacing / spanCount;
-                outRect.right = (column + 1) * spacing / spanCount;
-
-                if (position < spanCount) {
-                    outRect.top = spacing;
-                }
-                outRect.bottom = spacing;
-            } else {
-                outRect.left = column * spacing / spanCount;
-                outRect.right = spacing - (column + 1) * spacing / spanCount;
-                if (position >= spanCount) {
-                    outRect.top = spacing;
-                }
-            }
-        }
-    }
-
-    /**
-     * Converting dp to pixel
-     */
-    private int dpToPx(int dp) {
-        Resources r = getResources();
-        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 }
