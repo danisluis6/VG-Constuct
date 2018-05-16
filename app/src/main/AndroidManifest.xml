@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="lorence.construction.view.activity.login.LoginView"/>
+        <activity android:name="lorence.construction.view.activity.login.LoginActivity"/>
 
         <activity android:name="lorence.construction.view.activity.home.HomeActivity"/>
 

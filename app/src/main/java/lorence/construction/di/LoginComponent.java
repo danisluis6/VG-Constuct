@@ -2,7 +2,7 @@ package lorence.construction.di;
 
 import dagger.Subcomponent;
 import lorence.construction.scope.ActivityScope;
-import lorence.construction.view.activity.login.LoginView;
+import lorence.construction.view.activity.login.LoginActivity;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -16,7 +16,7 @@ import lorence.construction.view.activity.login.LoginView;
 )
 public interface LoginComponent {
 
-    LoginView inject(LoginView loginView);
+    LoginActivity inject(LoginActivity loginActivity);
 }
 
 

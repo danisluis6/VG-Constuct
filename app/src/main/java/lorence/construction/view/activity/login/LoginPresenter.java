@@ -3,8 +3,6 @@ package lorence.construction.view.activity.login;
 import android.content.Context;
 import android.widget.Toast;
 
-import javax.inject.Inject;
-
 import lorence.construction.helper.Validator;
 
 /**
@@ -15,24 +13,17 @@ import lorence.construction.helper.Validator;
 
 public class LoginPresenter implements ILoginPresenter {
 
-    /**
-     * Context
-     */
-    private final Context mContext;
-
-    /**
-     * IEditUserProfileModel
-     */
     private ILoginModel mLoginModel;
 
-    @Inject
-    Validator mValidator;
+    private Validator mValidator;
+    private Context mContext;
+    private LoginActivity mActivity;
 
-    @Inject
-    LoginView mLoginView;
-
-    LoginPresenter(Context context) {
+    public LoginPresenter(Validator validator, Context context, LoginActivity activity) {
         this.mContext = context;
+        mValidator = validator;
+        mContext = context;
+        mActivity = activity;
         mLoginModel = new LoginModel(mContext);
         mLoginModel.attachView(this);
     }
@@ -43,10 +34,10 @@ public class LoginPresenter implements ILoginPresenter {
 
     @Override
     public void checkUserName(String username) {
-        if (mValidator.validUsername(username)) {
-            Toast.makeText(mLoginView, "User is valid", Toast.LENGTH_SHORT).show();
+        if (mActivity != null) {
+            Toast.makeText(mActivity, "No null!", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(mLoginView, "User is invalid", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mActivity, "null!", Toast.LENGTH_SHORT).show();
         }
     }
 }

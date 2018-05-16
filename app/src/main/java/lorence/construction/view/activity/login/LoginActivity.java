@@ -18,22 +18,27 @@ import lorence.construction.view.activity.BaseActivity;
  * @version 0.0.1
  */
 
-public class LoginView extends BaseActivity implements ILoginView {
+public class LoginActivity extends BaseActivity implements ILoginView {
 
-    /**
-     * Login Presenter
-     */
-    private ILoginPresenter mLoginPresenter;
     /**
      * Loading Dialog
      */
     private DialogClass mDialogProgress;
 
+    // Implement from  Parent "Application"
     @Inject
     Context mContext;
-
     @Inject
     Validator mValidator;
+
+    // Implement from module "LoginActivity"
+    @Inject
+    LoginActivity mLoginActivity;
+
+    // Using these module from Parents
+    // Move to LoginModule and declare it
+    @Inject
+    LoginPresenter mLoginPresenter;
 
     @Override
     protected int getLayoutRes() {
@@ -52,16 +57,10 @@ public class LoginView extends BaseActivity implements ILoginView {
     public void initAttributes() {
         // initialize Dialog Progress
         mDialogProgress = new DialogClass(this);
-        // initialize Login Presenter
-        mLoginPresenter = new LoginPresenter(mContext);
-        mLoginPresenter.attachView(this);
     }
 
     @Override
     public void initViews() {
-        if (mContext != null) {
-            Toast.makeText(mContext, "Hello World", Toast.LENGTH_SHORT).show();
-        }
-        mLoginPresenter.checkUserName("Nguyen Van Vuong");
+        mLoginPresenter.checkUserName("Lorence");
     }
 }

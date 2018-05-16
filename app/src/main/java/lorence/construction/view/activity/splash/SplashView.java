@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import lorence.construction.R;
-import lorence.construction.view.activity.login.LoginView;
+import lorence.construction.view.activity.login.LoginActivity;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -37,7 +37,7 @@ public class SplashView extends AppCompatActivity {
      */
     private void moveToNextActivity() {
         if (mTimeOut) {
-            startActivity(new Intent(SplashView.this, LoginView.class));
+            startActivity(new Intent(SplashView.this, LoginActivity.class));
             finish();
         }
     }
