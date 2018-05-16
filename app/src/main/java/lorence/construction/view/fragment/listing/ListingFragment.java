@@ -19,9 +19,9 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import lorence.construction.R;
 import lorence.construction.app.Application;
-import lorence.construction.di.HomeModule;
-import lorence.construction.di.ListingModule;
-import lorence.construction.model.Listing;
+import lorence.construction.di.module.HomeModule;
+import lorence.construction.di.module.ListingModule;
+import lorence.construction.model.entity.Listing;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.activity.home.HomePresenter;
@@ -63,6 +63,11 @@ public class ListingFragment extends EBaseFragment {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         Application.get(mActivity)
@@ -70,11 +75,6 @@ public class ListingFragment extends EBaseFragment {
                 .plus(new HomeModule((HomeActivity) mActivity))
                 .plus(new ListingModule(mContext, (HomeActivity) mActivity, this))
                 .inject(this);
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
@@ -114,17 +114,17 @@ public class ListingFragment extends EBaseFragment {
                 R.drawable.ic_bang_ke_11
         };
 
-        mGroupListings.add(new Listing(0,"Bảng Kê 1", covers[0]));
-        mGroupListings.add(new Listing(1,"Bảng Kê 2", covers[1]));
-        mGroupListings.add(new Listing(2,"Bảng Kê 3", covers[2]));
-        mGroupListings.add(new Listing(3,"Bảng Kê 4", covers[3]));
-        mGroupListings.add(new Listing(4,"Bảng Kê 5", covers[4]));
-        mGroupListings.add(new Listing(5,"Bảng Kê 6", covers[5]));
-        mGroupListings.add(new Listing(6,"Bảng Kê 7", covers[6]));
-        mGroupListings.add(new Listing(7,"Bảng Kê 8", covers[7]));
-        mGroupListings.add(new Listing(8,"Bảng Kê 9", covers[8]));
-        mGroupListings.add(new Listing(9,"Bảng Kê 10", covers[9]));
-        mGroupListings.add(new Listing(10,"Bảng Kê 11", covers[10]));
+        mGroupListings.add(new Listing("Bảng Kê 1", covers[0]));
+        mGroupListings.add(new Listing("Bảng Kê 2", covers[1]));
+        mGroupListings.add(new Listing("Bảng Kê 3", covers[2]));
+        mGroupListings.add(new Listing("Bảng Kê 4", covers[3]));
+        mGroupListings.add(new Listing("Bảng Kê 5", covers[4]));
+        mGroupListings.add(new Listing("Bảng Kê 6", covers[5]));
+        mGroupListings.add(new Listing("Bảng Kê 7", covers[6]));
+        mGroupListings.add(new Listing("Bảng Kê 8", covers[7]));
+        mGroupListings.add(new Listing("Bảng Kê 9", covers[8]));
+        mGroupListings.add(new Listing("Bảng Kê 10", covers[9]));
+        mGroupListings.add(new Listing("Bảng Kê 11", covers[10]));
 
         mAdapter.notifyDataSetChanged();
     }

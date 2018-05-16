@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import lorence.construction.R;
-import lorence.construction.model.Listing;
+import lorence.construction.model.entity.Listing;
 
 /**
  * Created by vuongluis on 4/14/2018.

@@ -1,5 +1,6 @@
-package lorence.construction.di;
+package lorence.construction.di.module;
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 
 import javax.inject.Singleton;
@@ -7,7 +8,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import lorence.construction.app.Application;
-import lorence.construction.helper.Validator;
+import lorence.construction.model.storage.AppDatabase;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -16,14 +17,16 @@ import lorence.construction.helper.Validator;
  */
 
 @Module
-public class AppModule {
+public class RoomModule {
 
+    private AppDatabase mAppDatabase;
     private Application mApplication;
     private Context mContext;
 
-    public AppModule(Application application, Context context) {
-        this.mApplication = application;
-        this.mContext = context;
+    public RoomModule(Application application, Context context) {
+        mApplication = application;
+        mContext = context;
+        mAppDatabase = Room.databaseBuilder(application, AppDatabase.class, AppDatabase.DB_NAME).build();
     }
 
     @Provides
@@ -37,11 +40,4 @@ public class AppModule {
     Context provideContext() {
         return mContext;
     }
-
-    @Provides
-    @Singleton
-    Validator provideValidator() {
-        return new Validator();
-    }
-
 }

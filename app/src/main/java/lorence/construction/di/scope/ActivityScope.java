@@ -1,4 +1,4 @@
-package lorence.construction.scope;
+package lorence.construction.di.scope;
 
 import javax.inject.Scope;
 

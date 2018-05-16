@@ -1,8 +1,10 @@
-package lorence.construction.di;
+package lorence.construction.di.component;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
+import lorence.construction.di.module.AppModule;
+import lorence.construction.di.module.HomeModule;
 
 /**
  * Created by vuongluis on 4/14/2018.

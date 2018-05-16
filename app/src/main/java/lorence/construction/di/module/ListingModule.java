@@ -1,10 +1,10 @@
-package lorence.construction.di;
+package lorence.construction.di.module;
 
 import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
-import lorence.construction.scope.ActivityScope;
+import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.utitilize.Utils;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.ListingFragment;

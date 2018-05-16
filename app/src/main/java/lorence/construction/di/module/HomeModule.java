@@ -1,11 +1,11 @@
-package lorence.construction.di;
+package lorence.construction.di.module;
 
 import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
 import lorence.construction.helper.Validator;
-import lorence.construction.scope.ActivityScope;
+import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.activity.home.HomePresenter;
 
