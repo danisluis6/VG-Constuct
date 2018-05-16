@@ -24,7 +24,6 @@ import lorence.construction.di.module.HomeModule;
 import lorence.construction.di.module.ListingModule;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
-import lorence.construction.view.activity.home.HomePresenter;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
 
@@ -49,10 +48,9 @@ public class ListingFragment extends EBaseFragment {
     Context mContext;
 
     @Inject
-    HomePresenter mHomePresenter;
-
-    @Inject
     ListingFragment mListingFragment;
+    @Inject
+    ListingPresenter mListingPresenter;
 
     @Inject
     GridSpacingItemDecoration mGridSpacingItemDecoration;
@@ -124,6 +122,7 @@ public class ListingFragment extends EBaseFragment {
         mGroupListings.add(new Listing("Bảng Kê 10", covers[9]));
         mGroupListings.add(new Listing("Bảng Kê 11", covers[10]));
 
+        mListingPresenter.saveListings(mGroupListings);
         mAdapter.notifyDataSetChanged();
     }
 }
