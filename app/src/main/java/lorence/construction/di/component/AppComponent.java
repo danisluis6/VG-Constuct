@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import lorence.construction.di.module.AppModule;
 import lorence.construction.di.module.HomeModule;
+import lorence.construction.di.module.RoomModule;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -15,7 +16,8 @@ import lorence.construction.di.module.HomeModule;
 @Singleton
 @Component(
         modules = {
-                AppModule.class
+                AppModule.class,
+                RoomModule.class
         }
 )
 public interface AppComponent {

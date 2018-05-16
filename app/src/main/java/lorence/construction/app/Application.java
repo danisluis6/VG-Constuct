@@ -8,6 +8,7 @@ import com.squareup.otto.ThreadEnforcer;
 import lorence.construction.di.component.AppComponent;
 import lorence.construction.di.component.DaggerAppComponent;
 import lorence.construction.di.module.AppModule;
+import lorence.construction.di.module.RoomModule;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -37,7 +38,7 @@ public class Application extends android.app.Application {
     private void initAppComponent() {
         mApplicationComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this,mContext))
-//                .roomModule(new RoomModule(this, mContext))
+                .roomModule(new RoomModule(this, mContext))
                 .build();
     }
 

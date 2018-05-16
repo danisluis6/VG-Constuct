@@ -3,10 +3,7 @@ package lorence.construction.di.module;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
-import dagger.Provides;
 import lorence.construction.app.Application;
 import lorence.construction.model.storage.AppDatabase;
 
@@ -27,17 +24,5 @@ public class RoomModule {
         mApplication = application;
         mContext = context;
         mAppDatabase = Room.databaseBuilder(application, AppDatabase.class, AppDatabase.DB_NAME).build();
-    }
-
-    @Provides
-    @Singleton
-    Application provideApplication() {
-        return mApplication;
-    }
-
-    @Provides
-    @Singleton
-    Context provideContext() {
-        return mContext;
     }
 }
