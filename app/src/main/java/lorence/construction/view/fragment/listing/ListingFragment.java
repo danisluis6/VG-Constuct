@@ -40,7 +40,6 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     @BindView(R.id.listing_card_list)
     RecyclerView mRecyclerView;
 
-    private ListingAdapter mAdapter;
     private List<Listing> mGroupListings;
 
     private Activity mActivity;
@@ -53,6 +52,9 @@ public class ListingFragment extends EBaseFragment implements ListingView {
 
     @Inject
     ListingPresenter mListingPresenter;
+
+    @Inject
+    ListingAdapter mListingAdapter;
 
     @Inject
     GridSpacingItemDecoration mGridSpacingItemDecoration;
@@ -82,12 +84,11 @@ public class ListingFragment extends EBaseFragment implements ListingView {
         View view = inflater.inflate(R.layout.fragment_listing, container, false);
         bindView(view);
         mGroupListings = new ArrayList<>();
-        mAdapter = new ListingAdapter(mActivity, mGroupListings);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(mActivity, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addItemDecoration(mGridSpacingItemDecoration);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mListingAdapter);
         return view;
     }
 
@@ -102,7 +103,7 @@ public class ListingFragment extends EBaseFragment implements ListingView {
         if (listings.size() == 0) {
             initializeNewListings();
         } else {
-            mAdapter.updateListing(listings);
+            mListingAdapter.updateListing(listings);
         }
     }
 
@@ -135,6 +136,6 @@ public class ListingFragment extends EBaseFragment implements ListingView {
         mGroupListings.add(new Listing("Bảng Kê 10", covers[9]));
         mGroupListings.add(new Listing("Bảng Kê 11", covers[10]));
         mListingPresenter.saveListings(mGroupListings);
-        mAdapter.updateListing(mGroupListings);
+        mListingAdapter.updateListing(mGroupListings);
     }
 }

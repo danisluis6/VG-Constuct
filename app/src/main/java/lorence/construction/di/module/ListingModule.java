@@ -2,10 +2,14 @@ package lorence.construction.di.module;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dagger.Module;
 import dagger.Provides;
 import lorence.construction.data.storage.async.ListingAsynTask;
 import lorence.construction.data.storage.async.ListingAsynTaskImpl;
+import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.utitilize.Utils;
 import lorence.construction.view.activity.home.HomeActivity;
@@ -13,6 +17,7 @@ import lorence.construction.view.fragment.listing.ListingFragment;
 import lorence.construction.view.fragment.listing.ListingModel;
 import lorence.construction.view.fragment.listing.ListingPresenter;
 import lorence.construction.view.fragment.listing.ListingPresenterImpl;
+import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
 import lorence.construction.view.fragment.listing.module.ListingView;
 
@@ -54,6 +59,12 @@ public class ListingModule {
     @ActivityScope
     ListingPresenter provideListingPresenter(Context context, HomeActivity activity, ListingModel listingModel, ListingAsynTask listingAsynTask) {
         return new ListingPresenterImpl(context, activity, mListingView, listingModel, listingAsynTask);
+    }
+
+    @Provides
+    @ActivityScope
+    ListingAdapter provideListingAdapter(Context context) {
+        return new ListingAdapter(context, new ArrayList<Listing>());
     }
 
     @Provides
