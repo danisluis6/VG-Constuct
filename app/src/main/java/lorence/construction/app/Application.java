@@ -48,6 +48,4 @@ public class Application extends android.app.Application {
 
 }
 
-// https://medium.com/@alahammad/database-with-room-using-rxjava-764ee6124974
-// https://medium.com/@marco_cattaneo/integrate-dagger-2-with-room-persistence-library-in-few-lines-abf48328eaeb
 
