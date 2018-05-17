@@ -4,10 +4,14 @@ import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
-import lorence.construction.helper.Validator;
 import lorence.construction.di.scope.ActivityScope;
+import lorence.construction.helper.Validator;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.activity.home.HomePresenter;
+import lorence.construction.view.fragment.about.AboutFragment;
+import lorence.construction.view.fragment.beams.BeamFragment;
+import lorence.construction.view.fragment.listing.ListingFragment;
+import lorence.construction.view.fragment.setting.SettingFragment;
 
 /**
  * Created by lorence on 28/12/2017.
@@ -33,7 +37,16 @@ public class HomeModule {
 
     @Provides
     @ActivityScope
-    HomePresenter provideLoginPresenter(/* get Parents */Validator validator, /* get Parents */Context context, /* get its */HomeActivity homeActivity) {
-        return new HomePresenter(validator, context, homeActivity);
+    HomePresenter provideHomePresenter(/* get Parents */Validator validator, /* get Parents */Context context, /* get its */HomeActivity homeActivity,
+                                       ListingFragment listingFragment,
+                                       BeamFragment beamFragment,
+                                       SettingFragment settingFragment,
+                                       AboutFragment aboutFragment) {
+        return new HomePresenter(validator, context, homeActivity,
+                listingFragment,
+                beamFragment,
+                settingFragment,
+                aboutFragment
+                );
     }
 }

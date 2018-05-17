@@ -90,10 +90,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
         mBottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
-                if (mLastSelectedTab != tabId) {
-                    mHomePresenter.navigationSelected(tabId);
-                    mLastSelectedTab = tabId;
-                }
+                mHomePresenter.navigationSelected(tabId);
             }
         });
     }

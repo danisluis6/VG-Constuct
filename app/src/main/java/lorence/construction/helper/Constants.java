@@ -9,7 +9,9 @@ package lorence.construction.helper;
 public class Constants {
 
     public static final class TAG {
-        public static final String LISTINGS = "Listings";
-        public static final String BEAMS = "Beams";
+        public static final String LISTING = "Listing";
+        public static final String BEAM = "Beam";
+        public static final String SETTING = "Setting";
+        public static final String ABOUT = "About";
     }
 }
