@@ -11,6 +11,7 @@ import io.reactivex.CompletableObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import lorence.construction.data.storage.dao.ListingDao;
 import lorence.construction.data.storage.entity.Listing;
@@ -31,9 +32,18 @@ public class ListingAsynTaskImpl implements ListingAsynTask {
     private static ListingPresenter mPresenter;
 
     @Override
-    public void inertListings(Context context, ListingDao listingDao, List<Listing> items, ListingPresenter presenter) {
+    public void attachListingDao(Context context, ListingDao listingDao) {
+        mContext = context;
         mListingDao = listingDao;
-        mPresenter = presenter;
+    }
+
+    @Override
+    public void attachListingPresenter(ListingPresenter listingPresenter) {
+        mPresenter = listingPresenter;
+    }
+
+    @Override
+    public void inertListings(List<Listing> items) {
         new InsertAll().execute(items);
     }
 
@@ -54,12 +64,12 @@ public class ListingAsynTaskImpl implements ListingAsynTask {
 
                 @Override
                 public void onComplete() {
-                    mPresenter.onSuccess();
+                    mPresenter.onInsertListingsSuccess();
                 }
 
                 @Override
                 public void onError(Throwable e) {
-                    mPresenter.onFailed();
+                    mPresenter.onInsertListingsFailed();
                 }
             });
 
@@ -69,8 +79,26 @@ public class ListingAsynTaskImpl implements ListingAsynTask {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            mPresenter.showMessage("Add all listings successfully!");
+        }
+
+    }
+
+    @Override
+    public void getListings() {
+        new GetAll().execute();
+    }
+
+    static class GetAll extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mListingDao.getListings().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<Listing>>() {
+                @Override
+                public void accept(@io.reactivex.annotations.NonNull List<Listing> listings) throws Exception {
+                    mPresenter.onGetListingsSuccess(listings);
+                }
+            });
+            return null;
         }
     }
-    // READ MORE: https://medium.com/@alahammad/database-with-room-using-rxjava-764ee6124974
 }

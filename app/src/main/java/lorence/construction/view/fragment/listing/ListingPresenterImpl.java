@@ -8,6 +8,7 @@ import java.util.List;
 import lorence.construction.data.storage.async.ListingAsynTask;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.view.activity.home.HomeActivity;
+import lorence.construction.view.fragment.listing.module.ListingView;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -21,11 +22,13 @@ public class ListingPresenterImpl implements ListingPresenter {
 
     private Context mContext;
     private HomeActivity mActivity;
+    private ListingView mListingView;
 
-    public ListingPresenterImpl(Context context, HomeActivity activity, ListingModel listingModel, ListingAsynTask listingAsynTask) {
+    public ListingPresenterImpl(Context context, HomeActivity activity, ListingView listingView, ListingModel listingModel, ListingAsynTask listingAsynTask) {
         mContext = context;
         mActivity = activity;
         mListingModel = listingModel;
+        mListingView = listingView;
         listingModel.attachListingAsynTask(listingAsynTask);
         listingModel.attachListingPresenter(this);
     }
@@ -36,18 +39,22 @@ public class ListingPresenterImpl implements ListingPresenter {
     }
 
     @Override
-    public void showMessage(String message) {
-        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+    public void onInsertListingsSuccess() {
     }
 
     @Override
-    public void onSuccess() {
+    public void onInsertListingsFailed() {
 
     }
 
     @Override
-    public void onFailed() {
+    public void getListings() {
+        mListingModel.getListings();
+    }
 
+    @Override
+    public void onGetListingsSuccess(List<Listing> listings) {
+        mListingView.onGetListingsSuccess(listings);
     }
 
 }

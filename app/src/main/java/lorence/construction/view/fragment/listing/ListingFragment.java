@@ -26,6 +26,7 @@ import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
+import lorence.construction.view.fragment.listing.module.ListingView;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -34,7 +35,7 @@ import lorence.construction.view.fragment.listing.module.GridSpacingItemDecorati
  */
 
 @SuppressLint("ValidFragment")
-public class ListingFragment extends EBaseFragment {
+public class ListingFragment extends EBaseFragment implements ListingView {
 
     @BindView(R.id.listing_card_list)
     RecyclerView mRecyclerView;
@@ -72,7 +73,7 @@ public class ListingFragment extends EBaseFragment {
         Application.get(mActivity)
                 .getAppComponent()
                 .plus(new HomeModule((HomeActivity) mActivity))
-                .plus(new ListingModule(mContext, (HomeActivity) mActivity, this))
+                .plus(new ListingModule(mContext, (HomeActivity) mActivity, this, this))
                 .inject(this);
     }
 
@@ -93,10 +94,20 @@ public class ListingFragment extends EBaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        prepareListings();
+        mListingPresenter.getListings();
     }
 
-    private void prepareListings() {
+    @Override
+    public void onGetListingsSuccess(List<Listing> listings) {
+        if (listings.size() == 0) {
+            initializeNewListings();
+        } else {
+            mAdapter.updateListing(listings);
+        }
+    }
+
+    @Override
+    public void initializeNewListings() {
         int[] covers = new int[]{
                 R.drawable.ic_bang_ke_1,
                 R.drawable.ic_bang_ke_2,
@@ -122,8 +133,7 @@ public class ListingFragment extends EBaseFragment {
         mGroupListings.add(new Listing("Bảng Kê 9", covers[8]));
         mGroupListings.add(new Listing("Bảng Kê 10", covers[9]));
         mGroupListings.add(new Listing("Bảng Kê 11", covers[10]));
-
         mListingPresenter.saveListings(mGroupListings);
-        mAdapter.notifyDataSetChanged();
+        mAdapter.updateListing(mGroupListings);
     }
 }

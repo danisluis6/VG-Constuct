@@ -57,4 +57,9 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.MyViewHo
         return mGroupListings.size();
     }
 
+    public void updateListing(List<Listing> listings) {
+        mGroupListings = listings;
+        notifyDataSetChanged();
+    }
+
 }

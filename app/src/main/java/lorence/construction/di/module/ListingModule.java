@@ -14,6 +14,7 @@ import lorence.construction.view.fragment.listing.ListingModel;
 import lorence.construction.view.fragment.listing.ListingPresenter;
 import lorence.construction.view.fragment.listing.ListingPresenterImpl;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
+import lorence.construction.view.fragment.listing.module.ListingView;
 
 /**
  * Created by lorence on 28/12/2017.
@@ -28,11 +29,13 @@ public class ListingModule {
     private Context mContext;
     private HomeActivity mActivity;
     private ListingFragment mFragment;
+    private ListingView mListingView;
 
-    public ListingModule(Context context, HomeActivity homeActivity, ListingFragment fragment) {
+    public ListingModule(Context context, HomeActivity homeActivity, ListingFragment fragment, ListingView listingView) {
         mContext = context;
         mActivity = homeActivity;
         mFragment = fragment;
+        mListingView = listingView;
     }
 
     @Provides
@@ -50,7 +53,7 @@ public class ListingModule {
     @Provides
     @ActivityScope
     ListingPresenter provideListingPresenter(Context context, HomeActivity activity, ListingModel listingModel, ListingAsynTask listingAsynTask) {
-        return new ListingPresenterImpl(context, activity, listingModel, listingAsynTask);
+        return new ListingPresenterImpl(context, activity, mListingView, listingModel, listingAsynTask);
     }
 
     @Provides

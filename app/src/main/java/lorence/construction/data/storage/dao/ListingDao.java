@@ -8,6 +8,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
+import io.reactivex.Maybe;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.data.DatabaseInfo;
 
@@ -27,7 +28,7 @@ public interface ListingDao {
     void insertListings(List<Listing> items);
 
     @Query("SELECT * FROM "+ DatabaseInfo.Tables.Listing)
-    List<Listing> getListings();
+    Maybe<List<Listing>> getListings();
 
     @Update
     int updateListings(Listing... items);

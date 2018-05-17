@@ -14,9 +14,11 @@ public interface ListingPresenter {
 
     void saveListings(List<Listing> list);
 
-    void showMessage(String s);
+    void onInsertListingsSuccess();
 
-    void onSuccess();
+    void onInsertListingsFailed();
 
-    void onFailed();
+    void getListings();
+
+    void onGetListingsSuccess(List<Listing> listings);
 }

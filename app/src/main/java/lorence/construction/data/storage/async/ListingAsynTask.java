@@ -17,5 +17,11 @@ import lorence.construction.view.fragment.listing.ListingPresenter;
 
 public interface ListingAsynTask {
 
-    void inertListings(Context context, ListingDao listingDao, List<Listing> items, ListingPresenter presenter);
+    void attachListingDao(Context mContext, ListingDao listingDao);
+
+    void attachListingPresenter(ListingPresenter listingPresenter);
+
+    void inertListings(List<Listing> items);
+
+    void getListings();
 }

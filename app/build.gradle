@@ -72,8 +72,9 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
 
     // For room
-    compile "android.arch.persistence.room:runtime:1.0.0-beta1"
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-beta1"
+    implementation "android.arch.persistence.room:runtime:1.1.0"
+    implementation "android.arch.persistence.room:rxjava2:1.1.0"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.0"
 
     // For rxJava
     compile "io.reactivex.rxjava2:rxjava:2.0.6"

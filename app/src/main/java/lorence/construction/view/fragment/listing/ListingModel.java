@@ -18,4 +18,6 @@ public interface ListingModel {
     void attachListingAsynTask(ListingAsynTask listingAsynTask);
 
     void attachListingPresenter(ListingPresenter listingPresenter);
+
+    void getListings();
 }

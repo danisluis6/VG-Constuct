@@ -34,16 +34,23 @@ public class ListingModelImpl implements ListingModel {
     @Override
     public void attachListingAsynTask(ListingAsynTask listingAsynTask) {
         mListingAsynTask = listingAsynTask;
+        mListingAsynTask.attachListingDao(mContext, mListingDao);
     }
 
     @Override
     public void attachListingPresenter(ListingPresenter listingPresenter) {
         mListingPresenter = listingPresenter;
+        mListingAsynTask.attachListingPresenter(mListingPresenter);
+    }
+
+    @Override
+    public void getListings() {
+        mListingAsynTask.getListings();
     }
 
     @Override
     public void inertListings(List<Listing> list) {
-        mListingAsynTask.inertListings(mContext, mListingDao, list, mListingPresenter);
+        mListingAsynTask.inertListings(list);
     }
 
 }
