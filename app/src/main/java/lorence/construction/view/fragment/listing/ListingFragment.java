@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,6 +25,7 @@ import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
+import lorence.construction.view.fragment.listing.module.ListingDataSource;
 import lorence.construction.view.fragment.listing.module.ListingView;
 
 /**
@@ -40,8 +40,6 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     @BindView(R.id.listing_card_list)
     RecyclerView mRecyclerView;
 
-    private List<Listing> mGroupListings;
-
     private Activity mActivity;
 
     @Inject
@@ -55,6 +53,9 @@ public class ListingFragment extends EBaseFragment implements ListingView {
 
     @Inject
     ListingAdapter mListingAdapter;
+
+    @Inject
+    ListingDataSource mListingDataSource;
 
     @Inject
     GridSpacingItemDecoration mGridSpacingItemDecoration;
@@ -83,7 +84,6 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listing, container, false);
         bindView(view);
-        mGroupListings = new ArrayList<>();
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(mActivity, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addItemDecoration(mGridSpacingItemDecoration);
@@ -109,33 +109,7 @@ public class ListingFragment extends EBaseFragment implements ListingView {
 
     @Override
     public void initializeNewListings() {
-
-        int[] covers = new int[]{
-                R.drawable.ic_bang_ke_1,
-                R.drawable.ic_bang_ke_2,
-                R.drawable.ic_bang_ke_3,
-                R.drawable.ic_bang_ke_4,
-                R.drawable.ic_bang_ke_5,
-                R.drawable.ic_bang_ke_6,
-                R.drawable.ic_bang_ke_7,
-                R.drawable.ic_bang_ke_8,
-                R.drawable.ic_bang_ke_9,
-                R.drawable.ic_bang_ke_10,
-                R.drawable.ic_bang_ke_11
-        };
-
-        mGroupListings.add(new Listing("Bảng Kê 1", covers[0]));
-        mGroupListings.add(new Listing("Bảng Kê 2", covers[1]));
-        mGroupListings.add(new Listing("Bảng Kê 3", covers[2]));
-        mGroupListings.add(new Listing("Bảng Kê 4", covers[3]));
-        mGroupListings.add(new Listing("Bảng Kê 5", covers[4]));
-        mGroupListings.add(new Listing("Bảng Kê 6", covers[5]));
-        mGroupListings.add(new Listing("Bảng Kê 7", covers[6]));
-        mGroupListings.add(new Listing("Bảng Kê 8", covers[7]));
-        mGroupListings.add(new Listing("Bảng Kê 9", covers[8]));
-        mGroupListings.add(new Listing("Bảng Kê 10", covers[9]));
-        mGroupListings.add(new Listing("Bảng Kê 11", covers[10]));
-        mListingPresenter.saveListings(mGroupListings);
-        mListingAdapter.updateListing(mGroupListings);
+        mListingPresenter.saveListings(mListingDataSource.getDefaultListingData());
+        mListingAdapter.updateListing(mListingDataSource.getDefaultListingData());
     }
 }

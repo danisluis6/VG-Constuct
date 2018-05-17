@@ -29,7 +29,7 @@ public class SplashActivity extends AppCompatActivity {
                 mTimeOut = true;
                 moveToNextActivity();
             }
-        }, 500);
+        }, 200);
     }
 
     /**

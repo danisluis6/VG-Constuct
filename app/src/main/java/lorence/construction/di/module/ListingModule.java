@@ -19,6 +19,8 @@ import lorence.construction.view.fragment.listing.ListingPresenter;
 import lorence.construction.view.fragment.listing.ListingPresenterImpl;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
+import lorence.construction.view.fragment.listing.module.ListingDataSource;
+import lorence.construction.view.fragment.listing.module.ListingDataSourceImpl;
 import lorence.construction.view.fragment.listing.module.ListingView;
 
 /**
@@ -65,6 +67,12 @@ public class ListingModule {
     @ActivityScope
     ListingAdapter provideListingAdapter(Context context) {
         return new ListingAdapter(context, new ArrayList<Listing>());
+    }
+
+    @Provides
+    @ActivityScope
+    ListingDataSource provideListingDataSource() {
+        return new ListingDataSourceImpl();
     }
 
     @Provides
