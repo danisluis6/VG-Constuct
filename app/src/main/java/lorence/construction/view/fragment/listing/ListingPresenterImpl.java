@@ -40,4 +40,14 @@ public class ListingPresenterImpl implements ListingPresenter {
         Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onSuccess() {
+
+    }
+
+    @Override
+    public void onFailed() {
+
+    }
+
 }

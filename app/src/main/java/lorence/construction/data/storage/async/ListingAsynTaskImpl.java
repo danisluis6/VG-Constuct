@@ -6,6 +6,12 @@ import android.os.AsyncTask;
 import java.util.List;
 
 import dagger.Module;
+import io.reactivex.Completable;
+import io.reactivex.CompletableObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
+import io.reactivex.schedulers.Schedulers;
 import lorence.construction.data.storage.dao.ListingDao;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.view.fragment.listing.ListingPresenter;
@@ -34,8 +40,29 @@ public class ListingAsynTaskImpl implements ListingAsynTask {
     static class InsertAll extends AsyncTask<List<Listing>, Void, Integer> {
 
         @Override
-        protected Integer doInBackground(List<Listing>[] params) {
-            mListingDao.insertListings(params[0]);
+        protected Integer doInBackground(final List<Listing>[] params) {
+            Completable.fromAction(new Action() {
+                @Override
+                public void run() throws Exception {
+                    mListingDao.insertListings(params[0]);
+                }
+            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new CompletableObserver() {
+                @Override
+                public void onSubscribe(Disposable d) {
+
+                }
+
+                @Override
+                public void onComplete() {
+                    mPresenter.onSuccess();
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mPresenter.onFailed();
+                }
+            });
+
             return 1;
         }
 
@@ -45,4 +72,5 @@ public class ListingAsynTaskImpl implements ListingAsynTask {
             mPresenter.showMessage("Add all listings successfully!");
         }
     }
+    // READ MORE: https://medium.com/@alahammad/database-with-room-using-rxjava-764ee6124974
 }
