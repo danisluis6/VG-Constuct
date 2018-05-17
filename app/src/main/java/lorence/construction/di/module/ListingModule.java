@@ -4,6 +4,8 @@ import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
+import lorence.construction.data.storage.async.ListingAsynTask;
+import lorence.construction.data.storage.async.ListingAsynTaskImpl;
 import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.utitilize.Utils;
 import lorence.construction.view.activity.home.HomeActivity;
@@ -41,8 +43,14 @@ public class ListingModule {
 
     @Provides
     @ActivityScope
-    ListingPresenter provideListingPresenter(Context context, HomeActivity activity, ListingModel listingModel) {
-        return new ListingPresenterImpl(context, activity, listingModel);
+    ListingAsynTask provideListingAsynTask() {
+        return new ListingAsynTaskImpl();
+    }
+
+    @Provides
+    @ActivityScope
+    ListingPresenter provideListingPresenter(Context context, HomeActivity activity, ListingModel listingModel, ListingAsynTask listingAsynTask) {
+        return new ListingPresenterImpl(context, activity, listingModel, listingAsynTask);
     }
 
     @Provides

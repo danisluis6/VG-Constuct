@@ -6,8 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import lorence.construction.app.Application;
-import lorence.construction.data.AppDatabase;
+import lorence.construction.data.storage.async.ListingAsynTask;
 import lorence.construction.data.storage.dao.ListingDao;
 import lorence.construction.data.storage.entity.Listing;
 
@@ -20,21 +19,31 @@ import lorence.construction.data.storage.entity.Listing;
 
 public class ListingModelImpl implements ListingModel {
 
-    private AppDatabase mAppDatabase;
-    private Application mApplication;
     private Context mContext;
     private ListingDao mListingDao;
 
+    private ListingPresenter mListingPresenter;
+    private ListingAsynTask mListingAsynTask;
+
     @Inject
-    public ListingModelImpl(Application application, Context context, AppDatabase appDatabase, ListingDao listingDao) {
-        mApplication = application;
-        mAppDatabase = appDatabase;
+    public ListingModelImpl(Context context, ListingDao listingDao) {
         mContext = context;
         mListingDao = listingDao;
     }
 
     @Override
-    public void addAll(List<Listing> list) {
-//        mAppDatabase.getListingDao().addAll();
+    public void attachListingAsynTask(ListingAsynTask listingAsynTask) {
+        mListingAsynTask = listingAsynTask;
     }
+
+    @Override
+    public void attachListingPresenter(ListingPresenter listingPresenter) {
+        mListingPresenter = listingPresenter;
+    }
+
+    @Override
+    public void inertListings(List<Listing> list) {
+        mListingAsynTask.inertListings(mContext, mListingDao, list, mListingPresenter);
+    }
+
 }

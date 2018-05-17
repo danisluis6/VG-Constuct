@@ -2,6 +2,7 @@ package lorence.construction.data.storage.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
@@ -19,10 +20,15 @@ import lorence.construction.data.DatabaseInfo;
 @Dao
 public interface ListingDao {
 
-    @Query("SELECT * FROM "+ DatabaseInfo.Tables.Listing)
-    List<Listing> getUsers();
     @Insert
-    long insertUsers(Listing listing);
+    long insertListing(Listing listing);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertListings(List<Listing> items);
+
+    @Query("SELECT * FROM "+ DatabaseInfo.Tables.Listing)
+    List<Listing> getListings();
+
     @Update
-    int updateUsers(Listing... listings);
+    int updateListings(Listing... items);
 }

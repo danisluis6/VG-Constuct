@@ -2,6 +2,7 @@ package lorence.construction.view.fragment.listing;
 
 import java.util.List;
 
+import lorence.construction.data.storage.async.ListingAsynTask;
 import lorence.construction.data.storage.entity.Listing;
 
 /**
@@ -12,6 +13,9 @@ import lorence.construction.data.storage.entity.Listing;
 
 public interface ListingModel {
 
-    void addAll(List<Listing> list);
+    void inertListings(List<Listing> list);
 
+    void attachListingAsynTask(ListingAsynTask listingAsynTask);
+
+    void attachListingPresenter(ListingPresenter listingPresenter);
 }

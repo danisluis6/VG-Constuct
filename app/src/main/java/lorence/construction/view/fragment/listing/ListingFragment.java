@@ -49,6 +49,7 @@ public class ListingFragment extends EBaseFragment {
 
     @Inject
     ListingFragment mListingFragment;
+
     @Inject
     ListingPresenter mListingPresenter;
 

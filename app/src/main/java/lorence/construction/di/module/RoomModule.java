@@ -47,7 +47,7 @@ public class RoomModule {
     @Singleton
     @Provides
     ListingModel providesListingModel(ListingDao listingDao) {
-        return new ListingModelImpl(mApplication, mContext, mAppDatabase, listingDao);
+        return new ListingModelImpl(mContext, listingDao);
     }
 
 }

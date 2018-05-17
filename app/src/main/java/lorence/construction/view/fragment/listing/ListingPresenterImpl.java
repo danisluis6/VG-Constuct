@@ -1,9 +1,11 @@
 package lorence.construction.view.fragment.listing;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import java.util.List;
 
+import lorence.construction.data.storage.async.ListingAsynTask;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.view.activity.home.HomeActivity;
 
@@ -15,20 +17,27 @@ import lorence.construction.view.activity.home.HomeActivity;
 
 public class ListingPresenterImpl implements ListingPresenter {
 
-    ListingModel mListingModel;
+    private ListingModel mListingModel;
 
     private Context mContext;
     private HomeActivity mActivity;
 
-    public ListingPresenterImpl(Context context, HomeActivity activity, ListingModel listingModel) {
+    public ListingPresenterImpl(Context context, HomeActivity activity, ListingModel listingModel, ListingAsynTask listingAsynTask) {
         mContext = context;
         mActivity = activity;
         mListingModel = listingModel;
+        listingModel.attachListingAsynTask(listingAsynTask);
+        listingModel.attachListingPresenter(this);
     }
 
     @Override
     public void saveListings(List<Listing> list) {
-        mListingModel.addAll(list);
+        mListingModel.inertListings(list);
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
     }
 
 }
