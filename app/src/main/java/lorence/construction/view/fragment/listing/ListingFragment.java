@@ -108,6 +108,7 @@ public class ListingFragment extends EBaseFragment implements ListingView {
 
     @Override
     public void initializeNewListings() {
+
         int[] covers = new int[]{
                 R.drawable.ic_bang_ke_1,
                 R.drawable.ic_bang_ke_2,
