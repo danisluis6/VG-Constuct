@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import lorence.construction.R;
 import lorence.construction.view.EBaseFragment;
-import lorence.construction.view.activity.home.HomeActivity;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -19,7 +18,7 @@ import lorence.construction.view.activity.home.HomeActivity;
 @SuppressLint("ValidFragment")
 public class BeamFragment extends EBaseFragment {
 
-    public BeamFragment(HomeActivity homeActivity) {
+    public BeamFragment() {
 
     }
 

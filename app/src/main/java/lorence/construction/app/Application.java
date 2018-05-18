@@ -35,6 +35,7 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
         mContext = this;
+        sInstance = this;
         eventBus  = new Bus(ThreadEnforcer.ANY);
         initAppComponent();
     }

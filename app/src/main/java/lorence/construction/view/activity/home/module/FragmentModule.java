@@ -23,26 +23,26 @@ public class FragmentModule {
 
     @Provides
     @ActivityScope
-    ListingFragment provideListingFragment(HomeActivity homeActivity) {
-        return (ListingFragment) ListingFragment.newInstance();
+    ListingFragment provideListingFragment() {
+        return new ListingFragment();
     }
 
     @Provides
     @ActivityScope
-    BeamFragment provideBeamFragment(HomeActivity homeActivity) {
-        return new BeamFragment(homeActivity);
+    BeamFragment provideBeamFragment() {
+        return new BeamFragment();
     }
 
     @Provides
     @ActivityScope
-    SettingFragment provideSettingFragment(HomeActivity homeActivity) {
-        return new SettingFragment(homeActivity);
+    SettingFragment provideSettingFragment() {
+        return new SettingFragment();
     }
 
     @Provides
     @ActivityScope
-    AboutFragment provideAboutFragment(HomeActivity homeActivity) {
-        return new AboutFragment(homeActivity);
+    AboutFragment provideAboutFragment() {
+        return new AboutFragment();
     }
 
 }
