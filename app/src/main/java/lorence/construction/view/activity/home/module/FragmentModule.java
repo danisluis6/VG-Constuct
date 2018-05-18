@@ -1,5 +1,7 @@
 package lorence.construction.view.activity.home.module;
 
+import android.content.Context;
+
 import dagger.Module;
 import dagger.Provides;
 import lorence.construction.di.scope.ActivityScope;
@@ -23,26 +25,26 @@ public class FragmentModule {
 
     @Provides
     @ActivityScope
-    ListingFragment provideListingFragment(HomeActivity homeActivity) {
-        return (ListingFragment) ListingFragment.newInstance();
+    ListingFragment provideListingFragment(Context context, HomeActivity homeActivity) {
+        return ListingFragment.newInstance(context, homeActivity);
     }
 
     @Provides
     @ActivityScope
-    BeamFragment provideBeamFragment(HomeActivity homeActivity) {
-        return new BeamFragment(homeActivity);
+    BeamFragment provideBeamFragment() {
+        return (BeamFragment) BeamFragment.newInstance();
     }
 
     @Provides
     @ActivityScope
-    SettingFragment provideSettingFragment(HomeActivity homeActivity) {
-        return new SettingFragment(homeActivity);
+    SettingFragment provideSettingFragment() {
+        return (SettingFragment) SettingFragment.newInstance();
     }
 
     @Provides
     @ActivityScope
-    AboutFragment provideAboutFragment(HomeActivity homeActivity) {
-        return new AboutFragment(homeActivity);
+    AboutFragment provideAboutFragment() {
+        return (AboutFragment) AboutFragment.newInstance();
     }
 
 }

@@ -2,13 +2,13 @@ package lorence.construction.view.fragment.beams;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import lorence.construction.R;
 import lorence.construction.view.EBaseFragment;
-import lorence.construction.view.activity.home.HomeActivity;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -19,8 +19,11 @@ import lorence.construction.view.activity.home.HomeActivity;
 @SuppressLint("ValidFragment")
 public class BeamFragment extends EBaseFragment {
 
-    public BeamFragment(HomeActivity homeActivity) {
+    public static Fragment newInstance() {
+        return new BeamFragment();
+    }
 
+    public BeamFragment() {
     }
 
     @Override

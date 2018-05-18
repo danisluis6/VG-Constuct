@@ -1,10 +1,8 @@
 package lorence.construction.view.fragment.listing;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,10 +39,8 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     @BindView(R.id.listing_card_list)
     RecyclerView mRecyclerView;
 
-    private Activity mActivity;
-
-    @Inject
-    Context mContext;
+    private Context mContext;
+    private HomeActivity mActivity;
 
     @Inject
     ListingFragment mListingFragment;
@@ -61,8 +57,15 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     @Inject
     GridSpacingItemDecoration mGridSpacingItemDecoration;
 
-    public static Fragment newInstance() {
-        return new ListingFragment();
+    public static ListingFragment newInstance(Context context, HomeActivity homeActivity) {
+        ListingFragment fragment = new ListingFragment();
+        fragment.reStoreStatus(context, homeActivity);
+        return fragment;
+    }
+
+    private void reStoreStatus(Context context, HomeActivity homeActivity) {
+        mContext = context;
+        mActivity = homeActivity;
     }
 
     public ListingFragment() {
@@ -78,8 +81,8 @@ public class ListingFragment extends EBaseFragment implements ListingView {
         super.onAttach(context);
         Application.getInstance()
                 .getAppComponent()
-                .plus(new HomeModule((HomeActivity) mActivity))
-                .plus(new ListingModule(mContext, (HomeActivity) mActivity, this, this))
+                .plus(new HomeModule(mActivity))
+                .plus(new ListingModule(mContext, mActivity, this, this))
                 .inject(this);
     }
 
