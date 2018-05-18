@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -60,9 +61,11 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     @Inject
     GridSpacingItemDecoration mGridSpacingItemDecoration;
 
-    @SuppressLint("ValidFragment")
-    public ListingFragment(Activity activity) {
-        mActivity = activity;
+    public static Fragment newInstance() {
+        return new ListingFragment();
+    }
+
+    public ListingFragment() {
     }
 
     @Override
@@ -73,7 +76,7 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Application.get(mActivity)
+        Application.getInstance()
                 .getAppComponent()
                 .plus(new HomeModule((HomeActivity) mActivity))
                 .plus(new ListingModule(mContext, (HomeActivity) mActivity, this, this))

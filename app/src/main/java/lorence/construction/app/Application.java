@@ -20,17 +20,21 @@ public class Application extends android.app.Application {
 
     private AppComponent mApplicationComponent;
     private Context mContext;
+    private static Application sInstance;
 
     public static Bus eventBus;
 
-    public static Application get(Context context) {
-        return (Application) context.getApplicationContext();
+    public static synchronized Application getInstance() {
+        if (sInstance == null) {
+            sInstance = new Application();
+        }
+        return sInstance;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mContext = getApplicationContext();
+        mContext = this;
         eventBus  = new Bus(ThreadEnforcer.ANY);
         initAppComponent();
     }

@@ -24,7 +24,7 @@ public class FragmentModule {
     @Provides
     @ActivityScope
     ListingFragment provideListingFragment(HomeActivity homeActivity) {
-        return new ListingFragment(homeActivity);
+        return (ListingFragment) ListingFragment.newInstance();
     }
 
     @Provides
