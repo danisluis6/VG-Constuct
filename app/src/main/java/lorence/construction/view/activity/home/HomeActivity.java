@@ -54,8 +54,6 @@ public class HomeActivity extends BaseActivity implements HomeView {
     @Inject
     HomePresenter mHomePresenter;
 
-    private int mLastSelectedTab;
-
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Always call the superclass so it can save the view hierarchy state
@@ -64,7 +62,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @Override
     public void distributedDaggerComponents() {
-        Application.get(this)
+        Application.getInstance()
                 .getAppComponent()
                 .plus(new HomeModule(this))
                 .inject(this);

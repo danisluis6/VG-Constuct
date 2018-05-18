@@ -3,7 +3,6 @@ package lorence.construction.view.activity.home.module;
 import dagger.Module;
 import dagger.Provides;
 import lorence.construction.di.scope.ActivityScope;
-import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.about.AboutFragment;
 import lorence.construction.view.fragment.beams.BeamFragment;
 import lorence.construction.view.fragment.listing.ListingFragment;
@@ -23,26 +22,26 @@ public class FragmentModule {
 
     @Provides
     @ActivityScope
-    ListingFragment provideListingFragment(HomeActivity homeActivity) {
-        return new ListingFragment(homeActivity);
+    ListingFragment provideListingFragment() {
+        return new ListingFragment();
     }
 
     @Provides
     @ActivityScope
-    BeamFragment provideBeamFragment(HomeActivity homeActivity) {
-        return new BeamFragment(homeActivity);
+    BeamFragment provideBeamFragment() {
+        return new BeamFragment();
     }
 
     @Provides
     @ActivityScope
-    SettingFragment provideSettingFragment(HomeActivity homeActivity) {
-        return new SettingFragment(homeActivity);
+    SettingFragment provideSettingFragment() {
+        return new SettingFragment();
     }
 
     @Provides
     @ActivityScope
-    AboutFragment provideAboutFragment(HomeActivity homeActivity) {
-        return new AboutFragment(homeActivity);
+    AboutFragment provideAboutFragment() {
+        return new AboutFragment();
     }
 
 }

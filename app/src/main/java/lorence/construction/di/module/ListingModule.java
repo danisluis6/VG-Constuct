@@ -45,12 +45,6 @@ public class ListingModule {
         mListingView = listingView;
     }
 
-//    @Provides
-//    @ActivityScope
-//    ListingFragment provideFragment() {
-//        return mFragment;
-//    }
-
     @Provides
     @ActivityScope
     ListingAsynTask provideListingAsynTask() {

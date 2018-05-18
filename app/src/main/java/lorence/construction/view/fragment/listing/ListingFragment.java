@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -40,10 +41,11 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     @BindView(R.id.listing_card_list)
     RecyclerView mRecyclerView;
 
-    private Activity mActivity;
-
     @Inject
     Context mContext;
+
+    @Inject
+    HomeActivity mActivity;
 
     @Inject
     ListingFragment mListingFragment;
@@ -61,8 +63,7 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     GridSpacingItemDecoration mGridSpacingItemDecoration;
 
     @SuppressLint("ValidFragment")
-    public ListingFragment(Activity activity) {
-        mActivity = activity;
+    public ListingFragment() {
     }
 
     @Override
@@ -73,10 +74,10 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Application.get(mActivity)
+        Application.getInstance()
                 .getAppComponent()
-                .plus(new HomeModule((HomeActivity) mActivity))
-                .plus(new ListingModule(mContext, (HomeActivity) mActivity, this, this))
+                .plus(new HomeModule((HomeActivity) getActivity()))
+                .plus(new ListingModule(Application.getInstance(), (HomeActivity) getActivity(), this, this))
                 .inject(this);
     }
 
