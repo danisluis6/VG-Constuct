@@ -7,8 +7,8 @@ import com.squareup.otto.ThreadEnforcer;
 
 import lorence.construction.di.component.AppComponent;
 import lorence.construction.di.component.DaggerAppComponent;
-import lorence.construction.di.module.AppModule;
-import lorence.construction.di.module.RoomModule;
+import lorence.construction.di.module.app.AppModule;
+import lorence.construction.di.module.app.RoomModule;
 
 /**
  * Created by vuongluis on 4/14/2018.

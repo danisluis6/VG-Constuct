@@ -1,17 +1,14 @@
 package lorence.construction.view.fragment.listing;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -21,8 +18,8 @@ import butterknife.BindView;
 import lorence.construction.R;
 import lorence.construction.app.Application;
 import lorence.construction.data.storage.entity.Listing;
-import lorence.construction.di.module.HomeModule;
-import lorence.construction.di.module.ListingModule;
+import lorence.construction.di.module.home.HomeModule;
+import lorence.construction.di.module.listing.ListingModule;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;

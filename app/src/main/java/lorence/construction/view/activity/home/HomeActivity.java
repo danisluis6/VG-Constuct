@@ -18,7 +18,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import lorence.construction.R;
 import lorence.construction.app.Application;
-import lorence.construction.di.module.HomeModule;
+import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.helper.Validator;
 import lorence.construction.view.activity.BaseActivity;
 

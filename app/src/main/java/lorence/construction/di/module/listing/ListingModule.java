@@ -1,9 +1,8 @@
-package lorence.construction.di.module;
+package lorence.construction.di.module.listing;
 
 import android.content.Context;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import dagger.Module;
 import dagger.Provides;

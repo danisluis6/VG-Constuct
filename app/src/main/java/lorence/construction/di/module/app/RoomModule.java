@@ -1,4 +1,4 @@
-package lorence.construction.di.module;
+package lorence.construction.di.module.app;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;

@@ -1,7 +1,7 @@
 package lorence.construction.di.component;
 
 import dagger.Subcomponent;
-import lorence.construction.di.module.ListingModule;
+import lorence.construction.di.module.listing.ListingModule;
 import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.view.fragment.listing.ListingFragment;
 

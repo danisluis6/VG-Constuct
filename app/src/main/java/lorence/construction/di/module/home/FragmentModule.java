@@ -1,9 +1,8 @@
-package lorence.construction.view.activity.home.module;
+package lorence.construction.di.module.home;
 
 import dagger.Module;
 import dagger.Provides;
 import lorence.construction.di.scope.ActivityScope;
-import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.about.AboutFragment;
 import lorence.construction.view.fragment.beams.BeamFragment;
 import lorence.construction.view.fragment.listing.ListingFragment;

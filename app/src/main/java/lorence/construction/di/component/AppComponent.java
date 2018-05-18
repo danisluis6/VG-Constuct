@@ -3,10 +3,9 @@ package lorence.construction.di.component;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import lorence.construction.di.module.AppModule;
-import lorence.construction.di.module.HomeModule;
-import lorence.construction.di.module.RoomModule;
-import lorence.construction.view.activity.home.module.FragmentModule;
+import lorence.construction.di.module.app.AppModule;
+import lorence.construction.di.module.home.HomeModule;
+import lorence.construction.di.module.app.RoomModule;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -18,8 +17,7 @@ import lorence.construction.view.activity.home.module.FragmentModule;
 @Component(
         modules = {
                 AppModule.class,
-                RoomModule.class,
-                FragmentModule.class
+                RoomModule.class
         }
 )
 public interface AppComponent {

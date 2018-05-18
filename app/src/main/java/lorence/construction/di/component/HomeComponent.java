@@ -1,11 +1,11 @@
 package lorence.construction.di.component;
 
 import dagger.Subcomponent;
-import lorence.construction.di.module.HomeModule;
-import lorence.construction.di.module.ListingModule;
+import lorence.construction.di.module.home.HomeModule;
+import lorence.construction.di.module.listing.ListingModule;
 import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.view.activity.home.HomeActivity;
-import lorence.construction.view.activity.home.module.FragmentModule;
+import lorence.construction.di.module.home.FragmentModule;
 
 /**
  * Created by vuongluis on 4/14/2018.

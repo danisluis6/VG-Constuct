@@ -1,4 +1,4 @@
-package lorence.construction.di.module;
+package lorence.construction.di.module.home;
 
 import android.content.Context;
 
