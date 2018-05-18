@@ -14,4 +14,11 @@ public class Constants {
         public static final String SETTING = "Setting";
         public static final String ABOUT = "About";
     }
+
+    public static final class TITLE {
+        public static final String BANG_KE = "";
+        public static final String LOAI_DAM = "";
+        public static final String THIET_LAP = "";
+        public static final String GIOI_THIEU = "";
+    }
 }

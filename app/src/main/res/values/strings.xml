@@ -4,4 +4,10 @@
 
     <!-- Adjust info in layout -->
     <string name="content_description">""</string>
+
+    <!-- Title -->
+    <string name="title_listings">Bảng Kê</string>
+    <string name="title_beams">Loại Dầm</string>
+    <string name="title_settings">Thiết Lập</string>
+    <string name="title_abouts">Giới Thiệu</string>
 </resources>

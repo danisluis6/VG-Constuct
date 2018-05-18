@@ -10,4 +10,5 @@ import android.support.v4.app.Fragment;
 
 public interface HomeView {
     void displayFragment(Fragment fragment, String title);
+    void updateTitleToolbar(String title);
 }

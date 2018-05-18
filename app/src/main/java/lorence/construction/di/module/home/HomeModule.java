@@ -8,6 +8,7 @@ import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.helper.Validator;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.activity.home.HomePresenter;
+import lorence.construction.view.activity.home.HomePresenterImpl;
 import lorence.construction.view.fragment.about.AboutFragment;
 import lorence.construction.view.fragment.beams.BeamFragment;
 import lorence.construction.view.fragment.listing.ListingFragment;
@@ -38,11 +39,11 @@ public class HomeModule {
     @Provides
     @ActivityScope
     HomePresenter provideHomePresenter(/* get Parents */Validator validator, /* get Parents */Context context, /* get its */HomeActivity homeActivity,
-                                       ListingFragment listingFragment,
-                                       BeamFragment beamFragment,
-                                       SettingFragment settingFragment,
-                                       AboutFragment aboutFragment) {
-        return new HomePresenter(validator, context, homeActivity,
+                                           ListingFragment listingFragment,
+                                           BeamFragment beamFragment,
+                                           SettingFragment settingFragment,
+                                           AboutFragment aboutFragment) {
+        return new HomePresenterImpl(validator, context, homeActivity,
                 listingFragment,
                 beamFragment,
                 settingFragment,

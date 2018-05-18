@@ -56,7 +56,6 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-        // Always call the superclass so it can save the view hierarchy state
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -75,11 +74,12 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @Override
     protected void initAttributes() {
+        mHomePresenter.attachView(this);
     }
 
     @Override
     protected void initViews() {
-
+        mHomePresenter.initializes();
     }
 
     @Override
@@ -109,6 +109,11 @@ public class HomeActivity extends BaseActivity implements HomeView {
             ft.disallowAddToBackStack();
         }
         ft.commit();
+    }
+
+    @Override
+    public void updateTitleToolbar(String title) {
+        tvCurrentOption.setText(title);
     }
 
     @Override
