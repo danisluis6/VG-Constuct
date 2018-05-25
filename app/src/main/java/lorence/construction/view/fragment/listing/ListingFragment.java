@@ -3,6 +3,7 @@ package lorence.construction.view.fragment.listing;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
+import java.util.Stack;
 
 import javax.inject.Inject;
 
@@ -20,9 +22,12 @@ import lorence.construction.app.Application;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.di.module.listing.ListingModule;
+import lorence.construction.helper.FragmentStack;
+import lorence.construction.helper.FragmentUtils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
+import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
 import lorence.construction.view.fragment.listing.module.ListingDataSource;
 import lorence.construction.view.fragment.listing.module.ListingView;
@@ -60,6 +65,9 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     @Inject
     GridSpacingItemDecoration mGridSpacingItemDecoration;
 
+    private Stack<FragmentStack> mCurrentFrgStack;
+    private FragmentUtils mFragmentUtils;
+
     @SuppressLint("ValidFragment")
     public ListingFragment() {
     }
@@ -83,12 +91,20 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listing, container, false);
         bindView(view);
+        initComponents();
+        return view;
+    }
+
+    @Override
+    public void initComponents() {
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(mActivity, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addItemDecoration(mGridSpacingItemDecoration);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mListingAdapter);
-        return view;
+
+        mCurrentFrgStack = new Stack<>();
+        mFragmentUtils = new FragmentUtils(mActivity, mListingFragment, mCurrentFrgStack, R.id.content_listing);
     }
 
     @Override
@@ -111,4 +127,21 @@ public class ListingFragment extends EBaseFragment implements ListingView {
         mListingPresenter.saveListings(mListingDataSource.getDefaultListingData());
         mListingAdapter.updateListing(mListingDataSource.getDefaultListingData());
     }
+
+    @Override
+    public void navigatePageOperation(String tag) {
+        ListingOperationFragment fragment = new ListingOperationFragment();
+        pushFragment(fragment, tag);
+    }
+
+    @Override
+    public void pushFragment(Fragment fragment, String tag) {
+        mFragmentUtils.pushFragment(FragmentUtils.PushFrgType.ADD, fragment, tag, false);
+        defineToolbar(tag);
+    }
+
+    @Override
+    public void defineToolbar(String tag) {
+    }
+
 }

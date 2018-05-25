@@ -12,7 +12,9 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import lorence.construction.R;
+import lorence.construction.app.Application;
 import lorence.construction.data.storage.entity.Listing;
+import lorence.construction.view.fragment.listing.ListingFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -23,6 +25,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.MyViewHo
 
     private Context mContext;
     private List<Listing> mGroupListings;
+    private ListingFragment mFragment;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -34,9 +37,10 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.MyViewHo
         }
     }
 
-    public ListingAdapter(Context context, List<Listing> groupListing) {
+    public ListingAdapter(Context context, ListingFragment fragment, List<Listing> groupListing) {
         mContext = context;
         mGroupListings = groupListing;
+        mFragment = fragment;
     }
 
     @Override
@@ -48,8 +52,14 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Listing item = mGroupListings.get(position);
+        final Listing item = mGroupListings.get(position);
         Picasso.with(mContext).load(item.getImage()).into(holder.image);
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFragment.navigatePageOperation(item.getName());
+            }
+        });
     }
 
     @Override

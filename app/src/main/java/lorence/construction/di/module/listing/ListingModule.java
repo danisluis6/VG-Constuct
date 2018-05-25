@@ -59,7 +59,7 @@ public class ListingModule {
     @Provides
     @ActivityScope
     ListingAdapter provideListingAdapter(Context context) {
-        return new ListingAdapter(context, new ArrayList<Listing>());
+        return new ListingAdapter(context, mFragment, new ArrayList<Listing>());
     }
 
     @Provides
