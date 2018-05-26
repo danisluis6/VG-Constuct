@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ import butterknife.BindView;
 import lorence.construction.R;
 import lorence.construction.app.Application;
 import lorence.construction.di.module.home.HomeModule;
+import lorence.construction.helper.Constants;
 import lorence.construction.helper.Validator;
 import lorence.construction.view.activity.BaseActivity;
 

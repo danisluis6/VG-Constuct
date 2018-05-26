@@ -6,7 +6,6 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 
 import lorence.construction.R;
-
 import lorence.construction.helper.Constants;
 import lorence.construction.helper.Validator;
 import lorence.construction.view.fragment.about.AboutFragment;
@@ -65,19 +64,30 @@ public class HomePresenterImpl implements HomePresenter {
             case R.id.listings:
                 mHomeView.displayFragment(moveToFragListings(), Constants.TAG.LISTING);
                 mHomeView.updateTitleToolbar(mActivity.getString(R.string.title_listings));
+                restorePositionFragment();
                 break;
             case R.id.beams:
                 mHomeView.displayFragment(moveToFragBeams(), Constants.TAG.BEAM);
                 mHomeView.updateTitleToolbar(mActivity.getString(R.string.title_beams));
+                restorePositionFragment();
                 break;
             case R.id.settings:
                 mHomeView.displayFragment(moveToFragSetting(), Constants.TAG.SETTING);
                 mHomeView.updateTitleToolbar(mActivity.getString(R.string.title_settings));
+                restorePositionFragment();
                 break;
             case R.id.help:
                 mHomeView.displayFragment(moveToFragAbout(), Constants.TAG.ABOUT);
                 mHomeView.updateTitleToolbar(mActivity.getString(R.string.title_abouts));
+                restorePositionFragment();
                 break;
+        }
+    }
+
+    @Override
+    public void restorePositionFragment() {
+        if (mActivity.getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            mActivity.getSupportFragmentManager().popBackStack();
         }
     }
 

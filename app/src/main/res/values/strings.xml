@@ -10,4 +10,17 @@
     <string name="title_beams">Loại Dầm</string>
     <string name="title_settings">Thiết Lập</string>
     <string name="title_abouts">Giới Thiệu</string>
+
+    <string name="input_L1">Nhập L1</string>
+    <string name="input_L2">Nhập L2</string>
+    <string name="input_h">Nhập h</string>
+    <string name="input_a">Nhập a</string>
+    <string name="input_concrete">Nhập bê tông</string>
+    <string name="input_Rb">Thông số Rb</string>
+    <string name="input_steel">Nhập thép</string>
+    <string name="input_Rs">Thông số Rs</string>
+    <string name="titleSizes">Kích thước</string>
+    <string name="titleMaterials">Vật liệu</string>
+
 </resources>
+

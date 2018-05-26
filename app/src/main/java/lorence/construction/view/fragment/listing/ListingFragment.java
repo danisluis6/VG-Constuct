@@ -26,6 +26,7 @@ import lorence.construction.helper.FragmentStack;
 import lorence.construction.helper.FragmentUtils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
+import lorence.construction.view.activity.home.HomePresenter;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
@@ -141,7 +142,8 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     }
 
     @Override
-    public void defineToolbar(String tag) {
+    public void defineToolbar(String title) {
+        mActivity.updateTitleToolbar(title);
     }
 
 }

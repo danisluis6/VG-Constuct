@@ -12,4 +12,6 @@ public interface HomePresenter {
     void attachView(HomeView homeView);
 
     void initializes();
+
+    void restorePositionFragment();
 }
