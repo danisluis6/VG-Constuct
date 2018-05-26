@@ -21,4 +21,6 @@ public class Constants {
         public static final String THIET_LAP = "";
         public static final String GIOI_THIEU = "";
     }
+
+    public static final String EMPTY_STRING = "";
 }
