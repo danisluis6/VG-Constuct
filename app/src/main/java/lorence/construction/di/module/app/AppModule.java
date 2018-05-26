@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import lorence.construction.app.Application;
+import lorence.construction.helper.RegularUtils;
 import lorence.construction.helper.Validator;
 
 /**
@@ -42,6 +43,12 @@ public class AppModule {
     @Singleton
     Validator provideValidator() {
         return new Validator();
+    }
+
+    @Provides
+    @Singleton
+    RegularUtils provideRegularUtils() {
+        return new RegularUtils();
     }
 
 }

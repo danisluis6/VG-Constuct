@@ -29,6 +29,7 @@ import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.activity.home.HomePresenter;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
+import lorence.construction.view.fragment.listing.fragment.ListingOperationView;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
 import lorence.construction.view.fragment.listing.module.ListingDataSource;
 import lorence.construction.view.fragment.listing.module.ListingView;
@@ -53,6 +54,9 @@ public class ListingFragment extends EBaseFragment implements ListingView {
 
     @Inject
     ListingFragment mListingFragment;
+
+    @Inject
+    ListingOperationFragment mListingOperationFragment;
 
     @Inject
     ListingPresenter mListingPresenter;
@@ -131,8 +135,7 @@ public class ListingFragment extends EBaseFragment implements ListingView {
 
     @Override
     public void navigatePageOperation(String tag) {
-        ListingOperationFragment fragment = new ListingOperationFragment();
-        pushFragment(fragment, tag);
+        pushFragment(mListingOperationFragment, tag);
     }
 
     @Override

@@ -44,6 +44,12 @@ public class ListingModule {
         mListingView = listingView;
     }
 
+    public ListingModule(Context context, HomeActivity homeActivity, ListingFragment fragment) {
+        mContext = context;
+        mActivity = homeActivity;
+        mFragment = fragment;
+    }
+
     @Provides
     @ActivityScope
     ListingAsynTask provideListingAsynTask() {

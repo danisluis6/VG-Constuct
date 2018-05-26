@@ -13,14 +13,24 @@
 
     <string name="input_L1">Nhập L1</string>
     <string name="input_L2">Nhập L2</string>
-    <string name="input_h">Nhập h</string>
+    <string name="input_h">Nhập hs</string>
     <string name="input_a">Nhập a</string>
+    <string name="input_g">Tĩnh tải g</string>
+    <string name="input_p">Hoạt tải p</string>
     <string name="input_concrete">Nhập bê tông</string>
     <string name="input_Rb">Thông số Rb</string>
     <string name="input_steel">Nhập thép</string>
     <string name="input_Rs">Thông số Rs</string>
     <string name="titleSizes">Kích thước</string>
     <string name="titleMaterials">Vật liệu</string>
+    <string name="titleMaterialLoad">Tải trọng</string>
+    <string name="titleReferLoad">Tải trọng tham khảo</string>
+    <string name="titleStructureFloor">Cấu tạo sàn</string>
+    <string name="input_brick">Lót gạch dày</string>
+    <string name="input_mortar">Vữa lót dày</string>
+    <string name="input_concrete_floor">Chiều dày bê tông sàn</string>
+    <string name="input_plaster_mortar">Vữa trát trần</string>
+    <string name="perform_calculator">Tính toán</string>
 
 </resources>
 

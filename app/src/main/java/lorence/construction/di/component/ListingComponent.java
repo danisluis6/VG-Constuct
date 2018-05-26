@@ -1,7 +1,9 @@
 package lorence.construction.di.component;
 
 import dagger.Subcomponent;
+import lorence.construction.di.module.listing.FragmentListingModule;
 import lorence.construction.di.module.listing.ListingModule;
+import lorence.construction.di.module.listing.child.ListingOperationModule;
 import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.view.fragment.listing.ListingFragment;
 
@@ -14,11 +16,14 @@ import lorence.construction.view.fragment.listing.ListingFragment;
 
 @ActivityScope
 @Subcomponent(
-        modules = ListingModule.class
+        modules = {
+                ListingModule.class,
+                FragmentListingModule.class
+        }
 )
 
 public interface ListingComponent {
-
     ListingFragment inject(ListingFragment fragment);
 
+    ListingOperationComponent plus(ListingOperationModule module);
 }
