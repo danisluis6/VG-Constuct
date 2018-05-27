@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,6 +24,7 @@ import lorence.construction.app.Application;
 import lorence.construction.data.storage.dao.ListingOperationDao;
 import lorence.construction.data.storage.entity.Concrete;
 import lorence.construction.data.storage.entity.ListingOperation;
+import lorence.construction.data.storage.entity.Operation;
 import lorence.construction.data.storage.entity.Steel;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.di.module.listing.ListingModule;
@@ -131,6 +134,8 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
     @Inject
     FragmentManager mFragmentManager;
 
+    private List<ListingOperation> mGrListingOperations;
+
     public ListingOperationFragment() {
     }
 
@@ -155,6 +160,7 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listing_operation, container, false);
         bindView(view);
+        mGrListingOperations = new ArrayList<>();
         mHomeActivity.hiddenBottomBar();
         mConcreteFragment.setParentFragment(mContext, mListingOperationFragment);
         mConcreteFragment.attachEventInterface(new ConcreteFragment.InterfaceConcreteFragment() {
@@ -210,10 +216,11 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
             case R.id.btnPerformCalculator:
                 if (checkValidDataInput()) {
                     if(mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2))) {
-                        double m1 = mInternalFormula.calculateM1(mConverterUtils.getDoubleValue(edtL2)/mConverterUtils.getDoubleValue(edtL1));
-                        double m2 = mInternalFormula.calculateM2(mConverterUtils.getDoubleValue(edtL2)/mConverterUtils.getDoubleValue(edtL1));
-                        double k1 = 0.0;
-                        double k2 = 0.0;
+                        Operation operation = mInternalFormula.calculateM1(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2)/mConverterUtils.getDoubleValue(edtL1));
+                        Log.i("TAG", "m1: "+operation.getM1());
+                        Log.i("TAG", "m2: "+operation.getM2());
+                        Log.i("TAG", "k1: "+operation.getK1());
+                        Log.i("TAG", "k2: "+operation.getK2());
                     }
                 }
                 break;
@@ -239,20 +246,20 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
             Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho L2", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (!mRegularUtils.isRealNumber(edth.getText().toString())) {
-            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho hs", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if (!mRegularUtils.isRealNumber(edta.getText().toString())) {
-            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
-            return false;
-        }
+//        if (!mRegularUtils.isRealNumber(edth.getText().toString())) {
+//            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho hs", Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        if (!mRegularUtils.isRealNumber(edta.getText().toString())) {
+//            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
         return true;
     }
 
     @Override
     public void onGetListingOperationsSuccess(List<ListingOperation> listingOperations) {
-        Toast.makeText(mContext, listingOperations.size()+"", Toast.LENGTH_SHORT).show();
+        mGrListingOperations = listingOperations;
     }
 
     @Override

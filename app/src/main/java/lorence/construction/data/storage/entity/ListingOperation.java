@@ -29,6 +29,10 @@ public class ListingOperation implements Parcelable {
     @SerializedName(DatabaseInfo.ListingOperation.COLUMN_NAME)
     private String name;
 
+    @ColumnInfo(name = DatabaseInfo.ListingOperation.COLUMN_SCOPE)
+    @SerializedName(DatabaseInfo.ListingOperation.COLUMN_SCOPE)
+    private String scope;
+
     @ColumnInfo(name = DatabaseInfo.ListingOperation.COLUMN_M1)
     @SerializedName(DatabaseInfo.ListingOperation.COLUMN_M1)
     private String m1;
@@ -46,8 +50,9 @@ public class ListingOperation implements Parcelable {
     private String k2;
 
     @Ignore
-    public ListingOperation(String name, String m1, String m2, String k1, String k2) {
+    public ListingOperation(String name, String scope, String m1, String m2, String k1, String k2) {
         this.name = name;
+        this.scope = scope;
         this.m1 = m1;
         this.m2 = m2;
         this.k1 = k1;
@@ -60,6 +65,7 @@ public class ListingOperation implements Parcelable {
     protected ListingOperation(Parcel in) {
         id = in.readInt();
         name = in.readString();
+        scope = in.readString();
         m1 = in.readString();
         m2 = in.readString();
         k1 = in.readString();
@@ -126,6 +132,14 @@ public class ListingOperation implements Parcelable {
         this.k2 = k2;
     }
 
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -139,6 +153,7 @@ public class ListingOperation implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(this.id);
         dest.writeString(this.name);
+        dest.writeString(this.scope);
         dest.writeString(this.m1);
         dest.writeString(this.m2);
         dest.writeString(this.k1);

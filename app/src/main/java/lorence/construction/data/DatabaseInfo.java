@@ -20,6 +20,7 @@ public class DatabaseInfo {
         public static final String Concrete = "concrete";
         public static final String Steel = "steel";
         public static final String ListingOperation = "listingoperation";
+        public static final String Operation = "operation";
     }
 
     public static class Listing {
@@ -31,6 +32,7 @@ public class DatabaseInfo {
     public static class ListingOperation {
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_NAME = "name";
+        public static final String COLUMN_SCOPE = "scope";
         public static final String COLUMN_M1 = "m1";
         public static final String COLUMN_M2 = "m2";
         public static final String COLUMN_K1 = "k1";
@@ -41,6 +43,14 @@ public class DatabaseInfo {
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_VALUE = "value";
+    }
+
+    public static class Operation {
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_M1 = "m1";
+        public static final String COLUMN_M2 = "m2";
+        public static final String COLUMN_K1 = "k1";
+        public static final String COLUMN_K2 = "k2";
     }
 
     public static class Steel {

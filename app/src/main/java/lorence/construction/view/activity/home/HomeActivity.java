@@ -122,6 +122,11 @@ public class HomeActivity extends BaseActivity implements HomeView {
     }
 
     @Override
+    public  String getTitleToolbar() {
+        return tvCurrentOption.getText().toString();
+    }
+
+    @Override
     public void hiddenBottomBar() {
         if (mBottomBar != null)
             mBottomBar.setVisibility(View.GONE);

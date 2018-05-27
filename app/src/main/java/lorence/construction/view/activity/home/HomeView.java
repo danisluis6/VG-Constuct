@@ -12,6 +12,8 @@ public interface HomeView {
     void displayFragment(Fragment fragment, String title);
     void updateTitleToolbar(String title);
 
+    String getTitleToolbar();
+
     void hiddenBottomBar();
 
     void showBottomBar();
