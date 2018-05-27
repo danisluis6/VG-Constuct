@@ -1,8 +1,11 @@
 package lorence.construction.di.module.listing.child;
 
+import android.app.FragmentManager;
 import android.content.Context;
 
 import dagger.Module;
+import dagger.Provides;
+import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationView;
@@ -27,5 +30,11 @@ public class ListingOperationModule {
         mActivity = homeActivity;
         mFragment = fragment;
         mListingOperationView = listingOperationView;
+    }
+
+    @Provides
+    @ActivityScope
+    FragmentManager provideFragmentManager() {
+        return mActivity.getFragmentManager();
     }
 }

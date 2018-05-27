@@ -1,9 +1,16 @@
 package lorence.construction.view.fragment.listing.fragment;
 
-/**
- * Created by vuongluis on 5/27/2018.
- */
+import lorence.construction.data.storage.entity.Concrete;
+import lorence.construction.data.storage.entity.Steel;
 
 public interface ListingOperationView {
+    void updateValueFieldConcrete(Concrete concrete);
+
+    void updateValueFieldSteel(Steel steel);
+
+    void showConcreteDialog();
+
+    void showSteelDialog();
+
     boolean checkValidDataInput();
 }

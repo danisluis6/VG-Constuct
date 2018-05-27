@@ -1,9 +1,9 @@
 package lorence.construction.view.fragment.listing.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +17,12 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import lorence.construction.R;
 import lorence.construction.app.Application;
+import lorence.construction.data.storage.entity.Concrete;
+import lorence.construction.data.storage.entity.Steel;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.di.module.listing.ListingModule;
 import lorence.construction.di.module.listing.child.ListingOperationModule;
+import lorence.construction.helper.Constants;
 import lorence.construction.helper.RegularUtils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
@@ -94,6 +97,18 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
     @Inject
     RegularUtils mRegularUtils;
 
+    @Inject
+    ConcreteFragment mConcreteFragment;
+
+    @Inject
+    SteelFragment mSteelFragment;
+
+    @Inject
+    ListingOperationFragment mListingOperationFragment;
+
+    @Inject
+    FragmentManager mFragmentManager;
+
     public ListingOperationFragment() {
     }
 
@@ -118,7 +133,46 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
         View view = inflater.inflate(R.layout.fragment_listing_operation, container, false);
         bindView(view);
         mHomeActivity.hiddenBottomBar();
+        mConcreteFragment.setParentFragment(mContext, mListingOperationFragment);
+        mConcreteFragment.attachEventInterface(new ConcreteFragment.InterfaceConcreteFragment() {
+            @Override
+            public void onClickItem(Concrete concrete) {
+                mConcreteFragment.dismiss();
+                updateValueFieldConcrete(concrete);
+            }
+        });
+
+        mSteelFragment.setParentFragment(mContext, mListingOperationFragment);
+        mSteelFragment.attachEventInterface(new SteelFragment.InterfaceSteelFragment() {
+            @Override
+            public void onClickItem(Steel steel) {
+                mSteelFragment.dismiss();
+                updateValueFieldSteel(steel);
+            }
+        });
         return view;
+    }
+
+    @Override
+    public void updateValueFieldConcrete(Concrete concrete) {
+        edtConcrete.setText(concrete.getName());
+        edtRb.setText(concrete.getValue());
+    }
+
+    @Override
+    public void updateValueFieldSteel(Steel steel) {
+        edtSteel.setText(steel.getName());
+        edtRs.setText(steel.getValue());
+    }
+
+    @Override
+    public void showConcreteDialog() {
+        mConcreteFragment.show(mFragmentManager, Constants.TAG.CONCRETE);
+    }
+
+    @Override
+    public void showSteelDialog() {
+        mSteelFragment.show(mFragmentManager, Constants.TAG.STEEL);
     }
 
     @Override
@@ -126,7 +180,7 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
         super.onResume();
     }
 
-    @OnClick({R.id.btnPerformCalculator})
+    @OnClick({R.id.btnPerformCalculator, R.id.edtConcrete, R.id.edtRb, R.id.edtSteel, R.id.edtRs})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnPerformCalculator:
@@ -134,6 +188,15 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
                     Toast.makeText(mContext, "Calculating successfully!", Toast.LENGTH_SHORT).show();
                 }
                 break;
+            case R.id.edtConcrete:
+            case R.id.edtRb:
+                showConcreteDialog();
+                break;
+            case R.id.edtSteel:
+            case R.id.edtRs:
+                showSteelDialog();
+                break;
+
         }
     }
 

@@ -17,11 +17,25 @@ public class DatabaseInfo {
     // Table Listing
     public static class Tables {
         public static final String Listing = "listing";
+        public static final String Concrete = "concrete";
+        public static final String Steel = "steel";
     }
 
     public static class Listing {
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_IMAGE = "image";
+    }
+
+    public static class Concrete {
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_NAME = "name";
+        public static final String COLUMN_VALUE = "value";
+    }
+
+    public static class Steel {
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_NAME = "name";
+        public static final String COLUMN_VALUE = "value";
     }
 }

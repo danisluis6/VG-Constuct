@@ -13,6 +13,8 @@ public class Constants {
         public static final String BEAM = "Beam";
         public static final String SETTING = "Setting";
         public static final String ABOUT = "About";
+        public static final String CONCRETE = "Concrete";
+        public static final String STEEL = "Steel";
     }
 
     public static final class TITLE {

@@ -31,6 +31,8 @@
     <string name="input_concrete_floor">Chiều dày bê tông sàn</string>
     <string name="input_plaster_mortar">Vữa trát trần</string>
     <string name="perform_calculator">Tính toán</string>
+    <string name="title_concrete">Cấp độ bê tông</string>
+    <string name="title_steel">Chọn loại thép</string>
 
 </resources>
 

@@ -12,5 +12,6 @@
     <!-- Bottom Bar -->
     <color name="gray_40">#666666</color>
     <color name="sports_now_red">#cc0000</color>
+    <color name="bg_color">#dbdbdb</color>
 
 </resources>
