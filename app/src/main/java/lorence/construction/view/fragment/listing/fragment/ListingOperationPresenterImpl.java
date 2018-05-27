@@ -4,13 +4,9 @@ import android.content.Context;
 
 import java.util.List;
 
-import lorence.construction.data.storage.async.ListingAsynTask;
-import lorence.construction.data.storage.entity.Listing;
+import lorence.construction.data.storage.async.ListingOperationAsynTask;
 import lorence.construction.data.storage.entity.ListingOperation;
 import lorence.construction.view.activity.home.HomeActivity;
-import lorence.construction.view.fragment.listing.ListingModel;
-import lorence.construction.view.fragment.listing.ListingPresenter;
-import lorence.construction.view.fragment.listing.module.ListingView;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -20,29 +16,29 @@ import lorence.construction.view.fragment.listing.module.ListingView;
 
 public class ListingOperationPresenterImpl implements ListingOperationPresenter {
 
-    private ListingModel mListingModel;
+    private ListingOperationModel mListingOperationModel;
 
     private Context mContext;
     private HomeActivity mActivity;
-    private ListingView mListingView;
+    private ListingOperationView mListingOperationView;
 
-    public ListingOperationPresenterImpl(Context context, HomeActivity activity, ListingView listingView, ListingModel listingModel, ListingAsynTask listingAsynTask) {
+    public ListingOperationPresenterImpl(Context context, HomeActivity activity, ListingOperationView listingOperationView, ListingOperationModel listingOperationModel, ListingOperationAsynTask listingOperationAsynTask) {
         mContext = context;
         mActivity = activity;
-        mListingModel = listingModel;
-        mListingView = listingView;
-        listingModel.attachListingAsynTask(listingAsynTask);
-        listingModel.attachListingPresenter(this);
+        mListingOperationModel = listingOperationModel;
+        mListingOperationView = listingOperationView;
+        listingOperationModel.attachListingOperationAsynTask(listingOperationAsynTask);
+        listingOperationModel.attachListingOperationPresenter(this);
     }
 
     @Override
     public void getListingOperations() {
-        mListingModel.getListingOperations();
+        mListingOperationModel.getListingOperationByListingPresenterByListingOperationPresenters(this);
     }
 
     @Override
     public void onGetListingOperationsSuccess(List<ListingOperation> listingOperations) {
-        mListingView.onGetListingOperationsSuccess(listingOperations);
+        mListingOperationView.onGetListingOperationsSuccess(listingOperations);
     }
 
 }

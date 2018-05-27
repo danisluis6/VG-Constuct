@@ -132,6 +132,8 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     public void onGetListingOperationsSuccess(List<ListingOperation> listingOperations) {
         if (listingOperations.size() == 0) {
             initializeNewListingOperations();
+        } else {
+            Toast.makeText(mContext, listingOperations.size()+"", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -4,7 +4,6 @@ import java.util.List;
 
 import lorence.construction.data.storage.async.ListingAsynTask;
 import lorence.construction.data.storage.entity.Listing;
-import lorence.construction.data.storage.entity.ListingOperation;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -21,8 +20,4 @@ public interface ListingModel {
     void attachListingPresenter(ListingPresenter listingPresenter);
 
     void getListings();
-
-    void getListingOperations();
-
-    void inertListingOperations(List<ListingOperation> list);
 }

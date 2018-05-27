@@ -13,6 +13,8 @@ import lorence.construction.data.storage.dao.ListingOperationDao;
 import lorence.construction.view.fragment.listing.ListingModelImpl;
 import lorence.construction.view.fragment.listing.ListingModel;
 import lorence.construction.data.storage.dao.ListingDao;
+import lorence.construction.view.fragment.listing.fragment.ListingOperationModel;
+import lorence.construction.view.fragment.listing.fragment.ListingOperationModelImpl;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -53,8 +55,14 @@ public class RoomModule {
 
     @Singleton
     @Provides
-    ListingModel providesListingModel(ListingDao listingDao, ListingOperationDao listingOperationDao) {
-        return new ListingModelImpl(mContext, listingDao, listingOperationDao);
+    ListingModel providesListingModel(ListingDao listingDao) {
+        return new ListingModelImpl(mContext, listingDao);
+    }
+
+    @Singleton
+    @Provides
+    ListingOperationModel providesListingOperationModel(ListingOperationDao listingOperationDao) {
+        return new ListingOperationModelImpl(mContext, listingOperationDao);
     }
 
 }

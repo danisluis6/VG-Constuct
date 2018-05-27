@@ -261,6 +261,11 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
     }
 
     @Override
+    public void onGetListingOperationsSuccess(List<ListingOperation> listingOperations) {
+
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         mHomeActivity.updateTitleToolbar(getString(R.string.title_listings));

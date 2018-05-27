@@ -8,6 +8,8 @@ import dagger.Module;
 import dagger.Provides;
 import lorence.construction.data.storage.async.ListingAsynTask;
 import lorence.construction.data.storage.async.ListingAsynTaskImpl;
+import lorence.construction.data.storage.async.ListingOperationAsynTask;
+import lorence.construction.data.storage.async.ListingOperationAsynTaskImpl;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.utitilize.Utils;
@@ -17,6 +19,7 @@ import lorence.construction.view.fragment.listing.ListingModel;
 import lorence.construction.view.fragment.listing.ListingPresenter;
 import lorence.construction.view.fragment.listing.ListingPresenterImpl;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
+import lorence.construction.view.fragment.listing.fragment.ListingOperationModel;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
 import lorence.construction.view.fragment.listing.module.ListingDataSource;
 import lorence.construction.view.fragment.listing.module.ListingDataSourceImpl;
@@ -58,8 +61,14 @@ public class ListingModule {
 
     @Provides
     @ActivityScope
-    ListingPresenter provideListingPresenter(Context context, HomeActivity activity, ListingModel listingModel, ListingAsynTask listingAsynTask) {
-        return new ListingPresenterImpl(context, activity, mListingView, listingModel, listingAsynTask);
+    ListingOperationAsynTask provideOperationListingAsynTask() {
+        return new ListingOperationAsynTaskImpl();
+    }
+
+    @Provides
+    @ActivityScope
+    ListingPresenter provideListingPresenter(Context context, HomeActivity activity, ListingModel listingModel, ListingOperationModel listingOperationModel, ListingAsynTask listingAsynTask, ListingOperationAsynTask listingOperationAsynTask) {
+        return new ListingPresenterImpl(context, activity, mListingView, listingModel, listingOperationModel, listingAsynTask, listingOperationAsynTask);
     }
 
     @Provides
