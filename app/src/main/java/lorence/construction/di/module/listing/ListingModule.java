@@ -61,7 +61,7 @@ public class ListingModule {
 
     @Provides
     @ActivityScope
-    ListingOperationAsynTask provideOperationListingAsynTask() {
+    ListingOperationAsynTask provideListingOperationAsynTask() {
         return new ListingOperationAsynTaskImpl();
     }
 

@@ -17,9 +17,6 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 import lorence.construction.R;
 import lorence.construction.app.Application;
 import lorence.construction.data.storage.dao.ListingOperationDao;
@@ -129,6 +126,9 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
     ListingOperationFragment mListingOperationFragment;
 
     @Inject
+    ListingOperationPresenter mListingOperationPresenter;
+
+    @Inject
     FragmentManager mFragmentManager;
 
     public ListingOperationFragment() {
@@ -173,17 +173,7 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
                 updateValueFieldSteel(steel);
             }
         });
-        if (mListingOperationDao != null) {
-            Toast.makeText(mContext, "Not null", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(mContext, "Null", Toast.LENGTH_SHORT).show();
-        }
-        mListingOperationDao.getListingOperations().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<ListingOperation>>() {
-            @Override
-            public void accept(@io.reactivex.annotations.NonNull List<ListingOperation> listingOperations) throws Exception {
-
-            }
-        });
+        mListingOperationPresenter.getListingOperations();
         return view;
     }
 
@@ -262,7 +252,7 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
 
     @Override
     public void onGetListingOperationsSuccess(List<ListingOperation> listingOperations) {
-
+        Toast.makeText(mContext, listingOperations.size()+"", Toast.LENGTH_SHORT).show();
     }
 
     @Override

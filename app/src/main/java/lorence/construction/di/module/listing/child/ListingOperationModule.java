@@ -45,12 +45,6 @@ public class ListingOperationModule {
 
     @Provides
     @ActivityScope
-    ListingOperationAsynTask provideListingOperationAsynTask() {
-        return new ListingOperationAsynTaskImpl();
-    }
-
-    @Provides
-    @ActivityScope
     ListingOperationPresenter provideListingOperationPresenter(Context context, HomeActivity activity, ListingOperationModel listingOperationModel, ListingOperationAsynTask listingOperationAsynTask) {
         return new ListingOperationPresenterImpl(context, activity, mListingOperationView, listingOperationModel, listingOperationAsynTask);
     }
