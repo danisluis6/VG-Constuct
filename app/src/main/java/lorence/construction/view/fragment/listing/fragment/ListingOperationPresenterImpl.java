@@ -1,4 +1,4 @@
-package lorence.construction.view.fragment.listing;
+package lorence.construction.view.fragment.listing.fragment;
 
 import android.content.Context;
 
@@ -8,6 +8,8 @@ import lorence.construction.data.storage.async.ListingAsynTask;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.data.storage.entity.ListingOperation;
 import lorence.construction.view.activity.home.HomeActivity;
+import lorence.construction.view.fragment.listing.ListingModel;
+import lorence.construction.view.fragment.listing.ListingPresenter;
 import lorence.construction.view.fragment.listing.module.ListingView;
 
 /**
@@ -16,7 +18,7 @@ import lorence.construction.view.fragment.listing.module.ListingView;
  * @version 0.0.1
  */
 
-public class ListingPresenterImpl implements ListingPresenter {
+public class ListingOperationPresenterImpl implements ListingOperationPresenter {
 
     private ListingModel mListingModel;
 
@@ -24,7 +26,7 @@ public class ListingPresenterImpl implements ListingPresenter {
     private HomeActivity mActivity;
     private ListingView mListingView;
 
-    public ListingPresenterImpl(Context context, HomeActivity activity, ListingView listingView, ListingModel listingModel, ListingAsynTask listingAsynTask) {
+    public ListingOperationPresenterImpl(Context context, HomeActivity activity, ListingView listingView, ListingModel listingModel, ListingAsynTask listingAsynTask) {
         mContext = context;
         mActivity = activity;
         mListingModel = listingModel;
@@ -34,37 +36,8 @@ public class ListingPresenterImpl implements ListingPresenter {
     }
 
     @Override
-    public void saveListings(List<Listing> list) {
-        mListingModel.inertListings(list);
-    }
-
-    @Override
-    public void saveListingOperations(List<ListingOperation> list) {
-        mListingModel.inertListingOperations(list);
-    }
-
-    @Override
-    public void onInsertListingsSuccess() {
-    }
-
-    @Override
-    public void onInsertListingsFailed() {
-
-    }
-
-    @Override
-    public void getListings() {
-        mListingModel.getListings();
-    }
-
-    @Override
     public void getListingOperations() {
         mListingModel.getListingOperations();
-    }
-
-    @Override
-    public void onGetListingsSuccess(List<Listing> listings) {
-        mListingView.onGetListingsSuccess(listings);
     }
 
     @Override

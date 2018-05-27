@@ -11,19 +11,29 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import lorence.construction.R;
 import lorence.construction.app.Application;
+import lorence.construction.data.storage.dao.ListingOperationDao;
 import lorence.construction.data.storage.entity.Concrete;
+import lorence.construction.data.storage.entity.ListingOperation;
 import lorence.construction.data.storage.entity.Steel;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.di.module.listing.ListingModule;
 import lorence.construction.di.module.listing.child.ListingOperationModule;
+import lorence.construction.helper.ConditionCalculating;
 import lorence.construction.helper.Constants;
+import lorence.construction.helper.ConverterUtils;
 import lorence.construction.helper.RegularUtils;
+import lorence.construction.helper.math.InternalFormula;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.ListingFragment;
@@ -98,10 +108,22 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
     RegularUtils mRegularUtils;
 
     @Inject
+    ConditionCalculating mConditionCalculating;
+
+    @Inject
+    ConverterUtils mConverterUtils;
+
+    @Inject
+    ListingOperationDao mListingOperationDao;
+
+    @Inject
     ConcreteFragment mConcreteFragment;
 
     @Inject
     SteelFragment mSteelFragment;
+
+    @Inject
+    InternalFormula mInternalFormula;
 
     @Inject
     ListingOperationFragment mListingOperationFragment;
@@ -126,6 +148,7 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
+        setRetainInstance(true);
     }
 
     @Override
@@ -148,6 +171,17 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
             public void onClickItem(Steel steel) {
                 mSteelFragment.dismiss();
                 updateValueFieldSteel(steel);
+            }
+        });
+        if (mListingOperationDao != null) {
+            Toast.makeText(mContext, "Not null", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(mContext, "Null", Toast.LENGTH_SHORT).show();
+        }
+        mListingOperationDao.getListingOperations().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<ListingOperation>>() {
+            @Override
+            public void accept(@io.reactivex.annotations.NonNull List<ListingOperation> listingOperations) throws Exception {
+
             }
         });
         return view;
@@ -185,7 +219,12 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
         switch (v.getId()) {
             case R.id.btnPerformCalculator:
                 if (checkValidDataInput()) {
-                    Toast.makeText(mContext, "Calculating successfully!", Toast.LENGTH_SHORT).show();
+                    if(mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2))) {
+                        double m1 = mInternalFormula.calculateM1(mConverterUtils.getDoubleValue(edtL2)/mConverterUtils.getDoubleValue(edtL1));
+                        double m2 = mInternalFormula.calculateM2(mConverterUtils.getDoubleValue(edtL2)/mConverterUtils.getDoubleValue(edtL1));
+                        double k1 = 0.0;
+                        double k2 = 0.0;
+                    }
                 }
                 break;
             case R.id.edtConcrete:
@@ -220,9 +259,11 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
         }
         return true;
     }
-}
 
-/*
- * onCreateView not find ResourceId android
- * => Put layout in wrong folder.
- */
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mHomeActivity.updateTitleToolbar(getString(R.string.title_listings));
+        mHomeActivity.showBottomBar();
+    }
+}

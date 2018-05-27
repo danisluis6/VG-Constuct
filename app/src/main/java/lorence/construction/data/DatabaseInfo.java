@@ -19,12 +19,22 @@ public class DatabaseInfo {
         public static final String Listing = "listing";
         public static final String Concrete = "concrete";
         public static final String Steel = "steel";
+        public static final String ListingOperation = "listingoperation";
     }
 
     public static class Listing {
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_IMAGE = "image";
+    }
+
+    public static class ListingOperation {
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_NAME = "name";
+        public static final String COLUMN_M1 = "m1";
+        public static final String COLUMN_M2 = "m2";
+        public static final String COLUMN_K1 = "k1";
+        public static final String COLUMN_K2 = "k2";
     }
 
     public static class Concrete {

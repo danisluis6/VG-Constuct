@@ -4,7 +4,9 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
 import lorence.construction.data.storage.dao.ListingDao;
+import lorence.construction.data.storage.dao.ListingOperationDao;
 import lorence.construction.data.storage.entity.Listing;
+import lorence.construction.data.storage.entity.ListingOperation;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -13,13 +15,14 @@ import lorence.construction.data.storage.entity.Listing;
  * @version 0.0.1
  */
 
-@Database(entities = {Listing.class}, version = DatabaseInfo.DB_VERSION, exportSchema = false)
+@Database(entities = {Listing.class, ListingOperation.class}, version = DatabaseInfo.DB_VERSION, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public static final String DB_NAME = DatabaseInfo.DB_NAME;
 
     public abstract ListingDao getListingDao();
 
+    public abstract ListingOperationDao getListingOperationDao();
 }
 
 

@@ -3,6 +3,7 @@ package lorence.construction.view.fragment.listing.module;
 import java.util.List;
 
 import lorence.construction.data.storage.entity.Listing;
+import lorence.construction.data.storage.entity.ListingOperation;
 
 /**
  * Created by lorence on 28/12/2017.
@@ -14,4 +15,6 @@ import lorence.construction.data.storage.entity.Listing;
 public interface ListingDataSource {
 
     List<Listing> getDefaultListingData();
+
+    List<ListingOperation> getDefaultListingOperationData();
 }

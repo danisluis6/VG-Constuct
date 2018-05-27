@@ -7,6 +7,8 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import lorence.construction.app.Application;
+import lorence.construction.helper.ConditionCalculating;
+import lorence.construction.helper.ConverterUtils;
 import lorence.construction.helper.RegularUtils;
 import lorence.construction.helper.Validator;
 
@@ -49,6 +51,18 @@ public class AppModule {
     @Singleton
     RegularUtils provideRegularUtils() {
         return new RegularUtils();
+    }
+
+    @Provides
+    @Singleton
+    ConditionCalculating provideConditionCalculating() {
+        return new ConditionCalculating();
+    }
+
+    @Provides
+    @Singleton
+    ConverterUtils provideConverterUtils() {
+        return new ConverterUtils();
     }
 
 }

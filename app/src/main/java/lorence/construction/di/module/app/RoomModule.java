@@ -9,6 +9,7 @@ import dagger.Module;
 import dagger.Provides;
 import lorence.construction.app.Application;
 import lorence.construction.data.AppDatabase;
+import lorence.construction.data.storage.dao.ListingOperationDao;
 import lorence.construction.view.fragment.listing.ListingModelImpl;
 import lorence.construction.view.fragment.listing.ListingModel;
 import lorence.construction.data.storage.dao.ListingDao;
@@ -46,8 +47,14 @@ public class RoomModule {
 
     @Singleton
     @Provides
-    ListingModel providesListingModel(ListingDao listingDao) {
-        return new ListingModelImpl(mContext, listingDao);
+    ListingOperationDao providesListingOperationDao() {
+        return mAppDatabase.getListingOperationDao();
+    }
+
+    @Singleton
+    @Provides
+    ListingModel providesListingModel(ListingDao listingDao, ListingOperationDao listingOperationDao) {
+        return new ListingModelImpl(mContext, listingDao, listingOperationDao);
     }
 
 }

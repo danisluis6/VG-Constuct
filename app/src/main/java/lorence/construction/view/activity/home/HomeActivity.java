@@ -117,12 +117,20 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @Override
     public void updateTitleToolbar(String title) {
-        tvCurrentOption.setText(title);
+        if (tvCurrentOption != null)
+            tvCurrentOption.setText(title);
     }
 
     @Override
     public void hiddenBottomBar() {
-        mBottomBar.setVisibility(View.GONE);
+        if (mBottomBar != null)
+            mBottomBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showBottomBar() {
+        if (mBottomBar != null)
+            mBottomBar.setVisibility(View.VISIBLE);
     }
 
     @Override

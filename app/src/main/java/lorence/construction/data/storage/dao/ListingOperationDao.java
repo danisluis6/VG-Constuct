@@ -9,8 +9,8 @@ import android.arch.persistence.room.Update;
 import java.util.List;
 
 import io.reactivex.Maybe;
-import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.data.DatabaseInfo;
+import lorence.construction.data.storage.entity.ListingOperation;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -19,11 +19,11 @@ import lorence.construction.data.DatabaseInfo;
  * @version 0.0.1
  */
 @Dao
-public interface ListingDao {
+public interface ListingOperationDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertListings(List<Listing> items);
+    void insertListingOperations(List<ListingOperation> items);
 
-    @Query("SELECT * FROM "+ DatabaseInfo.Tables.Listing)
-    Maybe<List<Listing>> getListings();
+    @Query("SELECT * FROM "+ DatabaseInfo.Tables.ListingOperation)
+    Maybe<List<ListingOperation>> getListingOperations();
 }

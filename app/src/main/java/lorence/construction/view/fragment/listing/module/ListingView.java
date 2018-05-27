@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import java.util.List;
 
 import lorence.construction.data.storage.entity.Listing;
+import lorence.construction.data.storage.entity.ListingOperation;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -19,9 +20,13 @@ public interface ListingView {
 
     void initializeNewListings();
 
+    void initializeNewListingOperations();
+
     void navigatePageOperation(String name);
 
     void defineToolbar(String tag);
 
     void pushFragment(Fragment fragment, String tag);
+
+    void onGetListingOperationsSuccess(List<ListingOperation> listingOperations);
 }

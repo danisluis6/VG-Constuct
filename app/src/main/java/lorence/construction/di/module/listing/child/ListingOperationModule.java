@@ -5,9 +5,15 @@ import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
+import lorence.construction.data.storage.async.ListingAsynTask;
 import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.view.activity.home.HomeActivity;
+import lorence.construction.view.fragment.listing.ListingModel;
+import lorence.construction.view.fragment.listing.ListingPresenter;
+import lorence.construction.view.fragment.listing.ListingPresenterImpl;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
+import lorence.construction.view.fragment.listing.fragment.ListingOperationPresenter;
+import lorence.construction.view.fragment.listing.fragment.ListingOperationPresenterImpl;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationView;
 
 /**
@@ -36,5 +42,11 @@ public class ListingOperationModule {
     @ActivityScope
     FragmentManager provideFragmentManager() {
         return mActivity.getFragmentManager();
+    }
+
+    @Provides
+    @ActivityScope
+    ListingOperationPresenter provideListingOperationPresenter(Context context, HomeActivity activity, ListingModel listingModel, ListingAsynTask listingAsynTask) {
+        return new ListingOperationPresenterImpl(context, activity, mListingOperationView, listingModel, listingAsynTask);
     }
 }

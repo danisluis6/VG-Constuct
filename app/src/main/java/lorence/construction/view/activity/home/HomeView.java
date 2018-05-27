@@ -13,4 +13,6 @@ public interface HomeView {
     void updateTitleToolbar(String title);
 
     void hiddenBottomBar();
+
+    void showBottomBar();
 }

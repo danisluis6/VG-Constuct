@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.Stack;
@@ -20,16 +21,15 @@ import butterknife.BindView;
 import lorence.construction.R;
 import lorence.construction.app.Application;
 import lorence.construction.data.storage.entity.Listing;
+import lorence.construction.data.storage.entity.ListingOperation;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.di.module.listing.ListingModule;
 import lorence.construction.helper.FragmentStack;
 import lorence.construction.helper.FragmentUtils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
-import lorence.construction.view.activity.home.HomePresenter;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
-import lorence.construction.view.fragment.listing.fragment.ListingOperationView;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
 import lorence.construction.view.fragment.listing.module.ListingDataSource;
 import lorence.construction.view.fragment.listing.module.ListingView;
@@ -116,6 +116,7 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     public void onResume() {
         super.onResume();
         mListingPresenter.getListings();
+        mListingPresenter.getListingOperations();
     }
 
     @Override
@@ -128,9 +129,21 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     }
 
     @Override
+    public void onGetListingOperationsSuccess(List<ListingOperation> listingOperations) {
+        if (listingOperations.size() == 0) {
+            initializeNewListingOperations();
+        }
+    }
+
+    @Override
     public void initializeNewListings() {
         mListingPresenter.saveListings(mListingDataSource.getDefaultListingData());
         mListingAdapter.updateListing(mListingDataSource.getDefaultListingData());
+    }
+
+    @Override
+    public void initializeNewListingOperations() {
+        mListingPresenter.saveListingOperations(mListingDataSource.getDefaultListingOperationData());
     }
 
     @Override
