@@ -2,9 +2,6 @@ package lorence.construction.app;
 
 import android.content.Context;
 
-import com.squareup.otto.Bus;
-import com.squareup.otto.ThreadEnforcer;
-
 import lorence.construction.di.component.AppComponent;
 import lorence.construction.di.component.DaggerAppComponent;
 import lorence.construction.di.module.app.AppModule;
@@ -22,8 +19,6 @@ public class Application extends android.app.Application {
     private Context mContext;
     private static Application sInstance;
 
-    public static Bus eventBus;
-
     public static synchronized Application getInstance() {
         if (sInstance == null) {
             sInstance = new Application();
@@ -36,7 +31,6 @@ public class Application extends android.app.Application {
         super.onCreate();
         mContext = this;
         sInstance = this;
-        eventBus  = new Bus(ThreadEnforcer.ANY);
         initAppComponent();
     }
 
