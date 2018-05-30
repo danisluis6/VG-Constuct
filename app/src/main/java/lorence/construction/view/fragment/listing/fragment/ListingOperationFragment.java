@@ -228,7 +228,7 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
             case R.id.btnPerformCalculator:
                 if (checkValidDataInput()) {
                     if(mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2))) {
-                        Operation operation = mInternalFormula.calculateM1(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2)/mConverterUtils.getDoubleValue(edtL1));
+                        Operation operation = mInternalFormula.calculate(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2)/mConverterUtils.getDoubleValue(edtL1));
                         Log.i("TAG", "m1: "+operation.getM1());
                         Log.i("TAG", "m2: "+operation.getM2());
                         Log.i("TAG", "k1: "+operation.getK1());
