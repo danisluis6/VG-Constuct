@@ -24,6 +24,39 @@ public class InternalFormula {
         } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.TWO)) {
             operation = getM1M2(arrListingOperations, Constants.LISTINGS.TWO, value);
             operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.TWO, value).getK1());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.THREE)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.THREE, value);
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.THREE, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.FOUR)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.FOUR, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.FOUR, value).getK1());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.FIVE)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.FIVE, value);
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.FIVE, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.SIX)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.SIX, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.SIX, value).getK1());
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.SIX, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.SEVEN)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.SEVEN, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.SEVEN, value).getK1());
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.SEVEN, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.EIGHT)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.EIGHT, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.EIGHT, value).getK1());
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.EIGHT, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.NINE)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.NINE, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.NINE, value).getK1());
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.NINE, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.TEN)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.TEN, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.TEN, value).getK1());
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.TEN, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.ELEVEN)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.ELEVEN, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.ELEVEN, value).getK1());
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.ELEVEN, value).getK2());
         }
         return operation;
     }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -136,7 +137,17 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
 
     private List<ListingOperation> mGrListingOperations;
 
+    private static final String ARG_POSITION = "position";
+    private String mPosition;
+
     public ListingOperationFragment() {
+    }
+
+    public Fragment newInstance(ListingOperationFragment fragment, String tag) {
+        Bundle b = new Bundle();
+        b.putString(ARG_POSITION, tag);
+        fragment.setArguments(b);
+        return fragment;
     }
 
     @Override
@@ -180,6 +191,7 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
             }
         });
         mListingOperationPresenter.getListingOperations();
+        mPosition = getArguments().getString(ARG_POSITION);
         return view;
     }
 
@@ -268,4 +280,5 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
         mHomeActivity.updateTitleToolbar(getString(R.string.title_listings));
         mHomeActivity.showBottomBar();
     }
+
 }
