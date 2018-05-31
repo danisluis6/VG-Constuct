@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import dagger.Module;
 import dagger.Provides;
 import lorence.construction.data.storage.async.ListingAsynTask;
-import lorence.construction.data.storage.async.ListingAsynTaskImpl;
 import lorence.construction.data.storage.async.ListingOperationAsynTask;
-import lorence.construction.data.storage.async.ListingOperationAsynTaskImpl;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.utitilize.Utils;
@@ -24,7 +22,6 @@ import lorence.construction.view.fragment.listing.module.GridSpacingItemDecorati
 import lorence.construction.view.fragment.listing.module.ListingDataSource;
 import lorence.construction.view.fragment.listing.module.ListingDataSourceImpl;
 import lorence.construction.view.fragment.listing.module.ListingView;
-import lorence.construction.view.fragment.setting.SettingFragment;
 
 /**
  * Created by lorence on 28/12/2017.
@@ -52,18 +49,6 @@ public class ListingModule {
         mContext = context;
         mActivity = homeActivity;
         mFragment = fragment;
-    }
-
-    @Provides
-    @ActivityScope
-    ListingAsynTask provideListingAsynTask() {
-        return new ListingAsynTaskImpl();
-    }
-
-    @Provides
-    @ActivityScope
-    ListingOperationAsynTask provideListingOperationAsynTask() {
-        return new ListingOperationAsynTaskImpl();
     }
 
     @Provides

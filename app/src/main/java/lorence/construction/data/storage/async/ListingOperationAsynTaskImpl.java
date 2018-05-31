@@ -18,6 +18,8 @@ import lorence.construction.data.storage.entity.ListingOperation;
 import lorence.construction.view.fragment.listing.ListingPresenter;
 import lorence.construction.view.fragment.listing.ListingPresenterImpl;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationPresenter;
+import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculatePresenter;
+import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculatePresenterImpl;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -33,6 +35,7 @@ public class ListingOperationAsynTaskImpl implements ListingOperationAsynTask {
     private static Context mContext;
     private static ListingOperationPresenter mListingOperationPresenter;
     private static ListingPresenter mListingPresenter;
+    private static CalculatePresenter mCalculatePresenter;
 
     @Override
     public void attachListingOperationDao(Context context, ListingOperationDao listingOperationDao) {
@@ -43,6 +46,11 @@ public class ListingOperationAsynTaskImpl implements ListingOperationAsynTask {
     @Override
     public void attachListingOperationPresenter(ListingOperationPresenter listingOperationPresenter) {
         mListingOperationPresenter = listingOperationPresenter;
+    }
+
+    @Override
+    public void attachCalculatePresenter(CalculatePresenterImpl calculatePresenter) {
+        mCalculatePresenter = calculatePresenter;
     }
 
     @Override
@@ -57,6 +65,12 @@ public class ListingOperationAsynTaskImpl implements ListingOperationAsynTask {
         new GetAll().execute();
     }
 
+    @Override
+    public void getListingOperationByCalculatePresenters(CalculatePresenterImpl calculatePresenter) {
+        mCalculatePresenter = calculatePresenter;
+        new GetAll().execute();
+    }
+
     static class GetAll extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -68,6 +82,8 @@ public class ListingOperationAsynTaskImpl implements ListingOperationAsynTask {
                         mListingPresenter.onGetListingOperationsSuccess(listingOperations);
                     if (mListingOperationPresenter != null)
                         mListingOperationPresenter.onGetListingOperationsSuccess(listingOperations);
+                    if (mCalculatePresenter != null)
+                        mCalculatePresenter.onGetListingOperationsSuccess(listingOperations);
                 }
             });
             return null;

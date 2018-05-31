@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import lorence.construction.other.TitleStringUtils;
 import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
+import lorence.construction.view.fragment.listing.fragment.child.mordal.MordalFragment;
 import lorence.construction.view.fragment.listing.fragment.child.reference.ReferenceFragment;
 import lorence.construction.view.fragment.listing.fragment.child.result.ResultFragment;
 
@@ -25,14 +26,16 @@ public class PagerAdapterPushed extends FragmentStatePagerAdapter {
     private CalculateFragment mCalculateFragment;
     private ResultFragment mResultFragment;
     private ReferenceFragment mReferenceFragment;
+    private MordalFragment mMordalFragment;
 
     @Inject
-    public PagerAdapterPushed(FragmentManager fragmentManager, TitleStringUtils titleStringUtils, CalculateFragment calculateFragment, ResultFragment resultFragment, ReferenceFragment referenceFragment) {
+    public PagerAdapterPushed(FragmentManager fragmentManager, TitleStringUtils titleStringUtils, CalculateFragment calculateFragment, ResultFragment resultFragment, ReferenceFragment referenceFragment, MordalFragment mordalFragment) {
         super(fragmentManager);
         titles = titleStringUtils;
         mCalculateFragment = calculateFragment;
         mResultFragment = resultFragment;
         mReferenceFragment = referenceFragment;
+        mMordalFragment = mordalFragment;
     }
 
 
@@ -43,9 +46,12 @@ public class PagerAdapterPushed extends FragmentStatePagerAdapter {
                 return mCalculateFragment.newInstance(mCalculateFragment, position);
             }
             case 1:{
-                return mResultFragment.newInstance(mResultFragment, position);
+                return mMordalFragment.newInstance(mMordalFragment, position);
             }
             case 2:{
+                return mResultFragment.newInstance(mResultFragment, position);
+            }
+            case 3:{
                 return mReferenceFragment.newInstance(mReferenceFragment, position);
             }
         }

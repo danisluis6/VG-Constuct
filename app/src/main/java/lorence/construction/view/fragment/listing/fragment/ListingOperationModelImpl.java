@@ -43,7 +43,7 @@ public class ListingOperationModelImpl implements ListingOperationModel {
     }
 
     @Override
-    public void getListingOperationByListingPresenterByListingOperationPresenters(ListingOperationPresenter listingOperationPresenter) {
+    public void getListingOperationByListingOperationPresenters(ListingOperationPresenter listingOperationPresenter) {
         mListingOperationAsynTask.getListingOperationByListingOperationPresenters(listingOperationPresenter);
     }
 

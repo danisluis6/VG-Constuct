@@ -65,15 +65,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
                     android:drawableEnd="@drawable/ic_donvi_m"
                     android:drawablePadding="10dp"
                     android:drawableRight="@drawable/ic_donvi_m"
                     android:imeOptions="actionNext"
                     android:labelFor="@+id/edtCurrentPswd"
+                    android:paddingBottom="2dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
+                    android:paddingTop="2dp"
                     android:textSize="14sp"
                     android:typeface="monospace" />
             </android.support.design.widget.TextInputLayout>
@@ -113,11 +113,11 @@
                     android:drawablePadding="10dp"
                     android:drawableRight="@drawable/ic_donvi_m"
                     android:imeOptions="actionNext"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
                     android:labelFor="@+id/edtCurrentPswd"
+                    android:paddingBottom="2dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
+                    android:paddingTop="2dp"
                     android:textSize="14sp"
                     android:typeface="monospace" />
             </android.support.design.widget.TextInputLayout>
@@ -157,11 +157,11 @@
                     android:drawablePadding="10dp"
                     android:drawableRight="@drawable/ic_donvi_m"
                     android:imeOptions="actionNext"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
                     android:labelFor="@+id/edtCurrentPswd"
+                    android:paddingBottom="2dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
+                    android:paddingTop="2dp"
                     android:textSize="14sp"
                     android:typeface="monospace" />
             </android.support.design.widget.TextInputLayout>
@@ -270,13 +270,13 @@
                         android:drawableEnd="@drawable/ic_drop_down"
                         android:drawablePadding="10dp"
                         android:drawableRight="@drawable/ic_donvi_m"
-                        android:paddingTop="2dp"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:paddingBottom="2dp"
                         android:labelFor="@+id/edtCurrentPswd"
+                        android:paddingBottom="2dp"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
+                        android:paddingTop="2dp"
                         android:textSize="14sp"
                         android:typeface="monospace" />
                 </android.support.design.widget.TextInputLayout>
@@ -308,11 +308,11 @@
                         android:drawableRight="@drawable/ic_donvi_m"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:paddingTop="2dp"
-                        android:paddingBottom="2dp"
                         android:labelFor="@+id/edtCurrentPswd"
+                        android:paddingBottom="2dp"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
+                        android:paddingTop="2dp"
                         android:textSize="14sp"
                         android:typeface="monospace" />
                 </android.support.design.widget.TextInputLayout>
@@ -355,13 +355,13 @@
                         android:drawableEnd="@drawable/ic_drop_down"
                         android:drawablePadding="10dp"
                         android:drawableRight="@drawable/ic_donvi_m"
-                        android:paddingTop="2dp"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:paddingBottom="2dp"
                         android:labelFor="@+id/edtCurrentPswd"
+                        android:paddingBottom="2dp"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
+                        android:paddingTop="2dp"
                         android:textSize="14sp"
                         android:typeface="monospace" />
                 </android.support.design.widget.TextInputLayout>
@@ -391,13 +391,13 @@
                         android:drawableEnd="@drawable/ic_donvi_mpa"
                         android:drawablePadding="10dp"
                         android:drawableRight="@drawable/ic_donvi_m"
-                        android:paddingTop="2dp"
-                        android:paddingBottom="2dp"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
                         android:labelFor="@+id/edtCurrentPswd"
+                        android:paddingBottom="2dp"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
+                        android:paddingTop="2dp"
                         android:textSize="14sp"
                         android:typeface="monospace" />
                 </android.support.design.widget.TextInputLayout>
@@ -460,11 +460,11 @@
                     android:drawablePadding="10dp"
                     android:drawableRight="@drawable/ic_donvi_danm2"
                     android:imeOptions="actionNext"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
                     android:labelFor="@+id/edtCurrentPswd"
+                    android:paddingBottom="2dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
+                    android:paddingTop="2dp"
                     android:textSize="14sp"
                     android:typeface="monospace" />
             </android.support.design.widget.TextInputLayout>
@@ -504,300 +504,11 @@
                     android:drawablePadding="10dp"
                     android:drawableRight="@drawable/ic_donvi_danm2"
                     android:imeOptions="actionNext"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
                     android:labelFor="@+id/edtCurrentPswd"
+                    android:paddingBottom="2dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
-                    android:textSize="14sp"
-                    android:typeface="monospace" />
-            </android.support.design.widget.TextInputLayout>
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/titleReferLoad"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/triangle"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cslDynamicLoad">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="@string/titleReferLoad"
-                android:textColor="@android:color/white"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cslBrick"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleReferLoad">
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/gradient"
-                android:hint="@string/input_brick"
-                android:paddingTop="8dp"
-                android:textColorHint="#000"
-                app:hintTextAppearance="@style/FloatLabelEditTextStyle"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <EditText
-                    android:id="@+id/edtBrick"
-                    style="@style/FloatLabelEditTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:drawableEnd="@drawable/ic_donvi_mm"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/ic_donvi_mm"
-                    android:imeOptions="actionNext"
                     android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:labelFor="@+id/edtCurrentPswd"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:textSize="14sp"
-                    android:typeface="monospace" />
-            </android.support.design.widget.TextInputLayout>
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cslMortar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cslBrick">
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/gradient"
-                android:hint="@string/input_mortar"
-                android:paddingTop="8dp"
-                android:textColorHint="#000"
-                app:hintTextAppearance="@style/FloatLabelEditTextStyle"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <EditText
-                    android:id="@+id/edtMortar"
-                    style="@style/FloatLabelEditTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:drawableEnd="@drawable/ic_donvi_mm"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/ic_donvi_m"
-                    android:imeOptions="actionNext"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:labelFor="@+id/edtCurrentPswd"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:textSize="14sp"
-                    android:typeface="monospace" />
-            </android.support.design.widget.TextInputLayout>
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cslConcreteFloor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cslMortar">
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/gradient"
-                android:hint="@string/input_concrete_floor"
-                android:paddingTop="8dp"
-                android:textColorHint="#000"
-                app:hintTextAppearance="@style/FloatLabelEditTextStyle"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <EditText
-                    android:id="@+id/edtConcreteFloor"
-                    style="@style/FloatLabelEditTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:drawableEnd="@drawable/ic_donvi_cm"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/ic_donvi_mm"
-                    android:imeOptions="actionNext"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:labelFor="@+id/edtCurrentPswd"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:textSize="14sp"
-                    android:typeface="monospace" />
-            </android.support.design.widget.TextInputLayout>
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cslPlasterMortar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cslConcreteFloor">
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/gradient"
-                android:hint="@string/input_plaster_mortar"
-                android:paddingTop="8dp"
-                android:textColorHint="#000"
-                app:hintTextAppearance="@style/FloatLabelEditTextStyle"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <EditText
-                    android:id="@+id/edtPlasterMortar"
-                    style="@style/FloatLabelEditTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:drawableEnd="@drawable/ic_donvi_mm"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/ic_donvi_m"
-                    android:imeOptions="actionDone"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:labelFor="@+id/edtCurrentPswd"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:textSize="14sp"
-                    android:typeface="monospace" />
-            </android.support.design.widget.TextInputLayout>
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cslReferStaticLoad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cslPlasterMortar">
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/gradient"
-                android:hint="@string/input_g"
-                android:paddingTop="8dp"
-                android:textColorHint="#000"
-                app:hintTextAppearance="@style/FloatLabelEditTextStyle"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <EditText
-                    android:id="@+id/edtReferStaticLoad"
-                    style="@style/FloatLabelEditTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:drawableEnd="@drawable/ic_donvi_danm2"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/ic_donvi_danm2"
-                    android:enabled="false"
-                    android:imeOptions="actionNext"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:labelFor="@+id/edtCurrentPswd"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:textSize="14sp"
-                    android:typeface="monospace" />
-            </android.support.design.widget.TextInputLayout>
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cslReferDynamicLoad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cslReferStaticLoad">
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/gradient"
-                android:hint="@string/input_p"
-                android:paddingTop="8dp"
-                android:textColorHint="#000"
-                app:hintTextAppearance="@style/FloatLabelEditTextStyle"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <EditText
-                    android:id="@+id/edtReferDynamicLoad"
-                    style="@style/FloatLabelEditTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:drawableEnd="@drawable/ic_donvi_danm2"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/ic_donvi_danm2"
-                    android:enabled="false"
-                    android:imeOptions="actionNext"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:labelFor="@+id/edtCurrentPswd"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
                     android:textSize="14sp"
                     android:typeface="monospace" />
             </android.support.design.widget.TextInputLayout>
@@ -811,18 +522,18 @@
             android:layout_marginTop="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cslReferDynamicLoad">
+            app:layout_constraintTop_toBottomOf="@+id/cslDynamicLoad">
 
             <Button
                 android:id="@+id/btnPerformCalculator"
-                android:text="@string/perform_calculator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/gradient" />
+                android:background="@drawable/gradient"
+                android:text="@string/perform_calculator" />
 
         </android.support.constraint.ConstraintLayout>
 

@@ -23,6 +23,6 @@ public class TitleStringUtils {
     }
 
     public String[] getGroupTitleFragment() {
-        return new String[]{mContext.getResources().getString(R.string.tab_title_calculate), mContext.getString(R.string.tab_title_result), mContext.getString(R.string.tab_title_reference)};
+        return new String[]{mContext.getResources().getString(R.string.tab_title_calculate), mContext.getString(R.string.tab_title_result), mContext.getString(R.string.tab_title_result), mContext.getString(R.string.tab_title_reference)};
     }
 }

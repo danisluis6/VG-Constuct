@@ -9,15 +9,23 @@ import dagger.Module;
 import dagger.Provides;
 import lorence.construction.app.Application;
 import lorence.construction.data.AppDatabase;
-import lorence.construction.data.storage.dao.ListingOperationDao;
-import lorence.construction.view.fragment.listing.ListingModelImpl;
-import lorence.construction.view.fragment.listing.ListingModel;
+import lorence.construction.data.storage.async.ListingAsynTask;
+import lorence.construction.data.storage.async.ListingAsynTaskImpl;
+import lorence.construction.data.storage.async.ListingOperationAsynTask;
+import lorence.construction.data.storage.async.ListingOperationAsynTaskImpl;
 import lorence.construction.data.storage.dao.ListingDao;
+import lorence.construction.data.storage.dao.ListingOperationDao;
+import lorence.construction.di.scope.ActivityScope;
+import lorence.construction.view.fragment.listing.ListingModel;
+import lorence.construction.view.fragment.listing.ListingModelImpl;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationModel;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationModelImpl;
+import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateModel;
+import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateModelImpl;
 
 /**
  * Created by vuongluis on 4/14/2018.
+ *
  * @author vuongluis
  * @version 0.0.1
  */
@@ -63,6 +71,24 @@ public class RoomModule {
     @Provides
     ListingOperationModel providesListingOperationModel(ListingOperationDao listingOperationDao) {
         return new ListingOperationModelImpl(mContext, listingOperationDao);
+    }
+
+    @Singleton
+    @Provides
+    CalculateModel provideCalculateModel(ListingOperationDao listingOperationDao) {
+        return new CalculateModelImpl(mContext, listingOperationDao);
+    }
+
+    @Provides
+    @Singleton
+    ListingAsynTask provideListingAsynTask() {
+        return new ListingAsynTaskImpl();
+    }
+
+    @Provides
+    @Singleton
+    ListingOperationAsynTask provideListingOperationAsynTask() {
+        return new ListingOperationAsynTaskImpl();
     }
 
 }
