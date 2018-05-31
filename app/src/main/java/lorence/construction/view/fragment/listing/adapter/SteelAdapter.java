@@ -13,6 +13,7 @@ import lorence.construction.R;
 import lorence.construction.data.storage.entity.Concrete;
 import lorence.construction.data.storage.entity.Steel;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
+import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -23,7 +24,7 @@ public class SteelAdapter extends RecyclerView.Adapter<SteelAdapter.MyViewHolder
 
     private Context mContext;
     private List<Steel> mGroupSteels;
-    private ListingOperationFragment mFragment;
+    private CalculateFragment mFragment;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -36,7 +37,7 @@ public class SteelAdapter extends RecyclerView.Adapter<SteelAdapter.MyViewHolder
         }
     }
 
-    public SteelAdapter(Context context, ListingOperationFragment fragment, List<Steel> groupSteel) {
+    public SteelAdapter(Context context, CalculateFragment fragment, List<Steel> groupSteel) {
         mContext = context;
         mGroupSteels = groupSteel;
         mFragment = fragment;

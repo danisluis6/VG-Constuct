@@ -11,6 +11,7 @@ import lorence.construction.helper.ConditionCalculating;
 import lorence.construction.helper.ConverterUtils;
 import lorence.construction.helper.RegularUtils;
 import lorence.construction.helper.Validator;
+import lorence.construction.other.TitleStringUtils;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -64,5 +65,9 @@ public class AppModule {
     ConverterUtils provideConverterUtils() {
         return new ConverterUtils();
     }
+
+    @Provides
+    @Singleton
+    TitleStringUtils provideTitleStringUtils(Context context) { return new TitleStringUtils(context); }
 
 }

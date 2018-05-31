@@ -5,6 +5,8 @@ import lorence.construction.di.module.home.FragmentModule;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.di.module.listing.FragmentListingModule;
 import lorence.construction.di.module.listing.ListingModule;
+import lorence.construction.di.module.listing.child.CalculateFragmentModule;
+import lorence.construction.di.module.listing.child.ReferenceFragmentModule;
 import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.view.activity.home.HomeActivity;
 
@@ -27,7 +29,10 @@ import lorence.construction.view.activity.home.HomeActivity;
 public interface HomeComponent {
 
     HomeActivity inject(HomeActivity homeActivity);
+
     ListingComponent plus(ListingModule module);
+    CalculateFragmentComponent plus(CalculateFragmentModule module);
+    ReferenceFragmentComponent plus(ReferenceFragmentModule module);
 }
 
 

@@ -12,6 +12,7 @@ import java.util.List;
 import lorence.construction.R;
 import lorence.construction.data.storage.entity.Concrete;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
+import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -22,7 +23,7 @@ public class ConcreteAdapter extends RecyclerView.Adapter<ConcreteAdapter.MyView
 
     private Context mContext;
     private List<Concrete> mGroupConcretes;
-    private ListingOperationFragment mFragment;
+    private CalculateFragment mFragment;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -35,7 +36,7 @@ public class ConcreteAdapter extends RecyclerView.Adapter<ConcreteAdapter.MyView
         }
     }
 
-    public ConcreteAdapter(Context context, ListingOperationFragment fragment, List<Concrete> groupConcrete) {
+    public ConcreteAdapter(Context context, CalculateFragment fragment, List<Concrete> groupConcrete) {
         mContext = context;
         mGroupConcretes = groupConcrete;
         mFragment = fragment;

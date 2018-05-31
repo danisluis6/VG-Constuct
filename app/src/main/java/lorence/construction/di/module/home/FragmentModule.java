@@ -6,6 +6,9 @@ import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.view.fragment.about.AboutFragment;
 import lorence.construction.view.fragment.beams.BeamFragment;
 import lorence.construction.view.fragment.listing.ListingFragment;
+import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
+import lorence.construction.view.fragment.listing.fragment.child.reference.ReferenceFragment;
+import lorence.construction.view.fragment.listing.fragment.child.result.ResultFragment;
 import lorence.construction.view.fragment.setting.SettingFragment;
 
 /**
@@ -42,6 +45,24 @@ public class FragmentModule {
     @ActivityScope
     AboutFragment provideAboutFragment() {
         return new AboutFragment();
+    }
+
+    @Provides
+    @ActivityScope
+    CalculateFragment provideCalculateFragment() {
+        return new CalculateFragment();
+    }
+
+    @Provides
+    @ActivityScope
+    ResultFragment provideResultFragment() {
+        return new ResultFragment();
+    }
+
+    @Provides
+    @ActivityScope
+    ReferenceFragment provideReferenceFragment() {
+        return new ReferenceFragment();
     }
 
 }
