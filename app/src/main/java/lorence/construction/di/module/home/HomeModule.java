@@ -1,17 +1,23 @@
 package lorence.construction.di.module.home;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 
 import dagger.Module;
 import dagger.Provides;
 import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.helper.Validator;
+import lorence.construction.other.TitleStringUtils;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.activity.home.HomePresenter;
 import lorence.construction.view.activity.home.HomePresenterImpl;
 import lorence.construction.view.fragment.about.AboutFragment;
 import lorence.construction.view.fragment.beams.BeamFragment;
 import lorence.construction.view.fragment.listing.ListingFragment;
+import lorence.construction.view.fragment.listing.adapter.PagerAdapterPushed;
+import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
+import lorence.construction.view.fragment.listing.fragment.child.reference.ReferenceFragment;
+import lorence.construction.view.fragment.listing.fragment.child.result.ResultFragment;
 import lorence.construction.view.fragment.setting.SettingFragment;
 
 /**
@@ -49,5 +55,24 @@ public class HomeModule {
                 settingFragment,
                 aboutFragment
                 );
+    }
+
+    @Provides
+    @ActivityScope
+    FragmentManager provideFragmentSupportManager() { return this.mHomeActivity.getSupportFragmentManager(); }
+
+    @Provides
+    @ActivityScope
+    android.app.FragmentManager provideFragmentManager() {
+        return this.mHomeActivity.getFragmentManager();
+    }
+
+    @Provides
+    @ActivityScope
+    PagerAdapterPushed providePagerAdapterPushed(FragmentManager fragmentManager, TitleStringUtils titleStringUtils,
+                                                 CalculateFragment calculateFragment,
+                                                 ResultFragment resultFragment,
+                                                 ReferenceFragment referenceFragment) {
+        return new PagerAdapterPushed(fragmentManager, titleStringUtils, calculateFragment, resultFragment, referenceFragment);
     }
 }

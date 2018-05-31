@@ -17,12 +17,13 @@ import java.util.List;
 import lorence.construction.R;
 import lorence.construction.data.storage.entity.Concrete;
 import lorence.construction.view.fragment.listing.adapter.ConcreteAdapter;
+import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
 
 public class ConcreteFragment extends DialogFragment {
 
     private RecyclerView rvConcrete;
     private TextView tvTitleConcrete;
-    private ListingOperationFragment mFragment;
+    private CalculateFragment mFragment;
     private ConcreteAdapter mConcreteAdapter;
     private Context mContext;
 
@@ -64,7 +65,7 @@ public class ConcreteFragment extends DialogFragment {
         return list;
     }
 
-    public void setParentFragment(Context context, ListingOperationFragment parentFragment) {
+    public void setParentFragment(Context context, CalculateFragment parentFragment) {
         mFragment = parentFragment;
         mContext = context;
     }

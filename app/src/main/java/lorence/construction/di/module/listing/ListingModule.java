@@ -24,6 +24,7 @@ import lorence.construction.view.fragment.listing.module.GridSpacingItemDecorati
 import lorence.construction.view.fragment.listing.module.ListingDataSource;
 import lorence.construction.view.fragment.listing.module.ListingDataSourceImpl;
 import lorence.construction.view.fragment.listing.module.ListingView;
+import lorence.construction.view.fragment.setting.SettingFragment;
 
 /**
  * Created by lorence on 28/12/2017.

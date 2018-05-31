@@ -34,5 +34,41 @@
     <string name="title_concrete">Cấp độ bê tông</string>
     <string name="title_steel">Chọn loại thép</string>
 
+    <!-- Title in Fragment Listing -->
+    <string name="tab_title_calculate">Calculate</string>
+    <string name="tab_title_result">Result</string>
+    <string name="tab_title_reference">Reference</string>
+
+    <!-- Reference -->
+    <string name="standard">Một số loại hoạt tải theo TCVN 2737–1995</string>
+
+    <string name="title_hospital"> + Phòng ngủ khách sạn, bệnh viện, trại giam</string>
+    <string name="refer_hospital">200 (daN/m2)</string>
+    <string name="title_apartment"> + Phòng ngủ kiểu căn hộ, nhà trẻ, mẫu giáo, trường học nội trú, nhà nghỉ</string>
+    <string name="refer_apartment">150 (daN/m2)</string>
+    <string name="title_bathroom"> + Phòng ăn, phòng khách, phòng tắm, WC (của nhà ở)</string>
+    <string name="refer_bathroom">150 (daN/m2)</string>
+    <string name="title_kitchen"> + Phòng ăn, phòng khách, phòng tắm, WC (của nhà trẻ, trường học,khách sạn, bệnh viện)</string>
+    <string name="refer_kitchen">200 (daN/m2)</string>
+    <string name="title_kitchen_apartment"> + Bếp, phòng giặt (của căn hộ)</string>
+    <string name="refer_kitchen_apartment">150 (daN/m2)</string>
+    <string name="title_kitchen_school"> + Bếp, phòng giặt (nhà nghỉ, khách sạn, bệnh viện, trường học)</string>
+    <string name="refer_kitchen_school">300 (daN/m2)</string>
+    <string name="title_kitchen_office"> + Văn phòng, phòng thí nghiệm</string>
+    <string name="refer_kitchen_office">200 (daN/m2)</string>
+    <string name="title_kitchen_reader"> + Phòng đọc sách (có đặt giá sách)</string>
+    <string name="refer_kitchen_reader">400 (daN/m2)</string>
+    <string name="title_kitchen_reader_no"> + Phòng đọc sách (không đặt giá sách)</string>
+    <string name="refer_kitchen_reader_no">200 (daN/m2)</string>
+    <string name="title_kitchen_restaurant"> + Nhà hàng (ăn uống, giải khát)</string>
+    <string name="refer_kitchen_restaurant">300 (daN/m2)</string>
+    <string name="title_kitchen_restaurant_exihibit"> + Nhà hàng (Triển lãm, trưng bày, cửa hàng)</string>
+    <string name="refer_kitchen_restaurant_exihibit">400 (daN/m2)</string>
+    <string name="title_kitchen_classroom"> + Phòng học (trường học)</string>
+    <string name="refer_kitchen_classroom">200 (daN/m2)</string>
+    <string name="title_kitchen_balcony"> + Ban công, lô gia</string>
+    <string name="refer_kitchen_balcony">400 (daN/m2)</string>
+    <string name="title_kitchen_livingroom"> + Sảnh, phòng giải lao, cầu thang, hành lang</string>
+    <string name="refer_kitchen_livingroom">400 (daN/m2)</string>
 </resources>
 

@@ -1,8 +1,9 @@
-package lorence.construction.view.fragment.setting;
+package lorence.construction.view.fragment.listing.fragment.child.result;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,15 @@ import lorence.construction.view.EBaseFragment;
  */
 
 @SuppressLint("ValidFragment")
-public class SettingFragment extends EBaseFragment {
+public class ResultFragment extends EBaseFragment {
 
-    public SettingFragment() {
+    public ResultFragment() {
+    }
+
+    public Fragment newInstance(ResultFragment fragment, int position) {
+        Bundle b = new Bundle();
+        fragment.setArguments(b);
+        return fragment;
     }
 
     @Override
