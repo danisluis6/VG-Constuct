@@ -41,6 +41,7 @@ import lorence.construction.view.fragment.listing.fragment.SteelFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
+ *
  * @author vuongluis
  * @version 0.0.1
  */
@@ -78,24 +79,6 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     @BindView(R.id.edtDynamicLoad)
     EditText edtDynamicLoad;
 
-    @BindView(R.id.edtBrick)
-    EditText edtBrick;
-
-    @BindView(R.id.edtMortar)
-    EditText edtMortar;
-
-    @BindView(R.id.edtConcreteFloor)
-    EditText edtConcreteFloor;
-
-    @BindView(R.id.edtPlasterMortar)
-    EditText edtPlasterMortar;
-
-    @BindView(R.id.edtReferStaticLoad)
-    EditText edtReferStaticLoad;
-
-    @BindView(R.id.edtReferDynamicLoad)
-    EditText edtReferDynamicLoad;
-
     @BindView(R.id.btnPerformCalculator)
     Button btnPerformCalculator;
 
@@ -130,6 +113,9 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     ListingOperationFragment mListingOperationFragment;
 
     @Inject
+    CalculatePresenter mCalculatePresenter;
+
+    @Inject
     CalculateFragment mCalculateFragment;
 
     private List<ListingOperation> mGrListingOperations;
@@ -149,7 +135,7 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         Application.getInstance()
                 .getAppComponent()
                 .plus(new HomeModule((HomeActivity) getActivity()))
-                .plus(new CalculateFragmentModule(Application.getInstance(), (HomeActivity)getActivity(), this, this))
+                .plus(new CalculateFragmentModule(Application.getInstance(), (HomeActivity) getActivity(), this, this))
                 .inject(this);
     }
 
@@ -175,7 +161,7 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                 updateValueFieldSteel(steel);
             }
         });
-
+        mCalculatePresenter.getListingOperations();
         return view;
     }
 
@@ -203,16 +189,11 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
 
     @OnClick({R.id.btnPerformCalculator, R.id.edtConcrete, R.id.edtRb, R.id.edtSteel, R.id.edtRs})
     public void onClick(View v) {
-        mGrListingOperations = mListingOperationFragment.getListingOperations();
         switch (v.getId()) {
             case R.id.btnPerformCalculator:
                 if (checkValidDataInput()) {
                     if (mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2))) {
                         Operation operation = mInternalFormula.calculate(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2) / mConverterUtils.getDoubleValue(edtL1));
-                        Log.i("TAG", "m1: " + operation.getM1());
-                        Log.i("TAG", "m2: " + operation.getM2());
-                        Log.i("TAG", "k1: " + operation.getK1());
-                        Log.i("TAG", "k2: " + operation.getK2());
                     }
                 }
                 break;
@@ -238,14 +219,19 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
             Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho L2", Toast.LENGTH_SHORT).show();
             return false;
         }
-//        if (!mRegularUtils.isRealNumber(edth.getText().toString())) {
-//            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho hs", Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
-//        if (!mRegularUtils.isRealNumber(edta.getText().toString())) {
-//            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
+        if (!mRegularUtils.isRealNumber(edth.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho hs", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edta.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         return true;
+    }
+
+    @Override
+    public void onGetListingOperationsSuccess(List<ListingOperation> listingOperations) {
+        mGrListingOperations = listingOperations;
     }
 }

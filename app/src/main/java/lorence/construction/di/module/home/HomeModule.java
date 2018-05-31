@@ -16,6 +16,7 @@ import lorence.construction.view.fragment.beams.BeamFragment;
 import lorence.construction.view.fragment.listing.ListingFragment;
 import lorence.construction.view.fragment.listing.adapter.PagerAdapterPushed;
 import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
+import lorence.construction.view.fragment.listing.fragment.child.mordal.MordalFragment;
 import lorence.construction.view.fragment.listing.fragment.child.reference.ReferenceFragment;
 import lorence.construction.view.fragment.listing.fragment.child.result.ResultFragment;
 import lorence.construction.view.fragment.setting.SettingFragment;
@@ -72,7 +73,8 @@ public class HomeModule {
     PagerAdapterPushed providePagerAdapterPushed(FragmentManager fragmentManager, TitleStringUtils titleStringUtils,
                                                  CalculateFragment calculateFragment,
                                                  ResultFragment resultFragment,
-                                                 ReferenceFragment referenceFragment) {
-        return new PagerAdapterPushed(fragmentManager, titleStringUtils, calculateFragment, resultFragment, referenceFragment);
+                                                 ReferenceFragment referenceFragment,
+                                                 MordalFragment mordalFragment) {
+        return new PagerAdapterPushed(fragmentManager, titleStringUtils, calculateFragment, resultFragment, referenceFragment, mordalFragment);
     }
 }

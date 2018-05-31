@@ -9,7 +9,7 @@ import lorence.construction.view.fragment.listing.ListingPresenterImpl;
 public interface ListingOperationModel {
     void getListingOperationByListingPresenters(ListingPresenterImpl listingPresenter);
 
-    void getListingOperationByListingPresenterByListingOperationPresenters(ListingOperationPresenter listingOperationPresenter);
+    void getListingOperationByListingOperationPresenters(ListingOperationPresenter listingOperationPresenter);
 
     void inertListingOperationByListingPresenters(List<ListingOperation> list, ListingPresenterImpl listingPresenter);
 

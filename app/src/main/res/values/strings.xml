@@ -12,8 +12,10 @@
     <string name="title_abouts">Giới Thiệu</string>
 
     <string name="input_L1">Nhập L1</string>
+    <string name="input_D">Nhập D (0.8->1.4)</string>
     <string name="input_L2">Nhập L2</string>
     <string name="input_h">Nhập hs</string>
+    <string name="value_h">Giá trị hs tham khảo</string>
     <string name="input_a">Nhập a</string>
     <string name="input_g">Tĩnh tải g</string>
     <string name="input_p">Hoạt tải p</string>
@@ -25,6 +27,7 @@
     <string name="titleMaterials">Vật liệu</string>
     <string name="titleMaterialLoad">Tải trọng</string>
     <string name="titleReferLoad">Tải trọng tham khảo</string>
+    <string name="titleReferHS">Chiều dày sàn</string>
     <string name="titleStructureFloor">Cấu tạo sàn</string>
     <string name="input_brick">Lót gạch dày</string>
     <string name="input_mortar">Vữa lót dày</string>

@@ -56,12 +56,12 @@ public class ConcreteFragment extends DialogFragment {
 
     public List<Concrete> getConcretes() {
         ArrayList<Concrete> list = new ArrayList<>();
-        list.add(new Concrete("B3.5", "4.50"));
-        list.add(new Concrete("B5", "6.42"));
-        list.add(new Concrete("B7.5", "9.63"));
-        list.add(new Concrete("B10", "12.84"));
-        list.add(new Concrete("B12.5", "16.05"));
-        list.add(new Concrete("B15", "19.27"));
+        list.add(new Concrete("B12.5", "7.5"));
+        list.add(new Concrete("B15", "8.5"));
+        list.add(new Concrete("B20", "11.5"));
+        list.add(new Concrete("B25", "14.5"));
+        list.add(new Concrete("B30", "17.0"));
+        list.add(new Concrete("B35", "19.5"));
         return list;
     }
 

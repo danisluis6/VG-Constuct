@@ -8,6 +8,7 @@ import lorence.construction.data.storage.dao.ListingOperationDao;
 import lorence.construction.data.storage.entity.ListingOperation;
 import lorence.construction.view.fragment.listing.ListingPresenter;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationPresenter;
+import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculatePresenterImpl;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -27,4 +28,8 @@ public interface ListingOperationAsynTask {
     void getListingOperationByListingPresenters(ListingPresenter listingPresenter);
 
     void getListingOperationByListingOperationPresenters(ListingOperationPresenter listingOperationPresenter);
+
+    void attachCalculatePresenter(CalculatePresenterImpl calculatePresenter);
+
+    void getListingOperationByCalculatePresenters(CalculatePresenterImpl calculatePresenter);
 }

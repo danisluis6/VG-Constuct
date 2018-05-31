@@ -33,7 +33,7 @@ public class ListingOperationPresenterImpl implements ListingOperationPresenter 
 
     @Override
     public void getListingOperations() {
-        mListingOperationModel.getListingOperationByListingPresenterByListingOperationPresenters(this);
+        mListingOperationModel.getListingOperationByListingOperationPresenters(this);
     }
 
     @Override

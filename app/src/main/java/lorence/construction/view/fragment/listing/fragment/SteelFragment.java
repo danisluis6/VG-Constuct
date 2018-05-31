@@ -56,9 +56,10 @@ public class SteelFragment extends DialogFragment {
 
     public List<Steel> getSteels() {
         ArrayList<Steel> list = new ArrayList<>();
-        list.add(new Steel("CI", "4.50"));
-        list.add(new Steel("CII", "4.50"));
-        list.add(new Steel("CIII", "4.50"));
+        list.add(new Steel("CI, A-I", "225"));
+        list.add(new Steel("CII, A-II", "280"));
+        list.add(new Steel("A-III (6-8 mm)", "355"));
+        list.add(new Steel("CIII, A-III (10-40 mm)", "365"));
         return list;
     }
 
