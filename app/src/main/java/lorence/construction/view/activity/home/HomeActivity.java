@@ -1,14 +1,11 @@
 package lorence.construction.view.activity.home;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,7 +19,6 @@ import butterknife.BindView;
 import lorence.construction.R;
 import lorence.construction.app.Application;
 import lorence.construction.di.module.home.HomeModule;
-import lorence.construction.helper.Constants;
 import lorence.construction.helper.Validator;
 import lorence.construction.view.activity.BaseActivity;
 
@@ -57,11 +53,6 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @Inject
     HomePresenter mHomePresenter;
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-    }
 
     @Override
     public void distributedDaggerComponents() {
@@ -136,11 +127,6 @@ public class HomeActivity extends BaseActivity implements HomeView {
     public void showBottomBar() {
         if (mBottomBar != null)
             mBottomBar.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
 }

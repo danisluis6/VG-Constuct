@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.List;
 import java.util.Stack;
@@ -36,6 +35,7 @@ import lorence.construction.view.fragment.listing.module.ListingView;
 
 /**
  * Created by vuongluis on 4/14/2018.
+ *
  * @author vuongluis
  * @version 0.0.1
  */
@@ -75,11 +75,6 @@ public class ListingFragment extends EBaseFragment implements ListingView {
 
     @SuppressLint("ValidFragment")
     public ListingFragment() {
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
@@ -148,7 +143,7 @@ public class ListingFragment extends EBaseFragment implements ListingView {
 
     @Override
     public void navigatePageOperation(String tag) {
-        pushFragment(mListingOperationFragment, tag);
+        pushFragment(mListingOperationFragment.newInstance(mListingOperationFragment, tag), tag);
     }
 
     @Override
@@ -161,5 +156,4 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     public void defineToolbar(String title) {
         mActivity.updateTitleToolbar(title);
     }
-
 }

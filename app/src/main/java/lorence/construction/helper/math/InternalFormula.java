@@ -17,19 +17,52 @@ public class InternalFormula {
     public InternalFormula() {
     }
 
-    public Operation calculateM1(List<ListingOperation> arrListingOperations, String titleToolbar, double value) {
+    public Operation calculate(List<ListingOperation> arrListingOperations, String titleToolbar, double value) {
         Operation operation = null;
         if (TextUtils.equals(titleToolbar, Constants.LISTINGS.ONE)) {
             operation = getM1M2(arrListingOperations, Constants.LISTINGS.ONE, value);
         } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.TWO)) {
             operation = getM1M2(arrListingOperations, Constants.LISTINGS.TWO, value);
             operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.TWO, value).getK1());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.THREE)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.THREE, value);
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.THREE, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.FOUR)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.FOUR, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.FOUR, value).getK1());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.FIVE)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.FIVE, value);
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.FIVE, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.SIX)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.SIX, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.SIX, value).getK1());
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.SIX, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.SEVEN)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.SEVEN, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.SEVEN, value).getK1());
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.SEVEN, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.EIGHT)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.EIGHT, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.EIGHT, value).getK1());
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.EIGHT, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.NINE)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.NINE, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.NINE, value).getK1());
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.NINE, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.TEN)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.TEN, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.TEN, value).getK1());
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.TEN, value).getK2());
+        } else if (TextUtils.equals(titleToolbar, Constants.LISTINGS.ELEVEN)) {
+            operation = getM1M2(arrListingOperations, Constants.LISTINGS.ELEVEN, value);
+            operation.setK1(getK1K2(arrListingOperations, Constants.LISTINGS.ELEVEN, value).getK1());
+            operation.setK2(getK1K2(arrListingOperations, Constants.LISTINGS.ELEVEN, value).getK2());
         }
         return operation;
     }
 
     private Operation getM1M2(List<ListingOperation> arrListingOperations, String type, double value) {
-        Double m1 = 0.0, m2 = 0.0;
+        Double m1 = 0.0, m2 = 0.0, k1 = 0.0, k2 = 0.0;
         List<ListingOperation> temps = null;
         int index = 0;
         temps = getTypeOfListings(arrListingOperations, type);
@@ -43,14 +76,14 @@ public class InternalFormula {
         }
         if (m1 == 0.0 || m2 == 0.0) {
             for (int i = 0; i < temps.size(); i++) {
-                if (Math.round(value*100.0)/100.0 > Double.parseDouble(temps.get(i).getScope())) {
+                if ((Math.round(value*100.0)/100.0) > Double.parseDouble(temps.get(i).getScope())) {
                     index = i;
                 }
             }
             m1 = Double.parseDouble(temps.get(index).getM1()) - ((Double.parseDouble(temps.get(index).getM1()) - Double.parseDouble(temps.get(index+1).getM1()))/0.05)*(Math.round(value*100.0)/100.0 - Double.parseDouble(temps.get(index).getScope()));
             m2 = Double.parseDouble(temps.get(index).getM2()) - ((Double.parseDouble(temps.get(index).getM2()) - Double.parseDouble(temps.get(index+1).getM2()))/0.05)*(Math.round(value*100.0)/100.0 - Double.parseDouble(temps.get(index).getScope()));
         }
-        return new Operation(String.valueOf(Math.round(m1*100000.0)/100000.0), String.valueOf(Math.round(m2*100000.0)/100000.0), "0.0", "0.0");
+        return new Operation(String.valueOf(Math.round(m1*100000.0)/100000.0), String.valueOf(Math.round(m2*100000.0)/100000.0), String.valueOf(k1), String.valueOf(k2));
     }
 
     private Operation getK1K2(List<ListingOperation> arrListingOperations, String type, double value) {

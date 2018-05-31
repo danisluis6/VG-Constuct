@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import lorence.construction.app.Application;
+import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.

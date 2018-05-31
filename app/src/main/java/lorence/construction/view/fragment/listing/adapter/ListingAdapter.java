@@ -12,7 +12,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import lorence.construction.R;
-import lorence.construction.app.Application;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.view.fragment.listing.ListingFragment;
 
