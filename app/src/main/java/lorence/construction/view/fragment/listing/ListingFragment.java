@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.List;
 import java.util.Stack;
@@ -36,6 +35,7 @@ import lorence.construction.view.fragment.listing.module.ListingView;
 
 /**
  * Created by vuongluis on 4/14/2018.
+ *
  * @author vuongluis
  * @version 0.0.1
  */
@@ -72,23 +72,9 @@ public class ListingFragment extends EBaseFragment implements ListingView {
 
     private Stack<FragmentStack> mCurrentFrgStack;
     private FragmentUtils mFragmentUtils;
-    private static final String ARG_POSITION = "position";
-    private int mPosition;
 
     @SuppressLint("ValidFragment")
     public ListingFragment() {
-    }
-
-    public Fragment newInstance(ListingFragment fragment, int position) {
-        Bundle b = new Bundle();
-        b.putInt(ARG_POSITION, position);
-        fragment.setArguments(b);
-        return fragment;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
@@ -104,7 +90,6 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listing, container, false);
-        mPosition = getArguments().getInt(ARG_POSITION);
         bindView(view);
         initComponents();
         return view;

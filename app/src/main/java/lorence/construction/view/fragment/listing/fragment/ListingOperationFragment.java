@@ -41,6 +41,7 @@ import lorence.construction.view.fragment.listing.ListingFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
+ *
  * @author vuongluis
  * @version 0.0.1
  */
@@ -143,13 +144,6 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
     public ListingOperationFragment() {
     }
 
-    public Fragment newInstance(ListingOperationFragment fragment, String tag) {
-        Bundle b = new Bundle();
-        b.putString(ARG_POSITION, tag);
-        fragment.setArguments(b);
-        return fragment;
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -161,10 +155,11 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
                 .inject(this);
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        setRetainInstance(true);
+    public Fragment newInstance(ListingOperationFragment fragment, String tag) {
+        Bundle b = new Bundle();
+        b.putString(ARG_POSITION, tag);
+        fragment.setArguments(b);
+        return fragment;
     }
 
     @Override
@@ -227,12 +222,12 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
         switch (v.getId()) {
             case R.id.btnPerformCalculator:
                 if (checkValidDataInput()) {
-                    if(mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2))) {
-                        Operation operation = mInternalFormula.calculate(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2)/mConverterUtils.getDoubleValue(edtL1));
-                        Log.i("TAG", "m1: "+operation.getM1());
-                        Log.i("TAG", "m2: "+operation.getM2());
-                        Log.i("TAG", "k1: "+operation.getK1());
-                        Log.i("TAG", "k2: "+operation.getK2());
+                    if (mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2))) {
+                        Operation operation = mInternalFormula.calculate(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2) / mConverterUtils.getDoubleValue(edtL1));
+                        Log.i("TAG", "m1: " + operation.getM1());
+                        Log.i("TAG", "m2: " + operation.getM2());
+                        Log.i("TAG", "k1: " + operation.getK1());
+                        Log.i("TAG", "k2: " + operation.getK2());
                     }
                 }
                 break;
@@ -276,9 +271,9 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
         mHomeActivity.updateTitleToolbar(getString(R.string.title_listings));
         mHomeActivity.showBottomBar();
+        super.onDestroyView();
     }
 
 }

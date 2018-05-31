@@ -62,7 +62,7 @@ public class HomePresenterImpl implements HomePresenter {
 
         switch (menuItemId) {
             case R.id.listings:
-                mHomeView.displayFragment(moveToFragListings(menuItemId), Constants.TAG.LISTING);
+                mHomeView.displayFragment(moveToFragListings(), Constants.TAG.LISTING);
                 mHomeView.updateTitleToolbar(mActivity.getString(R.string.title_listings));
                 restorePositionFragment();
                 break;
@@ -91,8 +91,10 @@ public class HomePresenterImpl implements HomePresenter {
         }
     }
 
-    private Fragment moveToFragListings(int menuItemId) {
-        return mListingsFragment.newInstance(mListingsFragment, menuItemId);
+    private Fragment moveToFragListings() {
+        Bundle fragArgs = new Bundle();
+        mListingsFragment.setArguments(fragArgs);
+        return mListingsFragment;
     }
 
     private Fragment moveToFragBeams() {
