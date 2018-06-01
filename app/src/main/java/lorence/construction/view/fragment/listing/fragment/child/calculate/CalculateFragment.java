@@ -5,7 +5,8 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,11 +34,13 @@ import lorence.construction.helper.Constants;
 import lorence.construction.helper.ConverterUtils;
 import lorence.construction.helper.RegularUtils;
 import lorence.construction.helper.math.InternalFormula;
+import lorence.construction.utitilize.Utils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.fragment.ConcreteFragment;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
 import lorence.construction.view.fragment.listing.fragment.SteelFragment;
+import lorence.construction.view.fragment.listing.fragment.child.mordal.MordalFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -207,6 +210,12 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                 break;
 
         }
+    }
+
+    public void getValueL1() {
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.ARGUMENT_FRAGMENT.L1, edtL1.getText().toString());
+        mListingOperationFragment.setArguments(bundle);
     }
 
     @Override

@@ -6,6 +6,7 @@ import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.di.module.listing.FragmentListingModule;
 import lorence.construction.di.module.listing.ListingModule;
 import lorence.construction.di.module.listing.child.CalculateFragmentModule;
+import lorence.construction.di.module.listing.child.MordalFragmentModule;
 import lorence.construction.di.module.listing.child.ReferenceFragmentModule;
 import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.view.activity.home.HomeActivity;
@@ -32,6 +33,7 @@ public interface HomeComponent {
 
     ListingComponent plus(ListingModule module);
     CalculateFragmentComponent plus(CalculateFragmentModule module);
+    MordalFragmentComponent plus(MordalFragmentModule module);
     ReferenceFragmentComponent plus(ReferenceFragmentModule module);
 }
 

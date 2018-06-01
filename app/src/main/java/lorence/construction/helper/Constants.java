@@ -38,6 +38,10 @@ public class Constants {
         public static final String ELEVEN = "Bảng Kê 11";
     }
 
+    public static final class ARGUMENT_FRAGMENT {
+        public static final String L1 = "l1";
+    }
+
     public static final class SAVE {
         public static final String LISTING = "Listing";
     }

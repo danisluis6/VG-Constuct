@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 
@@ -28,6 +29,8 @@ import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.ListingFragment;
 import lorence.construction.view.fragment.listing.adapter.PagerAdapterPushed;
+import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
+import lorence.construction.view.fragment.listing.fragment.child.mordal.MordalFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -83,6 +86,12 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
         return fragment;
     }
 
+    @Inject
+    CalculateFragment mCalculateFragment;
+
+    @Inject
+    MordalFragment mMordalFragment;
+
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listing_operation, container, false);
@@ -91,6 +100,32 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
         mHomeActivity.hiddenBottomBar();
         mListingOperationPresenter.getListingOperations();
         mViewPager.setAdapter(mPagerAdapterPushed);
+        mViewPager.setOffscreenPageLimit(3);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 0) {
+                    Toast.makeText(mContext, "I'm in Calculate Fragment", Toast.LENGTH_SHORT).show();
+                } else if (position == 1) {
+                    mCalculateFragment.getValueL1();
+                    mMordalFragment.updateValueL1();
+                } else if (position == 2) {
+                    Toast.makeText(mContext, "Result", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "Done", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         mTabs.setViewPager(mViewPager);
         return view;
     }
