@@ -58,6 +58,9 @@ public class BeamsAdapter extends RecyclerView.Adapter<BeamsAdapter.MyViewHolder
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final Beams item = mGroupBeams.get(position);
         Picasso.with(mContext).load(item.getImage()).into(holder.image);
+        holder.type.setText(item.getType());
+        holder.m1.setText(item.getM1());
+        holder.m2.setText(item.getM2());
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
