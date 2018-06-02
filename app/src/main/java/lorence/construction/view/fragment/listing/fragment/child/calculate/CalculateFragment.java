@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import lorence.construction.R;
 import lorence.construction.app.Application;
+import lorence.construction.data.SessionManager;
 import lorence.construction.data.storage.entity.Concrete;
 import lorence.construction.data.storage.entity.ListingOperation;
 import lorence.construction.data.storage.entity.Operation;
@@ -121,6 +123,9 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     @Inject
     CalculateFragment mCalculateFragment;
 
+    @Inject
+    SessionManager mSessionManager;
+
     private List<ListingOperation> mGrListingOperations;
 
     public CalculateFragment() {
@@ -165,6 +170,22 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
             }
         });
         mCalculatePresenter.getListingOperations();
+        edtL1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mSessionManager.setL1(edtL1.getText().toString());
+            }
+        });
         return view;
     }
 
@@ -210,12 +231,6 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                 break;
 
         }
-    }
-
-    public void getValueL1() {
-        Bundle bundle = new Bundle();
-        bundle.putString(Constants.ARGUMENT_FRAGMENT.L1, edtL1.getText().toString());
-        mListingOperationFragment.setArguments(bundle);
     }
 
     @Override

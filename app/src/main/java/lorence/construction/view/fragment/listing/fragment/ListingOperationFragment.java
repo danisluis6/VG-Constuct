@@ -25,6 +25,7 @@ import lorence.construction.data.storage.entity.ListingOperation;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.di.module.listing.ListingModule;
 import lorence.construction.di.module.listing.child.ListingOperationModule;
+import lorence.construction.utitilize.Utils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.ListingFragment;
@@ -110,14 +111,11 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
             @Override
             public void onPageSelected(int position) {
                 if (position == 0) {
-                    Toast.makeText(mContext, "I'm in Calculate Fragment", Toast.LENGTH_SHORT).show();
+
                 } else if (position == 1) {
-                    mCalculateFragment.getValueL1();
                     mMordalFragment.updateValueL1();
                 } else if (position == 2) {
-                    Toast.makeText(mContext, "Result", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(mContext, "Done", Toast.LENGTH_SHORT).show();
                 }
             }
 

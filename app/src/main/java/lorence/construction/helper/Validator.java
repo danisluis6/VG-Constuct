@@ -1,7 +1,5 @@
 package lorence.construction.helper;
 
-import android.text.TextUtils;
-
 import javax.inject.Inject;
 
 /**
@@ -16,7 +14,7 @@ public class Validator {
     public Validator() {
     }
 
-    public boolean validUsername(String username) {
-        return !TextUtils.isEmpty(username);
+    public boolean checkValidD(String valueD) {
+        return Double.parseDouble(valueD) >= 0.8 && Double.parseDouble(valueD) <= 1.4;
     }
 }

@@ -182,4 +182,10 @@ public class InternalFormula {
         }
         return temps;
     }
+
+    public String calculateFloorThickness(String L, String D) {
+        Double minimum = Double.parseDouble(D)*Double.parseDouble(L)/40.0;
+        Double maximum = Double.parseDouble(D)*Double.parseDouble(L)/45.0;
+        return String.valueOf((Math.round(minimum*100000.0)/100000.0)+" -> "+(Math.round(maximum*100000.0)/100000.0));
+    }
 }

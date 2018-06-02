@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import lorence.construction.app.Application;
+import lorence.construction.data.SessionManager;
 import lorence.construction.helper.ConditionCalculating;
 import lorence.construction.helper.ConverterUtils;
 import lorence.construction.helper.RegularUtils;
@@ -46,6 +47,12 @@ public class AppModule {
     @Singleton
     Validator provideValidator() {
         return new Validator();
+    }
+
+    @Provides
+    @Singleton
+    SessionManager provideSessionManager(Context context) {
+        return new SessionManager(context);
     }
 
     @Provides
