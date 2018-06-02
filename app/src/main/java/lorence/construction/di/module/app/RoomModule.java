@@ -9,13 +9,17 @@ import dagger.Module;
 import dagger.Provides;
 import lorence.construction.app.Application;
 import lorence.construction.data.AppDatabase;
+import lorence.construction.data.storage.async.BeamsAsynTask;
+import lorence.construction.data.storage.async.BeamsAsynTaskImpl;
 import lorence.construction.data.storage.async.ListingAsynTask;
 import lorence.construction.data.storage.async.ListingAsynTaskImpl;
 import lorence.construction.data.storage.async.ListingOperationAsynTask;
 import lorence.construction.data.storage.async.ListingOperationAsynTaskImpl;
+import lorence.construction.data.storage.dao.BeamsDao;
 import lorence.construction.data.storage.dao.ListingDao;
 import lorence.construction.data.storage.dao.ListingOperationDao;
-import lorence.construction.di.scope.ActivityScope;
+import lorence.construction.view.fragment.beams.BeamsModel;
+import lorence.construction.view.fragment.beams.BeamsModelImpl;
 import lorence.construction.view.fragment.listing.ListingModel;
 import lorence.construction.view.fragment.listing.ListingModelImpl;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationModel;
@@ -57,6 +61,12 @@ public class RoomModule {
 
     @Singleton
     @Provides
+    BeamsDao provideBeamsDao() {
+        return mAppDatabase.getBeamsDao();
+    }
+
+    @Singleton
+    @Provides
     ListingOperationDao providesListingOperationDao() {
         return mAppDatabase.getListingOperationDao();
     }
@@ -65,6 +75,12 @@ public class RoomModule {
     @Provides
     ListingModel providesListingModel(ListingDao listingDao) {
         return new ListingModelImpl(mContext, listingDao);
+    }
+
+    @Singleton
+    @Provides
+    BeamsModel provideBeamsModel(BeamsDao beamsDao) {
+        return new BeamsModelImpl(mContext, beamsDao);
     }
 
     @Singleton
@@ -83,6 +99,12 @@ public class RoomModule {
     @Singleton
     ListingAsynTask provideListingAsynTask() {
         return new ListingAsynTaskImpl();
+    }
+
+    @Provides
+    @Singleton
+    BeamsAsynTask provideBeamsAsynTask() {
+        return new BeamsAsynTaskImpl();
     }
 
     @Provides

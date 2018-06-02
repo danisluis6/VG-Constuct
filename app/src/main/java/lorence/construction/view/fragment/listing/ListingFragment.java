@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +30,7 @@ import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
-import lorence.construction.view.fragment.listing.module.ListingDataSource;
+import lorence.construction.view.fragment.listing.module.DataSource;
 import lorence.construction.view.fragment.listing.module.ListingView;
 
 /**
@@ -66,7 +65,7 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     ListingAdapter mListingAdapter;
 
     @Inject
-    ListingDataSource mListingDataSource;
+    DataSource mListingDataSource;
 
     @Inject
     GridSpacingItemDecoration mGridSpacingItemDecoration;

@@ -2,6 +2,7 @@ package lorence.construction.view.fragment.listing.module;
 
 import java.util.List;
 
+import lorence.construction.data.storage.entity.Beams;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.data.storage.entity.ListingOperation;
 
@@ -12,9 +13,11 @@ import lorence.construction.data.storage.entity.ListingOperation;
  * @since 12/28/2017
  */
 
-public interface ListingDataSource {
+public interface DataSource {
 
     List<Listing> getDefaultListingData();
 
     List<ListingOperation> getDefaultListingOperationData();
+
+    List<Beams> getDefaultBeamsData();
 }

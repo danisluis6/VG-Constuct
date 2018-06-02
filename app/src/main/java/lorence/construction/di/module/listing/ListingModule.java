@@ -18,8 +18,8 @@ import lorence.construction.view.fragment.listing.ListingPresenter;
 import lorence.construction.view.fragment.listing.ListingPresenterImpl;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationModel;
+import lorence.construction.view.fragment.listing.module.DataSource;
 import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
-import lorence.construction.view.fragment.listing.module.ListingDataSource;
 import lorence.construction.view.fragment.listing.module.ListingDataSourceImpl;
 import lorence.construction.view.fragment.listing.module.ListingView;
 
@@ -65,7 +65,7 @@ public class ListingModule {
 
     @Provides
     @ActivityScope
-    ListingDataSource provideListingDataSource() {
+    DataSource provideListingDataSource() {
         return new ListingDataSourceImpl();
     }
 

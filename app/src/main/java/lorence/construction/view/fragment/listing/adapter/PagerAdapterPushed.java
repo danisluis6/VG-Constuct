@@ -29,11 +29,10 @@ public class PagerAdapterPushed extends FragmentStatePagerAdapter {
     private MordalFragment mMordalFragment;
 
     @Inject
-    public PagerAdapterPushed(FragmentManager fragmentManager, TitleStringUtils titleStringUtils, CalculateFragment calculateFragment, ResultFragment resultFragment, ReferenceFragment referenceFragment, MordalFragment mordalFragment) {
+    public PagerAdapterPushed(FragmentManager fragmentManager, TitleStringUtils titleStringUtils, CalculateFragment calculateFragment, ReferenceFragment referenceFragment, MordalFragment mordalFragment) {
         super(fragmentManager);
         titles = titleStringUtils;
         mCalculateFragment = calculateFragment;
-        mResultFragment = resultFragment;
         mReferenceFragment = referenceFragment;
         mMordalFragment = mordalFragment;
     }
@@ -49,9 +48,6 @@ public class PagerAdapterPushed extends FragmentStatePagerAdapter {
                 return mMordalFragment.newInstance(mMordalFragment, position);
             }
             case 2:{
-                return mResultFragment.newInstance(mResultFragment, position);
-            }
-            case 3:{
                 return mReferenceFragment.newInstance(mReferenceFragment, position);
             }
         }

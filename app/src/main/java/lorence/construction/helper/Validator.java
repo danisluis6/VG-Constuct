@@ -15,6 +15,9 @@ public class Validator {
     }
 
     public boolean checkValidD(String valueD) {
-        return Double.parseDouble(valueD) >= 0.8 && Double.parseDouble(valueD) <= 1.4;
+        if (valueD.charAt(0) != '.') {
+            return Double.parseDouble(valueD) >= 0.8 && Double.parseDouble(valueD) <= 1.4;
+        }
+        return false;
     }
 }

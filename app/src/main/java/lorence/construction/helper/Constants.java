@@ -38,6 +38,12 @@ public class Constants {
         public static final String ELEVEN = "Bảng Kê 11";
     }
 
+    public static final class BEAMS {
+        public static final String ONE = "Sơ Đồ 1";
+        public static final String TWO = "Sơ Đồ 2";
+        public static final String THREE = "Sơ Đồ 3";
+    }
+
     public static final class ARGUMENT_FRAGMENT {
         public static final String L1 = "l1";
     }

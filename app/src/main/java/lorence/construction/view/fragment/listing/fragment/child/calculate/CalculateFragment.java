@@ -258,4 +258,9 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     public void onGetListingOperationsSuccess(List<ListingOperation> listingOperations) {
         mGrListingOperations = listingOperations;
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 }

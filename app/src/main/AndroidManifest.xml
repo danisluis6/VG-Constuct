@@ -16,6 +16,7 @@
         android:theme="@style/AppTheme.NoActionBar">
 
         <activity android:name="lorence.construction.view.activity.splash.SplashActivity"
+            android:resizeableActivity="false"
             android:theme="@style/Theme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

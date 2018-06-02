@@ -12,13 +12,12 @@ import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.activity.home.HomePresenter;
 import lorence.construction.view.activity.home.HomePresenterImpl;
 import lorence.construction.view.fragment.about.AboutFragment;
-import lorence.construction.view.fragment.beams.BeamFragment;
+import lorence.construction.view.fragment.beams.BeamsFragment;
 import lorence.construction.view.fragment.listing.ListingFragment;
 import lorence.construction.view.fragment.listing.adapter.PagerAdapterPushed;
 import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
 import lorence.construction.view.fragment.listing.fragment.child.mordal.MordalFragment;
 import lorence.construction.view.fragment.listing.fragment.child.reference.ReferenceFragment;
-import lorence.construction.view.fragment.listing.fragment.child.result.ResultFragment;
 import lorence.construction.view.fragment.setting.SettingFragment;
 
 /**
@@ -47,7 +46,7 @@ public class HomeModule {
     @ActivityScope
     HomePresenter provideHomePresenter(/* get Parents */Validator validator, /* get Parents */Context context, /* get its */HomeActivity homeActivity,
                                            ListingFragment listingFragment,
-                                           BeamFragment beamFragment,
+                                           BeamsFragment beamFragment,
                                            SettingFragment settingFragment,
                                            AboutFragment aboutFragment) {
         return new HomePresenterImpl(validator, context, homeActivity,
@@ -72,9 +71,8 @@ public class HomeModule {
     @ActivityScope
     PagerAdapterPushed providePagerAdapterPushed(FragmentManager fragmentManager, TitleStringUtils titleStringUtils,
                                                  CalculateFragment calculateFragment,
-                                                 ResultFragment resultFragment,
                                                  ReferenceFragment referenceFragment,
                                                  MordalFragment mordalFragment) {
-        return new PagerAdapterPushed(fragmentManager, titleStringUtils, calculateFragment, resultFragment, referenceFragment, mordalFragment);
+        return new PagerAdapterPushed(fragmentManager, titleStringUtils, calculateFragment, referenceFragment, mordalFragment);
     }
 }

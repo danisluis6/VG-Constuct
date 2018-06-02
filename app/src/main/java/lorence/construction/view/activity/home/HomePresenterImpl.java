@@ -9,7 +9,7 @@ import lorence.construction.R;
 import lorence.construction.helper.Constants;
 import lorence.construction.helper.Validator;
 import lorence.construction.view.fragment.about.AboutFragment;
-import lorence.construction.view.fragment.beams.BeamFragment;
+import lorence.construction.view.fragment.beams.BeamsFragment;
 import lorence.construction.view.fragment.listing.ListingFragment;
 import lorence.construction.view.fragment.setting.SettingFragment;
 
@@ -28,13 +28,13 @@ public class HomePresenterImpl implements HomePresenter {
 
     // Fragments
     private ListingFragment mListingsFragment;
-    private BeamFragment mBeamFragment;
+    private BeamsFragment mBeamFragment;
     private SettingFragment mSettingFragment;
     private AboutFragment mAboutFragment;
 
     public HomePresenterImpl(Validator validator, Context context, HomeActivity homeActivity,
                              ListingFragment listingFragment,
-                             BeamFragment beamFragment,
+                             BeamsFragment beamFragment,
                              SettingFragment settingFragment,
                              AboutFragment aboutFragment) {
         super();

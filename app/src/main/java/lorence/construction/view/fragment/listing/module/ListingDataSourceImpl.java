@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lorence.construction.R;
+import lorence.construction.data.storage.entity.Beams;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.data.storage.entity.ListingOperation;
 import lorence.construction.helper.Constants;
@@ -16,7 +17,8 @@ import lorence.construction.helper.Constants;
  * @since 12/28/2017
  */
 
-public class ListingDataSourceImpl implements ListingDataSource {
+public class ListingDataSourceImpl implements DataSource {
+
     @Override
     public List<Listing> getDefaultListingData() {
         List<Listing> groupListings = new ArrayList<>();
@@ -264,5 +266,20 @@ public class ListingDataSourceImpl implements ListingDataSource {
         groupListingOperations.add(new ListingOperation(Constants.LISTINGS.ELEVEN, "1.50","0.0311", "0.0059", "0.0562", "0.0279"));
 
         return groupListingOperations;
+    }
+
+    @Override
+    public List<Beams> getDefaultBeamsData() {
+        List<Beams> groupBeams = new ArrayList<>();
+        int[] covers = new int[]{
+                R.drawable.ic_loai_dam_1,
+                R.drawable.ic_loai_dam_1,
+                R.drawable.ic_loai_dam_1
+        };
+
+        groupBeams.add(new Beams(Constants.BEAMS.ONE, covers[0], "NGÀM + KHỚP","M (nhịp) = 9ql2/128", "M (gối) = ql2/8"));
+        groupBeams.add(new Beams(Constants.BEAMS.TWO, covers[1], "NGÀM + NGÀM", "M (nhịp) = ql2/8", "M (gối) = ql2/12"));
+        groupBeams.add(new Beams(Constants.BEAMS.THREE, covers[2], "KHỚP + KHỚP", "M (nhịp) = ql2/8", "M (gối) = 0"));
+        return groupBeams;
     }
 }

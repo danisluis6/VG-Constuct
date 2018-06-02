@@ -1,6 +1,7 @@
 package lorence.construction.di.component;
 
 import dagger.Subcomponent;
+import lorence.construction.di.module.beams.BeamsModule;
 import lorence.construction.di.module.home.FragmentModule;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.di.module.listing.FragmentListingModule;
@@ -32,6 +33,8 @@ public interface HomeComponent {
     HomeActivity inject(HomeActivity homeActivity);
 
     ListingComponent plus(ListingModule module);
+    BeamsComponent plus(BeamsModule module);
+
     CalculateFragmentComponent plus(CalculateFragmentModule module);
     MordalFragmentComponent plus(MordalFragmentModule module);
     ReferenceFragmentComponent plus(ReferenceFragmentModule module);

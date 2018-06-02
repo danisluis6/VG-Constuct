@@ -101,7 +101,7 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
         mHomeActivity.hiddenBottomBar();
         mListingOperationPresenter.getListingOperations();
         mViewPager.setAdapter(mPagerAdapterPushed);
-        mViewPager.setOffscreenPageLimit(3);
+        mViewPager.setOffscreenPageLimit(2);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

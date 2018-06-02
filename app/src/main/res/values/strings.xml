@@ -19,6 +19,7 @@
     <string name="input_a">Nhập a</string>
     <string name="input_g">Tĩnh tải g</string>
     <string name="input_p">Hoạt tải p</string>
+    <string name="input_As">Giá trị As: </string>
     <string name="input_concrete">Nhập bê tông</string>
     <string name="input_Rb">Thông số Rb</string>
     <string name="input_steel">Nhập thép</string>
@@ -38,9 +39,9 @@
     <string name="title_steel">Chọn loại thép</string>
 
     <!-- Title in Fragment Listing -->
-    <string name="tab_title_calculate">Calculate</string>
-    <string name="tab_title_result">Result</string>
-    <string name="tab_title_reference">Reference</string>
+    <string name="tab_title_calculate">Tính toán</string>
+    <string name="tab_title_result">Tham khảo</string>
+    <string name="tab_title_reference">Tham khảo</string>
 
     <!-- Reference -->
     <string name="standard">Một số loại hoạt tải theo TCVN 2737–1995</string>

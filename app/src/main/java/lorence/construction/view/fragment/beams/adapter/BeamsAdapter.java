@@ -1,4 +1,4 @@
-package lorence.construction.view.fragment.listing.adapter;
+package lorence.construction.view.fragment.beams.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -13,46 +14,49 @@ import java.util.List;
 
 import lorence.construction.R;
 import lorence.construction.data.storage.entity.Beams;
-import lorence.construction.data.storage.entity.Listing;
-import lorence.construction.view.fragment.listing.ListingFragment;
+import lorence.construction.view.fragment.beams.BeamsFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
  * @author vuongluis
  * @version 0.0.1
  */
-public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.MyViewHolder> {
+public class BeamsAdapter extends RecyclerView.Adapter<BeamsAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<Listing> mGroupListings;
-    private ListingFragment mFragment;
+    private List<Beams> mGroupBeams;
+    private BeamsFragment mFragment;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView image;
+        TextView m1,m2,type;
 
         MyViewHolder(View view) {
             super(view);
             image = view.findViewById(R.id.image);
+            type = view.findViewById(R.id.type);
+            m1 = view.findViewById(R.id.m1);
+            m2 = view.findViewById(R.id.m2);
         }
     }
 
-    public ListingAdapter(Context context, ListingFragment fragment, List<Listing> groupListing) {
+    public BeamsAdapter(Context context, BeamsFragment fragment, List<Beams> groupBeams) {
         mContext = context;
-        mGroupListings = groupListing;
         mFragment = fragment;
+        mGroupBeams = groupBeams;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_listing_item, parent, false);
+                .inflate(R.layout.card_beam_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        final Listing item = mGroupListings.get(position);
+        final Beams item = mGroupBeams.get(position);
         Picasso.with(mContext).load(item.getImage()).into(holder.image);
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,12 +68,11 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return mGroupListings.size();
+        return mGroupBeams.size();
     }
 
-    public void updateListing(List<Listing> listings) {
-        mGroupListings = listings;
+    public void updateBeams(List<Beams> beams) {
+        mGroupBeams = beams;
         notifyDataSetChanged();
     }
-
 }

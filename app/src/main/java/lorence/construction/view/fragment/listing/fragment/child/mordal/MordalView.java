@@ -7,4 +7,5 @@ package lorence.construction.view.fragment.listing.fragment.child.mordal;
  */
 
 public interface MordalView {
+    boolean checkValidDataInput();
 }

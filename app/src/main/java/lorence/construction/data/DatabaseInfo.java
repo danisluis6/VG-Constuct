@@ -17,6 +17,7 @@ public class DatabaseInfo {
     // Table Listing
     public static class Tables {
         public static final String Listing = "listing";
+        public static final String Beams = "beams";
         public static final String Concrete = "concrete";
         public static final String Steel = "steel";
         public static final String ListingOperation = "listingoperation";
@@ -27,6 +28,15 @@ public class DatabaseInfo {
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_IMAGE = "image";
+    }
+
+    public static class Beams {
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_NAME = "name";
+        public static final String COLUMN_IMAGE = "image";
+        public static final String COLUMN_TYPE = "type";
+        public static final String COLUMN_M1 = "m1";
+        public static final String COLUMN_M2 = "m2";
     }
 
     public static class ListingOperation {

@@ -188,4 +188,9 @@ public class InternalFormula {
         Double maximum = Double.parseDouble(D)*Double.parseDouble(L)/45.0;
         return String.valueOf((Math.round(minimum*100000.0)/100000.0)+" -> "+(Math.round(maximum*100000.0)/100000.0));
     }
+
+    public String performStaticLoad(Double brick, Double mortar, Double concreteFloor, Double plasterMortar) {
+        Double value = brick*2.2 + mortar*2.4 + concreteFloor*2.8 + plasterMortar*2.4;
+        return String.valueOf(Math.round(value*100000.0)/100000.0);
+    }
 }
