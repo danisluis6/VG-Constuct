@@ -5,6 +5,7 @@ import lorence.construction.di.module.listing.FragmentListingModule;
 import lorence.construction.di.module.listing.ListingModule;
 import lorence.construction.di.module.listing.child.ListingOperationModule;
 import lorence.construction.di.scope.ActivityScope;
+import lorence.construction.di.scope.FragmentScope;
 import lorence.construction.view.fragment.listing.ListingFragment;
 
 /**
@@ -14,7 +15,7 @@ import lorence.construction.view.fragment.listing.ListingFragment;
  * @version 0.0.1
  */
 
-@ActivityScope
+@FragmentScope
 @Subcomponent(
         modules = {
                 ListingModule.class,

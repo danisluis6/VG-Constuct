@@ -6,6 +6,7 @@ import dagger.Module;
 import dagger.Provides;
 import lorence.construction.data.storage.async.ListingOperationAsynTask;
 import lorence.construction.di.scope.ActivityScope;
+import lorence.construction.di.scope.FragmentScope;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationModel;
@@ -36,7 +37,7 @@ public class ListingOperationModule {
     }
 
     @Provides
-    @ActivityScope
+    @FragmentScope
     ListingOperationPresenter provideListingOperationPresenter(Context context, HomeActivity activity, ListingOperationModel listingOperationModel, ListingOperationAsynTask listingOperationAsynTask) {
         return new ListingOperationPresenterImpl(context, activity, mListingOperationView, listingOperationModel, listingOperationAsynTask);
     }

@@ -9,6 +9,7 @@ import dagger.Provides;
 import lorence.construction.data.storage.async.BeamsAsynTask;
 import lorence.construction.data.storage.entity.Beams;
 import lorence.construction.di.scope.ActivityScope;
+import lorence.construction.di.scope.FragmentScope;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.beams.BeamsFragment;
 import lorence.construction.view.fragment.beams.BeamsModel;
@@ -48,19 +49,19 @@ public class BeamsModule {
     }
 
     @Provides
-    @ActivityScope
+    @FragmentScope
     BeamsPresenter provideBeamsPresenter(Context context, HomeActivity activity, BeamsModel beamsModel, BeamsAsynTask beamsAsynTask) {
         return new BeamsPresenterImpl(context, activity, mBeamsView, beamsModel, beamsAsynTask);
     }
 
     @Provides
-    @ActivityScope
+    @FragmentScope
     BeamsAdapter provideBeamsAdapter(Context context) {
         return new BeamsAdapter(context, mFragment, new ArrayList<Beams>());
     }
 
     @Provides
-    @ActivityScope
+    @FragmentScope
     DataSource provideListingDataSource() {
         return new ListingDataSourceImpl();
     }

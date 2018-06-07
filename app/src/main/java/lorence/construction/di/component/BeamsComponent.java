@@ -3,6 +3,7 @@ package lorence.construction.di.component;
 import dagger.Subcomponent;
 import lorence.construction.di.module.beams.BeamsModule;
 import lorence.construction.di.scope.ActivityScope;
+import lorence.construction.di.scope.FragmentScope;
 import lorence.construction.view.fragment.beams.BeamsFragment;
 
 /**
@@ -12,7 +13,7 @@ import lorence.construction.view.fragment.beams.BeamsFragment;
  * @version 0.0.1
  */
 
-@ActivityScope
+@FragmentScope
 @Subcomponent(
         modules = {
                 BeamsModule.class

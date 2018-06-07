@@ -10,6 +10,7 @@ import lorence.construction.data.storage.async.ListingAsynTask;
 import lorence.construction.data.storage.async.ListingOperationAsynTask;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.di.scope.ActivityScope;
+import lorence.construction.di.scope.FragmentScope;
 import lorence.construction.utitilize.Utils;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.ListingFragment;
@@ -52,25 +53,25 @@ public class ListingModule {
     }
 
     @Provides
-    @ActivityScope
+    @FragmentScope
     ListingPresenter provideListingPresenter(Context context, HomeActivity activity, ListingModel listingModel, ListingOperationModel listingOperationModel, ListingAsynTask listingAsynTask, ListingOperationAsynTask listingOperationAsynTask) {
         return new ListingPresenterImpl(context, activity, mListingView, listingModel, listingOperationModel, listingAsynTask, listingOperationAsynTask);
     }
 
     @Provides
-    @ActivityScope
+    @FragmentScope
     ListingAdapter provideListingAdapter(Context context) {
         return new ListingAdapter(context, mFragment, new ArrayList<Listing>());
     }
 
     @Provides
-    @ActivityScope
+    @FragmentScope
     DataSource provideListingDataSource() {
         return new ListingDataSourceImpl();
     }
 
     @Provides
-    @ActivityScope
+    @FragmentScope
     GridSpacingItemDecoration provideGridSpacingItemDecoration() {
         return new GridSpacingItemDecoration(2, Utils.dpToPx(mActivity,10), true);
     }

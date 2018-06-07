@@ -39,6 +39,11 @@ public class DatabaseInfo {
         public static final String COLUMN_M2 = "m2";
     }
 
+    public static class Configuration {
+        public static final String COLUMN_MININUM_VERSION = "android-min-version";
+        public static final String COLUMN_NEWEST_VERSION = "android-latest-version";
+    }
+
     public static class ListingOperation {
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_NAME = "name";

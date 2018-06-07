@@ -18,6 +18,8 @@ import lorence.construction.data.storage.async.ListingOperationAsynTaskImpl;
 import lorence.construction.data.storage.dao.BeamsDao;
 import lorence.construction.data.storage.dao.ListingDao;
 import lorence.construction.data.storage.dao.ListingOperationDao;
+import lorence.construction.di.module.splash.SplashModel;
+import lorence.construction.di.module.splash.SplashModelImpl;
 import lorence.construction.view.fragment.beams.BeamsModel;
 import lorence.construction.view.fragment.beams.BeamsModelImpl;
 import lorence.construction.view.fragment.listing.ListingModel;
@@ -81,6 +83,12 @@ public class RoomModule {
     @Provides
     BeamsModel provideBeamsModel(BeamsDao beamsDao) {
         return new BeamsModelImpl(mContext, beamsDao);
+    }
+
+    @Singleton
+    @Provides
+    SplashModel provideSplashModel() {
+        return new SplashModelImpl(mContext);
     }
 
     @Singleton
