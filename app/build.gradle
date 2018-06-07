@@ -30,18 +30,18 @@ android {
         dev {
             applicationIdSuffix ".debug"
             resValue "string", "app_name", "VogoApp dev"
-            buildConfigField "String", BASE_URL, '"www.google.com.vn"'
+            buildConfigField "String", BASE_URL, '"https://www.google.com.vn/"'
         }
 
         prod_demo {
             applicationIdSuffix ".demo"
             resValue "string", "app_name", "VogoApp demo"
-            buildConfigField "String", BASE_URL, '"www.google.com.vn"'
+            buildConfigField "String", BASE_URL, '"https://www.google.com.vn/"'
         }
 
         prod_aws {
             resValue "string", "app_name", "VogoApp"
-            buildConfigField "String", BASE_URL, '"www.google.com.vn"'
+            buildConfigField "String", BASE_URL, '"https://www.google.com.vn/"'
         }
     }
 }

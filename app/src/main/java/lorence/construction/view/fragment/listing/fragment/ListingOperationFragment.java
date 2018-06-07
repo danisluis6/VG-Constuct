@@ -9,7 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 
@@ -25,7 +24,6 @@ import lorence.construction.data.storage.entity.ListingOperation;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.di.module.listing.ListingModule;
 import lorence.construction.di.module.listing.child.ListingOperationModule;
-import lorence.construction.utitilize.Utils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.ListingFragment;
