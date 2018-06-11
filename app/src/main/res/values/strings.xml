@@ -74,7 +74,7 @@
 
     <!-- Warning -->
     <string name="no_internet_connection">No Internet Connection</string>
-    <string name="warning_upgrade_new_version">A new version of EZfaxing is available. Please update to version %1$s now.</string>
+    <string name="warning_upgrade_new_version">A new version of VogoApp is available. Please update to version %1$s now.</string>
 
     <!-- Error -->
     <string name="error_time_out">Connection to server timed out. Please try again later.</string>
