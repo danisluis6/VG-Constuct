@@ -167,7 +167,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
      * Move to next activity
      */
     private void moveToNextActivity() {
-        if (mTimeOut /* && mApiSuccess*/) {
+        if (mTimeOut  && mApiSuccess) {
             startActivity(new Intent(SplashActivity.this, HomeActivity.class));
             finish();
         }

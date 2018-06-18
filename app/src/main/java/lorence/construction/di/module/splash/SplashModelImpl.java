@@ -11,7 +11,6 @@ import lorence.construction.helper.connect.rx.DisposableManager;
 import lorence.construction.helper.connect.rx.IDisposableListener;
 import lorence.construction.service.VogoApiService;
 import lorence.construction.utitilize.Utils;
-import retrofit2.Response;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -25,10 +24,11 @@ public class SplashModelImpl implements SplashModel, IDisposableListener<Configu
     private Context mContext;
     private SplashPresenter mSplashPresenter;
     private VogoApiService mApiService;
-    private DisposableManager<Response<ConfigurationResponse>> mDisposableManager;
+    private DisposableManager<ConfigurationResponse> mDisposableManager;
 
     public SplashModelImpl(Context context) {
         mContext = context;
+        mDisposableManager = new DisposableManager<>(this);
     }
 
     @Override
