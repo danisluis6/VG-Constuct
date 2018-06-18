@@ -17,7 +17,7 @@ import retrofit2.Response;
 
 public class DisposableManager<T> {
     private IDisposableListener listener;
-    private Disposable disposable = null;
+    private Disposable disposable;
 
     public DisposableManager(IDisposableListener<T> listener) {
         this.listener = listener;
