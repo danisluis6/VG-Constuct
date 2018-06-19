@@ -27,7 +27,6 @@
 
         <activity android:name="lorence.construction.view.activity.home.HomeActivity"
             android:windowSoftInputMode="adjustResize"/>
-
     </application>
 
 

@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "lorence.vgconstruct"
+        applicationId "come.stksxd.sotayxaydung"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
@@ -15,6 +15,7 @@ android {
                 includeCompileClasspath false
             }
         }
+
     }
     buildTypes {
         release {
@@ -100,4 +101,7 @@ dependencies {
     // Becareful when upgrade to 1.1.1
     //noinspection GradleDependency
     compile 'com.jpardogo.materialtabstrip:library:1.0.6'
+
+    // Hockey app
+    compile 'net.hockeyapp.android:HockeySDK:5.1.0'
 }
