@@ -73,7 +73,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
                 finish();
             }
         }
-//        mSplashPresenter.loadApplicationSettings();
+        mSplashPresenter.loadApplicationSettings();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -87,16 +87,16 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
     @Override
     protected void onResume() {
         super.onResume();
-//        if (isUpgrade) {
-//            String currentVersionApp = Utils.versionToComparable(Utils.getVersionName(getApplicationContext()));
-//            String minimumVersionApp = Utils.versionToComparable(SessionManager.getInstance(this).getMinimumVersion());
-//            if (currentVersionApp.compareTo(minimumVersionApp) < 0) {
-//                forceUserUpgradeLatestVersion(true);
-//                return;
-//            }
-//            mApiSuccess = true;
-//            moveToNextActivity();
-//        }
+        if (isUpgrade) {
+            String currentVersionApp = Utils.versionToComparable(Utils.getVersionName(getApplicationContext()));
+            String minimumVersionApp = Utils.versionToComparable(SessionManager.getInstance(this).getMinimumVersion());
+            if (currentVersionApp.compareTo(minimumVersionApp) < 0) {
+                forceUserUpgradeLatestVersion(true);
+                return;
+            }
+            mApiSuccess = true;
+            moveToNextActivity();
+        }
     }
 
     @Override
@@ -167,7 +167,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
      * Move to next activity
      */
     private void moveToNextActivity() {
-        if (mTimeOut /* && mApiSuccess*/) {
+        if (mTimeOut  && mApiSuccess) {
             startActivity(new Intent(SplashActivity.this, HomeActivity.class));
             finish();
         }

@@ -14,7 +14,7 @@ import retrofit2.http.GET;
 
 public interface VogoApiService {
 
-    @GET("https://www.youtube.com/")
+    @GET("http://evanuochoa.com/mobile-app/vogo-construction")
     Observable<Response<ConfigurationResponse>> getConfigurationResponseObservable();
 
 }
