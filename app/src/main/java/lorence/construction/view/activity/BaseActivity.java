@@ -4,15 +4,17 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import net.hockeyapp.android.CrashManager;
+
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import lorence.construction.app.Application;
-import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
+ *
  * @author vuongluis
  * @version 0.0.1
  */
@@ -43,6 +45,16 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     protected abstract void initAttributes();
 
     protected abstract void initViews();
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkForCrashes();
+    }
+
+    private void checkForCrashes() {
+        CrashManager.register(this);
+    }
 
     @Override
     protected void onDestroy() {

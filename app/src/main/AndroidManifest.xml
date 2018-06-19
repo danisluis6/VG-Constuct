@@ -27,6 +27,8 @@
 
         <activity android:name="lorence.construction.view.activity.home.HomeActivity"
             android:windowSoftInputMode="adjustResize"/>
+
+        <meta-data android:name="net.hockeyapp.android.appIdentifier" android:value="${HOCKEYAPP_APP_ID}" />
     </application>
 
 

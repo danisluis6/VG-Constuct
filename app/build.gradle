@@ -15,7 +15,7 @@ android {
                 includeCompileClasspath false
             }
         }
-
+        manifestPlaceholders = [HOCKEYAPP_APP_ID: "1acf200ab933425da0171db1dad650ce"]
     }
     buildTypes {
         release {
@@ -28,18 +28,6 @@ android {
     }
     productFlavors {
         def BASE_URL = "BASE_URL"
-        dev {
-            applicationIdSuffix ".debug"
-            resValue "string", "app_name", "VogoApp dev"
-            buildConfigField "String", BASE_URL, '"https://www.google.com.vn/"'
-        }
-
-        prod_demo {
-            applicationIdSuffix ".demo"
-            resValue "string", "app_name", "VogoApp demo"
-            buildConfigField "String", BASE_URL, '"https://www.google.com.vn/"'
-        }
-
         prod_aws {
             resValue "string", "app_name", "VogoApp"
             buildConfigField "String", BASE_URL, '"https://www.google.com.vn/"'
