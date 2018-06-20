@@ -21,10 +21,15 @@ public class Validator {
     }
 
     public boolean checkValidD(String valueD) {
-        if (valueD.charAt(0) != '.') {
+        if (isRealNumber(valueD)) {
             return Double.parseDouble(valueD) >= 0.8 && Double.parseDouble(valueD) <= 1.4;
         }
         return false;
+    }
+
+    private boolean isRealNumber(String number) {
+        String regex = "[+-]?([0-9]*[.])?[0-9]+";
+        return number.matches(regex);
     }
 
     public String getUrlData(SessionManager sessionManager) {
