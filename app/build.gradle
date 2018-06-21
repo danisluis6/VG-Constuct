@@ -4,10 +4,10 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "come.stksxd.sotayxaydung"
-        minSdkVersion 15
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0.0"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 4
+        versionName "1.0.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         flavorDimensions "default"
         javaCompileOptions {
