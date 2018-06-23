@@ -2,6 +2,7 @@ package lorence.construction.di.component;
 
 import dagger.Subcomponent;
 import lorence.construction.di.module.beams.BeamsModule;
+import lorence.construction.di.module.beams.FragmentBeamsModule;
 import lorence.construction.di.module.home.FragmentModule;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.di.module.listing.FragmentListingModule;
@@ -25,7 +26,8 @@ import lorence.construction.view.activity.home.HomeActivity;
         modules = {
                 HomeModule.class,
                 FragmentModule.class,
-                FragmentListingModule.class
+                FragmentListingModule.class,
+                FragmentBeamsModule.class
         }
 )
 public interface HomeComponent {

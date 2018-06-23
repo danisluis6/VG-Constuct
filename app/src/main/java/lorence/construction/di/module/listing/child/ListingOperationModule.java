@@ -5,7 +5,6 @@ import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 import lorence.construction.data.storage.async.ListingOperationAsynTask;
-import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.di.scope.FragmentScope;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;

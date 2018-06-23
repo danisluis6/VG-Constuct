@@ -5,8 +5,8 @@
     <!-- Title -->
     <string name="title_listings">Bản Kê</string>
     <string name="title_beams">Loại Dầm</string>
-    <string name="title_settings">Thiết Lập</string>
-    <string name="title_abouts">Về Tôi</string>
+    <string name="title_settings">Chia sẻ</string>
+    <string name="title_abouts">Giới Thiệu</string>
 
     <string name="input_L1">Nhập L1</string>
     <string name="input_D">Nhập D (0.8->1.4)</string>

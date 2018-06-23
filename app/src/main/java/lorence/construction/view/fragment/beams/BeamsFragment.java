@@ -3,15 +3,16 @@ package lorence.construction.view.fragment.beams;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.List;
+import java.util.Stack;
 
 import javax.inject.Inject;
 
@@ -21,9 +22,12 @@ import lorence.construction.app.Application;
 import lorence.construction.data.storage.entity.Beams;
 import lorence.construction.di.module.beams.BeamsModule;
 import lorence.construction.di.module.home.HomeModule;
+import lorence.construction.helper.FragmentStack;
+import lorence.construction.helper.FragmentUtils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.beams.adapter.BeamsAdapter;
+import lorence.construction.view.fragment.beams.fragment.BeamsOperationFragment;
 import lorence.construction.view.fragment.listing.module.DataSource;
 
 /**
@@ -40,6 +44,12 @@ public class BeamsFragment extends EBaseFragment implements BeamsView {
     RecyclerView rcvBeams;
 
     @Inject
+    HomeActivity mActivity;
+
+    @Inject
+    BeamsFragment mBeamsFragment;
+
+    @Inject
     BeamsPresenter mBeamsPresenter;
 
     @Inject
@@ -50,6 +60,12 @@ public class BeamsFragment extends EBaseFragment implements BeamsView {
 
     @Inject
     Context mContext;
+
+    @Inject
+    BeamsOperationFragment mBeamsOperationFragment;
+
+    private Stack<FragmentStack> mCurrentFrgStack;
+    private FragmentUtils mFragmentUtils;
 
     public BeamsFragment() {
 
@@ -79,6 +95,9 @@ public class BeamsFragment extends EBaseFragment implements BeamsView {
         rcvBeams.setLayoutManager(mLayoutManager);
         rcvBeams.setItemAnimator(new DefaultItemAnimator());
         rcvBeams.setAdapter(mBeamsAdapter);
+
+        mCurrentFrgStack = new Stack<>();
+        mFragmentUtils = new FragmentUtils(mActivity, mBeamsFragment, mCurrentFrgStack, R.id.content_listing);
     }
 
     @Override
@@ -101,7 +120,19 @@ public class BeamsFragment extends EBaseFragment implements BeamsView {
         mBeamsPresenter.getBeamss();
     }
 
-    public void navigatePageOperation(String name) {
-        Toast.makeText(mContext, "Go to detail", Toast.LENGTH_SHORT).show();
+    public void navigatePageOperation(String tag) {
+        mBeamsOperationFragment = (BeamsOperationFragment) mBeamsOperationFragment.newInstance(tag);
+        pushFragment(mBeamsOperationFragment, tag);
+    }
+
+    @Override
+    public void pushFragment(Fragment fragment, String tag) {
+        mFragmentUtils.pushFragment(FragmentUtils.PushFrgType.ADD, fragment, tag, false);
+        defineToolbar(tag);
+    }
+
+    @Override
+    public void defineToolbar(String title) {
+        mActivity.updateTitleToolbar(title);
     }
 }

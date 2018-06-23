@@ -61,7 +61,7 @@ public class BeamsAdapter extends RecyclerView.Adapter<BeamsAdapter.MyViewHolder
         holder.type.setText(item.getType());
         holder.m1.setText(item.getM1());
         holder.m2.setText(item.getM2());
-        holder.image.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mFragment.navigatePageOperation(item.getName());
