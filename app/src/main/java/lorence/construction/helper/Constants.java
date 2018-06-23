@@ -25,17 +25,17 @@ public class Constants {
     }
 
     public static final class LISTINGS {
-        public static final String ONE = "Bảng Kê 1";
-        public static final String TWO = "Bảng Kê 2";
-        public static final String THREE = "Bảng Kê 3";
-        public static final String FOUR = "Bảng Kê 4";
-        public static final String FIVE = "Bảng Kê 5";
-        public static final String SIX = "Bảng Kê 6";
-        public static final String SEVEN = "Bảng Kê 7";
-        public static final String EIGHT = "Bảng Kê 8";
-        public static final String NINE = "Bảng Kê 9";
-        public static final String TEN = "Bảng Kê 10";
-        public static final String ELEVEN = "Bảng Kê 11";
+        public static final String ONE = "Bản Kê 1";
+        public static final String TWO = "Bản Kê 2";
+        public static final String THREE = "Bản Kê 3";
+        public static final String FOUR = "Bản Kê 4";
+        public static final String FIVE = "Bản Kê 5";
+        public static final String SIX = "Bản Kê 6";
+        public static final String SEVEN = "Bản Kê 7";
+        public static final String EIGHT = "Bản Kê 8";
+        public static final String NINE = "Bản Kê 9";
+        public static final String TEN = "Bản Kê 10";
+        public static final String ELEVEN = "Bản Kê 11";
     }
 
     public static final class BEAMS {

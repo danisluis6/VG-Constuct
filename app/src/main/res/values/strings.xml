@@ -3,7 +3,7 @@
     <string name="content_description">""</string>
 
     <!-- Title -->
-    <string name="title_listings">Bảng Kê</string>
+    <string name="title_listings">Bản Kê</string>
     <string name="title_beams">Loại Dầm</string>
     <string name="title_settings">Thiết Lập</string>
     <string name="title_abouts">Về Tôi</string>
@@ -87,6 +87,15 @@
     <string name="btn_dismiss">Dismiss</string>
     <string name="btn_ok">OK</string>
     <string name="btn_update">Update</string>
+
+
+    <string name="label_k1">Thông số k1:</string>
+    <string name="label_k2">Thông số k2:</string>
+    <string name="label_m1">Thông số m1:</string>
+    <string name="label_m2">Thông số m2:</string>
+    <string name="label_M1">Mô men M1: </string>
+    <string name="label_M2">Mô men M2: </string>
+    <string name="label_P">Tính P: </string>
 
 </resources>
 

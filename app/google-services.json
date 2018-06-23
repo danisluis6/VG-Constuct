@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "728789823227",
+    "firebase_url": "https://vogo-construction-472ec.firebaseio.com",
+    "project_id": "vogo-construction-472ec",
+    "storage_bucket": "vogo-construction-472ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:728789823227:android:72872aaf8490c25f",
+        "android_client_info": {
+          "package_name": "come.stksxd.sotayxaydung"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "728789823227-vcja0bjm1ffcbml5btf608b84a9fjkc0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "come.stksxd.sotayxaydung",
+            "certificate_hash": "57b0852b1cb9a4700be856b16c30cd41f2c14f75"
+          }
+        },
+        {
+          "client_id": "728789823227-r3od6tu8ggauhfoirsgqs4uojamphg07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApwMu5XunA3W_HnjlKvZyr4UKNcuO6ZVg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "728789823227-r3od6tu8ggauhfoirsgqs4uojamphg07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

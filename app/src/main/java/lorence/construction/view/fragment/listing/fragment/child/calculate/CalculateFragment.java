@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -83,6 +84,27 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
 
     @BindView(R.id.btnPerformCalculator)
     Button btnPerformCalculator;
+
+    @BindView(R.id.tvK1)
+    TextView tvK1;
+
+    @BindView(R.id.tvK2)
+    TextView tvK2;
+
+    @BindView(R.id.tvM1)
+    TextView tvM1;
+
+    @BindView(R.id.tvM2)
+    TextView tvM2;
+
+    @BindView(R.id.tvMM1)
+    TextView tvMM1;
+
+    @BindView(R.id.tvMM2)
+    TextView tvMM2;
+
+    @BindView(R.id.tvP)
+    TextView tvP;
 
     @Inject
     Context mContext;
@@ -215,6 +237,7 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                 if (checkValidDataInput()) {
                     if (mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2))) {
                         Operation operation = mInternalFormula.calculate(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2) / mConverterUtils.getDoubleValue(edtL1));
+                        showStepByStepOfCalculating(operation);
                     }
                 }
                 break;
@@ -228,6 +251,16 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                 break;
 
         }
+    }
+
+    private void showStepByStepOfCalculating(Operation operation) {
+        tvK1.setText(operation.getK1());
+        tvK2.setText(operation.getK2());
+        tvM1.setText(operation.getM1());
+        tvM2.setText(operation.getM2());
+        tvP.setText(mInternalFormula.calculateP(Double.parseDouble(edtStaticLoad.getText().toString()),Double.parseDouble(edtDynamicLoad.getText().toString()), Double.parseDouble(edtL1.getText().toString()), Double.parseDouble(edtL2.getText().toString())));
+        tvMM1.setText(mInternalFormula.calculateMM1(Double.parseDouble(tvK1.getText().toString()), Double.parseDouble(tvP.getText().toString())));
+        tvMM2.setText(mInternalFormula.calculateMM2(Double.parseDouble(tvK2.getText().toString()), Double.parseDouble(tvP.getText().toString())));
     }
 
     @Override

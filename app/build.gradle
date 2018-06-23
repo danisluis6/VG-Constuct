@@ -16,6 +16,9 @@ android {
             }
         }
         manifestPlaceholders = [HOCKEYAPP_APP_ID: "1acf200ab933425da0171db1dad650ce"]
+        defaultConfig {
+            multiDexEnabled true
+        }
     }
     buildTypes {
         release {
@@ -92,4 +95,8 @@ dependencies {
 
     // Hockey app
     compile 'net.hockeyapp.android:HockeySDK:5.1.0'
+
+    // Advertisement
+    compile 'com.google.firebase:firebase-ads:11.8.0'
 }
+apply plugin: 'com.google.gms.google-services'

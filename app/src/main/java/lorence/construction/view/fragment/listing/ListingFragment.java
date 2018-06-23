@@ -29,8 +29,8 @@ import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
-import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
 import lorence.construction.view.fragment.listing.module.DataSource;
+import lorence.construction.view.fragment.listing.module.GridSpacingItemDecoration;
 import lorence.construction.view.fragment.listing.module.ListingView;
 
 /**

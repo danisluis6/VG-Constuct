@@ -193,4 +193,17 @@ public class InternalFormula {
         Double value = brick*2.2 + mortar*2.4 + concreteFloor*2.8 + plasterMortar*2.4;
         return String.valueOf(Math.round(value*100000.0)/100000.0);
     }
+
+    public String calculateP(double g, double p, double l1, double l2) {
+        Double q = g + p*1.2;
+        return String.valueOf(Math.round(q*l1*l2*100000.0)/100000.0);
+    }
+
+    public String calculateMM1(double k1, double P) {
+        return String.valueOf(Math.round(k1*P*100000.0)/100000.0);
+    }
+
+    public String calculateMM2(double k2, double P) {
+        return String.valueOf(Math.round(k2*P*100000.0)/100000.0);
+    }
 }

@@ -128,5 +128,4 @@ public class HomeActivity extends BaseActivity implements HomeView {
         if (mBottomBar != null)
             mBottomBar.setVisibility(View.VISIBLE);
     }
-
 }
