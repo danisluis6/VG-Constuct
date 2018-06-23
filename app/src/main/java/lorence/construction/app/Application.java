@@ -5,6 +5,8 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import com.google.android.gms.ads.MobileAds;
+
 import java.lang.reflect.Field;
 
 import lorence.construction.di.component.AppComponent;
@@ -41,6 +43,7 @@ public class Application extends android.app.Application {
         sInstance = this;
         initAppComponent();
         FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Roboto-Light.ttf");
+        MobileAds.initialize(this, "ca-app-pub-2242423094803913~4860413431");
     }
 
     private void initAppComponent() {

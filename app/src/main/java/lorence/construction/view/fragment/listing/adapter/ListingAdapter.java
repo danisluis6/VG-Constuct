@@ -7,12 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import lorence.construction.R;
-import lorence.construction.data.storage.entity.Beams;
 import lorence.construction.data.storage.entity.Listing;
 import lorence.construction.view.fragment.listing.ListingFragment;
 
@@ -30,10 +31,12 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.MyViewHo
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView image;
+        AdView adView;
 
         MyViewHolder(View view) {
             super(view);
             image = view.findViewById(R.id.image);
+            adView = view.findViewById(R.id.adView);
         }
     }
 
@@ -60,6 +63,9 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.MyViewHo
                 mFragment.navigatePageOperation(item.getName());
             }
         });
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        holder.adView.loadAd(adRequest);
     }
 
     @Override
