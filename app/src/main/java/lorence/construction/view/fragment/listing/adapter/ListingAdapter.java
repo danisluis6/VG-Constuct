@@ -2,6 +2,7 @@ package lorence.construction.view.fragment.listing.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,27 +16,40 @@ import java.util.List;
 
 import lorence.construction.R;
 import lorence.construction.data.storage.entity.Listing;
+import lorence.construction.helper.Constants;
 import lorence.construction.view.fragment.listing.ListingFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
+ *
  * @author vuongluis
  * @version 0.0.1
  */
-public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.MyViewHolder> {
+public class ListingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
     private List<Listing> mGroupListings;
     private ListingFragment mFragment;
 
+    public final static int TYPE_ITEM = 0;
+    public final static int TYPE_ADS = 1;
+
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView image;
-        AdView adView;
+        ImageView imageHolder;
 
         MyViewHolder(View view) {
             super(view);
-            image = view.findViewById(R.id.image);
+            imageHolder = view.findViewById(R.id.imageHolder);
+        }
+    }
+
+    class AdsViewHolder extends RecyclerView.ViewHolder {
+
+        AdView adView;
+
+        AdsViewHolder(View view) {
+            super(view);
             adView = view.findViewById(R.id.adView);
         }
     }
@@ -47,25 +61,37 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.MyViewHo
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_listing_item, parent, false);
-        return new MyViewHolder(itemView);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == TYPE_ITEM) {
+            View itemView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.card_listing_item, parent, false);
+            return new MyViewHolder(itemView);
+        } else if (viewType == TYPE_ADS) {
+            View itemView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.card_ads_item, parent, false);
+            return new AdsViewHolder(itemView);
+        }
+        return null;
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
-        final Listing item = mGroupListings.get(position);
-        Picasso.with(mContext).load(item.getImage()).into(holder.image);
-        holder.image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mFragment.navigatePageOperation(item.getName());
-            }
-        });
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        holder.adView.loadAd(adRequest);
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (getItemViewType(position) == TYPE_ITEM) {
+            MyViewHolder custom_holder = (MyViewHolder) holder;
+            final Listing item = mGroupListings.get(position);
+            Picasso.with(mContext).load(item.getImage()).into(custom_holder.imageHolder);
+            custom_holder.imageHolder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mFragment.navigatePageOperation(item.getName());
+                }
+            });
+        } else {
+            AdsViewHolder custom_holder = (AdsViewHolder) holder;
+            AdRequest adRequest = new AdRequest.Builder()
+                    .build();
+            custom_holder.adView.loadAd(adRequest);
+        }
     }
 
     @Override
@@ -78,4 +104,12 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.MyViewHo
         notifyDataSetChanged();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        if (TextUtils.equals(mGroupListings.get(position).getName(), Constants.EMPTY_STRING)) {
+            return TYPE_ADS;
+        } else {
+            return TYPE_ITEM;
+        }
+    }
 }

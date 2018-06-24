@@ -36,6 +36,7 @@ public class Constants {
         public static final String NINE = "Bản Kê 9";
         public static final String TEN = "Bản Kê 10";
         public static final String ELEVEN = "Bản Kê 11";
+        public static final String ADS = "";
     }
 
     public static final class BEAMS {

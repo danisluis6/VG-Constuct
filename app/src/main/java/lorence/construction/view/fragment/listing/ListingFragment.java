@@ -97,7 +97,20 @@ public class ListingFragment extends EBaseFragment implements ListingView {
 
     @Override
     public void initComponents() {
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(mActivity, 2);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(mActivity, 2);
+        mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                switch(mListingAdapter.getItemViewType(position)){
+                    case ListingAdapter.TYPE_ITEM:
+                        return 1;
+                    case ListingAdapter.TYPE_ADS:
+                        return 2;
+                    default:
+                        return -1;
+                }
+            }
+        });
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addItemDecoration(mGridSpacingItemDecoration);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
