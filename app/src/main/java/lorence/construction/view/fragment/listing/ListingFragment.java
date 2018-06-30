@@ -77,9 +77,7 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     public ListingFragment() {
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    private void distributedDaggerComponents() {
         Application.getInstance()
                 .getAppComponent()
                 .plus(new HomeModule((HomeActivity) getActivity()))
@@ -90,6 +88,7 @@ public class ListingFragment extends EBaseFragment implements ListingView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listing, container, false);
+        distributedDaggerComponents();
         bindView(view);
         initComponents();
         return view;

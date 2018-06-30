@@ -25,6 +25,7 @@
     <string name="titleMaterials">Vật liệu</string>
     <string name="titleMaterialLoad">Tải trọng</string>
     <string name="titleReferLoad">Tải trọng tham khảo</string>
+    <string name="titleFinalLoad">Hoạt tải tham khảo</string>
     <string name="titleReferHS">Chiều dày sàn</string>
     <string name="titleStructureFloor">Cấu tạo sàn</string>
     <string name="input_brick">Lót gạch dày</string>
@@ -93,8 +94,11 @@
     <string name="label_k2">Thông số k2:</string>
     <string name="label_m1">Thông số m1:</string>
     <string name="label_m2">Thông số m2:</string>
-    <string name="label_M1">Mô men M1: </string>
-    <string name="label_M2">Mô men M2: </string>
+    <string name="label_M1">Mô men dương giữa bản M1: </string>
+    <string name="label_M2">Mô men dương giữa bản M2: </string>
+    <string name="label_MI">Mô men âm trên gối MI: </string>
+    <string name="label_MII">Mô men âm trên gối MII: </string>
+    <string name="label_q">Tính q: </string>
     <string name="label_P">Tính P: </string>
 
 </resources>

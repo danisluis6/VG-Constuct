@@ -39,19 +39,18 @@ public class ReferenceFragment extends EBaseFragment implements ReferenceView {
     public ReferenceFragment() {
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    private void distributedDaggerComponents() {
         Application.getInstance()
                 .getAppComponent()
                 .plus(new HomeModule((HomeActivity) getActivity()))
-                .plus(new ReferenceFragmentModule(Application.getInstance(), (HomeActivity)getActivity(), this, this))
+                .plus(new ReferenceFragmentModule(Application.getInstance(), (HomeActivity) getActivity(), this, this))
                 .inject(this);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reference, container, false);
+        distributedDaggerComponents();
         bindView(view);
         return view;
     }

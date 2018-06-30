@@ -68,7 +68,6 @@
                     android:digits="0123456789."
                     android:drawableEnd="@drawable/ic_donvi_m"
                     android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/ic_donvi_m"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:labelFor="@+id/edtCurrentPswd"
@@ -114,7 +113,6 @@
                     android:digits="0123456789."
                     android:drawableEnd="@drawable/ic_donvi_m"
                     android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/ic_donvi_m"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:labelFor="@+id/edtCurrentPswd"
@@ -567,59 +565,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_border"
-                        android:padding="8dp"
-                        android:text="@string/label_k1"
-                        android:textColor="@android:color/black"
-                        android:typeface="monospace" />
-
-                    <TextView
-                        android:id="@+id/tvK1"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_border"
-                        android:padding="8dp"
-                        android:textColor="@android:color/black"
-                        android:typeface="monospace" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_border"
-                        android:padding="8dp"
-                        android:text="@string/label_k2"
-                        android:textColor="@android:color/black"
-                        android:typeface="monospace" />
-
-                    <TextView
-                        android:id="@+id/tvK2"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_border"
-                        android:padding="8dp"
-                        android:textColor="@android:color/black"
-                        android:typeface="monospace" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
@@ -634,7 +579,7 @@
                         android:typeface="monospace" />
 
                     <TextView
-                        android:id="@+id/tvM1"
+                        android:id="@+id/tvm1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -661,7 +606,7 @@
                         android:typeface="monospace" />
 
                     <TextView
-                        android:id="@+id/tvM2"
+                        android:id="@+id/tvm2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -683,12 +628,12 @@
                         android:layout_weight="1"
                         android:background="@drawable/shape_border"
                         android:padding="8dp"
-                        android:text="@string/label_M1"
+                        android:text="@string/label_k1"
                         android:textColor="@android:color/black"
                         android:typeface="monospace" />
 
                     <TextView
-                        android:id="@+id/tvMM1"
+                        android:id="@+id/tvk1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -710,16 +655,44 @@
                         android:layout_weight="1"
                         android:background="@drawable/shape_border"
                         android:padding="8dp"
-                        android:text="@string/label_M2"
+                        android:text="@string/label_k2"
                         android:textColor="@android:color/black"
                         android:typeface="monospace" />
 
                     <TextView
-                        android:id="@+id/tvMM2"
+                        android:id="@+id/tvk2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/shape_border"
+                        android:padding="8dp"
+                        android:textColor="@android:color/black"
+                        android:typeface="monospace" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_border"
+                        android:padding="8dp"
+                        android:text="@string/label_q"
+                        android:textColor="@android:color/black"
+                        android:typeface="monospace" />
+
+                    <TextView
+                        android:id="@+id/tvq"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_border"
+                        android:drawableEnd="@drawable/ic_donvi_danm2"
                         android:padding="8dp"
                         android:textColor="@android:color/black"
                         android:typeface="monospace" />
@@ -747,6 +720,119 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/shape_border"
+                        android:drawableEnd="@drawable/ic_donvi_danm2"
+                        android:padding="8dp"
+                        android:textColor="@android:color/black"
+                        android:typeface="monospace" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.25"
+                        android:background="@drawable/shape_border"
+                        android:padding="8dp"
+                        android:text="@string/label_M1"
+                        android:textColor="@android:color/black"
+                        android:typeface="monospace" />
+
+                    <TextView
+                        android:id="@+id/tvM1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.75"
+                        android:background="@drawable/shape_border"
+                        android:drawableEnd="@drawable/ic_donvi_danm2"
+                        android:padding="8dp"
+                        android:textColor="@android:color/black"
+                        android:typeface="monospace" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.25"
+                        android:background="@drawable/shape_border"
+                        android:padding="8dp"
+                        android:text="@string/label_M2"
+                        android:textColor="@android:color/black"
+                        android:typeface="monospace" />
+
+                    <TextView
+                        android:id="@+id/tvM2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.75"
+                        android:background="@drawable/shape_border"
+                        android:drawableEnd="@drawable/ic_donvi_danm2"
+                        android:padding="8dp"
+                        android:textColor="@android:color/black"
+                        android:typeface="monospace" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.25"
+                        android:background="@drawable/shape_border"
+                        android:padding="8dp"
+                        android:text="@string/label_MI"
+                        android:textColor="@android:color/black"
+                        android:typeface="monospace" />
+
+                    <TextView
+                        android:id="@+id/tvMM1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.75"
+                        android:background="@drawable/shape_border"
+                        android:drawableEnd="@drawable/ic_donvi_danm2"
+                        android:padding="8dp"
+                        android:textColor="@android:color/black"
+                        android:typeface="monospace" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.25"
+                        android:background="@drawable/shape_border"
+                        android:padding="8dp"
+                        android:text="@string/label_MII"
+                        android:textColor="@android:color/black"
+                        android:typeface="monospace" />
+
+                    <TextView
+                        android:id="@+id/tvMM2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.75"
+                        android:background="@drawable/shape_border"
+                        android:drawableEnd="@drawable/ic_donvi_danm2"
                         android:padding="8dp"
                         android:textColor="@android:color/black"
                         android:typeface="monospace" />
@@ -763,8 +849,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/shape_border"
-                        android:padding="8dp"
                         android:drawableStart="@drawable/alpham"
+                        android:padding="8dp"
                         android:textColor="@android:color/black"
                         android:typeface="monospace" />
 
@@ -790,8 +876,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/shape_border"
-                        android:padding="8dp"
                         android:drawableStart="@drawable/gama"
+                        android:padding="8dp"
                         android:textColor="@android:color/black"
                         android:typeface="monospace" />
 

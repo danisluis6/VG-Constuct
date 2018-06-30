@@ -78,4 +78,8 @@ public class BeamsAdapter extends RecyclerView.Adapter<BeamsAdapter.MyViewHolder
         mGroupBeams = beams;
         notifyDataSetChanged();
     }
+
+    public List<Beams> getlistOfBeams() {
+        return mGroupBeams;
+    }
 }

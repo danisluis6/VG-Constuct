@@ -451,12 +451,35 @@
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/titleFinalLoad"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/triangle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cslReferStaticLoad">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/titleFinalLoad"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
             android:id="@+id/cslReferDynamicLoad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cslReferStaticLoad">
+            app:layout_constraintTop_toBottomOf="@+id/titleFinalLoad">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -479,13 +502,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
+                    android:digits="0123456789."
                     android:drawableEnd="@drawable/ic_donvi_danm2"
                     android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/ic_donvi_danm2"
-                    android:enabled="false"
-                    android:imeOptions="actionNext"
+                    android:imeOptions="actionDone"
                     android:labelFor="@+id/edtCurrentPswd"
                     android:paddingBottom="2dp"
+                    android:inputType="number"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:paddingTop="2dp"
@@ -496,11 +519,33 @@
 
         </android.support.constraint.ConstraintLayout>
 
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cslDynamicLoadLoad1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cslReferDynamicLoad">
+
+            <Button
+                android:id="@+id/btnPerformCalculator1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/gradient"
+                android:text="@string/perform_calculator" />
+
+        </android.support.constraint.ConstraintLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/cslReferDynamicLoad" />
+            app:layout_constraintTop_toBottomOf="@+id/cslDynamicLoadLoad1" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>

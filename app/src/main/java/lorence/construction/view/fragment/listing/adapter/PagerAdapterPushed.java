@@ -45,7 +45,7 @@ public class PagerAdapterPushed extends FragmentStatePagerAdapter {
                 return mCalculateFragment.newInstance(mCalculateFragment, position);
             }
             case 1:{
-                return mMordalFragment.newInstance(mMordalFragment, position);
+                return mMordalFragment.newInstance(mMordalFragment);
             }
             case 2:{
                 return mReferenceFragment.newInstance(mReferenceFragment, position);

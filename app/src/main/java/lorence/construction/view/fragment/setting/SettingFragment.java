@@ -1,7 +1,6 @@
 package lorence.construction.view.fragment.setting;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,16 +21,13 @@ public class SettingFragment extends EBaseFragment {
     public SettingFragment() {
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
+    private void distributedDaggerComponents() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
+        distributedDaggerComponents();
         bindView(view);
-
         return view;
     }
 }

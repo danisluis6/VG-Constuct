@@ -62,14 +62,18 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
     @Inject
     PagerAdapterPushed mPagerAdapterPushed;
 
+    @Inject
+    CalculateFragment mCalculateFragment;
+
+    @Inject
+    MordalFragment mMordalFragment;
+
     private List<ListingOperation> mGrListingOperations;
 
     public ListingOperationFragment() {
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    private void distributedDaggerComponents() {
         Application.getInstance()
                 .getAppComponent()
                 .plus(new HomeModule((HomeActivity) getActivity()))
@@ -85,16 +89,11 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
         return fragment;
     }
 
-    @Inject
-    CalculateFragment mCalculateFragment;
-
-    @Inject
-    MordalFragment mMordalFragment;
-
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listing_operation, container, false);
         bindView(view);
+        distributedDaggerComponents();
         mGrListingOperations = new ArrayList<>();
         mHomeActivity.hiddenBottomBar();
         mListingOperationPresenter.getListingOperations();

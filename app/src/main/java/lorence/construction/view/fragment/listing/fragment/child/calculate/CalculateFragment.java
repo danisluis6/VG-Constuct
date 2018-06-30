@@ -85,11 +85,17 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     @BindView(R.id.btnPerformCalculator)
     Button btnPerformCalculator;
 
-    @BindView(R.id.tvK1)
-    TextView tvK1;
+    @BindView(R.id.tvk1)
+    TextView tvk1;
 
-    @BindView(R.id.tvK2)
-    TextView tvK2;
+    @BindView(R.id.tvk2)
+    TextView tvk2;
+
+    @BindView(R.id.tvm1)
+    TextView tvm1;
+
+    @BindView(R.id.tvm2)
+    TextView tvm2;
 
     @BindView(R.id.tvM1)
     TextView tvM1;
@@ -102,6 +108,9 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
 
     @BindView(R.id.tvMM2)
     TextView tvMM2;
+
+    @BindView(R.id.tvq)
+    TextView tvq;
 
     @BindView(R.id.tvP)
     TextView tvP;
@@ -156,9 +165,7 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         return fragment;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    private void distributedDaggerComponents() {
         Application.getInstance()
                 .getAppComponent()
                 .plus(new HomeModule((HomeActivity) getActivity()))
@@ -169,6 +176,7 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calculate, container, false);
+        distributedDaggerComponents();
         bindView(view);
         mGrListingOperations = new ArrayList<>();
         mConcreteFragment.setParentFragment(mContext, mCalculateFragment);
@@ -235,9 +243,11 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         switch (v.getId()) {
             case R.id.btnPerformCalculator:
                 if (checkValidDataInput()) {
-                    if (mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2))) {
+                    if (mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2), mHomeActivity.getTitleToolbar())) {
                         Operation operation = mInternalFormula.calculate(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2) / mConverterUtils.getDoubleValue(edtL1));
                         showStepByStepOfCalculating(operation);
+                    } else {
+                        Toast.makeText(mContext, "Vui lòng chuyển qua mục bản dầm", Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;
@@ -254,13 +264,16 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     }
 
     private void showStepByStepOfCalculating(Operation operation) {
-        tvK1.setText(operation.getK1());
-        tvK2.setText(operation.getK2());
-        tvM1.setText(operation.getM1());
-        tvM2.setText(operation.getM2());
+        tvk1.setText(operation.getK1());
+        tvk2.setText(operation.getK2());
+        tvm1.setText(operation.getM1());
+        tvm2.setText(operation.getM2());
+        tvq.setText(mInternalFormula.calculateq(Double.parseDouble(edtStaticLoad.getText().toString()),Double.parseDouble(edtDynamicLoad.getText().toString())));
         tvP.setText(mInternalFormula.calculateP(Double.parseDouble(edtStaticLoad.getText().toString()),Double.parseDouble(edtDynamicLoad.getText().toString()), Double.parseDouble(edtL1.getText().toString()), Double.parseDouble(edtL2.getText().toString())));
-        tvMM1.setText(mInternalFormula.calculateMM1(Double.parseDouble(tvK1.getText().toString()), Double.parseDouble(tvP.getText().toString())));
-        tvMM2.setText(mInternalFormula.calculateMM2(Double.parseDouble(tvK2.getText().toString()), Double.parseDouble(tvP.getText().toString())));
+        tvM1.setText(mInternalFormula.calculateM1(Double.parseDouble(tvm1.getText().toString()), Double.parseDouble(tvP.getText().toString())));
+        tvM2.setText(mInternalFormula.calculateM2(Double.parseDouble(tvm2.getText().toString()), Double.parseDouble(tvP.getText().toString())));
+        tvMM1.setText(mInternalFormula.calculateK1(Double.parseDouble(tvk1.getText().toString()), Double.parseDouble(tvP.getText().toString())));
+        tvMM2.setText(mInternalFormula.calculateK2(Double.parseDouble(tvk2.getText().toString()), Double.parseDouble(tvP.getText().toString())));
     }
 
     @Override
@@ -281,16 +294,19 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
             Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
             return false;
         }
+        if (!mRegularUtils.isRealNumber(edtStaticLoad.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho g", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtDynamicLoad.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho p", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         return true;
     }
 
     @Override
     public void onGetListingOperationsSuccess(List<ListingOperation> listingOperations) {
         mGrListingOperations = listingOperations;
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
     }
 }

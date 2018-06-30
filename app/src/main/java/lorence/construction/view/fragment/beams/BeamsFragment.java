@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,9 +72,7 @@ public class BeamsFragment extends EBaseFragment implements BeamsView {
 
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    private void distributedDaggerComponents() {
         Application.getInstance()
                 .getAppComponent()
                 .plus(new HomeModule((HomeActivity) getActivity()))
@@ -84,6 +83,7 @@ public class BeamsFragment extends EBaseFragment implements BeamsView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beam, container, false);
+        distributedDaggerComponents();
         bindView(view);
         initComponents();
         return view;
@@ -122,7 +122,19 @@ public class BeamsFragment extends EBaseFragment implements BeamsView {
 
     public void navigatePageOperation(String tag) {
         mBeamsOperationFragment = (BeamsOperationFragment) mBeamsOperationFragment.newInstance(tag);
+        mBeamsOperationFragment.setArguments(getBundle(tag));
         pushFragment(mBeamsOperationFragment, tag);
+    }
+
+    @Override
+    public Bundle getBundle(String tag) {
+        Bundle bundle = new Bundle();
+        for (int index = 0; index < mBeamsAdapter.getlistOfBeams().size(); index++) {
+            if (TextUtils.equals(mBeamsAdapter.getlistOfBeams().get(index).getName(), tag)) {
+                bundle.putParcelable("beam", mBeamsAdapter.getlistOfBeams().get(index));
+            }
+        }
+        return bundle;
     }
 
     @Override

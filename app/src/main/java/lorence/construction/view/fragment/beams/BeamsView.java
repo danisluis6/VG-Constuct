@@ -1,5 +1,6 @@
 package lorence.construction.view.fragment.beams;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import java.util.List;
@@ -16,6 +17,8 @@ import lorence.construction.data.storage.entity.Beams;
 public interface BeamsView {
     void initComponents();
     void onGetBeamsSuccess(List<Beams> beams);
+
+    Bundle getBundle(String tag);
 
     void pushFragment(Fragment fragment, String tag);
 

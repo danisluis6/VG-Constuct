@@ -131,7 +131,7 @@ public class ListingDataSourceImpl implements DataSource {
         groupListingOperations.add(new ListingOperation(Constants.LISTINGS.THREE, "1.80","0.0444", "0.0172", "0.0", "0.0432"));
         groupListingOperations.add(new ListingOperation(Constants.LISTINGS.THREE, "1.85","0.0445", "0.0165", "0.0", "0.0407"));
         groupListingOperations.add(new ListingOperation(Constants.LISTINGS.THREE, "1.90","0.0445", "0.0157", "0.0", "0.0332"));
-        groupListingOperations.add(new ListingOperation(Constants.LISTINGS.THREE, "1.95","0.0444", "0.0149", "0.0", "0.0359"));
+        groupListingOperations.add(new ListingOperation(Constants.LISTINGS.THREE, "1.95","0.0444", "0.0149", "0.0", "0.0339"));
         groupListingOperations.add(new ListingOperation(Constants.LISTINGS.THREE, "2.00","0.0443", "0.0142", "0.0", "0.0338"));
 
         groupListingOperations.add(new ListingOperation(Constants.LISTINGS.FOUR,"1.00", "0.0267", "0.0180", "0.0694", "0"));
@@ -275,9 +275,9 @@ public class ListingDataSourceImpl implements DataSource {
 
         groupListingOperations.add(new ListingOperation(Constants.LISTINGS.ELEVEN,"1.00", "0.0457", "0.0099", "0.0853", "0.0510"));
         groupListingOperations.add(new ListingOperation(Constants.LISTINGS.ELEVEN, "1.10","0.0421", "0.0094", "0.0777", "0.0448"));
-        groupListingOperations.add(new ListingOperation(Constants.LISTINGS.ELEVEN, "1.20","0.0389", "0.0087", "0.0712", "0.0397"));
+        groupListingOperations.add(new ListingOperation(Constants.LISTINGS.ELEVEN, "1.20","0.0389", "0.0087", "0.0712", "0.03397"));
         groupListingOperations.add(new ListingOperation(Constants.LISTINGS.ELEVEN, "1.30","0.0362", "0.0079", "0.0658", "0.0354"));
-        groupListingOperations.add(new ListingOperation(Constants.LISTINGS.ELEVEN, "1.40","0.0336", "0.0070", "0.0609", "0.0314"));
+        groupListingOperations.add(new ListingOperation(Constants.LISTINGS.ELEVEN, "1.40","0.0336", "0.0070", "0.0609", "0.0315"));
         groupListingOperations.add(new ListingOperation(Constants.LISTINGS.ELEVEN, "1.50","0.0311", "0.0059", "0.0562", "0.0279"));
 
         return groupListingOperations;

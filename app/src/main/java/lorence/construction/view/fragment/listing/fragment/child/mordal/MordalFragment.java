@@ -67,6 +67,9 @@ public class MordalFragment extends EBaseFragment implements MordalView {
     @BindView(R.id.edtReferStaticLoad)
     EditText edtReferStaticLoad;
 
+    @BindView(R.id.edtReferDynamicLoad)
+    EditText edtReferDynamicLoad;
+
     @Inject
     Context mContext;
 
@@ -94,15 +97,13 @@ public class MordalFragment extends EBaseFragment implements MordalView {
     public MordalFragment() {
     }
 
-    public Fragment newInstance(MordalFragment fragment, int position) {
+    public Fragment newInstance(MordalFragment fragment) {
         Bundle b = new Bundle();
         fragment.setArguments(b);
         return fragment;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    private void distributedDaggerComponents() {
         Application.getInstance()
                 .getAppComponent()
                 .plus(new HomeModule((HomeActivity) getActivity()))
@@ -113,18 +114,31 @@ public class MordalFragment extends EBaseFragment implements MordalView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mordal, container, false);
+        distributedDaggerComponents();
         bindView(view);
         edtL1.addTextChangedListener(new GenericTextWatcher(edtL1));
         edtD.addTextChangedListener(new GenericTextWatcher(edtD));
         return view;
     }
 
-    @OnClick(R.id.btnPerformCalculator)
-    void onClick() {
-        if (checkValidDataInput()) {
-            String result = mInternalFormula.performStaticLoad(mConverterUtils.getDoubleValue(edtBrick), mConverterUtils.getDoubleValue(edtMortar),
-                    mConverterUtils.getDoubleValue(edtConcreteFloor), mConverterUtils.getDoubleValue(edtPlasterMortar));
-            edtReferStaticLoad.setText(result);
+    @OnClick({R.id.btnPerformCalculator, R.id.btnPerformCalculator1})
+    void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnPerformCalculator:
+                if (checkValidDataInput()) {
+                    String result = mInternalFormula.performStaticLoad(mConverterUtils.getDoubleValue(edtBrick), mConverterUtils.getDoubleValue(edtMortar),
+                            mConverterUtils.getDoubleValue(edtConcreteFloor), mConverterUtils.getDoubleValue(edtPlasterMortar));
+                    edtReferStaticLoad.setText(result);
+                }
+                break;
+            case R.id.btnPerformCalculator1:
+                if (!mRegularUtils.isRealNumber(edtReferDynamicLoad.getText().toString())) {
+                    Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho hoạt tải", Toast.LENGTH_SHORT).show();
+                } else {
+                    Double referDynamicLoad = Double.parseDouble(String.valueOf(edtReferDynamicLoad.getText()))*1.2;
+                    edtReferDynamicLoad.setText(String.valueOf(Math.round(referDynamicLoad*100000.0)/100000.0));
+                }
+                break;
         }
     }
 
