@@ -3,7 +3,10 @@ package lorence.construction.view.fragment.listing;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -100,7 +103,7 @@ public class ListingFragment extends EBaseFragment implements ListingView {
         mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                switch(mListingAdapter.getItemViewType(position)){
+                switch (mListingAdapter.getItemViewType(position)) {
                     case ListingAdapter.TYPE_ITEM:
                         return 1;
                     case ListingAdapter.TYPE_ADS:
@@ -117,13 +120,14 @@ public class ListingFragment extends EBaseFragment implements ListingView {
 
         mCurrentFrgStack = new Stack<>();
         mFragmentUtils = new FragmentUtils(mActivity, mListingFragment, mCurrentFrgStack, R.id.content_listing);
+
+        mListingPresenter.getListings();
+        mListingPresenter.getListingOperations();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mListingPresenter.getListings();
-        mListingPresenter.getListingOperations();
     }
 
     @Override
@@ -161,12 +165,29 @@ public class ListingFragment extends EBaseFragment implements ListingView {
 
     @Override
     public void pushFragment(Fragment fragment, String tag) {
-        mFragmentUtils.pushFragment(FragmentUtils.PushFrgType.ADD, fragment, tag, false);
+        fragment.setArguments(getTitleTitle(tag));
+        switchFragment(fragment, tag);
+        mActivity.attachListingFragment(this);
         defineToolbar(tag);
+    }
+
+    void switchFragment(@NonNull Fragment fragment, String tag) {
+        FragmentManager fragmentManager = getChildFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.content_listing, fragment);
+        transaction.addToBackStack(tag);
+        transaction.commit();
+        fragmentManager.executePendingTransactions();
     }
 
     @Override
     public void defineToolbar(String title) {
         mActivity.updateTitleToolbar(title);
+    }
+
+    public Bundle getTitleTitle(String tag) {
+        Bundle bundle = new Bundle();
+        bundle.putString("Title", tag);
+        return bundle;
     }
 }

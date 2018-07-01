@@ -2,13 +2,16 @@ package lorence.construction.view.fragment.listing.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 
@@ -18,6 +21,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import lorence.construction.R;
 import lorence.construction.app.Application;
 import lorence.construction.data.storage.entity.ListingOperation;
@@ -69,6 +73,8 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
     MordalFragment mMordalFragment;
 
     private List<ListingOperation> mGrListingOperations;
+    private int mPosition;
+    private String mTitle;
 
     public ListingOperationFragment() {
     }
@@ -94,8 +100,10 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
         View view = inflater.inflate(R.layout.fragment_listing_operation, container, false);
         bindView(view);
         distributedDaggerComponents();
-        mGrListingOperations = new ArrayList<>();
         mHomeActivity.hiddenBottomBar();
+        mTitle = getArguments().getString("Title");
+        mHomeActivity.updateShareButton(R.drawable.ic_share);
+        mGrListingOperations = new ArrayList<>();
         mListingOperationPresenter.getListingOperations();
         mViewPager.setAdapter(mPagerAdapterPushed);
         mViewPager.setOffscreenPageLimit(2);
@@ -107,12 +115,14 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
 
             @Override
             public void onPageSelected(int position) {
+                mPosition = position;
                 if (position == 0) {
-
+                    mHomeActivity.attachShareButton().setVisibility(View.VISIBLE);
                 } else if (position == 1) {
+                    mHomeActivity.attachShareButton().setVisibility(View.GONE);
                     mMordalFragment.updateValueL1();
                 } else if (position == 2) {
-                } else {
+                    mHomeActivity.attachShareButton().setVisibility(View.GONE);
                 }
             }
 
@@ -122,7 +132,30 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
             }
         });
         mTabs.setViewPager(mViewPager);
+        mHomeActivity.attachShareButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mPosition == 0) {
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT, "www.google.com.vn");
+                    startActivity(Intent.createChooser(intent, "Share"));
+                }
+            }
+        });
         return view;
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        mHomeActivity.updateTitleToolbar(mTitle);
+        super.onResume();
     }
 
     @Override
@@ -134,6 +167,7 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
     public void onDestroyView() {
         mHomeActivity.updateTitleToolbar(getString(R.string.title_listings));
         mHomeActivity.showBottomBar();
+        mHomeActivity.updateShareButton(R.drawable.ic_more_vert);
         super.onDestroyView();
     }
 
