@@ -73,7 +73,6 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
     MordalFragment mMordalFragment;
 
     private List<ListingOperation> mGrListingOperations;
-    private int mPosition;
     private String mTitle;
 
     public ListingOperationFragment() {
@@ -115,7 +114,6 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
 
             @Override
             public void onPageSelected(int position) {
-                mPosition = position;
                 if (position == 0) {
                     mHomeActivity.attachShareButton().setVisibility(View.VISIBLE);
                 } else if (position == 1) {
@@ -132,18 +130,6 @@ public class ListingOperationFragment extends EBaseFragment implements ListingOp
             }
         });
         mTabs.setViewPager(mViewPager);
-        mHomeActivity.attachShareButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mPosition == 0) {
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_SEND);
-                    intent.setType("text/plain");
-                    intent.putExtra(Intent.EXTRA_TEXT, "www.google.com.vn");
-                    startActivity(Intent.createChooser(intent, "Share"));
-                }
-            }
-        });
         return view;
     }
 

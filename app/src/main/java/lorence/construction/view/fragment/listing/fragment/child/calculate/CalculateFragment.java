@@ -3,9 +3,11 @@ package lorence.construction.view.fragment.listing.fragment.child.calculate;
 import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -115,6 +117,9 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     @BindView(R.id.tvP)
     TextView tvP;
 
+    @BindView(R.id.edtAs)
+    EditText edtAs;
+
     @Inject
     Context mContext;
 
@@ -213,6 +218,40 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                 mSessionManager.setL1(edtL1.getText().toString());
             }
         });
+        mHomeActivity.attachShareButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!TextUtils.equals(edtAs.getText().toString(), Constants.EMPTY_STRING)) {
+                    Toast.makeText(mContext, "Bạn chưa thực hiện tính toán", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT, "THÔNG SỐ BAN ĐẦU:" +
+                            "\nl1 = "+ edtL1.getText() +
+                            "\nl2 = "+ edtL2.getText() +
+                            "\nhs = "+ edth.getText() +
+                            "\na = "+ edta.getText() +
+                            "\nRb = "+ edtRb.getText() +
+                            "\nRs = "+ edtRs.getText() +
+                            "\ng = "+ edtStaticLoad.getText() +
+                            "\np = "+ edtDynamicLoad.getText() +
+                            "\nTHỰC THI PHÉP TÍNH:" +
+                            "\nk1 = "+ tvk1.getText() +
+                            "\nk2 = " + tvk2.getText() +
+                            "\nm1 = " + tvm1.getText() +
+                            "\nm2 = " + tvm2.getText() +
+                            "\nq = " + tvq.getText() +
+                            "\nP = " + tvP.getText() +
+                            "\nM1 = " + tvM1.getText() +
+                            "\nM2 = " + tvM2.getText() +
+                            "\nMI = " + tvMM1.getText() +
+                            "\nMII = " + tvMM2.getText() +
+                            "\nAs = "+ edtAs.getText());
+                    startActivity(Intent.createChooser(intent, "Chia sẻ với bạn bè"));
+                }
+            }
+        });
         return view;
     }
 
@@ -268,8 +307,8 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         tvk2.setText(operation.getK2());
         tvm1.setText(operation.getM1());
         tvm2.setText(operation.getM2());
-        tvq.setText(mInternalFormula.calculateq(Double.parseDouble(edtStaticLoad.getText().toString()),Double.parseDouble(edtDynamicLoad.getText().toString())));
-        tvP.setText(mInternalFormula.calculateP(Double.parseDouble(edtStaticLoad.getText().toString()),Double.parseDouble(edtDynamicLoad.getText().toString()), Double.parseDouble(edtL1.getText().toString()), Double.parseDouble(edtL2.getText().toString())));
+        tvq.setText(mInternalFormula.calculateq(Double.parseDouble(edtStaticLoad.getText().toString()), Double.parseDouble(edtDynamicLoad.getText().toString())));
+        tvP.setText(mInternalFormula.calculateP(Double.parseDouble(edtStaticLoad.getText().toString()), Double.parseDouble(edtDynamicLoad.getText().toString()), Double.parseDouble(edtL1.getText().toString()), Double.parseDouble(edtL2.getText().toString())));
         tvM1.setText(mInternalFormula.calculateM1(Double.parseDouble(tvm1.getText().toString()), Double.parseDouble(tvP.getText().toString())));
         tvM2.setText(mInternalFormula.calculateM2(Double.parseDouble(tvm2.getText().toString()), Double.parseDouble(tvP.getText().toString())));
         tvMM1.setText(mInternalFormula.calculateK1(Double.parseDouble(tvk1.getText().toString()), Double.parseDouble(tvP.getText().toString())));

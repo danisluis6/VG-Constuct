@@ -3,7 +3,10 @@ package lorence.construction.view.fragment.beams;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -139,8 +142,18 @@ public class BeamsFragment extends EBaseFragment implements BeamsView {
 
     @Override
     public void pushFragment(Fragment fragment, String tag) {
-        mFragmentUtils.pushFragment(FragmentUtils.PushFrgType.ADD, fragment, tag, false);
+        switchFragment(fragment, tag);
+        mActivity.attachBeamFragment(this);
         defineToolbar(tag);
+    }
+
+    void switchFragment(@NonNull Fragment fragment, String tag) {
+        FragmentManager fragmentManager = getChildFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.content_listing, fragment);
+        transaction.addToBackStack(tag);
+        transaction.commit();
+        fragmentManager.executePendingTransactions();
     }
 
     @Override

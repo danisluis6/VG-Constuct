@@ -22,6 +22,7 @@ import lorence.construction.app.Application;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.helper.Validator;
 import lorence.construction.view.activity.BaseActivity;
+import lorence.construction.view.fragment.beams.BeamsFragment;
 import lorence.construction.view.fragment.listing.ListingFragment;
 
 /**
@@ -60,6 +61,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
     HomePresenter mHomePresenter;
 
     private ListingFragment mListingFragment;
+    private BeamsFragment mBeamsFragment;
 
     @Override
     public void distributedDaggerComponents() {
@@ -153,10 +155,16 @@ public class HomeActivity extends BaseActivity implements HomeView {
         mListingFragment = fragment;
     }
 
+    public void attachBeamFragment(BeamsFragment beamsFragment) {
+        mBeamsFragment = beamsFragment;
+    }
+
     @Override
     public void onBackPressed() {
-        if (mListingFragment != null && mListingFragment.getChildFragmentManager().getBackStackEntryCount() > 0) {
+        if (mListingFragment !=null && mListingFragment.isAdded() && mListingFragment.getChildFragmentManager().getBackStackEntryCount() > 0) {
             mListingFragment.getChildFragmentManager().popBackStack();
+        } else if(mBeamsFragment != null && mBeamsFragment.isAdded() && mBeamsFragment.getChildFragmentManager().getBackStackEntryCount() > 0) {
+            mBeamsFragment.getChildFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
         }

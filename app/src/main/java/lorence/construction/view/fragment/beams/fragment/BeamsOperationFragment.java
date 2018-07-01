@@ -51,6 +51,8 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
     @BindView(R.id.m2)
     TextView m2;
 
+    private String mTitle;
+
     public BeamsOperationFragment() {
     }
 
@@ -85,9 +87,16 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mHomeActivity.updateTitleToolbar(mTitle);
+    }
+
     private void extractBundle() {
         if (this.getArguments().get("beam") != null) {
             Beams beam = this.getArguments().getParcelable("beam");
+            mTitle = beam.getName();
             imageDescription.setImageResource(beam.getImage());
             type.setText(beam.getType());
             m1.setText(beam.getM1());
