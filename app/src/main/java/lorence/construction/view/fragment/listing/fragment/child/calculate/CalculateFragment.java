@@ -38,6 +38,7 @@ import lorence.construction.helper.Constants;
 import lorence.construction.helper.ConverterUtils;
 import lorence.construction.helper.RegularUtils;
 import lorence.construction.helper.math.InternalFormula;
+import lorence.construction.utitilize.Utils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.listing.fragment.ConcreteFragment;
@@ -117,8 +118,17 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     @BindView(R.id.tvP)
     TextView tvP;
 
-    @BindView(R.id.edtAs)
-    EditText edtAs;
+    @BindView(R.id.edtAsM1)
+    EditText edtAsM1;
+
+    @BindView(R.id.edtAsM2)
+    EditText edtAsM2;
+
+    @BindView(R.id.edtAsMM1)
+    EditText edtAsMM1;
+
+    @BindView(R.id.edtAsMM2)
+    EditText edtAsMM2;
 
     @Inject
     Context mContext;
@@ -221,23 +231,23 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         mHomeActivity.attachShareButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!TextUtils.equals(edtAs.getText().toString(), Constants.EMPTY_STRING)) {
+                if (TextUtils.equals(edtAsM1.getText().toString(), Constants.EMPTY_STRING)) {
                     Toast.makeText(mContext, "Bạn chưa thực hiện tính toán", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     intent.putExtra(Intent.EXTRA_TEXT, "THÔNG SỐ BAN ĐẦU:" +
-                            "\nl1 = "+ edtL1.getText() +
-                            "\nl2 = "+ edtL2.getText() +
-                            "\nhs = "+ edth.getText() +
-                            "\na = "+ edta.getText() +
-                            "\nRb = "+ edtRb.getText() +
-                            "\nRs = "+ edtRs.getText() +
-                            "\ng = "+ edtStaticLoad.getText() +
-                            "\np = "+ edtDynamicLoad.getText() +
+                            "\nl1 = " + edtL1.getText() +
+                            "\nl2 = " + edtL2.getText() +
+                            "\nhs = " + edth.getText() +
+                            "\na = " + edta.getText() +
+                            "\nRb = " + edtRb.getText() +
+                            "\nRs = " + edtRs.getText() +
+                            "\ng = " + edtStaticLoad.getText() +
+                            "\np = " + edtDynamicLoad.getText() +
                             "\nTHỰC THI PHÉP TÍNH:" +
-                            "\nk1 = "+ tvk1.getText() +
+                            "\nk1 = " + tvk1.getText() +
                             "\nk2 = " + tvk2.getText() +
                             "\nm1 = " + tvm1.getText() +
                             "\nm2 = " + tvm2.getText() +
@@ -247,7 +257,10 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                             "\nM2 = " + tvM2.getText() +
                             "\nMI = " + tvMM1.getText() +
                             "\nMII = " + tvMM2.getText() +
-                            "\nAs = "+ edtAs.getText());
+                            "\nAs(M1) = " + edtAsM1.getText() +
+                            "\nAs(M2) = " + edtAsM2.getText() +
+                            "\nAs(MI) = " + edtAsMM1.getText() +
+                            "\nAs(MII) = " + edtAsMM2.getText());
                     startActivity(Intent.createChooser(intent, "Chia sẻ với bạn bè"));
                 }
             }
@@ -285,6 +298,7 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                     if (mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2), mHomeActivity.getTitleToolbar())) {
                         Operation operation = mInternalFormula.calculate(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2) / mConverterUtils.getDoubleValue(edtL1));
                         showStepByStepOfCalculating(operation);
+                        Utils.hiddenKeyBoard(mHomeActivity);
                     } else {
                         Toast.makeText(mContext, "Vui lòng chuyển qua mục bản dầm", Toast.LENGTH_SHORT).show();
                     }
@@ -313,6 +327,14 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         tvM2.setText(mInternalFormula.calculateM2(Double.parseDouble(tvm2.getText().toString()), Double.parseDouble(tvP.getText().toString())));
         tvMM1.setText(mInternalFormula.calculateK1(Double.parseDouble(tvk1.getText().toString()), Double.parseDouble(tvP.getText().toString())));
         tvMM2.setText(mInternalFormula.calculateK2(Double.parseDouble(tvk2.getText().toString()), Double.parseDouble(tvP.getText().toString())));
+        String AsM1 = mInternalFormula.calculateAs(Double.parseDouble(edtRb.getText().toString()), Double.parseDouble(edtRs.getText().toString()), 1, Double.parseDouble(tvM1.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString()));
+        String AsM2 = mInternalFormula.calculateAs(Double.parseDouble(edtRb.getText().toString()), Double.parseDouble(edtRs.getText().toString()), 1, Double.parseDouble(tvM2.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString()));
+        String AsMM1 = mInternalFormula.calculateAs(Double.parseDouble(edtRb.getText().toString()), Double.parseDouble(edtRs.getText().toString()), 1, Double.parseDouble(tvMM1.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString()));
+        String AsMM2 = mInternalFormula.calculateAs(Double.parseDouble(edtRb.getText().toString()), Double.parseDouble(edtRs.getText().toString()), 1, Double.parseDouble(tvMM2.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString()));
+        edtAsM1.setText(AsM1);
+        edtAsM2.setText(AsM2);
+        edtAsMM1.setText(AsMM1);
+        edtAsMM2.setText(AsMM2);
     }
 
     @Override
@@ -331,6 +353,14 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         }
         if (!mRegularUtils.isRealNumber(edta.getText().toString())) {
             Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtRb.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng chọn cấp độ bê tông", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtRs.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng chọn loại thép", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!mRegularUtils.isRealNumber(edtStaticLoad.getText().toString())) {

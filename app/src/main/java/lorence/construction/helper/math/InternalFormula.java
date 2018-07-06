@@ -276,4 +276,11 @@ public class InternalFormula {
     public String calculateK2(double k2, double P) {
         return String.valueOf(Math.round(k2*P*100000.0)/100000.0);
     }
+
+    public String calculateAs(double Rb, double Rs, int b, double M, double hs, double a) {
+        double alPha = M*10.0/(Rb*b*Math.pow((hs-a)*1.0,2));
+        double gaMa = (1.0 + Math.sqrt(1.0 - 2.0*alPha))/2.0;
+        double As = (100*M)/(Rs*gaMa*(hs-a));
+        return String.valueOf(Math.round(As*100000.0)/100000.0);
+    }
 }
