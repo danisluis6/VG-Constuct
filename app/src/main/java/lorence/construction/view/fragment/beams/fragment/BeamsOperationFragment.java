@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,8 @@ import butterknife.OnClick;
 import lorence.construction.R;
 import lorence.construction.app.Application;
 import lorence.construction.data.storage.entity.Beams;
+import lorence.construction.data.storage.entity.Concrete;
+import lorence.construction.data.storage.entity.Steel;
 import lorence.construction.di.module.beams.BeamsModule;
 import lorence.construction.di.module.beams.child.BeamOperationModule;
 import lorence.construction.di.module.home.HomeModule;
@@ -34,6 +37,8 @@ import lorence.construction.utitilize.Utils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.beams.BeamsFragment;
+import lorence.construction.view.fragment.listing.fragment.ConcreteFragment;
+import lorence.construction.view.fragment.listing.fragment.SteelFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -62,6 +67,12 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
 
     @Inject
     SpinnerFragment mSpinnerFragment;
+
+    @Inject
+    ConcreteFragment mConcreteFragment;
+
+    @Inject
+    SteelFragment mSteelFragment;
 
     @BindView(R.id.image)
     ImageView imageDescription;
@@ -138,6 +149,27 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
     @BindView(R.id.edtAsMGAs4)
     EditText edtAsMGAs4;
 
+    @BindView(R.id.edth)
+    EditText edth;
+
+    @BindView(R.id.edta)
+    EditText edta;
+
+    @BindView(R.id.edtRb)
+    EditText edtRb;
+
+    @BindView(R.id.edtRs)
+    EditText edtRs;
+
+    @BindView(R.id.edtSteel)
+    EditText edtSteel;
+
+    @BindView(R.id.edtConcrete)
+    EditText edtConcrete;
+
+    @BindView(R.id.lnExpand)
+    LinearLayout lnExpand;
+
     private String mTitle;
 
     public BeamsOperationFragment() {
@@ -185,8 +217,28 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
                 }
             }
         });
+        mSteelFragment.setParentFragment(mContext, this);
+        mSteelFragment.attachEventInterface(new SteelFragment.InterfaceSteelFragment() {
+            @Override
+            public void onClickItem(Steel steel) {
+                mSteelFragment.dismiss();
+                edtSteel.setText(steel.getName());
+                edtRs.setText(steel.getValue());
+            }
+        });
+        mConcreteFragment.setParentFragment(mContext, this);
+        mConcreteFragment.attachEventInterface(new ConcreteFragment.InterfaceConcreteFragment() {
+            @Override
+            public void onClickItem(Concrete concrete) {
+                mConcreteFragment.dismiss();
+                edtConcrete.setText(concrete.getName());
+                edtRb.setText(concrete.getValue());
+            }
+        });
         bindView(view);
+        initViews();
         extractBundle();
+        copyValueFromListings();
         edtA1.addTextChangedListener(new GenericTextWatcher(edtA1));
         edtA2.addTextChangedListener(new GenericTextWatcher(edtA2));
         edtA3.addTextChangedListener(new GenericTextWatcher(edtA3));
@@ -195,7 +247,24 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
         edtPhi2.addTextChangedListener(new GenericTextWatcher(edtPhi2));
         edtPhi3.addTextChangedListener(new GenericTextWatcher(edtPhi3));
         edtPhi4.addTextChangedListener(new GenericTextWatcher(edtPhi4));
+        edtM1.addTextChangedListener(new DectectViewTextWatcher());
+        edtM2.addTextChangedListener(new DectectViewTextWatcher());
         return view;
+    }
+
+    private void initViews() {
+        lnExpand.setVisibility(View.GONE);
+    }
+
+    private void copyValueFromListings() {
+        if (TemporaryStorage.getInstance().get(Constants.HASH_MAP.RB) != null)
+            edtRb.setText(TemporaryStorage.getInstance().get(Constants.HASH_MAP.RB));
+        if (TemporaryStorage.getInstance().get(Constants.HASH_MAP.RS) != null)
+            edtRb.setText(TemporaryStorage.getInstance().get(Constants.HASH_MAP.RS));
+        if (TemporaryStorage.getInstance().get(Constants.HASH_MAP.H) != null)
+            edth.setText(TemporaryStorage.getInstance().get(Constants.HASH_MAP.H));
+        if (TemporaryStorage.getInstance().get(Constants.HASH_MAP.A) != null)
+            edta.setText(TemporaryStorage.getInstance().get(Constants.HASH_MAP.A));
     }
 
     @Override
@@ -204,26 +273,67 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
         mHomeActivity.updateTitleToolbar(mTitle);
     }
 
+    public boolean isValidDataInput() {
+        if (!mRegularUtils.isRealNumber(edth.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho hs", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edta.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtRb.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng chọn cấp độ bê tông", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtRs.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng chọn loại thép", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private class DectectViewTextWatcher implements TextWatcher {
+
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void afterTextChanged(Editable editable) {
+            if (!TextUtils.equals(edtM1.getText(), Constants.EMPTY_STRING) && !TextUtils.equals(edtM2.getText(), Constants.EMPTY_STRING)) {
+                lnExpand.setVisibility(View.VISIBLE);
+            } else {
+                lnExpand.setVisibility(View.GONE);
+            }
+        }
+    }
+
     private class GenericTextWatcher implements TextWatcher {
 
         private View view;
+
         private GenericTextWatcher(View view) {
             this.view = view;
         }
 
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
 
         public void afterTextChanged(Editable editable) {
             String text = editable.toString();
-            switch(view.getId()){
+            switch (view.getId()) {
                 case R.id.edtPhi1:
                 case R.id.edtA1:
                     if (!mRegularUtils.isRealNumber(edtA1.getText().toString())) {
                         Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
                     } else {
                         if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi1.getText().toString(), Constants.EMPTY_STRING)) {
-                            edtAs1.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi1.getText().toString()) , Double.parseDouble(edtA1.getText().toString())));
+                            edtAs1.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi1.getText().toString()), Double.parseDouble(edtA1.getText().toString())));
                         }
                     }
                     break;
@@ -233,7 +343,7 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
                         Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
                     } else {
                         if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi2.getText().toString(), Constants.EMPTY_STRING)) {
-                            edtAs2.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi2.getText().toString()) , Double.parseDouble(edtA2.getText().toString())));
+                            edtAs2.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi2.getText().toString()), Double.parseDouble(edtA2.getText().toString())));
                         }
                     }
                     break;
@@ -243,7 +353,7 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
                         Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
                     } else {
                         if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi3.getText().toString(), Constants.EMPTY_STRING)) {
-                            edtAs3.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi3.getText().toString()) , Double.parseDouble(edtA3.getText().toString())));
+                            edtAs3.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi3.getText().toString()), Double.parseDouble(edtA3.getText().toString())));
                         }
                     }
                     break;
@@ -253,7 +363,7 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
                         Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
                     } else {
                         if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi4.getText().toString(), Constants.EMPTY_STRING)) {
-                            edtAs4.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi4.getText().toString()) , Double.parseDouble(edtA4.getText().toString())));
+                            edtAs4.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi4.getText().toString()), Double.parseDouble(edtA4.getText().toString())));
                         }
                     }
                     break;
@@ -275,7 +385,8 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
         }
     }
 
-    @OnClick({R.id.btnPerformCalculator, R.id.edtPhi1, R.id.edtPhi2, R.id.edtPhi3, R.id.edtPhi4, R.id.mainContent})
+    @OnClick({R.id.btnPerformCalculator, R.id.edtPhi1, R.id.edtPhi2, R.id.edtPhi3, R.id.edtPhi4, R.id.mainContent, R.id.btnPerformCalculatorAs,
+        R.id.edtConcrete, R.id.edtSteel, R.id.edtRs, R.id.edtRb})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnPerformCalculator:
@@ -283,29 +394,6 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
                     final Beams beam = this.getArguments().getParcelable("beam");
                     edtM1.setText(mInternalFormula.calculateMN(beam.getName(), Double.parseDouble(edtL1.getText().toString()), Double.parseDouble(edtStaticLoad.getText().toString()), Double.parseDouble(edtDynamicLoad.getText().toString())));
                     edtM2.setText(mInternalFormula.calculateMG(beam.getName(), Double.parseDouble(edtL1.getText().toString()), Double.parseDouble(edtStaticLoad.getText().toString()), Double.parseDouble(edtDynamicLoad.getText().toString())));
-
-                    if (TemporaryStorage.getInstance().get(Constants.HASH_MAP.RB) == null ||
-                            TemporaryStorage.getInstance().get(Constants.HASH_MAP.RS) == null ||
-                            TemporaryStorage.getInstance().get(Constants.HASH_MAP.VALUE_B) == null ||
-                            TemporaryStorage.getInstance().get(Constants.HASH_MAP.HS) == null ||
-                            TemporaryStorage.getInstance().get(Constants.HASH_MAP.HA) == null) {
-                        Toast.makeText(mContext, "Vui lòng nhập ở phần bản kê!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        edtAsMNAs1.setText(mInternalFormula.calculateAs(Double.parseDouble(TemporaryStorage.getInstance().get(Constants.HASH_MAP.RB)),
-                                Double.parseDouble(TemporaryStorage.getInstance().get(Constants.HASH_MAP.RS)),
-                                Integer.parseInt(TemporaryStorage.getInstance().get(Constants.HASH_MAP.VALUE_B)),
-                                Double.parseDouble(edtM1.getText().toString()),
-                                Double.parseDouble(TemporaryStorage.getInstance().get(Constants.HASH_MAP.HS)),
-                                Double.parseDouble(TemporaryStorage.getInstance().get(Constants.HASH_MAP.HA))));
-                        edtAsMGAs3.setText(mInternalFormula.calculateAs(Double.parseDouble(TemporaryStorage.getInstance().get(Constants.HASH_MAP.RB)),
-                                Double.parseDouble(TemporaryStorage.getInstance().get(Constants.HASH_MAP.RS)),
-                                Integer.parseInt(TemporaryStorage.getInstance().get(Constants.HASH_MAP.VALUE_B)),
-                                Double.parseDouble(edtM2.getText().toString()),
-                                Double.parseDouble(TemporaryStorage.getInstance().get(Constants.HASH_MAP.HS)),
-                                Double.parseDouble(TemporaryStorage.getInstance().get(Constants.HASH_MAP.HA))));
-                        edtAsMNAs2.setText(mInternalFormula.calculateAsMNAs2(Double.parseDouble(edtAsMNAs1.getText().toString())));
-                        edtAsMGAs4.setText(mInternalFormula.calculateAsMNAs2(Double.parseDouble(edtAsMGAs3.getText().toString())));
-                    }
                 }
                 break;
             case R.id.edtPhi1:
@@ -324,8 +412,35 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
                 mSpinnerFragment.show(mFragmentManager, Constants.TAG.SPINNER);
                 mSpinnerFragment.addCase(CASE.FOUR);
                 break;
+            case R.id.edtConcrete:
+            case R.id.edtRb:
+                mConcreteFragment.show(mFragmentManager, Constants.TAG.CONCRETE);
+                break;
+            case R.id.edtSteel:
+            case R.id.edtRs:
+                mSteelFragment.show(mFragmentManager, Constants.TAG.STEEL);
+                break;
             case R.id.mainContent:
                 Utils.hiddenKeyBoard(mHomeActivity);
+                break;
+            case R.id.btnPerformCalculatorAs:
+                if (isValidDataInput()) {
+                    edtAsMNAs1.setText(mInternalFormula.calculateAs(Double.parseDouble(edtRb.getText().toString()),
+                            Double.parseDouble(edtRs.getText().toString()),
+                            Integer.parseInt("1"),
+                            Double.parseDouble(edtM1.getText().toString()),
+                            Double.parseDouble(edth.getText().toString()),
+                            Double.parseDouble(edta.getText().toString())));
+
+                    edtAsMGAs3.setText(mInternalFormula.calculateAs(Double.parseDouble(edtRb.getText().toString()),
+                            Double.parseDouble(edtRs.getText().toString()),
+                            Integer.parseInt("1"),
+                            Double.parseDouble(edtM2.getText().toString()),
+                            Double.parseDouble(edth.getText().toString()),
+                            Double.parseDouble(edta.getText().toString())));
+                    edtAsMNAs2.setText(mInternalFormula.calculateAsMNAs2(Double.parseDouble(edtAsMNAs1.getText().toString())));
+                    edtAsMGAs4.setText(mInternalFormula.calculateAsMNAs2(Double.parseDouble(edtAsMGAs3.getText().toString())));
+                }
                 break;
         }
     }

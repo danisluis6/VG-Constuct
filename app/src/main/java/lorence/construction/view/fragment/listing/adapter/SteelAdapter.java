@@ -12,6 +12,7 @@ import java.util.List;
 import lorence.construction.R;
 import lorence.construction.data.storage.entity.Concrete;
 import lorence.construction.data.storage.entity.Steel;
+import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
 import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
 
@@ -24,7 +25,7 @@ public class SteelAdapter extends RecyclerView.Adapter<SteelAdapter.MyViewHolder
 
     private Context mContext;
     private List<Steel> mGroupSteels;
-    private CalculateFragment mFragment;
+    private EBaseFragment mFragment;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -37,7 +38,7 @@ public class SteelAdapter extends RecyclerView.Adapter<SteelAdapter.MyViewHolder
         }
     }
 
-    public SteelAdapter(Context context, CalculateFragment fragment, List<Steel> groupSteel) {
+    public SteelAdapter(Context context, EBaseFragment fragment, List<Steel> groupSteel) {
         mContext = context;
         mGroupSteels = groupSteel;
         mFragment = fragment;

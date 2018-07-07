@@ -318,8 +318,8 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                         TemporaryStorage.getInstance().put(Constants.HASH_MAP.RB, edtRb.getText().toString());
                         TemporaryStorage.getInstance().put(Constants.HASH_MAP.RS, edtRs.getText().toString());
                         TemporaryStorage.getInstance().put(Constants.HASH_MAP.VALUE_B, "1");
-                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.HS, edth.getText().toString());
-                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.HA, edta.getText().toString());
+                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.H, edth.getText().toString());
+                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.A, edta.getText().toString());
                     }
                 }
                 break;

@@ -16,6 +16,7 @@ import java.util.List;
 
 import lorence.construction.R;
 import lorence.construction.data.storage.entity.Steel;
+import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.fragment.listing.adapter.SteelAdapter;
 import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
 
@@ -23,7 +24,7 @@ public class SteelFragment extends DialogFragment {
 
     private RecyclerView rvSteel;
     private TextView tvTitleSteel;
-    private CalculateFragment mFragment;
+    private EBaseFragment mFragment;
     private SteelAdapter mSteelAdapter;
     private Context mContext;
 
@@ -63,7 +64,7 @@ public class SteelFragment extends DialogFragment {
         return list;
     }
 
-    public void setParentFragment(Context context, CalculateFragment parentFragment) {
+    public void setParentFragment(Context context, EBaseFragment parentFragment) {
         mFragment = parentFragment;
         mContext = context;
     }

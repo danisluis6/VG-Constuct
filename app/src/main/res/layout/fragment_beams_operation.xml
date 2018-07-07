@@ -300,187 +300,464 @@
 
             </android.support.constraint.ConstraintLayout>
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cslAsMNAs1"
+            <LinearLayout
+                android:id="@+id/lnExpand"
                 android:layout_width="match_parent"
+                android:orientation="vertical"
                 android:layout_height="wrap_content">
 
-                <android.support.design.widget.TextInputLayout
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cslh"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/gradient"
-                    android:hint="@string/input_AsMNAs1"
-                    android:paddingTop="8dp"
-                    android:textColorHint="#000"
-                    app:hintTextAppearance="@style/FloatLabelEditTextStyle"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/edtAsMNAs1"
-                        style="@style/FloatLabelEditTextStyle"
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:digits="0123456789."
-                        android:drawableEnd="@drawable/ic_donvi_cm_2"
-                        android:drawablePadding="10dp"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:imeOptions="actionDone"
-                        android:inputType="number"
-                        android:labelFor="@+id/edtCurrentPswd"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="2dp"
-                        android:textSize="14sp"
-                        android:typeface="monospace" />
-                </android.support.design.widget.TextInputLayout>
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/gradient"
+                        android:hint="@string/input_h"
+                        android:paddingTop="8dp"
+                        android:textColorHint="#000"
+                        app:hintTextAppearance="@style/FloatLabelEditTextStyle"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-            </android.support.constraint.ConstraintLayout>
+                        <EditText
+                            android:id="@+id/edth"
+                            style="@style/FloatLabelEditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:digits="0123456789."
+                            android:drawableEnd="@drawable/ic_donvi_mm"
+                            android:drawablePadding="10dp"
+                            android:drawableRight="@drawable/ic_donvi_m"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:labelFor="@+id/edtCurrentPswd"
+                            android:paddingBottom="2dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="2dp"
+                            android:textSize="14sp"
+                            android:typeface="monospace" />
+                    </android.support.design.widget.TextInputLayout>
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cslAsMGAs3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                </android.support.constraint.ConstraintLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/csla"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/gradient"
-                    android:hint="@string/input_AsMGAs3"
-                    android:paddingTop="8dp"
-                    android:textColorHint="#000"
-                    app:hintTextAppearance="@style/FloatLabelEditTextStyle"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/edtAsMGAs3"
-                        style="@style/FloatLabelEditTextStyle"
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:digits="0123456789."
-                        android:drawableEnd="@drawable/ic_donvi_cm_2"
-                        android:drawablePadding="10dp"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:imeOptions="actionDone"
-                        android:inputType="number"
-                        android:labelFor="@+id/edtCurrentPswd"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="2dp"
-                        android:textSize="14sp"
-                        android:typeface="monospace" />
-                </android.support.design.widget.TextInputLayout>
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/gradient"
+                        android:hint="@string/input_a"
+                        android:paddingTop="8dp"
+                        android:textColorHint="#000"
+                        app:hintTextAppearance="@style/FloatLabelEditTextStyle"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-            </android.support.constraint.ConstraintLayout>
+                        <EditText
+                            android:id="@+id/edta"
+                            style="@style/FloatLabelEditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:digits="0123456789."
+                            android:drawableEnd="@drawable/ic_donvi_mm"
+                            android:drawablePadding="10dp"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:labelFor="@+id/edtCurrentPswd"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:textSize="14sp"
+                            android:typeface="monospace" />
+                    </android.support.design.widget.TextInputLayout>
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cslAsMNAs2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cslAsM2">
+                </android.support.constraint.ConstraintLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layer1Materials"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/gradient"
+                            android:hint="@string/input_concrete"
+                            android:paddingTop="8dp"
+                            android:textColorHint="#000"
+                            app:hintTextAppearance="@style/FloatLabelEditTextStyle"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edtConcrete"
+                                style="@style/FloatLabelEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:drawableEnd="@drawable/ic_drop_down"
+                                android:drawablePadding="10dp"
+                                android:drawableRight="@drawable/ic_donvi_m"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:labelFor="@+id/edtCurrentPswd"
+                                android:paddingBottom="2dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:paddingTop="2dp"
+                                android:textSize="14sp"
+                                android:typeface="monospace" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/gradient"
+                            android:hint="@string/input_Rb"
+                            android:paddingTop="8dp"
+                            android:textColorHint="#000"
+                            app:hintTextAppearance="@style/FloatLabelEditTextStyle"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edtRb"
+                                style="@style/FloatLabelEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:drawableEnd="@drawable/ic_donvi_mpa"
+                                android:drawablePadding="10dp"
+                                android:drawableRight="@drawable/ic_donvi_m"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:labelFor="@+id/edtCurrentPswd"
+                                android:paddingBottom="2dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:paddingTop="2dp"
+                                android:textSize="14sp"
+                                android:typeface="monospace" />
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layer2Materials"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/gradient"
+                            android:hint="@string/input_steel"
+                            android:paddingTop="8dp"
+                            android:textColorHint="#000"
+                            app:hintTextAppearance="@style/FloatLabelEditTextStyle"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edtSteel"
+                                style="@style/FloatLabelEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:drawableEnd="@drawable/ic_drop_down"
+                                android:drawablePadding="10dp"
+                                android:drawableRight="@drawable/ic_donvi_m"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:labelFor="@+id/edtCurrentPswd"
+                                android:paddingBottom="2dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:paddingTop="2dp"
+                                android:textSize="14sp"
+                                android:typeface="monospace" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/gradient"
+                            android:hint="@string/input_Rs"
+                            android:paddingTop="8dp"
+                            android:textColorHint="#000"
+                            app:hintTextAppearance="@style/FloatLabelEditTextStyle"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edtRs"
+                                style="@style/FloatLabelEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:drawableEnd="@drawable/ic_donvi_mpa"
+                                android:drawablePadding="10dp"
+                                android:drawableRight="@drawable/ic_donvi_m"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:labelFor="@+id/edtCurrentPswd"
+                                android:paddingBottom="2dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:paddingTop="2dp"
+                                android:textSize="14sp"
+                                android:typeface="monospace" />
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cslOperatorAs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/gradient"
-                    android:hint="@string/input_AsMNAs2"
-                    android:paddingTop="8dp"
-                    android:textColorHint="#000"
-                    app:hintTextAppearance="@style/FloatLabelEditTextStyle"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_marginTop="10dp">
 
-                    <EditText
-                        android:id="@+id/edtAsMNAs2"
-                        style="@style/FloatLabelEditTextStyle"
+                    <Button
+                        android:id="@+id/btnPerformCalculatorAs"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:digits="0123456789."
-                        android:drawableEnd="@drawable/ic_donvi_cm_2"
-                        android:drawablePadding="10dp"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:imeOptions="actionDone"
-                        android:inputType="number"
-                        android:labelFor="@+id/edtCurrentPswd"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="2dp"
-                        android:textSize="14sp"
-                        android:typeface="monospace" />
-                </android.support.design.widget.TextInputLayout>
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/gradient"
+                        android:text="@string/perform_calculator" />
 
-            </android.support.constraint.ConstraintLayout>
+                </android.support.constraint.ConstraintLayout>
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cslAsMGAs4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cslAsMM1">
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cslAsMNAs1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <android.support.design.widget.TextInputLayout
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/gradient"
+                        android:hint="@string/input_AsMNAs1"
+                        android:paddingTop="8dp"
+                        android:textColorHint="#000"
+                        app:hintTextAppearance="@style/FloatLabelEditTextStyle"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <EditText
+                            android:id="@+id/edtAsMNAs1"
+                            style="@style/FloatLabelEditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:digits="0123456789."
+                            android:drawableEnd="@drawable/ic_donvi_cm_2"
+                            android:drawablePadding="10dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:labelFor="@+id/edtCurrentPswd"
+                            android:paddingBottom="2dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="2dp"
+                            android:textSize="14sp"
+                            android:typeface="monospace" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cslAsMGAs3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/gradient"
+                        android:hint="@string/input_AsMGAs3"
+                        android:paddingTop="8dp"
+                        android:textColorHint="#000"
+                        app:hintTextAppearance="@style/FloatLabelEditTextStyle"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <EditText
+                            android:id="@+id/edtAsMGAs3"
+                            style="@style/FloatLabelEditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:digits="0123456789."
+                            android:drawableEnd="@drawable/ic_donvi_cm_2"
+                            android:drawablePadding="10dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:labelFor="@+id/edtCurrentPswd"
+                            android:paddingBottom="2dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="2dp"
+                            android:textSize="14sp"
+                            android:typeface="monospace" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cslAsMNAs2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/gradient"
-                    android:hint="@string/input_AsMGAs4"
-                    android:paddingTop="8dp"
-                    android:textColorHint="#000"
-                    app:hintTextAppearance="@style/FloatLabelEditTextStyle"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cslAsM2">
 
-                    <EditText
-                        android:id="@+id/edtAsMGAs4"
-                        style="@style/FloatLabelEditTextStyle"
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:digits="0123456789."
-                        android:drawableEnd="@drawable/ic_donvi_cm_2"
-                        android:drawablePadding="10dp"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:imeOptions="actionDone"
-                        android:inputType="number"
-                        android:labelFor="@+id/edtCurrentPswd"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="2dp"
-                        android:textSize="14sp"
-                        android:typeface="monospace" />
-                </android.support.design.widget.TextInputLayout>
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/gradient"
+                        android:hint="@string/input_AsMNAs2"
+                        android:paddingTop="8dp"
+                        android:textColorHint="#000"
+                        app:hintTextAppearance="@style/FloatLabelEditTextStyle"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-            </android.support.constraint.ConstraintLayout>
+                        <EditText
+                            android:id="@+id/edtAsMNAs2"
+                            style="@style/FloatLabelEditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:digits="0123456789."
+                            android:drawableEnd="@drawable/ic_donvi_cm_2"
+                            android:drawablePadding="10dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:labelFor="@+id/edtCurrentPswd"
+                            android:paddingBottom="2dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="2dp"
+                            android:textSize="14sp"
+                            android:typeface="monospace" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cslAsMGAs4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cslAsMM1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/gradient"
+                        android:hint="@string/input_AsMGAs4"
+                        android:paddingTop="8dp"
+                        android:textColorHint="#000"
+                        app:hintTextAppearance="@style/FloatLabelEditTextStyle"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <EditText
+                            android:id="@+id/edtAsMGAs4"
+                            style="@style/FloatLabelEditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:digits="0123456789."
+                            android:drawableEnd="@drawable/ic_donvi_cm_2"
+                            android:drawablePadding="10dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:labelFor="@+id/edtCurrentPswd"
+                            android:paddingBottom="2dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="2dp"
+                            android:textSize="14sp"
+                            android:typeface="monospace" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"

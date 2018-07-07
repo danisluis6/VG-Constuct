@@ -74,7 +74,7 @@ public class Constants {
         public static final String RB= "Rb";
         public static final String RS= "Rs";
         public static final String VALUE_B = "b";
-        public static final String HS = "hs";
-        public static final String HA = "ha";
+        public static final String H = "hs";
+        public static final String A = "ha";
     }
 }
