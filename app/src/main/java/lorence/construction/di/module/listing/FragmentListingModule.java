@@ -2,8 +2,8 @@ package lorence.construction.di.module.listing;
 
 import dagger.Module;
 import dagger.Provides;
-import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.di.scope.FragmentScope;
+import lorence.construction.view.fragment.beams.fragment.SpinnerFragment;
 import lorence.construction.view.fragment.listing.fragment.ConcreteFragment;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
 import lorence.construction.view.fragment.listing.fragment.SteelFragment;
@@ -36,5 +36,11 @@ public class FragmentListingModule {
     @FragmentScope
     SteelFragment provideSteelFragment() {
         return new SteelFragment();
+    }
+
+    @Provides
+    @FragmentScope
+    SpinnerFragment provideSpinnerFragment() {
+        return new SpinnerFragment();
     }
 }

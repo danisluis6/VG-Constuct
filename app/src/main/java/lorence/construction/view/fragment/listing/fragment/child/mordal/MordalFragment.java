@@ -28,6 +28,7 @@ import lorence.construction.helper.ConverterUtils;
 import lorence.construction.helper.RegularUtils;
 import lorence.construction.helper.Validator;
 import lorence.construction.helper.math.InternalFormula;
+import lorence.construction.other.TemporaryStorage;
 import lorence.construction.utitilize.Utils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
@@ -166,7 +167,7 @@ public class MordalFragment extends EBaseFragment implements MordalView {
 
     public void updateValueL1() {
         if (edtL1 != null)
-            edtL1.setText(mSessionManager.getL1());
+            edtL1.setText(TemporaryStorage.getInstance().get(Constants.HASH_MAP.L1));
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

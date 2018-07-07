@@ -33,12 +33,13 @@
     <string name="input_plaster_mortar">Vữa trát trần</string>
     <string name="perform_calculator">Tính toán</string>
     <string name="title_concrete">Cấp độ bê tông</string>
-    <string name="title_steel">Chọn loại thép</string>
+    <string name="title_steel">Chọn thép</string>
+    <string name="title_spinner">Chọn Ø</string>
 
     <!-- Title in Fragment Listing -->
     <string name="tab_title_calculate">Tính toán</string>
     <string name="tab_title_result">Tham khảo</string>
-    <string name="tab_title_reference">Tham khảo</string>
+    <string name="tab_title_reference">Hoạt tải</string>
 
     <!-- Reference -->
     <string name="standard">Một số loại hoạt tải theo TCVN 2737–1995</string>
@@ -103,5 +104,18 @@
     <string name="input_AsM2">Giá trị As(Mô men dương giữa bản M2): </string>
     <string name="input_AsMM1">Giá trị As(Mô men âm trên gối MI): </string>
     <string name="input_AsMM2">Giá trị As(Mô men âm trên gối MII): </string>
+    <string name="input_AsMNAs1">As1 (Mô men nhịp): </string>
+    <string name="input_AsMGAs3">As3 (Mô men gối): </string>
+    <string name="input_AsMNAs2">As2 (Mô men nhịp): </string>
+    <string name="input_AsMGAs4">As4 (Mô men gối): </string>
+    <string name="result_M1">M (nhịp) </string>
+    <string name="result_M2">M (gối) </string>
+
+    <string name="beam_phi">Ø</string>
+    <string name="beam_a">a</string>
+    <string name="beam_as1">As1</string>
+    <string name="beam_as2">As2</string>
+    <string name="beam_as3">As3</string>
+    <string name="beam_as4">As4</string>
 </resources>
 

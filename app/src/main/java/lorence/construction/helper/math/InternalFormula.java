@@ -283,4 +283,49 @@ public class InternalFormula {
         double As = (100*M)/(Rs*gaMa*(hs-a));
         return String.valueOf(Math.round(As*100000.0)/100000.0);
     }
+
+    // Nhịp
+    public String calculateMN(String name, double l, double g, double p) {
+        Double q = g + p*1.2;
+        Double result = 0.0;
+        if (TextUtils.equals(name, Constants.BEAMS.ONE)) {
+            result = (9.0*q*l*l)/128.0;
+            return String.valueOf(Math.round(result*100000.0)/100000.0);
+        } else if (TextUtils.equals(name, Constants.BEAMS.TWO)) {
+            result = (q*l*l)/8.0;
+            return String.valueOf(Math.round(result*100000.0)/100000.0);
+        } else if (TextUtils.equals(name, Constants.BEAMS.THREE)) {
+            result = (q*l*l)/8.0;
+            return String.valueOf(Math.round(result*100000.0)/100000.0);
+        } else {
+            return String.valueOf(result);
+        }
+    }
+
+    // Gối
+    public String calculateMG(String name, double l, double g, double p) {
+        Double q = g + p*1.2;
+        Double result = 0.0;
+        if (TextUtils.equals(name, Constants.BEAMS.ONE)) {
+            result = (q*l*l)/8.0;
+            return String.valueOf(Math.round(result*100000.0)/100000.0);
+        } else if (TextUtils.equals(name, Constants.BEAMS.TWO)) {
+            result = (q*l*l)/12.0;
+            return String.valueOf(Math.round(result*100000.0)/100000.0);
+        } else if (TextUtils.equals(name, Constants.BEAMS.THREE)) {
+            result = 0.0;
+            return String.valueOf(Math.round(result*100000.0)/100000.0);
+        } else {
+            return String.valueOf(result);
+        }
+    }
+
+    public String calculateAs1(double phi, double a) {
+        Double result = (Math.pow((phi/20.0), 2)*3.14*1000.0)/a;
+        return String.valueOf(Math.round(result*100.0)/100.0);
+    }
+
+    public String calculateAsMNAs2(double value) {
+        return String.valueOf(Math.round(0.2*value*100.0)/100.0);
+    }
 }

@@ -38,6 +38,7 @@ import lorence.construction.helper.Constants;
 import lorence.construction.helper.ConverterUtils;
 import lorence.construction.helper.RegularUtils;
 import lorence.construction.helper.math.InternalFormula;
+import lorence.construction.other.TemporaryStorage;
 import lorence.construction.utitilize.Utils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
@@ -212,22 +213,9 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
             }
         });
         mCalculatePresenter.getListingOperations();
-        edtL1.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                mSessionManager.setL1(edtL1.getText().toString());
-            }
-        });
+        edtL1.addTextChangedListener(new GenericTextWatcher(edtL1));
+        edtStaticLoad.addTextChangedListener(new GenericTextWatcher(edtStaticLoad));
+        edtDynamicLoad.addTextChangedListener(new GenericTextWatcher(edtDynamicLoad));
         mHomeActivity.attachShareButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -268,6 +256,32 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         return view;
     }
 
+    private class GenericTextWatcher implements TextWatcher{
+
+        private View view;
+        private GenericTextWatcher(View view) {
+            this.view = view;
+        }
+
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+        public void afterTextChanged(Editable editable) {
+            String text = editable.toString();
+            switch(view.getId()){
+                case R.id.edtL1:
+                    TemporaryStorage.getInstance().put(Constants.HASH_MAP.L1, text);
+                    break;
+                case R.id.edtStaticLoad:
+                    TemporaryStorage.getInstance().put(Constants.HASH_MAP.STATIC_LOAD, text);
+                    break;
+                case R.id.edtDynamicLoad:
+                    TemporaryStorage.getInstance().put(Constants.HASH_MAP.DYNAMIC_LOAD, text);
+                    break;
+            }
+        }
+    }
+
     @Override
     public void updateValueFieldConcrete(Concrete concrete) {
         edtConcrete.setText(concrete.getName());
@@ -301,6 +315,11 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                         Utils.hiddenKeyBoard(mHomeActivity);
                     } else {
                         Toast.makeText(mContext, "Vui lòng chuyển qua mục bản dầm", Toast.LENGTH_SHORT).show();
+                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.RB, edtRb.getText().toString());
+                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.RS, edtRs.getText().toString());
+                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.VALUE_B, "1");
+                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.HS, edth.getText().toString());
+                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.HA, edta.getText().toString());
                     }
                 }
                 break;

@@ -14,6 +14,7 @@ public class Constants {
         public static final String SETTING = "Setting";
         public static final String ABOUT = "About";
         public static final String CONCRETE = "Concrete";
+        public static final String SPINNER = "Spinner";
         public static final String STEEL = "Steel";
     }
 
@@ -65,4 +66,15 @@ public class Constants {
     public static final String URL_APP_STORE = "https://play.google.com/store/apps/details?id=";
 
     public final static String SLASH = "/";
+
+    public static final class HASH_MAP {
+        public static final String L1 = "L1";
+        public static final String STATIC_LOAD = "static _load";
+        public static final String DYNAMIC_LOAD = "dynamic_load";
+        public static final String RB= "Rb";
+        public static final String RS= "Rs";
+        public static final String VALUE_B = "b";
+        public static final String HS = "hs";
+        public static final String HA = "ha";
+    }
 }
