@@ -170,6 +170,18 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
     @BindView(R.id.lnExpand)
     LinearLayout lnExpand;
 
+    @BindView(R.id.edtPhiAsMNAs1)
+    EditText  edtPhiAsMNAs1;
+
+    @BindView(R.id.edtPhiAsMGAs3)
+    EditText  edtPhiAsMGAs3;
+
+    @BindView(R.id.edtPhiAsMNAs2)
+    EditText  edtPhiAsMNAs2;
+
+    @BindView(R.id.edtPhiAsMGAs4)
+    EditText  edtPhiAsMGAs4;
+
     private String mTitle;
 
     public BeamsOperationFragment() {
@@ -440,6 +452,11 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
                             Double.parseDouble(edta.getText().toString())));
                     edtAsMNAs2.setText(mInternalFormula.calculateAsMNAs2(Double.parseDouble(edtAsMNAs1.getText().toString())));
                     edtAsMGAs4.setText(mInternalFormula.calculateAsMNAs2(Double.parseDouble(edtAsMNAs1.getText().toString())));
+
+                    edtPhiAsMNAs1.setText(mInternalFormula.calculateAsMX(Double.parseDouble(edtAsMNAs1.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString())));
+                    edtPhiAsMGAs3.setText(mInternalFormula.calculateAsMX(Double.parseDouble(edtAsMGAs3.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString())));
+                    edtPhiAsMNAs2.setText(mInternalFormula.calculateAsMX(Double.parseDouble(edtAsMNAs2.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString())));
+                    edtPhiAsMGAs4.setText(mInternalFormula.calculateAsMX(Double.parseDouble(edtAsMGAs4.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString())));
                 }
                 break;
         }

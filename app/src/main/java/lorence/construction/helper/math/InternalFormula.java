@@ -253,7 +253,7 @@ public class InternalFormula {
     }
 
     public String calculateq(double g, double p) {
-        return String.valueOf(Math.round(g + p*1.2*100000.0)/100000.0);
+        return String.valueOf(Math.round((g + p*1.2)*100000.0)/100000.0);
     }
 
     public String calculateP(double g, double p, double l1, double l2) {
@@ -327,5 +327,10 @@ public class InternalFormula {
 
     public String calculateAsMNAs2(double value) {
         return String.valueOf(Math.round(0.2*value*100.0)/100.0);
+    }
+
+    public String calculateAsMX(double As, double hs, double a) {
+        Double result = 10.0*As/(hs - a);
+        return String.valueOf(Math.round(result*100.0)/100.0);
     }
 }

@@ -110,6 +110,7 @@
     <string name="input_AsMGAs4">As4 (Mô men gối): </string>
     <string name="result_M1">M (nhịp) </string>
     <string name="result_M2">M (gối) </string>
+    <string name="input_Phi">Giá trị Ø(%): </string>
 
     <string name="beam_phi">Ø</string>
     <string name="beam_a">a</string>

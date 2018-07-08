@@ -169,6 +169,18 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     @BindView(R.id.edtAs4)
     EditText edtAs4;
 
+    @BindView(R.id.edtPhiAsM1)
+    EditText edtPhiAsM1;
+
+    @BindView(R.id.edtPhiAsM2)
+    EditText edtPhiAsM2;
+
+    @BindView(R.id.edtPhiAsMM1)
+    EditText edtPhiAsMM1;
+
+    @BindView(R.id.edtPhiAsMM2)
+    EditText edtPhiAsMM2;
+
     @Inject
     Context mContext;
 
@@ -498,6 +510,10 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         edtAsM2.setText(AsM2);
         edtAsMM1.setText(AsMM1);
         edtAsMM2.setText(AsMM2);
+        edtPhiAsM1.setText(mInternalFormula.calculateAsMX(Double.parseDouble(edtAsM1.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString())));
+        edtPhiAsM2.setText(mInternalFormula.calculateAsMX(Double.parseDouble(edtAsM2.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString())));
+        edtPhiAsMM1.setText(mInternalFormula.calculateAsMX(Double.parseDouble(edtAsMM1.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString())));
+        edtPhiAsMM2.setText(mInternalFormula.calculateAsMX(Double.parseDouble(edtAsMM2.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString())));
     }
 
     @Override
