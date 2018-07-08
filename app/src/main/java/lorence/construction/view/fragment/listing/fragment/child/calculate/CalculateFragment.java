@@ -42,6 +42,8 @@ import lorence.construction.other.TemporaryStorage;
 import lorence.construction.utitilize.Utils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
+import lorence.construction.view.fragment.beams.fragment.BeamsOperationFragment;
+import lorence.construction.view.fragment.beams.fragment.SpinnerFragment;
 import lorence.construction.view.fragment.listing.fragment.ConcreteFragment;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
 import lorence.construction.view.fragment.listing.fragment.SteelFragment;
@@ -131,6 +133,42 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     @BindView(R.id.edtAsMM2)
     EditText edtAsMM2;
 
+    @BindView(R.id.edtPhi1)
+    EditText edtPhi1;
+
+    @BindView(R.id.edtPhi2)
+    EditText edtPhi2;
+
+    @BindView(R.id.edtPhi3)
+    EditText edtPhi3;
+
+    @BindView(R.id.edtPhi4)
+    EditText edtPhi4;
+
+    @BindView(R.id.edtA1)
+    EditText edtA1;
+
+    @BindView(R.id.edtA2)
+    EditText edtA2;
+
+    @BindView(R.id.edtA3)
+    EditText edtA3;
+
+    @BindView(R.id.edtA4)
+    EditText edtA4;
+
+    @BindView(R.id.edtAs1)
+    EditText edtAs1;
+
+    @BindView(R.id.edtAs2)
+    EditText edtAs2;
+
+    @BindView(R.id.edtAs3)
+    EditText edtAs3;
+
+    @BindView(R.id.edtAs4)
+    EditText edtAs4;
+
     @Inject
     Context mContext;
 
@@ -151,6 +189,9 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
 
     @Inject
     SteelFragment mSteelFragment;
+
+    @Inject
+    SpinnerFragment mSpinnerFragment;
 
     @Inject
     InternalFormula mInternalFormula;
@@ -212,6 +253,32 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                 updateValueFieldSteel(steel);
             }
         });
+        mSpinnerFragment.setParentFragment(mContext,mCalculateFragment);
+        mSpinnerFragment.attachEventInterface(new SpinnerFragment.InterfaceSpinnerFragment() {
+            @Override
+            public void onClickItem(String value, BeamsOperationFragment.CASE _case) {
+                mSpinnerFragment.dismiss();
+                if (BeamsOperationFragment.CASE.ONE == _case) {
+                    edtPhi1.setText(value);
+                } else if (BeamsOperationFragment.CASE.TWO == _case) {
+                    edtPhi2.setText(value);
+                } else if (BeamsOperationFragment.CASE.THREE == _case) {
+                    edtPhi3.setText(value);
+                } else if (BeamsOperationFragment.CASE.FOUR == _case) {
+                    edtPhi4.setText(value);
+                }
+            }
+        });
+
+        edtA1.addTextChangedListener(new AsTextWatcher(edtA1));
+        edtA2.addTextChangedListener(new AsTextWatcher(edtA2));
+        edtA3.addTextChangedListener(new AsTextWatcher(edtA3));
+        edtA4.addTextChangedListener(new AsTextWatcher(edtA4));
+        edtPhi1.addTextChangedListener(new AsTextWatcher(edtPhi1));
+        edtPhi2.addTextChangedListener(new AsTextWatcher(edtPhi2));
+        edtPhi3.addTextChangedListener(new AsTextWatcher(edtPhi3));
+        edtPhi4.addTextChangedListener(new AsTextWatcher(edtPhi4));
+
         mCalculatePresenter.getListingOperations();
         edtL1.addTextChangedListener(new GenericTextWatcher(edtL1));
         edtStaticLoad.addTextChangedListener(new GenericTextWatcher(edtStaticLoad));
@@ -304,7 +371,7 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         mSteelFragment.show(mFragmentManager, Constants.TAG.STEEL);
     }
 
-    @OnClick({R.id.btnPerformCalculator, R.id.edtConcrete, R.id.edtRb, R.id.edtSteel, R.id.edtRs})
+    @OnClick({R.id.btnPerformCalculator, R.id.edtConcrete, R.id.edtRb, R.id.edtSteel, R.id.edtRs, R.id.edtPhi1, R.id.edtPhi2, R.id.edtPhi3, R.id.edtPhi4})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnPerformCalculator:
@@ -331,7 +398,84 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
             case R.id.edtRs:
                 showSteelDialog();
                 break;
+            case R.id.edtPhi1:
+                mSpinnerFragment.show(mFragmentManager, Constants.TAG.SPINNER);
+                mSpinnerFragment.addCase(BeamsOperationFragment.CASE.ONE);
+                break;
+            case R.id.edtPhi2:
+                mSpinnerFragment.show(mFragmentManager, Constants.TAG.SPINNER);
+                mSpinnerFragment.addCase(BeamsOperationFragment.CASE.TWO);
+                break;
+            case R.id.edtPhi3:
+                mSpinnerFragment.show(mFragmentManager, Constants.TAG.SPINNER);
+                mSpinnerFragment.addCase(BeamsOperationFragment.CASE.THREE);
+                break;
+            case R.id.edtPhi4:
+                mSpinnerFragment.show(mFragmentManager, Constants.TAG.SPINNER);
+                mSpinnerFragment.addCase(BeamsOperationFragment.CASE.FOUR);
+                break;
 
+        }
+    }
+
+    public class AsTextWatcher implements TextWatcher {
+
+        private View view;
+
+        private AsTextWatcher(View view) {
+            this.view = view;
+        }
+
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void afterTextChanged(Editable editable) {
+            String text = editable.toString();
+            switch (view.getId()) {
+                case R.id.edtPhi1:
+                case R.id.edtA1:
+                    if (!mRegularUtils.isRealNumber(edtA1.getText().toString())) {
+                        Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi1.getText().toString(), Constants.EMPTY_STRING)) {
+                            edtAs1.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi1.getText().toString()), Double.parseDouble(edtA1.getText().toString())));
+                        }
+                    }
+                    break;
+                case R.id.edtPhi2:
+                case R.id.edtA2:
+                    if (!mRegularUtils.isRealNumber(edtA2.getText().toString())) {
+                        Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi2.getText().toString(), Constants.EMPTY_STRING)) {
+                            edtAs2.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi2.getText().toString()), Double.parseDouble(edtA2.getText().toString())));
+                        }
+                    }
+                    break;
+                case R.id.edtPhi3:
+                case R.id.edtA3:
+                    if (!mRegularUtils.isRealNumber(edtA3.getText().toString())) {
+                        Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi3.getText().toString(), Constants.EMPTY_STRING)) {
+                            edtAs3.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi3.getText().toString()), Double.parseDouble(edtA3.getText().toString())));
+                        }
+                    }
+                    break;
+                case R.id.edtPhi4:
+                case R.id.edtA4:
+                    if (!mRegularUtils.isRealNumber(edtA4.getText().toString())) {
+                        Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi4.getText().toString(), Constants.EMPTY_STRING)) {
+                            edtAs4.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi4.getText().toString()), Double.parseDouble(edtA4.getText().toString())));
+                        }
+                    }
+                    break;
+            }
         }
     }
 

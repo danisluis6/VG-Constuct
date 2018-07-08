@@ -310,7 +310,7 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
         }
     }
 
-    private class GenericTextWatcher implements TextWatcher {
+    public class GenericTextWatcher implements TextWatcher {
 
         private View view;
 
@@ -439,7 +439,7 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
                             Double.parseDouble(edth.getText().toString()),
                             Double.parseDouble(edta.getText().toString())));
                     edtAsMNAs2.setText(mInternalFormula.calculateAsMNAs2(Double.parseDouble(edtAsMNAs1.getText().toString())));
-                    edtAsMGAs4.setText(mInternalFormula.calculateAsMNAs2(Double.parseDouble(edtAsMGAs3.getText().toString())));
+                    edtAsMGAs4.setText(mInternalFormula.calculateAsMNAs2(Double.parseDouble(edtAsMNAs1.getText().toString())));
                 }
                 break;
         }
