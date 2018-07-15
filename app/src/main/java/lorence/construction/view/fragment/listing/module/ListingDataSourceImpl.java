@@ -288,8 +288,8 @@ public class ListingDataSourceImpl implements DataSource {
         List<Beams> groupBeams = new ArrayList<>();
         int[] covers = new int[]{
                 R.drawable.ic_loai_dam_1,
-                R.drawable.ic_loai_dam_1,
-                R.drawable.ic_loai_dam_1
+                R.drawable.ic_loai_dam_2,
+                R.drawable.ic_loai_dam_3
         };
 
         groupBeams.add(new Beams(Constants.BEAMS.ONE, covers[0], "NGÀM + KHỚP","M (nhịp) = 9ql2/128", "M (gối) = ql2/8"));
