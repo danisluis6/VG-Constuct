@@ -293,7 +293,11 @@ public class ListingDataSourceImpl implements DataSource {
         };
 
         groupBeams.add(new Beams(Constants.BEAMS.ONE, covers[0], "NGÀM + KHỚP","M (nhịp) = 9ql2/128", "M (gối) = ql2/8"));
+        groupBeams.add(new Beams(Constants.LISTINGS.ADS, 0, Constants.EMPTY_STRING, Constants.EMPTY_STRING, Constants.EMPTY_STRING));
+
         groupBeams.add(new Beams(Constants.BEAMS.TWO, covers[1], "NGÀM + NGÀM", "M (nhịp) = ql2/8", "M (gối) = ql2/12"));
+        groupBeams.add(new Beams(Constants.LISTINGS.ADS, 0, Constants.EMPTY_STRING, Constants.EMPTY_STRING, Constants.EMPTY_STRING));
+
         groupBeams.add(new Beams(Constants.BEAMS.THREE, covers[2], "KHỚP + KHỚP", "M (nhịp) = ql2/8", "M (gối) = 0"));
         return groupBeams;
     }

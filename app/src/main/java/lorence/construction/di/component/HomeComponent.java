@@ -3,6 +3,7 @@ package lorence.construction.di.component;
 import dagger.Subcomponent;
 import lorence.construction.di.module.beams.BeamsModule;
 import lorence.construction.di.module.beams.FragmentBeamsModule;
+import lorence.construction.di.module.concrete.DetailConcreteModule;
 import lorence.construction.di.module.home.FragmentModule;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.di.module.listing.FragmentListingModule;
@@ -40,6 +41,7 @@ public interface HomeComponent {
     CalculateFragmentComponent plus(CalculateFragmentModule module);
     MordalFragmentComponent plus(MordalFragmentModule module);
     ReferenceFragmentComponent plus(ReferenceFragmentModule module);
+    DetailConcreteComponent plus(DetailConcreteModule module);
 }
 
 

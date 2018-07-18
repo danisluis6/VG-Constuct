@@ -5,7 +5,7 @@
     <!-- Title -->
     <string name="title_listings">Bản Kê</string>
     <string name="title_beams">Loại Dầm</string>
-    <string name="title_settings">Chia sẻ</string>
+    <string name="title_settings">Bê Tông</string>
     <string name="title_abouts">Giới Thiệu</string>
 
     <string name="input_L1">Nhập L1</string>
@@ -14,14 +14,23 @@
     <string name="input_h">Nhập hs</string>
     <string name="value_h">Giá trị hs tham khảo</string>
     <string name="input_a">Nhập a</string>
+    <string name="input_y">Hệ số bê tông: ƴ</string>
+    <string name="input_Mx">Mx</string>
+    <string name="input_My">My</string>
+    <string name="input_Cx">Cx</string>
+    <string name="input_Cy">Cy</string>
+    <string name="input_N">N</string>
+    <string name="input_L">L</string>
     <string name="input_g">Tĩnh tải g</string>
     <string name="input_p">Hoạt tải p</string>
-    <string name="input_concrete">Nhập bê tông</string>
+    <string name="input_concrete">Cấp bê tông</string>
+    <string name="input_link">Chọn liên kết hai đầu cột(ω)</string>
     <string name="input_Rb">Thông số Rb</string>
-    <string name="input_steel">Nhập thép</string>
+    <string name="input_steel">Mác thép</string>
     <string name="input_Rs">Thông số Rs</string>
     <string name="titleSizes">Kích thước</string>
     <string name="titleMaterials">Vật liệu</string>
+    <string name="titleConcrete">Dữ liệu</string>
     <string name="titleMaterialLoad">Tải trọng</string>
     <string name="titleReferLoad">Tải trọng tham khảo</string>
     <string name="titleFinalLoad">Hoạt tải tham khảo</string>
@@ -113,10 +122,12 @@
     <string name="input_Phi">Giá trị Ø(%): </string>
 
     <string name="beam_phi">Ø</string>
+    <string name="concrete_µ">µ%</string>
     <string name="beam_a">a</string>
     <string name="beam_as1">As1</string>
     <string name="beam_as2">As2</string>
     <string name="beam_as3">As3</string>
     <string name="beam_as4">As4</string>
+    <string name="undevelopment">Undevelopment</string>
 </resources>
 

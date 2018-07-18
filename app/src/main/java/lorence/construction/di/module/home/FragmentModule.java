@@ -5,12 +5,12 @@ import dagger.Provides;
 import lorence.construction.di.scope.ActivityScope;
 import lorence.construction.view.fragment.about.AboutFragment;
 import lorence.construction.view.fragment.beams.BeamsFragment;
+import lorence.construction.view.fragment.concrete.DetailedConcreteFragment;
 import lorence.construction.view.fragment.listing.ListingFragment;
 import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
 import lorence.construction.view.fragment.listing.fragment.child.mordal.MordalFragment;
 import lorence.construction.view.fragment.listing.fragment.child.reference.ReferenceFragment;
 import lorence.construction.view.fragment.listing.fragment.child.result.ResultFragment;
-import lorence.construction.view.fragment.setting.SettingFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -38,8 +38,8 @@ public class FragmentModule {
 
     @Provides
     @ActivityScope
-    SettingFragment provideSettingFragment() {
-        return new SettingFragment();
+    DetailedConcreteFragment provideSettingFragment() {
+        return new DetailedConcreteFragment();
     }
 
     @Provides

@@ -12,8 +12,8 @@
 
     <tab
         id="@+id/settings"
-        icon="@drawable/ic_settings"
-        title="Thiết Lập" />
+        icon="@drawable/ic_concrete"
+        title="Bê Tông" />
 
     <tab
         id="@+id/help"

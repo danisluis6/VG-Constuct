@@ -8,8 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import lorence.construction.R;
 import lorence.construction.app.Application;
 import lorence.construction.di.module.home.HomeModule;
@@ -36,6 +40,9 @@ public class ReferenceFragment extends EBaseFragment implements ReferenceView {
     @Inject
     ReferenceFragment mReferenceFragment;
 
+    @BindView(R.id.adView)
+    AdView adView;
+
     public ReferenceFragment() {
     }
 
@@ -52,6 +59,9 @@ public class ReferenceFragment extends EBaseFragment implements ReferenceView {
         View view = inflater.inflate(R.layout.fragment_reference, container, false);
         distributedDaggerComponents();
         bindView(view);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        adView.loadAd(adRequest);
         return view;
     }
 

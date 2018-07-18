@@ -6,8 +6,8 @@ android {
         applicationId "come.stksxd.sotayxaydung"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 8
-        versionName "1.0.6"
+        versionCode 9
+        versionName "1.0.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         flavorDimensions "default"
         javaCompileOptions {

@@ -1,7 +1,6 @@
 package lorence.construction.view.fragment.beams.fragment;
 
 import android.annotation.SuppressLint;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -61,9 +60,6 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
 
     @Inject
     RegularUtils mRegularUtils;
-
-    @Inject
-    FragmentManager mFragmentManager;
 
     @Inject
     SpinnerFragment mSpinnerFragment;
@@ -171,16 +167,16 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
     LinearLayout lnExpand;
 
     @BindView(R.id.edtPhiAsMNAs1)
-    EditText  edtPhiAsMNAs1;
+    EditText edtPhiAsMNAs1;
 
     @BindView(R.id.edtPhiAsMGAs3)
-    EditText  edtPhiAsMGAs3;
+    EditText edtPhiAsMGAs3;
 
     @BindView(R.id.edtPhiAsMNAs2)
-    EditText  edtPhiAsMNAs2;
+    EditText edtPhiAsMNAs2;
 
     @BindView(R.id.edtPhiAsMGAs4)
-    EditText  edtPhiAsMGAs4;
+    EditText edtPhiAsMGAs4;
 
     private String mTitle;
 
@@ -398,7 +394,7 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
     }
 
     @OnClick({R.id.btnPerformCalculator, R.id.edtPhi1, R.id.edtPhi2, R.id.edtPhi3, R.id.edtPhi4, R.id.mainContent, R.id.btnPerformCalculatorAs,
-        R.id.edtConcrete, R.id.edtSteel, R.id.edtRs, R.id.edtRb})
+            R.id.edtConcrete, R.id.edtSteel, R.id.edtRs, R.id.edtRb})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnPerformCalculator:
@@ -409,28 +405,28 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
                 }
                 break;
             case R.id.edtPhi1:
-                mSpinnerFragment.show(mFragmentManager, Constants.TAG.SPINNER);
+                mSpinnerFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.SPINNER);
                 mSpinnerFragment.addCase(CASE.ONE);
                 break;
             case R.id.edtPhi2:
-                mSpinnerFragment.show(mFragmentManager, Constants.TAG.SPINNER);
+                mSpinnerFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.SPINNER);
                 mSpinnerFragment.addCase(CASE.TWO);
                 break;
             case R.id.edtPhi3:
-                mSpinnerFragment.show(mFragmentManager, Constants.TAG.SPINNER);
+                mSpinnerFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.SPINNER);
                 mSpinnerFragment.addCase(CASE.THREE);
                 break;
             case R.id.edtPhi4:
-                mSpinnerFragment.show(mFragmentManager, Constants.TAG.SPINNER);
+                mSpinnerFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.SPINNER);
                 mSpinnerFragment.addCase(CASE.FOUR);
                 break;
             case R.id.edtConcrete:
             case R.id.edtRb:
-                mConcreteFragment.show(mFragmentManager, Constants.TAG.CONCRETE);
+                mConcreteFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.CONCRETE);
                 break;
             case R.id.edtSteel:
             case R.id.edtRs:
-                mSteelFragment.show(mFragmentManager, Constants.TAG.STEEL);
+                mSteelFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.STEEL);
                 break;
             case R.id.mainContent:
                 Utils.hiddenKeyBoard(mHomeActivity);

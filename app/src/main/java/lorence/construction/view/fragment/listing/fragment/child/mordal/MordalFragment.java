@@ -14,6 +14,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -71,6 +74,12 @@ public class MordalFragment extends EBaseFragment implements MordalView {
     @BindView(R.id.edtReferDynamicLoad)
     EditText edtReferDynamicLoad;
 
+    @BindView(R.id.edtReferDynamicLoadResult)
+    EditText edtReferDynamicLoadResult;
+
+    @BindView(R.id.adView)
+    AdView adView;
+
     @Inject
     Context mContext;
 
@@ -119,6 +128,9 @@ public class MordalFragment extends EBaseFragment implements MordalView {
         bindView(view);
         edtL1.addTextChangedListener(new GenericTextWatcher(edtL1));
         edtD.addTextChangedListener(new GenericTextWatcher(edtD));
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        adView.loadAd(adRequest);
         return view;
     }
 
@@ -137,7 +149,7 @@ public class MordalFragment extends EBaseFragment implements MordalView {
                     Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho hoạt tải", Toast.LENGTH_SHORT).show();
                 } else {
                     Double referDynamicLoad = Double.parseDouble(String.valueOf(edtReferDynamicLoad.getText()))*1.2;
-                    edtReferDynamicLoad.setText(String.valueOf(Math.round(referDynamicLoad*100000.0)/100000.0));
+                    edtReferDynamicLoadResult.setText(String.valueOf(Math.round(referDynamicLoad*100000.0)/100000.0));
                 }
                 break;
         }

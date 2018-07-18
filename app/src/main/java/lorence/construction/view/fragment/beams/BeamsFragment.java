@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -32,6 +33,7 @@ import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
 import lorence.construction.view.fragment.beams.adapter.BeamsAdapter;
 import lorence.construction.view.fragment.beams.fragment.BeamsOperationFragment;
+import lorence.construction.view.fragment.listing.adapter.ListingAdapter;
 import lorence.construction.view.fragment.listing.module.DataSource;
 
 /**
@@ -94,7 +96,20 @@ public class BeamsFragment extends EBaseFragment implements BeamsView {
 
     @Override
     public void initComponents() {
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(mContext);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(mActivity, 2);
+        mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                switch (mBeamsAdapter.getItemViewType(position)) {
+                    case ListingAdapter.TYPE_ITEM:
+                        return 2;
+                    case ListingAdapter.TYPE_ADS:
+                        return 2;
+                    default:
+                        return -1;
+                }
+            }
+        });
         rcvBeams.setLayoutManager(mLayoutManager);
         rcvBeams.setItemAnimator(new DefaultItemAnimator());
         rcvBeams.setAdapter(mBeamsAdapter);
