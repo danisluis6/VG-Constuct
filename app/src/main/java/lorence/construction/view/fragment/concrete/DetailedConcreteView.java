@@ -10,6 +10,8 @@ import lorence.construction.data.storage.entity.Steel;
  */
 
 public interface DetailedConcreteView {
+    boolean checkValidDataInput();
+
     void showConcreteDialog();
 
     void showSteelDialog();

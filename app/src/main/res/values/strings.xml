@@ -44,6 +44,7 @@
     <string name="title_concrete">Cấp độ bê tông</string>
     <string name="title_steel">Chọn thép</string>
     <string name="title_spinner">Chọn Ø</string>
+    <string name="title_omega">Chọn Ꞷ</string>
 
     <!-- Title in Fragment Listing -->
     <string name="tab_title_calculate">Tính toán</string>
@@ -110,6 +111,7 @@
     <string name="label_q">Tính q: </string>
     <string name="label_P">Tính P: </string>
     <string name="input_AsM1">Giá trị As1: </string>
+    <string name="input_Ast">Giá trị As(tính toán): </string>
     <string name="input_AsM2">Giá trị As2: </string>
     <string name="input_AsMM1">Giá trị As3: </string>
     <string name="input_AsMM2">Giá trị As4: </string>
@@ -124,10 +126,12 @@
     <string name="beam_phi">Ø</string>
     <string name="concrete_µ">µ%</string>
     <string name="beam_a">a</string>
+    <string name="beam_n">n</string>
     <string name="beam_as1">As1</string>
     <string name="beam_as2">As2</string>
     <string name="beam_as3">As3</string>
     <string name="beam_as4">As4</string>
+    <string name="beam_asbt">As (Bố trí)</string>
     <string name="undevelopment">Undevelopment</string>
 </resources>
 

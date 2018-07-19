@@ -1,7 +1,6 @@
 package lorence.construction.view.fragment.listing.fragment.child.calculate;
 
 import android.annotation.SuppressLint;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -282,6 +281,11 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                 } else if (BeamsOperationFragment.CASE.FOUR == _case) {
                     edtPhi4.setText(value);
                 }
+            }
+
+            @Override
+            public void onClickItem(String value) {
+
             }
         });
 

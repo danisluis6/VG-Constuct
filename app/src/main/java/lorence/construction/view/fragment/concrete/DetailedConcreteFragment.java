@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -15,12 +16,20 @@ import butterknife.OnClick;
 import lorence.construction.R;
 import lorence.construction.app.Application;
 import lorence.construction.data.storage.entity.Concrete;
+import lorence.construction.data.storage.entity.Operation;
 import lorence.construction.data.storage.entity.Steel;
 import lorence.construction.di.module.concrete.DetailConcreteModule;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.helper.Constants;
+import lorence.construction.helper.RegularUtils;
+import lorence.construction.helper.math.InternalFormula;
+import lorence.construction.other.TemporaryStorage;
+import lorence.construction.utitilize.Utils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
+import lorence.construction.view.fragment.beams.fragment.BeamsOperationFragment;
+import lorence.construction.view.fragment.beams.fragment.SpinnerFragment;
+import lorence.construction.view.fragment.concrete.omega.OmegaFragment;
 import lorence.construction.view.fragment.listing.fragment.ConcreteFragment;
 import lorence.construction.view.fragment.listing.fragment.SteelFragment;
 
@@ -46,6 +55,18 @@ public class DetailedConcreteFragment extends EBaseFragment implements DetailedC
     @Inject
     SteelFragment mSteelFragment;
 
+    @Inject
+    RegularUtils mRegularUtils;
+
+    @Inject
+    SpinnerFragment mSpinnerFragment;
+
+    @Inject
+    OmegaFragment mOmegaFragment;
+
+    @Inject
+    InternalFormula mInternalFormula;
+
     @BindView(R.id.edtConcrete)
     EditText edtConcrete;
 
@@ -57,6 +78,36 @@ public class DetailedConcreteFragment extends EBaseFragment implements DetailedC
 
     @BindView(R.id.edtRs)
     EditText edtRs;
+
+    @BindView(R.id.edty)
+    EditText edty;
+
+    @BindView(R.id.edtMx)
+    EditText edtMx;
+
+    @BindView(R.id.edtMy)
+    EditText edtMy;
+
+    @BindView(R.id.edtN)
+    EditText edtN;
+
+    @BindView(R.id.edtL)
+    EditText edtL;
+
+    @BindView(R.id.edtCx)
+    EditText edtCx;
+
+    @BindView(R.id.edtCy)
+    EditText edtCy;
+
+    @BindView(R.id.edta)
+    EditText edta;
+
+    @BindView(R.id.edtω)
+    EditText edtω;
+
+    @BindView(R.id.edtPhi1)
+    EditText edtPhi1;
 
     public DetailedConcreteFragment() {
     }
@@ -92,10 +143,35 @@ public class DetailedConcreteFragment extends EBaseFragment implements DetailedC
                 updateValueFieldSteel(steel);
             }
         });
+        mSpinnerFragment.setParentFragment(mContext, this);
+        mSpinnerFragment.attachEventInterface(new SpinnerFragment.InterfaceSpinnerFragment() {
+            @Override
+            public void onClickItem(String value, BeamsOperationFragment.CASE _case) {
+
+            }
+
+            @Override
+            public void onClickItem(String value) {
+                mSpinnerFragment.dismiss();
+                edtPhi1.setText(value);
+            }
+        });
+
+        mOmegaFragment.setParentFragment(mContext, this);
+        mOmegaFragment.attachEventInterface(new OmegaFragment.InterfaceSpinnerFragment() {
+            @Override
+            public void onClickItem(String value) {
+                mOmegaFragment.dismiss();
+                edtω.setText(value);
+            }
+        });
         return view;
     }
 
-    @OnClick({R.id.edtConcrete, R.id.edtRb, R.id.edtSteel, R.id.edtRs})
+    @BindView(R.id.edtAsBT)
+    EditText edtAsBT;
+
+    @OnClick({R.id.edtConcrete, R.id.edtRb, R.id.edtSteel, R.id.edtRs, R.id.btnPerformCalculator, R.id.edtPhi1, R.id.edtω})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.edtConcrete:
@@ -106,8 +182,65 @@ public class DetailedConcreteFragment extends EBaseFragment implements DetailedC
             case R.id.edtRs:
                 showSteelDialog();
                 break;
+            case R.id.edtPhi1:
+                mSpinnerFragment.show(mActivity.getFragmentManager(), Constants.TAG.SPINNER);
+                break;
+            case R.id.edtω:
+                mOmegaFragment.show(mActivity.getFragmentManager(), Constants.TAG.SPINNER);
+                break;
+            case R.id.btnPerformCalculator:
+                if (Utils.isInternetOn(mContext)) {
+                    if (checkValidDataInput()) {
+                        edtAsBT.setText(mInternalFormula.calculateAsBT(Double.parseDouble(edtL.getText().toString()), Double.parseDouble(edtω.getText().toString()),
+                                Double.parseDouble(edtCx.getText().toString()), Double.parseDouble(edtCy.getText().toString())
+                                , Double.parseDouble(edtMx.getText().toString()), Double.parseDouble(edtMy.getText().toString())
+                        , Double.parseDouble(edtN.getText().toString()), Double.parseDouble(edtRb.getText().toString()),
+                                Double.parseDouble(edty.getText().toString()), Double.parseDouble(edta.getText().toString()),
+                                Double.parseDouble(edtRs.getText().toString())));
+                    }
+                } else {
+                    Toast.makeText(mContext, getString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show();
+                }
+                break;
 
         }
+    }
+
+    @Override
+    public boolean checkValidDataInput() {
+        if (!mRegularUtils.isRealNumber(edty.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho y", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtMx.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho Mx", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtMy.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho My", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtN.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho N", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtL.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho L", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtCx.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho Cx", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtCy.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho Cy", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edta.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     @Override

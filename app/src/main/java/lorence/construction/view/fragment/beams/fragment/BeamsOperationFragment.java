@@ -224,6 +224,11 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
                     edtPhi4.setText(value);
                 }
             }
+
+            @Override
+            public void onClickItem(String value) {
+
+            }
         });
         mSteelFragment.setParentFragment(mContext, this);
         mSteelFragment.attachEventInterface(new SteelFragment.InterfaceSteelFragment() {
