@@ -13,12 +13,12 @@ import lorence.construction.view.activity.home.HomePresenter;
 import lorence.construction.view.activity.home.HomePresenterImpl;
 import lorence.construction.view.fragment.about.AboutFragment;
 import lorence.construction.view.fragment.beams.BeamsFragment;
+import lorence.construction.view.fragment.concrete.DetailedConcreteFragment;
 import lorence.construction.view.fragment.listing.ListingFragment;
 import lorence.construction.view.fragment.listing.adapter.PagerAdapterPushed;
 import lorence.construction.view.fragment.listing.fragment.child.calculate.CalculateFragment;
 import lorence.construction.view.fragment.listing.fragment.child.mordal.MordalFragment;
 import lorence.construction.view.fragment.listing.fragment.child.reference.ReferenceFragment;
-import lorence.construction.view.fragment.setting.SettingFragment;
 
 /**
  * Created by lorence on 28/12/2017.
@@ -47,12 +47,12 @@ public class HomeModule {
     HomePresenter provideHomePresenter(/* get Parents */Validator validator, /* get Parents */Context context, /* get its */HomeActivity homeActivity,
                                            ListingFragment listingFragment,
                                            BeamsFragment beamFragment,
-                                           SettingFragment settingFragment,
+                                           DetailedConcreteFragment detailedConcreteFragment,
                                            AboutFragment aboutFragment) {
         return new HomePresenterImpl(validator, context, homeActivity,
                 listingFragment,
                 beamFragment,
-                settingFragment,
+                detailedConcreteFragment,
                 aboutFragment
                 );
     }
@@ -60,12 +60,6 @@ public class HomeModule {
     @Provides
     @ActivityScope
     FragmentManager provideFragmentSupportManager() { return this.mHomeActivity.getSupportFragmentManager(); }
-
-    @Provides
-    @ActivityScope
-    android.app.FragmentManager provideFragmentManager() {
-        return this.mHomeActivity.getFragmentManager();
-    }
 
     @Provides
     @ActivityScope

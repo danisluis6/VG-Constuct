@@ -1,7 +1,6 @@
 package lorence.construction.view.fragment.listing.fragment.child.calculate;
 
 import android.annotation.SuppressLint;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -42,6 +41,8 @@ import lorence.construction.other.TemporaryStorage;
 import lorence.construction.utitilize.Utils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
+import lorence.construction.view.fragment.beams.fragment.BeamsOperationFragment;
+import lorence.construction.view.fragment.beams.fragment.SpinnerFragment;
 import lorence.construction.view.fragment.listing.fragment.ConcreteFragment;
 import lorence.construction.view.fragment.listing.fragment.ListingOperationFragment;
 import lorence.construction.view.fragment.listing.fragment.SteelFragment;
@@ -131,6 +132,54 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     @BindView(R.id.edtAsMM2)
     EditText edtAsMM2;
 
+    @BindView(R.id.edtPhi1)
+    EditText edtPhi1;
+
+    @BindView(R.id.edtPhi2)
+    EditText edtPhi2;
+
+    @BindView(R.id.edtPhi3)
+    EditText edtPhi3;
+
+    @BindView(R.id.edtPhi4)
+    EditText edtPhi4;
+
+    @BindView(R.id.edtA1)
+    EditText edtA1;
+
+    @BindView(R.id.edtA2)
+    EditText edtA2;
+
+    @BindView(R.id.edtA3)
+    EditText edtA3;
+
+    @BindView(R.id.edtA4)
+    EditText edtA4;
+
+    @BindView(R.id.edtAs1)
+    EditText edtAs1;
+
+    @BindView(R.id.edtAs2)
+    EditText edtAs2;
+
+    @BindView(R.id.edtAs3)
+    EditText edtAs3;
+
+    @BindView(R.id.edtAs4)
+    EditText edtAs4;
+
+    @BindView(R.id.edtPhiAsM1)
+    EditText edtPhiAsM1;
+
+    @BindView(R.id.edtPhiAsM2)
+    EditText edtPhiAsM2;
+
+    @BindView(R.id.edtPhiAsMM1)
+    EditText edtPhiAsMM1;
+
+    @BindView(R.id.edtPhiAsMM2)
+    EditText edtPhiAsMM2;
+
     @Inject
     Context mContext;
 
@@ -153,10 +202,10 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     SteelFragment mSteelFragment;
 
     @Inject
-    InternalFormula mInternalFormula;
+    SpinnerFragment mSpinnerFragment;
 
     @Inject
-    FragmentManager mFragmentManager;
+    InternalFormula mInternalFormula;
 
     @Inject
     ListingOperationFragment mListingOperationFragment;
@@ -212,6 +261,37 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
                 updateValueFieldSteel(steel);
             }
         });
+        mSpinnerFragment.setParentFragment(mContext,mCalculateFragment);
+        mSpinnerFragment.attachEventInterface(new SpinnerFragment.InterfaceSpinnerFragment() {
+            @Override
+            public void onClickItem(String value, BeamsOperationFragment.CASE _case) {
+                mSpinnerFragment.dismiss();
+                if (BeamsOperationFragment.CASE.ONE == _case) {
+                    edtPhi1.setText(value);
+                } else if (BeamsOperationFragment.CASE.TWO == _case) {
+                    edtPhi2.setText(value);
+                } else if (BeamsOperationFragment.CASE.THREE == _case) {
+                    edtPhi3.setText(value);
+                } else if (BeamsOperationFragment.CASE.FOUR == _case) {
+                    edtPhi4.setText(value);
+                }
+            }
+
+            @Override
+            public void onClickItem(String value) {
+
+            }
+        });
+
+        edtA1.addTextChangedListener(new AsTextWatcher(edtA1));
+        edtA2.addTextChangedListener(new AsTextWatcher(edtA2));
+        edtA3.addTextChangedListener(new AsTextWatcher(edtA3));
+        edtA4.addTextChangedListener(new AsTextWatcher(edtA4));
+        edtPhi1.addTextChangedListener(new AsTextWatcher(edtPhi1));
+        edtPhi2.addTextChangedListener(new AsTextWatcher(edtPhi2));
+        edtPhi3.addTextChangedListener(new AsTextWatcher(edtPhi3));
+        edtPhi4.addTextChangedListener(new AsTextWatcher(edtPhi4));
+
         mCalculatePresenter.getListingOperations();
         edtL1.addTextChangedListener(new GenericTextWatcher(edtL1));
         edtStaticLoad.addTextChangedListener(new GenericTextWatcher(edtStaticLoad));
@@ -219,37 +299,41 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         mHomeActivity.attachShareButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.equals(edtAsM1.getText().toString(), Constants.EMPTY_STRING)) {
-                    Toast.makeText(mContext, "Bạn chưa thực hiện tính toán", Toast.LENGTH_SHORT).show();
+                if (Utils.isInternetOn(mContext)) {
+                    if (TextUtils.equals(edtAsM1.getText().toString(), Constants.EMPTY_STRING)) {
+                        Toast.makeText(mContext, "Bạn chưa thực hiện tính toán", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_SEND);
+                        intent.setType("text/plain");
+                        intent.putExtra(Intent.EXTRA_TEXT, "THÔNG SỐ BAN ĐẦU:" +
+                                "\nl1 = " + edtL1.getText() +
+                                "\nl2 = " + edtL2.getText() +
+                                "\nhs = " + edth.getText() +
+                                "\na = " + edta.getText() +
+                                "\nRb = " + edtRb.getText() +
+                                "\nRs = " + edtRs.getText() +
+                                "\ng = " + edtStaticLoad.getText() +
+                                "\np = " + edtDynamicLoad.getText() +
+                                "\nTHỰC THI PHÉP TÍNH:" +
+                                "\nk1 = " + tvk1.getText() +
+                                "\nk2 = " + tvk2.getText() +
+                                "\nm1 = " + tvm1.getText() +
+                                "\nm2 = " + tvm2.getText() +
+                                "\nq = " + tvq.getText() +
+                                "\nP = " + tvP.getText() +
+                                "\nM1 = " + tvM1.getText() +
+                                "\nM2 = " + tvM2.getText() +
+                                "\nMI = " + tvMM1.getText() +
+                                "\nMII = " + tvMM2.getText() +
+                                "\nAs(M1) = " + edtAsM1.getText() +
+                                "\nAs(M2) = " + edtAsM2.getText() +
+                                "\nAs(MI) = " + edtAsMM1.getText() +
+                                "\nAs(MII) = " + edtAsMM2.getText());
+                        startActivity(Intent.createChooser(intent, "Chia sẻ với bạn bè"));
+                    }
                 } else {
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_SEND);
-                    intent.setType("text/plain");
-                    intent.putExtra(Intent.EXTRA_TEXT, "THÔNG SỐ BAN ĐẦU:" +
-                            "\nl1 = " + edtL1.getText() +
-                            "\nl2 = " + edtL2.getText() +
-                            "\nhs = " + edth.getText() +
-                            "\na = " + edta.getText() +
-                            "\nRb = " + edtRb.getText() +
-                            "\nRs = " + edtRs.getText() +
-                            "\ng = " + edtStaticLoad.getText() +
-                            "\np = " + edtDynamicLoad.getText() +
-                            "\nTHỰC THI PHÉP TÍNH:" +
-                            "\nk1 = " + tvk1.getText() +
-                            "\nk2 = " + tvk2.getText() +
-                            "\nm1 = " + tvm1.getText() +
-                            "\nm2 = " + tvm2.getText() +
-                            "\nq = " + tvq.getText() +
-                            "\nP = " + tvP.getText() +
-                            "\nM1 = " + tvM1.getText() +
-                            "\nM2 = " + tvM2.getText() +
-                            "\nMI = " + tvMM1.getText() +
-                            "\nMII = " + tvMM2.getText() +
-                            "\nAs(M1) = " + edtAsM1.getText() +
-                            "\nAs(M2) = " + edtAsM2.getText() +
-                            "\nAs(MI) = " + edtAsMM1.getText() +
-                            "\nAs(MII) = " + edtAsMM2.getText());
-                    startActivity(Intent.createChooser(intent, "Chia sẻ với bạn bè"));
+                    Toast.makeText(mContext, getString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -296,31 +380,35 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
 
     @Override
     public void showConcreteDialog() {
-        mConcreteFragment.show(mFragmentManager, Constants.TAG.CONCRETE);
+        mConcreteFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.CONCRETE);
     }
 
     @Override
     public void showSteelDialog() {
-        mSteelFragment.show(mFragmentManager, Constants.TAG.STEEL);
+        mSteelFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.STEEL);
     }
 
-    @OnClick({R.id.btnPerformCalculator, R.id.edtConcrete, R.id.edtRb, R.id.edtSteel, R.id.edtRs})
+    @OnClick({R.id.btnPerformCalculator, R.id.edtConcrete, R.id.edtRb, R.id.edtSteel, R.id.edtRs, R.id.edtPhi1, R.id.edtPhi2, R.id.edtPhi3, R.id.edtPhi4, R.id.mainContent})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnPerformCalculator:
-                if (checkValidDataInput()) {
-                    if (mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2), mHomeActivity.getTitleToolbar())) {
-                        Operation operation = mInternalFormula.calculate(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2) / mConverterUtils.getDoubleValue(edtL1));
-                        showStepByStepOfCalculating(operation);
-                        Utils.hiddenKeyBoard(mHomeActivity);
-                    } else {
-                        Toast.makeText(mContext, "Vui lòng chuyển qua mục bản dầm", Toast.LENGTH_SHORT).show();
-                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.RB, edtRb.getText().toString());
-                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.RS, edtRs.getText().toString());
-                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.VALUE_B, "1");
-                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.H, edth.getText().toString());
-                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.A, edta.getText().toString());
+                if (Utils.isInternetOn(mContext)) {
+                    if (checkValidDataInput()) {
+                        if (mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2), mHomeActivity.getTitleToolbar())) {
+                            Operation operation = mInternalFormula.calculate(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2) / mConverterUtils.getDoubleValue(edtL1));
+                            showStepByStepOfCalculating(operation);
+                            Utils.hiddenKeyBoard(mHomeActivity);
+                        } else {
+                            Toast.makeText(mContext, "Vui lòng chuyển qua mục bản dầm", Toast.LENGTH_SHORT).show();
+                            TemporaryStorage.getInstance().put(Constants.HASH_MAP.RB, edtRb.getText().toString());
+                            TemporaryStorage.getInstance().put(Constants.HASH_MAP.RS, edtRs.getText().toString());
+                            TemporaryStorage.getInstance().put(Constants.HASH_MAP.VALUE_B, "1");
+                            TemporaryStorage.getInstance().put(Constants.HASH_MAP.H, edth.getText().toString());
+                            TemporaryStorage.getInstance().put(Constants.HASH_MAP.A, edta.getText().toString());
+                        }
                     }
+                } else {
+                    Toast.makeText(mContext, getString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.edtConcrete:
@@ -331,7 +419,87 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
             case R.id.edtRs:
                 showSteelDialog();
                 break;
+            case R.id.edtPhi1:
+                mSpinnerFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.SPINNER);
+                mSpinnerFragment.addCase(BeamsOperationFragment.CASE.ONE);
+                break;
+            case R.id.edtPhi2:
+                mSpinnerFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.SPINNER);
+                mSpinnerFragment.addCase(BeamsOperationFragment.CASE.TWO);
+                break;
+            case R.id.edtPhi3:
+                mSpinnerFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.SPINNER);
+                mSpinnerFragment.addCase(BeamsOperationFragment.CASE.THREE);
+                break;
+            case R.id.mainContent:
+                Utils.hiddenKeyBoard(mHomeActivity);
+                break;
+            case R.id.edtPhi4:
+                mSpinnerFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.SPINNER);
+                mSpinnerFragment.addCase(BeamsOperationFragment.CASE.FOUR);
+                break;
 
+        }
+    }
+
+    public class AsTextWatcher implements TextWatcher {
+
+        private View view;
+
+        private AsTextWatcher(View view) {
+            this.view = view;
+        }
+
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void afterTextChanged(Editable editable) {
+            String text = editable.toString();
+            switch (view.getId()) {
+                case R.id.edtPhi1:
+                case R.id.edtA1:
+                    if (!mRegularUtils.isRealNumber(edtA1.getText().toString())) {
+                        Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi1.getText().toString(), Constants.EMPTY_STRING)) {
+                            edtAs1.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi1.getText().toString()), Double.parseDouble(edtA1.getText().toString())));
+                        }
+                    }
+                    break;
+                case R.id.edtPhi2:
+                case R.id.edtA2:
+                    if (!mRegularUtils.isRealNumber(edtA2.getText().toString())) {
+                        Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi2.getText().toString(), Constants.EMPTY_STRING)) {
+                            edtAs2.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi2.getText().toString()), Double.parseDouble(edtA2.getText().toString())));
+                        }
+                    }
+                    break;
+                case R.id.edtPhi3:
+                case R.id.edtA3:
+                    if (!mRegularUtils.isRealNumber(edtA3.getText().toString())) {
+                        Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi3.getText().toString(), Constants.EMPTY_STRING)) {
+                            edtAs3.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi3.getText().toString()), Double.parseDouble(edtA3.getText().toString())));
+                        }
+                    }
+                    break;
+                case R.id.edtPhi4:
+                case R.id.edtA4:
+                    if (!mRegularUtils.isRealNumber(edtA4.getText().toString())) {
+                        Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi4.getText().toString(), Constants.EMPTY_STRING)) {
+                            edtAs4.setText(mInternalFormula.calculateAs1(Double.parseDouble(edtPhi4.getText().toString()), Double.parseDouble(edtA4.getText().toString())));
+                        }
+                    }
+                    break;
+            }
         }
     }
 
@@ -354,6 +522,10 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         edtAsM2.setText(AsM2);
         edtAsMM1.setText(AsMM1);
         edtAsMM2.setText(AsMM2);
+        edtPhiAsM1.setText(mInternalFormula.calculateAsMX(Double.parseDouble(edtAsM1.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString())));
+        edtPhiAsM2.setText(mInternalFormula.calculateAsMX(Double.parseDouble(edtAsM2.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString())));
+        edtPhiAsMM1.setText(mInternalFormula.calculateAsMX(Double.parseDouble(edtAsMM1.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString())));
+        edtPhiAsMM2.setText(mInternalFormula.calculateAsMX(Double.parseDouble(edtAsMM2.getText().toString()), Double.parseDouble(edth.getText().toString()), Double.parseDouble(edta.getText().toString())));
     }
 
     @Override
@@ -398,3 +570,4 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         mGrListingOperations = listingOperations;
     }
 }
+

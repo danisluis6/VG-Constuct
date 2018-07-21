@@ -10,10 +10,12 @@ import android.widget.TextView;
 import java.util.List;
 
 import lorence.construction.R;
+import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.fragment.beams.fragment.BeamsOperationFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
+ *
  * @author vuongluis
  * @version 0.0.1
  */
@@ -21,7 +23,7 @@ public class SpinnerAdapter extends RecyclerView.Adapter<SpinnerAdapter.MyViewHo
 
     private Context mContext;
     private List<String> mGroup;
-    private BeamsOperationFragment mFragment;
+    private EBaseFragment mFragment;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -33,7 +35,7 @@ public class SpinnerAdapter extends RecyclerView.Adapter<SpinnerAdapter.MyViewHo
         }
     }
 
-    public SpinnerAdapter(Context context, BeamsOperationFragment fragment, List<String> list) {
+    public SpinnerAdapter(Context context, EBaseFragment fragment, List<String> list) {
         mContext = context;
         mGroup = list;
         mFragment = fragment;

@@ -11,7 +11,7 @@ import lorence.construction.helper.Validator;
 import lorence.construction.view.fragment.about.AboutFragment;
 import lorence.construction.view.fragment.beams.BeamsFragment;
 import lorence.construction.view.fragment.listing.ListingFragment;
-import lorence.construction.view.fragment.setting.SettingFragment;
+import lorence.construction.view.fragment.concrete.DetailedConcreteFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -29,13 +29,13 @@ public class HomePresenterImpl implements HomePresenter {
     // Fragments
     private ListingFragment mListingsFragment;
     private BeamsFragment mBeamFragment;
-    private SettingFragment mSettingFragment;
+    private DetailedConcreteFragment mDetailedConcreteFragment;
     private AboutFragment mAboutFragment;
 
     public HomePresenterImpl(Validator validator, Context context, HomeActivity homeActivity,
                              ListingFragment listingFragment,
                              BeamsFragment beamFragment,
-                             SettingFragment settingFragment,
+                             DetailedConcreteFragment detailedConcreteFragment,
                              AboutFragment aboutFragment) {
         super();
         mValidator = validator;
@@ -43,7 +43,7 @@ public class HomePresenterImpl implements HomePresenter {
         mActivity = homeActivity;
         mListingsFragment = listingFragment;
         mBeamFragment = beamFragment;
-        mSettingFragment = settingFragment;
+        mDetailedConcreteFragment = detailedConcreteFragment;
         mAboutFragment = aboutFragment;
     }
 
@@ -105,8 +105,8 @@ public class HomePresenterImpl implements HomePresenter {
 
     private Fragment moveToFragSetting() {
         Bundle fragArgs = new Bundle();
-        mSettingFragment.setArguments(fragArgs);
-        return mSettingFragment;
+        mDetailedConcreteFragment.setArguments(fragArgs);
+        return mDetailedConcreteFragment;
     }
 
     private Fragment moveToFragAbout() {

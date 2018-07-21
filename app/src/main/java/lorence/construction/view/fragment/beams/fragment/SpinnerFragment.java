@@ -15,13 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lorence.construction.R;
+import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.fragment.beams.adapter.SpinnerAdapter;
 
 public class SpinnerFragment extends DialogFragment {
 
     private RecyclerView rvSteel;
     private TextView tvTitleSteel;
-    private BeamsOperationFragment mFragment;
+    private EBaseFragment mFragment;
     private SpinnerAdapter mSteelAdapter;
     private Context mContext;
     private BeamsOperationFragment.CASE _case;
@@ -37,8 +38,8 @@ public class SpinnerFragment extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_dialog_spinner,container);
-        rvSteel= view.findViewById(R.id.rcvSteel);
+        View view = inflater.inflate(R.layout.fragment_dialog_spinner, container);
+        rvSteel = view.findViewById(R.id.rcvSteel);
         tvTitleSteel = view.findViewById(R.id.tvTitleSteel);
         rvSteel.setLayoutManager(new LinearLayoutManager(mContext));
         mSteelAdapter = new SpinnerAdapter(mContext, mFragment, getValues());
@@ -46,6 +47,7 @@ public class SpinnerFragment extends DialogFragment {
             @Override
             public void onClickItem(String value) {
                 mInterfaceSpinnerFragment.onClickItem(value, _case);
+                mInterfaceSpinnerFragment.onClickItem(value);
             }
         });
         rvSteel.setAdapter(mSteelAdapter);
@@ -63,7 +65,7 @@ public class SpinnerFragment extends DialogFragment {
         return list;
     }
 
-    public void setParentFragment(Context context, BeamsOperationFragment parentFragment) {
+    public void setParentFragment(Context context, EBaseFragment parentFragment) {
         mFragment = parentFragment;
         mContext = context;
     }
@@ -76,6 +78,7 @@ public class SpinnerFragment extends DialogFragment {
 
     public interface InterfaceSpinnerFragment {
         void onClickItem(String value, BeamsOperationFragment.CASE _case);
+        void onClickItem(String value);
     }
 
     public void attachEventInterface(InterfaceSpinnerFragment interfaceSpinnerFragment) {

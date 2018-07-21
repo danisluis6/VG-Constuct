@@ -36,7 +36,7 @@ public class ResultFragment extends EBaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_setting, container, false);
+        View view = inflater.inflate(R.layout.fragment_concrete, container, false);
         bindView(view);
 
         return view;

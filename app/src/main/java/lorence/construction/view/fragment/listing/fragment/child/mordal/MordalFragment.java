@@ -71,6 +71,9 @@ public class MordalFragment extends EBaseFragment implements MordalView {
     @BindView(R.id.edtReferDynamicLoad)
     EditText edtReferDynamicLoad;
 
+    @BindView(R.id.edtReferDynamicLoadResult)
+    EditText edtReferDynamicLoadResult;
+
     @Inject
     Context mContext;
 
@@ -136,8 +139,8 @@ public class MordalFragment extends EBaseFragment implements MordalView {
                 if (!mRegularUtils.isRealNumber(edtReferDynamicLoad.getText().toString())) {
                     Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho hoạt tải", Toast.LENGTH_SHORT).show();
                 } else {
-                    Double referDynamicLoad = Double.parseDouble(String.valueOf(edtReferDynamicLoad.getText()))*1.2;
-                    edtReferDynamicLoad.setText(String.valueOf(Math.round(referDynamicLoad*100000.0)/100000.0));
+                    Double referDynamicLoad = Double.parseDouble(String.valueOf(edtReferDynamicLoad.getText())) * 1.2;
+                    edtReferDynamicLoadResult.setText(String.valueOf(Math.round(referDynamicLoad * 100000.0) / 100000.0));
                 }
                 break;
         }

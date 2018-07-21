@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -94,7 +94,18 @@ public class BeamsFragment extends EBaseFragment implements BeamsView {
 
     @Override
     public void initComponents() {
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(mContext);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(mActivity, 2);
+        mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                switch (mBeamsAdapter.getItemViewType(position)) {
+                    case BeamsAdapter.TYPE_ITEM:
+                        return 2;
+                    default:
+                        return -1;
+                }
+            }
+        });
         rcvBeams.setLayoutManager(mLayoutManager);
         rcvBeams.setItemAnimator(new DefaultItemAnimator());
         rcvBeams.setAdapter(mBeamsAdapter);
