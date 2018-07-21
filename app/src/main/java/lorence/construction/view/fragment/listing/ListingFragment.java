@@ -106,8 +106,6 @@ public class ListingFragment extends EBaseFragment implements ListingView {
                 switch (mListingAdapter.getItemViewType(position)) {
                     case ListingAdapter.TYPE_ITEM:
                         return 1;
-                    case ListingAdapter.TYPE_ADS:
-                        return 2;
                     default:
                         return -1;
                 }

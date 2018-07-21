@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -44,16 +42,6 @@ public class ListingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
-    class AdsViewHolder extends RecyclerView.ViewHolder {
-
-        AdView adView;
-
-        AdsViewHolder(View view) {
-            super(view);
-            adView = view.findViewById(R.id.adView);
-        }
-    }
-
     public ListingAdapter(Context context, ListingFragment fragment, List<Listing> groupListing) {
         mContext = context;
         mGroupListings = groupListing;
@@ -66,10 +54,6 @@ public class ListingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             View itemView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.card_listing_item, parent, false);
             return new MyViewHolder(itemView);
-        } else if (viewType == TYPE_ADS) {
-            View itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.card_ads_item, parent, false);
-            return new AdsViewHolder(itemView);
         }
         return null;
     }
@@ -86,11 +70,6 @@ public class ListingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     mFragment.navigatePageOperation(item.getName());
                 }
             });
-        } else {
-            AdsViewHolder custom_holder = (AdsViewHolder) holder;
-            AdRequest adRequest = new AdRequest.Builder()
-                    .build();
-            custom_holder.adView.loadAd(adRequest);
         }
     }
 

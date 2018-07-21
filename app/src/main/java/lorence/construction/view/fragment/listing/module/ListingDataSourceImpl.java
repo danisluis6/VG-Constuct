@@ -38,29 +38,14 @@ public class ListingDataSourceImpl implements DataSource {
 
         groupListings.add(new Listing(Constants.LISTINGS.ONE, covers[0]));
         groupListings.add(new Listing(Constants.LISTINGS.TWO, covers[1]));
-
-        groupListings.add(new Listing(Constants.LISTINGS.ADS, 0));
-
         groupListings.add(new Listing(Constants.LISTINGS.THREE, covers[2]));
         groupListings.add(new Listing(Constants.LISTINGS.FOUR, covers[3]));
-
-        groupListings.add(new Listing(Constants.LISTINGS.ADS, 0));
-
         groupListings.add(new Listing(Constants.LISTINGS.FIVE, covers[4]));
         groupListings.add(new Listing(Constants.LISTINGS.SIX, covers[5]));
-
-        groupListings.add(new Listing(Constants.LISTINGS.ADS, 0));
-
         groupListings.add(new Listing(Constants.LISTINGS.SEVEN, covers[6]));
         groupListings.add(new Listing(Constants.LISTINGS.EIGHT, covers[7]));
-
-        groupListings.add(new Listing(Constants.LISTINGS.ADS, 0));
-
         groupListings.add(new Listing(Constants.LISTINGS.NINE, covers[8]));
         groupListings.add(new Listing(Constants.LISTINGS.TEN, covers[9]));
-
-        groupListings.add(new Listing(Constants.LISTINGS.ADS, 0));
-
         groupListings.add(new Listing(Constants.LISTINGS.ELEVEN, covers[10]));
         return groupListings;
     }

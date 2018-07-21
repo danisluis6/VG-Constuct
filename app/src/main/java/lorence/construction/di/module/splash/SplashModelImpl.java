@@ -43,11 +43,7 @@ public class SplashModelImpl implements SplashModel, IDisposableListener<Configu
 
     @Override
     public void loadApplicationSettings() {
-        if (Utils.isInternetOn(mContext)) {
-            mSplashPresenter.setDisposable(mDisposableManager.callDisposable(mApiService.getConfigurationResponseObservable()));
-        } else {
-            mSplashPresenter.onGetConfigurationFailure(mContext.getString(R.string.no_internet_connection));
-        }
+        mSplashPresenter.setDisposable(mDisposableManager.callDisposable(mApiService.getConfigurationResponseObservable()));
     }
 
     @Override

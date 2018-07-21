@@ -73,7 +73,11 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
                 finish();
             }
         }
-        mSplashPresenter.loadApplicationSettings();
+        if (Utils.isInternetOn(mContext)) {
+            mSplashPresenter.loadApplicationSettings();
+        } else {
+            mApiSuccess = true;
+        }
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
