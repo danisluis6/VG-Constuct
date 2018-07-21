@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     android:fillViewport="true">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -33,10 +35,37 @@
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/cslAd1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleMaterials">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                card_view:cardCornerRadius="0dp">
+
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/image"
+                    android:layout_centerHorizontal="true"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="ca-app-pub-2242423094803913/8598068183" />
+
+            </android.support.v7.widget.CardView>
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
             android:id="@+id/layerConcrete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/titleMaterials">
+            app:layout_constraintTop_toBottomOf="@+id/cslAd1">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -270,8 +299,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:digits="0123456789."
-                    android:drawablePadding="10dp"
                     android:drawableEnd="@drawable/ic_donvi_danm"
+                    android:drawablePadding="10dp"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:labelFor="@+id/edtCurrentPswd"
@@ -313,8 +342,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:digits="0123456789."
-                    android:drawablePadding="10dp"
                     android:drawableEnd="@drawable/ic_donvi_danm"
+                    android:drawablePadding="10dp"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:labelFor="@+id/edtCurrentPswd"
@@ -356,8 +385,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:digits="0123456789."
-                    android:drawablePadding="10dp"
                     android:drawableEnd="@drawable/ic_donvi_danm"
+                    android:drawablePadding="10dp"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:labelFor="@+id/edtCurrentPswd"
@@ -399,8 +428,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:digits="0123456789."
-                    android:drawablePadding="10dp"
                     android:drawableEnd="@drawable/ic_donvi_m"
+                    android:drawablePadding="10dp"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:labelFor="@+id/edtCurrentPswd"
@@ -413,44 +442,72 @@
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/cslAd2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/L">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                card_view:cardCornerRadius="0dp">
+
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/image"
+                    android:layout_centerHorizontal="true"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="ca-app-pub-2242423094803913/8598068183" />
+
+            </android.support.v7.widget.CardView>
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
             android:id="@+id/layerω"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/L">
+            app:layout_constraintTop_toBottomOf="@+id/cslAd2">
 
-                <android.support.design.widget.TextInputLayout
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/gradient"
+                android:hint="@string/input_link"
+                android:paddingTop="8dp"
+                android:textColorHint="#000"
+                app:hintTextAppearance="@style/FloatLabelEditTextStyle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/edtω"
+                    style="@style/FloatLabelEditTextStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/gradient"
-                    android:hint="@string/input_link"
-                    android:paddingTop="8dp"
-                    android:textColorHint="#000"
-                    app:hintTextAppearance="@style/FloatLabelEditTextStyle"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <EditText
-                        android:id="@+id/edtω"
-                        style="@style/FloatLabelEditTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:drawableEnd="@drawable/ic_drop_down"
-                        android:drawablePadding="10dp"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:labelFor="@+id/edtCurrentPswd"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="2dp"
-                        android:textSize="14sp"
-                        android:typeface="monospace" />
-                </android.support.design.widget.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:drawableEnd="@drawable/ic_drop_down"
+                    android:drawablePadding="10dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:labelFor="@+id/edtCurrentPswd"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="2dp"
+                    android:textSize="14sp"
+                    android:typeface="monospace" />
+            </android.support.design.widget.TextInputLayout>
 
         </android.support.constraint.ConstraintLayout>
 
@@ -484,8 +541,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:digits="0123456789."
-                    android:drawablePadding="10dp"
                     android:drawableEnd="@drawable/ic_donvi_cm"
+                    android:drawablePadding="10dp"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:labelFor="@+id/edtCurrentPswd"
@@ -527,8 +584,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:digits="0123456789."
-                    android:drawablePadding="10dp"
                     android:drawableEnd="@drawable/ic_donvi_cm"
+                    android:drawablePadding="10dp"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:labelFor="@+id/edtCurrentPswd"
@@ -570,8 +627,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:digits="0123456789."
-                    android:drawablePadding="10dp"
                     android:drawableEnd="@drawable/ic_donvi_cm"
+                    android:drawablePadding="10dp"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:labelFor="@+id/edtCurrentPswd"
@@ -655,7 +712,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <EditText
-                    android:id="@+id/edtDynamicLoad"
+                    android:id="@+id/edtAs"
                     style="@style/FloatLabelEditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -677,13 +734,41 @@
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/cslValue"
+            android:id="@+id/cslAd3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cslResult">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                card_view:cardCornerRadius="0dp">
+
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/image"
+                    android:layout_centerHorizontal="true"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="ca-app-pub-2242423094803913/8598068183" />
+
+            </android.support.v7.widget.CardView>
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cslValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cslAd3">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -750,7 +835,7 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <EditText
-                                android:id="@+id/edtA1"
+                                android:id="@+id/edtn"
                                 style="@style/FloatLabelEditTextStyle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -774,7 +859,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginBottom="5dp"
                             android:layout_marginTop="5dp"
-                            android:layout_weight="1.2"
+                            android:layout_weight="1.1"
                             android:background="@drawable/shape_border"
                             android:hint="@string/beam_asbt"
                             android:textColorHint="#000"
@@ -806,7 +891,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginBottom="5dp"
                             android:layout_marginTop="5dp"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.6"
                             android:background="@drawable/shape_border"
                             android:hint="@string/concrete_µ"
                             android:textColorHint="#000"

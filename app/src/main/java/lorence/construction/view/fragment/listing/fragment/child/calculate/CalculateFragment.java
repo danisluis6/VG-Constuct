@@ -186,6 +186,21 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     @BindView(R.id.adView)
     AdView adView;
 
+    @BindView(R.id.adView1)
+    AdView adView1;
+
+    @BindView(R.id.adView2)
+    AdView adView2;
+
+    @BindView(R.id.adView3)
+    AdView adView3;
+
+    @BindView(R.id.adView4)
+    AdView adView4;
+
+    @BindView(R.id.adView5)
+    AdView adView5;
+
     @Inject
     Context mContext;
 
@@ -347,6 +362,11 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
         adView.loadAd(adRequest);
+        adView1.loadAd(adRequest);
+        adView2.loadAd(adRequest);
+        adView3.loadAd(adRequest);
+        adView4.loadAd(adRequest);
+        adView5.loadAd(adRequest);
         return view;
     }
 
@@ -398,7 +418,7 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         mSteelFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.STEEL);
     }
 
-    @OnClick({R.id.btnPerformCalculator, R.id.edtConcrete, R.id.edtRb, R.id.edtSteel, R.id.edtRs, R.id.edtPhi1, R.id.edtPhi2, R.id.edtPhi3, R.id.edtPhi4})
+    @OnClick({R.id.btnPerformCalculator, R.id.edtConcrete, R.id.edtRb, R.id.edtSteel, R.id.edtRs, R.id.edtPhi1, R.id.edtPhi2, R.id.edtPhi3, R.id.edtPhi4, R.id.mainContent})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnPerformCalculator:
@@ -440,6 +460,9 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
             case R.id.edtPhi3:
                 mSpinnerFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.SPINNER);
                 mSpinnerFragment.addCase(BeamsOperationFragment.CASE.THREE);
+                break;
+            case R.id.mainContent:
+                Utils.hiddenKeyBoard(mHomeActivity);
                 break;
             case R.id.edtPhi4:
                 mSpinnerFragment.show(mHomeActivity.getFragmentManager(), Constants.TAG.SPINNER);
@@ -577,3 +600,4 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         mGrListingOperations = listingOperations;
     }
 }
+

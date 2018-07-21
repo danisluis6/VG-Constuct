@@ -16,6 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -178,6 +181,18 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
     @BindView(R.id.edtPhiAsMGAs4)
     EditText edtPhiAsMGAs4;
 
+    @BindView(R.id.adView1)
+    AdView adView1;
+
+    @BindView(R.id.adView2)
+    AdView adView2;
+
+    @BindView(R.id.adView3)
+    AdView adView3;
+
+    @BindView(R.id.adView4)
+    AdView adView4;
+
     private String mTitle;
 
     public BeamsOperationFragment() {
@@ -262,6 +277,13 @@ public class BeamsOperationFragment extends EBaseFragment implements BeamsOperat
         edtPhi4.addTextChangedListener(new GenericTextWatcher(edtPhi4));
         edtM1.addTextChangedListener(new DectectViewTextWatcher());
         edtM2.addTextChangedListener(new DectectViewTextWatcher());
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        adView1.loadAd(adRequest);
+        adView2.loadAd(adRequest);
+        adView3.loadAd(adRequest);
+        adView4.loadAd(adRequest);
         return view;
     }
 

@@ -3,11 +3,17 @@ package lorence.construction.view.fragment.concrete;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import javax.inject.Inject;
 
@@ -16,14 +22,12 @@ import butterknife.OnClick;
 import lorence.construction.R;
 import lorence.construction.app.Application;
 import lorence.construction.data.storage.entity.Concrete;
-import lorence.construction.data.storage.entity.Operation;
 import lorence.construction.data.storage.entity.Steel;
 import lorence.construction.di.module.concrete.DetailConcreteModule;
 import lorence.construction.di.module.home.HomeModule;
 import lorence.construction.helper.Constants;
 import lorence.construction.helper.RegularUtils;
 import lorence.construction.helper.math.InternalFormula;
-import lorence.construction.other.TemporaryStorage;
 import lorence.construction.utitilize.Utils;
 import lorence.construction.view.EBaseFragment;
 import lorence.construction.view.activity.home.HomeActivity;
@@ -109,6 +113,24 @@ public class DetailedConcreteFragment extends EBaseFragment implements DetailedC
     @BindView(R.id.edtPhi1)
     EditText edtPhi1;
 
+    @BindView(R.id.edtAs)
+    EditText edtAs;
+
+    @BindView(R.id.edtn)
+    EditText edtn;
+
+    @BindView(R.id.edtµ1)
+    EditText edtµ1;
+
+    @BindView(R.id.adView1)
+    AdView adView1;
+
+    @BindView(R.id.adView2)
+    AdView adView2;
+
+    @BindView(R.id.adView3)
+    AdView adView3;
+
     public DetailedConcreteFragment() {
     }
 
@@ -165,13 +187,53 @@ public class DetailedConcreteFragment extends EBaseFragment implements DetailedC
                 edtω.setText(value);
             }
         });
+        edtn.addTextChangedListener(new AsTextWatcher(edtn));
+        edtPhi1.addTextChangedListener(new AsTextWatcher(edtPhi1));
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        adView1.loadAd(adRequest);
+        adView2.loadAd(adRequest);
+        adView3.loadAd(adRequest);
         return view;
+    }
+
+    public class AsTextWatcher implements TextWatcher {
+
+        private View view;
+
+        private AsTextWatcher(View view) {
+            this.view = view;
+        }
+
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void afterTextChanged(Editable editable) {
+            String text = editable.toString();
+            switch (view.getId()) {
+                case R.id.edtPhi1:
+                case R.id.edtn:
+                    if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi1.getText().toString(), Constants.EMPTY_STRING)) {
+                        if (TextUtils.equals(edtAs.getText().toString(), Constants.EMPTY_STRING)) {
+                            Toast.makeText(mContext, "Vui lòng thực hiện tính giá trị As trước!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            edtAsBT.setText(mInternalFormula.calculateAsBT(Double.parseDouble(edtPhi1.getText().toString()), Double.parseDouble(edtn.getText().toString())));
+                            edtµ1.setText(mInternalFormula.calculateµ(Double.parseDouble(edtAsBT.getText().toString()), Double.parseDouble(edtCx.getText().toString()), Double.parseDouble(edtCy.getText().toString())));
+                        }
+                    }
+                    break;
+            }
+        }
     }
 
     @BindView(R.id.edtAsBT)
     EditText edtAsBT;
 
-    @OnClick({R.id.edtConcrete, R.id.edtRb, R.id.edtSteel, R.id.edtRs, R.id.btnPerformCalculator, R.id.edtPhi1, R.id.edtω})
+    @OnClick({R.id.edtConcrete, R.id.edtRb, R.id.edtSteel, R.id.edtRs, R.id.btnPerformCalculator, R.id.edtPhi1, R.id.edtω, R.id.mainContent})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.edtConcrete:
@@ -188,13 +250,17 @@ public class DetailedConcreteFragment extends EBaseFragment implements DetailedC
             case R.id.edtω:
                 mOmegaFragment.show(mActivity.getFragmentManager(), Constants.TAG.SPINNER);
                 break;
+            case R.id.mainContent:
+                Utils.hiddenKeyBoard(mActivity);
+                break;
             case R.id.btnPerformCalculator:
                 if (Utils.isInternetOn(mContext)) {
                     if (checkValidDataInput()) {
-                        edtAsBT.setText(mInternalFormula.calculateAsBT(Double.parseDouble(edtL.getText().toString()), Double.parseDouble(edtω.getText().toString()),
+                        Utils.hiddenKeyBoard(mActivity);
+                        edtAs.setText(mInternalFormula.calculateAsBT(Double.parseDouble(edtL.getText().toString()), Double.parseDouble(edtω.getText().toString()),
                                 Double.parseDouble(edtCx.getText().toString()), Double.parseDouble(edtCy.getText().toString())
                                 , Double.parseDouble(edtMx.getText().toString()), Double.parseDouble(edtMy.getText().toString())
-                        , Double.parseDouble(edtN.getText().toString()), Double.parseDouble(edtRb.getText().toString()),
+                                , Double.parseDouble(edtN.getText().toString()), Double.parseDouble(edtRb.getText().toString()),
                                 Double.parseDouble(edty.getText().toString()), Double.parseDouble(edta.getText().toString()),
                                 Double.parseDouble(edtRs.getText().toString())));
                     }
@@ -238,6 +304,14 @@ public class DetailedConcreteFragment extends EBaseFragment implements DetailedC
         }
         if (!mRegularUtils.isRealNumber(edta.getText().toString())) {
             Toast.makeText(mContext, "Vui lòng nhập dữ liệu hợp lệ cho a", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtRb.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng chọn cấp độ bê tông", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mRegularUtils.isRealNumber(edtRs.getText().toString())) {
+            Toast.makeText(mContext, "Vui lòng chọn loại thép", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

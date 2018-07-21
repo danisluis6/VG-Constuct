@@ -80,6 +80,12 @@ public class MordalFragment extends EBaseFragment implements MordalView {
     @BindView(R.id.adView)
     AdView adView;
 
+    @BindView(R.id.adView1)
+    AdView adView1;
+
+    @BindView(R.id.adView2)
+    AdView adView2;
+
     @Inject
     Context mContext;
 
@@ -131,6 +137,8 @@ public class MordalFragment extends EBaseFragment implements MordalView {
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
         adView.loadAd(adRequest);
+        adView1.loadAd(adRequest);
+        adView2.loadAd(adRequest);
         return view;
     }
 
