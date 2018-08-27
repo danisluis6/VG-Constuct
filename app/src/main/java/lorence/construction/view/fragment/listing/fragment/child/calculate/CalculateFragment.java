@@ -299,42 +299,38 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
         mHomeActivity.attachShareButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Utils.isInternetOn(mContext)) {
-                    if (TextUtils.equals(edtAsM1.getText().toString(), Constants.EMPTY_STRING)) {
-                        Toast.makeText(mContext, "Bạn chưa thực hiện tính toán", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_SEND);
-                        intent.setType("text/plain");
-                        intent.putExtra(Intent.EXTRA_TEXT, "THÔNG SỐ BAN ĐẦU:" +
-                                "\nl1 = " + edtL1.getText() +
-                                "\nl2 = " + edtL2.getText() +
-                                "\nhs = " + edth.getText() +
-                                "\na = " + edta.getText() +
-                                "\nRb = " + edtRb.getText() +
-                                "\nRs = " + edtRs.getText() +
-                                "\ng = " + edtStaticLoad.getText() +
-                                "\np = " + edtDynamicLoad.getText() +
-                                "\nTHỰC THI PHÉP TÍNH:" +
-                                "\nk1 = " + tvk1.getText() +
-                                "\nk2 = " + tvk2.getText() +
-                                "\nm1 = " + tvm1.getText() +
-                                "\nm2 = " + tvm2.getText() +
-                                "\nq = " + tvq.getText() +
-                                "\nP = " + tvP.getText() +
-                                "\nM1 = " + tvM1.getText() +
-                                "\nM2 = " + tvM2.getText() +
-                                "\nMI = " + tvMM1.getText() +
-                                "\nMII = " + tvMM2.getText() +
-                                "\nAs(M1) = " + edtAsM1.getText() +
-                                "\nAs(M2) = " + edtAsM2.getText() +
-                                "\nAs(MI) = " + edtAsMM1.getText() +
-                                "\nAs(MII) = " + edtAsMM2.getText());
-                        startActivity(Intent.createChooser(intent, "Chia sẻ với bạn bè"));
-                    }
-                } else {
-                    Toast.makeText(mContext, getString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show();
-                }
+            if (TextUtils.equals(edtAsM1.getText().toString(), Constants.EMPTY_STRING)) {
+                Toast.makeText(mContext, "Bạn chưa thực hiện tính toán", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, "THÔNG SỐ BAN ĐẦU:" +
+                        "\nl1 = " + edtL1.getText() +
+                        "\nl2 = " + edtL2.getText() +
+                        "\nhs = " + edth.getText() +
+                        "\na = " + edta.getText() +
+                        "\nRb = " + edtRb.getText() +
+                        "\nRs = " + edtRs.getText() +
+                        "\ng = " + edtStaticLoad.getText() +
+                        "\np = " + edtDynamicLoad.getText() +
+                        "\nTHỰC THI PHÉP TÍNH:" +
+                        "\nk1 = " + tvk1.getText() +
+                        "\nk2 = " + tvk2.getText() +
+                        "\nm1 = " + tvm1.getText() +
+                        "\nm2 = " + tvm2.getText() +
+                        "\nq = " + tvq.getText() +
+                        "\nP = " + tvP.getText() +
+                        "\nM1 = " + tvM1.getText() +
+                        "\nM2 = " + tvM2.getText() +
+                        "\nMI = " + tvMM1.getText() +
+                        "\nMII = " + tvMM2.getText() +
+                        "\nAs(M1) = " + edtAsM1.getText() +
+                        "\nAs(M2) = " + edtAsM2.getText() +
+                        "\nAs(MI) = " + edtAsMM1.getText() +
+                        "\nAs(MII) = " + edtAsMM2.getText());
+                startActivity(Intent.createChooser(intent, "Chia sẻ với bạn bè"));
+            }
             }
         });
         return view;
@@ -392,23 +388,19 @@ public class CalculateFragment extends EBaseFragment implements CalculateView {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnPerformCalculator:
-                if (Utils.isInternetOn(mContext)) {
-                    if (checkValidDataInput()) {
-                        if (mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2), mHomeActivity.getTitleToolbar())) {
-                            Operation operation = mInternalFormula.calculate(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2) / mConverterUtils.getDoubleValue(edtL1));
-                            showStepByStepOfCalculating(operation);
-                            Utils.hiddenKeyBoard(mHomeActivity);
-                        } else {
-                            Toast.makeText(mContext, "Vui lòng chuyển qua mục bản dầm", Toast.LENGTH_SHORT).show();
-                            TemporaryStorage.getInstance().put(Constants.HASH_MAP.RB, edtRb.getText().toString());
-                            TemporaryStorage.getInstance().put(Constants.HASH_MAP.RS, edtRs.getText().toString());
-                            TemporaryStorage.getInstance().put(Constants.HASH_MAP.VALUE_B, "1");
-                            TemporaryStorage.getInstance().put(Constants.HASH_MAP.H, edth.getText().toString());
-                            TemporaryStorage.getInstance().put(Constants.HASH_MAP.A, edta.getText().toString());
-                        }
+                if (checkValidDataInput()) {
+                    if (mConditionCalculating.islistingOrBeams(mConverterUtils.getDoubleValue(edtL1), mConverterUtils.getDoubleValue(edtL2), mHomeActivity.getTitleToolbar())) {
+                        Operation operation = mInternalFormula.calculate(mGrListingOperations, mHomeActivity.getTitleToolbar(), mConverterUtils.getDoubleValue(edtL2) / mConverterUtils.getDoubleValue(edtL1));
+                        showStepByStepOfCalculating(operation);
+                        Utils.hiddenKeyBoard(mHomeActivity);
+                    } else {
+                        Toast.makeText(mContext, "Vui lòng chuyển qua mục bản dầm", Toast.LENGTH_SHORT).show();
+                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.RB, edtRb.getText().toString());
+                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.RS, edtRs.getText().toString());
+                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.VALUE_B, "1");
+                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.H, edth.getText().toString());
+                        TemporaryStorage.getInstance().put(Constants.HASH_MAP.A, edta.getText().toString());
                     }
-                } else {
-                    Toast.makeText(mContext, getString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.edtConcrete:

@@ -199,16 +199,12 @@ public class DetailedConcreteFragment extends EBaseFragment implements DetailedC
             switch (view.getId()) {
                 case R.id.edtPhi1:
                 case R.id.edtn:
-                    if (!TextUtils.equals(text, Constants.EMPTY_STRING) && !TextUtils.equals(edtPhi1.getText().toString(), Constants.EMPTY_STRING)) {
-                        if (TextUtils.equals(edtAs.getText().toString(), Constants.EMPTY_STRING)) {
-                            Toast.makeText(mContext, "Vui lòng thực hiện tính giá trị As trước!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (!TextUtils.isEmpty(edtPhi1.getText().toString()) && !TextUtils.isEmpty(edtn.getText().toString())) {
-                                edtAsBT.setText(mInternalFormula.calculateAsBT(Double.parseDouble(edtPhi1.getText().toString()), Double.parseDouble(edtn.getText().toString())));
-                                edtµ1.setText(mInternalFormula.calculateµ(Double.parseDouble(edtAsBT.getText().toString()),
-                                        Double.parseDouble(edtCx.getText().toString()), Double.parseDouble(edtCy.getText().toString())));
-                            }
-                        }
+                    if (!TextUtils.isEmpty(edtPhi1.getText().toString()) && !TextUtils.isEmpty(edtn.getText().toString())
+                            && !TextUtils.equals(edtCx.getText().toString(), Constants.EMPTY_STRING)
+                            && !TextUtils.equals(edtCy.getText().toString(), Constants.EMPTY_STRING)) {
+                        edtAsBT.setText(mInternalFormula.calculateAsBT(Double.parseDouble(edtPhi1.getText().toString()), Double.parseDouble(edtn.getText().toString())));
+                        edtµ1.setText(mInternalFormula.calculateµ(Double.parseDouble(edtAsBT.getText().toString()),
+                                Double.parseDouble(edtCx.getText().toString()), Double.parseDouble(edtCy.getText().toString())));
                     }
                     break;
             }
