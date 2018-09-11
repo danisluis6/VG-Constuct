@@ -17,7 +17,7 @@ import lorence.construction.helper.Constants;
 public class SessionManager {
 
     private static final String L1 = "l1";
-    private static final String PREF_NAME = "ezFaxing_sharedPref";
+    private static final String PREF_NAME = "_sharedPref";
     private static SessionManager instance;
     private final SharedPreferences pref;
     private final SharedPreferences.Editor editor;
