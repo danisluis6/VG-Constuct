@@ -22,7 +22,7 @@ public class SessionManager {
     private static final String DATE_UPGRATE_APP = "date upgrade app";
     private static final String BASE_URL = "baseUrl";
 
-    private static final String PREF_NAME = "ezFaxing_sharedPref";
+    private static final String PREF_NAME = "_sharedPref";
     private static SessionManager instance;
     private final SharedPreferences pref;
     private final SharedPreferences.Editor editor;
