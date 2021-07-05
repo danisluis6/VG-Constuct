@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import lorence.construction.view.activity.BaseActivity;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -19,13 +18,11 @@ import lorence.construction.view.activity.BaseActivity;
 
 public abstract class EBaseFragment extends Fragment {
 
-    protected BaseActivity mActivity;
     private Unbinder mUnbinder;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mActivity = (BaseActivity) this.getActivity();
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 

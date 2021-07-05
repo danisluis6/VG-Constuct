@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Project.iml" filepath="$PROJECT_DIR$/Project.iml" />
+      <module fileurl="file://C:\Users\vuongluis\Desktop\VG-Constuct\Project.iml" filepath="C:\Users\vuongluis\Desktop\VG-Constuct\Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VG-Constuct.iml" filepath="$PROJECT_DIR$/VG-Constuct.iml" />
+      <module fileurl="file://D:\Android_App\VGConstruction\Project\VG-Constuct.iml" filepath="D:\Android_App\VGConstruction\Project\VG-Constuct.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

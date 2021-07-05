@@ -1,7 +1,137 @@
 <resources>
-    <!-- General info about application -->
-    <string name="app_name">VogoApp</string>
-
     <!-- Adjust info in layout -->
     <string name="content_description">""</string>
+
+    <!-- Title -->
+    <string name="title_listings">Bản Kê</string>
+    <string name="title_beams">Loại Dầm</string>
+    <string name="title_settings">Bê Tông</string>
+    <string name="title_abouts">Giới Thiệu</string>
+
+    <string name="input_L1">Nhập L1</string>
+    <string name="input_D">Nhập D (0.8->1.4)</string>
+    <string name="input_L2">Nhập L2</string>
+    <string name="input_h">Nhập hs</string>
+    <string name="value_h">Giá trị hs tham khảo</string>
+    <string name="input_a">Nhập a</string>
+    <string name="input_y">Hệ số bê tông: ƴ</string>
+    <string name="input_Mx">Mx</string>
+    <string name="input_My">My</string>
+    <string name="input_Cx">Cx</string>
+    <string name="input_Cy">Cy</string>
+    <string name="input_N">N</string>
+    <string name="input_L">L</string>
+    <string name="input_g">Tĩnh tải g</string>
+    <string name="input_p">Hoạt tải p</string>
+    <string name="input_concrete">Cấp bê tông</string>
+    <string name="input_link">Chọn liên kết hai đầu cột(ω)</string>
+    <string name="input_Rb">Thông số Rb</string>
+    <string name="input_steel">Mác thép</string>
+    <string name="input_Rs">Thông số Rs</string>
+    <string name="titleSizes">Kích thước</string>
+    <string name="titleMaterials">Vật liệu</string>
+    <string name="titleConcrete">Dữ liệu</string>
+    <string name="titleMaterialLoad">Tải trọng</string>
+    <string name="titleReferLoad">Tải trọng tham khảo</string>
+    <string name="titleFinalLoad">Hoạt tải tham khảo</string>
+    <string name="titleReferHS">Chiều dày sàn</string>
+    <string name="titleStructureFloor">Cấu tạo sàn</string>
+    <string name="input_brick">Lót gạch dày</string>
+    <string name="input_mortar">Vữa lót dày</string>
+    <string name="input_concrete_floor">Chiều dày bê tông sàn</string>
+    <string name="input_plaster_mortar">Vữa trát trần</string>
+    <string name="perform_calculator">Tính toán</string>
+    <string name="title_concrete">Cấp độ bê tông</string>
+    <string name="title_steel">Chọn thép</string>
+    <string name="title_spinner">Chọn Ø</string>
+    <string name="title_omega">Chọn Ꞷ</string>
+
+    <!-- Title in Fragment Listing -->
+    <string name="tab_title_calculate">Tính toán</string>
+    <string name="tab_title_result">Tham khảo</string>
+    <string name="tab_title_reference">Hoạt tải</string>
+
+    <!-- Reference -->
+    <string name="standard">Một số loại hoạt tải theo TCVN 2737–1995</string>
+
+    <string name="title_hospital"> + Phòng ngủ khách sạn, bệnh viện, trại giam</string>
+    <string name="refer_hospital">200 (daN/m2)</string>
+    <string name="title_apartment"> + Phòng ngủ kiểu căn hộ, nhà trẻ, mẫu giáo, trường học nội trú, nhà nghỉ</string>
+    <string name="refer_apartment">150 (daN/m2)</string>
+    <string name="title_bathroom"> + Phòng ăn, phòng khách, phòng tắm, WC (của nhà ở)</string>
+    <string name="refer_bathroom">150 (daN/m2)</string>
+    <string name="title_kitchen"> + Phòng ăn, phòng khách, phòng tắm, WC (của nhà trẻ, trường học,khách sạn, bệnh viện)</string>
+    <string name="refer_kitchen">200 (daN/m2)</string>
+    <string name="title_kitchen_apartment"> + Bếp, phòng giặt (của căn hộ)</string>
+    <string name="refer_kitchen_apartment">150 (daN/m2)</string>
+    <string name="title_kitchen_school"> + Bếp, phòng giặt (nhà nghỉ, khách sạn, bệnh viện, trường học)</string>
+    <string name="refer_kitchen_school">300 (daN/m2)</string>
+    <string name="title_kitchen_office"> + Văn phòng, phòng thí nghiệm</string>
+    <string name="refer_kitchen_office">200 (daN/m2)</string>
+    <string name="title_kitchen_reader"> + Phòng đọc sách (có đặt giá sách)</string>
+    <string name="refer_kitchen_reader">400 (daN/m2)</string>
+    <string name="title_kitchen_reader_no"> + Phòng đọc sách (không đặt giá sách)</string>
+    <string name="refer_kitchen_reader_no">200 (daN/m2)</string>
+    <string name="title_kitchen_restaurant"> + Nhà hàng (ăn uống, giải khát)</string>
+    <string name="refer_kitchen_restaurant">300 (daN/m2)</string>
+    <string name="title_kitchen_restaurant_exihibit"> + Nhà hàng (Triển lãm, trưng bày, cửa hàng)</string>
+    <string name="refer_kitchen_restaurant_exihibit">400 (daN/m2)</string>
+    <string name="title_kitchen_classroom"> + Phòng học (trường học)</string>
+    <string name="refer_kitchen_classroom">200 (daN/m2)</string>
+    <string name="title_kitchen_balcony"> + Ban công, lô gia</string>
+    <string name="refer_kitchen_balcony">400 (daN/m2)</string>
+    <string name="title_kitchen_livingroom"> + Sảnh, phòng giải lao, cầu thang, hành lang</string>
+    <string name="refer_kitchen_livingroom">400 (daN/m2)</string>
+
+    <!-- Warning -->
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="warning_upgrade_new_version">A new version of VogoApp is available. Please update to version %1$s now.</string>
+
+    <!-- Error -->
+    <string name="error_time_out">Connection to server timed out. Please try again later.</string>
+    <string name="cannot_get_data">Cannot get data</string>
+    <string name="error">Error</string>
+
+    <!-- Button -->
+    <string name="btn_retry">Retry</string>
+    <string name="btn_exit">Exit</string>
+    <string name="btn_dismiss">Dismiss</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_update">Update</string>
+
+
+    <string name="label_k1">Thông số k1:</string>
+    <string name="label_k2">Thông số k2:</string>
+    <string name="label_m1">Thông số m1:</string>
+    <string name="label_m2">Thông số m2:</string>
+    <string name="label_M1">Mô men dương giữa bản M1: </string>
+    <string name="label_M2">Mô men dương giữa bản M2: </string>
+    <string name="label_MI">Mô men âm trên gối MI: </string>
+    <string name="label_MII">Mô men âm trên gối MII: </string>
+    <string name="label_q">Tính q: </string>
+    <string name="label_P">Tính P: </string>
+    <string name="input_AsM1">Giá trị As1: </string>
+    <string name="input_Ast">Giá trị As(tính toán): </string>
+    <string name="input_AsM2">Giá trị As2: </string>
+    <string name="input_AsMM1">Giá trị As3: </string>
+    <string name="input_AsMM2">Giá trị As4: </string>
+    <string name="input_AsMNAs1">As1 (Mô men nhịp): </string>
+    <string name="input_AsMGAs3">As3 (Mô men gối): </string>
+    <string name="input_AsMNAs2">As2 (Mô men nhịp): </string>
+    <string name="input_AsMGAs4">As4 (Mô men gối): </string>
+    <string name="result_M1">M (nhịp) </string>
+    <string name="result_M2">M (gối) </string>
+    <string name="input_Phi">Giá trị Ø(%): </string>
+
+    <string name="beam_phi">Ø</string>
+    <string name="concrete_µ">µ%</string>
+    <string name="beam_a">a</string>
+    <string name="beam_n">n</string>
+    <string name="beam_as1">As1</string>
+    <string name="beam_as2">As2</string>
+    <string name="beam_as3">As3</string>
+    <string name="beam_as4">As4</string>
+    <string name="beam_asbt">As (Bố trí)</string>
+    <string name="undevelopment">Undevelopment</string>
 </resources>
+

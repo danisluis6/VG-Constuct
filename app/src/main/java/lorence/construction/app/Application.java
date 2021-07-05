@@ -1,13 +1,19 @@
 package lorence.construction.app;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 
-import com.squareup.otto.Bus;
-import com.squareup.otto.ThreadEnforcer;
+import com.google.android.gms.ads.MobileAds;
 
-import lorence.construction.di.AppComponent;
-import lorence.construction.di.AppModule;
-import lorence.construction.di.DaggerAppComponent;
+import java.lang.reflect.Field;
+
+import lorence.construction.di.component.AppComponent;
+import lorence.construction.di.component.DaggerAppComponent;
+import lorence.construction.di.module.app.AppModule;
+import lorence.construction.di.module.app.RoomModule;
+import lorence.construction.helper.connect.FactoryModule;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -19,24 +25,32 @@ public class Application extends android.app.Application {
 
     private AppComponent mApplicationComponent;
     private Context mContext;
+    private static Application sInstance;
+    public static Typeface sEfFontStyle;
 
-    public static Bus eventBus;
-
-    public static Application get(Context context) {
-        return (Application) context.getApplicationContext();
+    public static synchronized Application getInstance() {
+        if (sInstance == null) {
+            sInstance = new Application();
+        }
+        return sInstance;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = this;
+        sInstance = this;
         initAppComponent();
-        mContext = getApplicationContext();
-        eventBus  = new Bus(ThreadEnforcer.ANY);
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Roboto-Light.ttf");
+        MobileAds.initialize(this, "ca-app-pub-2242423094803913~4860413431");
     }
 
     private void initAppComponent() {
         mApplicationComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this,mContext))
+                .roomModule(new RoomModule(this, mContext))
+                .factoryModule(new FactoryModule(this, mContext))
                 .build();
     }
 
@@ -44,4 +58,29 @@ public class Application extends android.app.Application {
         return mApplicationComponent;
     }
 
+    private static class FontsOverride {
+
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        static void setDefaultFont(Context context, String staticTypefaceFieldName, String fontAssetName) {
+            sEfFontStyle = Typeface.createFromAsset(context.getAssets(),
+                    fontAssetName);
+            replaceFont(staticTypefaceFieldName, sEfFontStyle);
+        }
+
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        static void replaceFont(String staticTypefaceFieldName, final Typeface newTypeface) {
+            try {
+                final Field staticField = Typeface.class
+                        .getDeclaredField(staticTypefaceFieldName);
+                staticField.setAccessible(true);
+                staticField.set(null, newTypeface);
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
 }
+
+

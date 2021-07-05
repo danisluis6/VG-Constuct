@@ -1,21 +1,29 @@
 package lorence.construction.view.activity.home;
 
-import android.os.Bundle;
+import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import lorence.construction.R;
-import lorence.construction.helper.PresenterManager;
+import lorence.construction.app.Application;
+import lorence.construction.di.module.home.HomeModule;
+import lorence.construction.helper.Validator;
 import lorence.construction.view.activity.BaseActivity;
+import lorence.construction.view.fragment.beams.BeamsFragment;
+import lorence.construction.view.fragment.listing.ListingFragment;
 
 /**
  * Created by vuongluis on 4/14/2018.
@@ -37,64 +45,54 @@ public class HomeActivity extends BaseActivity implements HomeView {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    private int mLastSelectedTab;
+    @BindView(R.id.imvMainButton)
+    ImageView imvMainButton;
 
-    //  Constants
-    public static final String SELECTED_TAB_KEY = "selectedTabKey";
-    private String CLASS_TAG = "HomeActivity";
+    @Inject
+    Context mContext;
 
-    // MVP
-    private HomePresenter mHomePresenter;
+    @Inject
+    Validator mValidator;
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        // Always call the superclass so it can save the view hierarchy state
-        super.onSaveInstanceState(savedInstanceState);
-        PresenterManager.getInstance().put(CLASS_TAG, mHomePresenter);
-        savedInstanceState.putInt(SELECTED_TAB_KEY, mLastSelectedTab);
-    }
+    @Inject
+    HomeActivity mHomeActivity;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (mHomePresenter == null)
-            mHomePresenter = new HomePresenter();
-    }
+    @Inject
+    HomePresenter mHomePresenter;
+
+    private ListingFragment mListingFragment;
+    private BeamsFragment mBeamsFragment;
 
     @Override
     public void distributedDaggerComponents() {
-
+        Application.getInstance()
+                .getAppComponent()
+                .plus(new HomeModule(this))
+                .inject(this);
     }
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.layout_home;
+        return R.layout.activity_home;
     }
 
     @Override
     protected void initAttributes() {
+        mHomePresenter.attachView(this);
     }
 
     @Override
     protected void initViews() {
-
+        mHomePresenter.initializes();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mHomePresenter= (HomePresenter) PresenterManager.getInstance().get(CLASS_TAG);
-        if (mHomePresenter == null) {
-            mHomePresenter = new HomePresenter();
-        }
-        mHomePresenter.bindView(this);
         mBottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
-                if (mLastSelectedTab != tabId) {
-                    mHomePresenter.navigationSelected(tabId);
-                    mLastSelectedTab = tabId;
-                }
+                mHomePresenter.navigationSelected(tabId);
             }
         });
     }
@@ -110,11 +108,65 @@ public class HomeActivity extends BaseActivity implements HomeView {
             ft.replace(R.id.frameLayout, fragment, tag);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         } else {
-            fragment = newFragment;
-            ft.replace(R.id.frameLayout, fragment, tag);
+            ft.replace(R.id.frameLayout, newFragment, tag);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            ft.addToBackStack(tag);
+            ft.disallowAddToBackStack();
         }
         ft.commit();
+    }
+
+    @Override
+    public void updateTitleToolbar(String title) {
+        if (tvCurrentOption != null)
+            tvCurrentOption.setText(title);
+    }
+
+    @Override
+    public  String getTitleToolbar() {
+        return tvCurrentOption.getText().toString();
+    }
+
+    @Override
+    public void hiddenBottomBar() {
+        if (mBottomBar != null)
+            mBottomBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showBottomBar() {
+        if (mBottomBar != null)
+            mBottomBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void updateShareButton(int resId) {
+        if (imvMainButton != null) {
+            imvMainButton.setVisibility(View.VISIBLE);
+            imvMainButton.setImageResource(resId);
+        }
+    }
+
+    @Override
+    public ImageView attachShareButton() {
+        return imvMainButton;
+    }
+
+    public void attachListingFragment(ListingFragment fragment) {
+        mListingFragment = fragment;
+    }
+
+    public void attachBeamFragment(BeamsFragment beamsFragment) {
+        mBeamsFragment = beamsFragment;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mListingFragment !=null && mListingFragment.isAdded() && mListingFragment.getChildFragmentManager().getBackStackEntryCount() > 0) {
+            mListingFragment.getChildFragmentManager().popBackStack();
+        } else if(mBeamsFragment != null && mBeamsFragment.isAdded() && mBeamsFragment.getChildFragmentManager().getBackStackEntryCount() > 0) {
+            mBeamsFragment.getChildFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }
